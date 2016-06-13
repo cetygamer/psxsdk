@@ -1,0 +1,176 @@
+\hypertarget{bitstring_8h}{}\section{libpsx/include/bitstring.h File Reference}
+\label{bitstring_8h}\index{libpsx/include/bitstring.\+h@{libpsx/include/bitstring.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{bitstring_8h_af56d9c00418bdec6df891b395d134c74}{bitstr\+\_\+size}(nbits)~( (nbits + 7) $>$$>$ 3 )
+\item 
+\#define \hyperlink{bitstring_8h_a486d8a6c943f0d469af831a5cfd2dafd}{bit\+\_\+alloc}(nbits)~\hyperlink{memory_8c_a883b46e9f7c4915d40f95cf816ae0300}{calloc}( \hyperlink{bitstring_8h_af56d9c00418bdec6df891b395d134c74}{bitstr\+\_\+size}(nbits) , 1)
+\item 
+\#define \hyperlink{bitstring_8h_ab64f898809ee96f40e958a96a083f374}{bit\+\_\+decl}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name},  nbits)~\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}\mbox{[} \hyperlink{bitstring_8h_af56d9c00418bdec6df891b395d134c74}{bitstr\+\_\+size}(nbits) \mbox{]}
+\item 
+\#define \hyperlink{bitstring_8h_a355fbdfd0bd64cf1f3d0b4723c2953be}{bit\+\_\+clear}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name},  bit)~\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}\mbox{[} bit $>$$>$ 3 \mbox{]} \&= $\sim$(1 $<$$<$ (bit \& 7) )
+\item 
+\#define \hyperlink{bitstring_8h_a2a7616f3b4368143672b404d438e3ecc}{bit\+\_\+set}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name},  bit)~\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}\mbox{[} bit $>$$>$ 3\mbox{]} $\vert$= 1 $<$$<$ (bit \& 7)
+\item 
+\#define \hyperlink{bitstring_8h_a2adf088df387a86e01545c1060195adc}{bit\+\_\+nclear}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name},  start,  stop)
+\item 
+\#define \hyperlink{bitstring_8h_ad693491bdcc65fb569db4b519e0bcdaf}{bit\+\_\+nset}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name},  start,  stop)
+\item 
+\#define \hyperlink{bitstring_8h_a93f008609298a5b055aeb9d82ea99241}{bit\+\_\+test}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name},  bit)~( \hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}\mbox{[}bit $>$$>$ 3\mbox{]} \& (1 $<$$<$ (bit \& 7) ) )
+\item 
+\#define \hyperlink{bitstring_8h_a13f6fcd8a0580fe1d8bfca8334192b5b}{bit\+\_\+ffs}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name},  nbits,  value)
+\item 
+\#define \hyperlink{bitstring_8h_ae83cf8ad6e3096002e170729b294f711}{bit\+\_\+ffc}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name},  nbits,  value)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned char \hyperlink{bitstring_8h_a733b85aa57711b83cdd8b89f05698e3d}{bitstr\+\_\+t}
+\begin{DoxyCompactList}\small\item\em P\+S\+X\+S\+D\+K. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{bitstring_8h_a486d8a6c943f0d469af831a5cfd2dafd}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+alloc@{bit\+\_\+alloc}}
+\index{bit\+\_\+alloc@{bit\+\_\+alloc}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+alloc}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+alloc(
+\begin{DoxyParamCaption}
+\item[{}]{nbits}
+\end{DoxyParamCaption}
+)~{\bf calloc}( {\bf bitstr\+\_\+size}(nbits) , 1)}\label{bitstring_8h_a486d8a6c943f0d469af831a5cfd2dafd}
+\hypertarget{bitstring_8h_a355fbdfd0bd64cf1f3d0b4723c2953be}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+clear@{bit\+\_\+clear}}
+\index{bit\+\_\+clear@{bit\+\_\+clear}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+clear}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+clear(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf name}, }
+\item[{}]{bit}
+\end{DoxyParamCaption}
+)~{\bf name}\mbox{[} bit $>$$>$ 3 \mbox{]} \&= $\sim$(1 $<$$<$ (bit \& 7) )}\label{bitstring_8h_a355fbdfd0bd64cf1f3d0b4723c2953be}
+\hypertarget{bitstring_8h_ab64f898809ee96f40e958a96a083f374}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+decl@{bit\+\_\+decl}}
+\index{bit\+\_\+decl@{bit\+\_\+decl}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+decl}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+decl(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf name}, }
+\item[{}]{nbits}
+\end{DoxyParamCaption}
+)~{\bf name}\mbox{[} {\bf bitstr\+\_\+size}(nbits) \mbox{]}}\label{bitstring_8h_ab64f898809ee96f40e958a96a083f374}
+\hypertarget{bitstring_8h_ae83cf8ad6e3096002e170729b294f711}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+ffc@{bit\+\_\+ffc}}
+\index{bit\+\_\+ffc@{bit\+\_\+ffc}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+ffc}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+ffc(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf name}, }
+\item[{}]{nbits, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)}\label{bitstring_8h_ae83cf8ad6e3096002e170729b294f711}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+            int \_b\_\_;\(\backslash\)
+            for(\_b\_\_ = 0; \_b\_\_ < nbits; \_b\_\_++) \(\backslash\)
+            \{\(\backslash\)
+                if( !\hyperlink{bitstring_8h_a93f008609298a5b055aeb9d82ea99241}{bit\_test}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}, \_b\_\_) ) \(\backslash\)
+                \{\(\backslash\)
+                    *(value) = \_b\_\_; \(\backslash\)
+                    break; \(\backslash\)
+                \}\(\backslash\)
+            \}\(\backslash\)
+            if( \_b\_\_ == nbits ) *(value) = -1;\(\backslash\)
+        \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\hypertarget{bitstring_8h_a13f6fcd8a0580fe1d8bfca8334192b5b}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+ffs@{bit\+\_\+ffs}}
+\index{bit\+\_\+ffs@{bit\+\_\+ffs}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+ffs}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+ffs(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf name}, }
+\item[{}]{nbits, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)}\label{bitstring_8h_a13f6fcd8a0580fe1d8bfca8334192b5b}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+            int \_b\_\_;\(\backslash\)
+            for(\_b\_\_ = 0; \_b\_\_ < nbits; \_b\_\_++) \(\backslash\)
+            \{\hyperlink{stdio_8h_a98631211a4a8aee62f572375d5b637be}{\(\backslash\)}
+\hyperlink{stdio_8h_a98631211a4a8aee62f572375d5b637be}{                printf}(\textcolor{stringliteral}{"bb = %d\(\backslash\)n"}, \_b\_\_);\(\backslash\)
+                if( \hyperlink{bitstring_8h_a93f008609298a5b055aeb9d82ea99241}{bit\_test}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}, \_b\_\_) ) \(\backslash\)
+                \{\(\backslash\)
+                    *(value) = \_b\_\_; \(\backslash\)
+                    break; \(\backslash\)
+                \}\(\backslash\)
+            \}\(\backslash\)
+            if( \_b\_\_ == nbits ) *(value) = -1;\(\backslash\)
+        \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\hypertarget{bitstring_8h_a2adf088df387a86e01545c1060195adc}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+nclear@{bit\+\_\+nclear}}
+\index{bit\+\_\+nclear@{bit\+\_\+nclear}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+nclear}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+nclear(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf name}, }
+\item[{}]{start, }
+\item[{}]{stop}
+\end{DoxyParamCaption}
+)}\label{bitstring_8h_a2adf088df387a86e01545c1060195adc}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+            int \_b\_\_;\(\backslash\)
+            for(\_b\_\_ = start; \_b\_\_ <= stop; \_b\_\_++) \(\backslash\)
+                \hyperlink{bitstring_8h_a355fbdfd0bd64cf1f3d0b4723c2953be}{bit\_clear}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}, \_b\_\_);\(\backslash\)
+        \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\hypertarget{bitstring_8h_ad693491bdcc65fb569db4b519e0bcdaf}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+nset@{bit\+\_\+nset}}
+\index{bit\+\_\+nset@{bit\+\_\+nset}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+nset}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+nset(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf name}, }
+\item[{}]{start, }
+\item[{}]{stop}
+\end{DoxyParamCaption}
+)}\label{bitstring_8h_ad693491bdcc65fb569db4b519e0bcdaf}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+            int \_b\_\_;\(\backslash\)
+            for(\_b\_\_ = start; \_b\_\_ <= stop; \_b\_\_++) \(\backslash\)
+                \hyperlink{bitstring_8h_a2a7616f3b4368143672b404d438e3ecc}{bit\_set}(\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}, \_b\_\_); \(\backslash\)
+        \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\hypertarget{bitstring_8h_a2a7616f3b4368143672b404d438e3ecc}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+set@{bit\+\_\+set}}
+\index{bit\+\_\+set@{bit\+\_\+set}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+set}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+set(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf name}, }
+\item[{}]{bit}
+\end{DoxyParamCaption}
+)~{\bf name}\mbox{[} bit $>$$>$ 3\mbox{]} $\vert$= 1 $<$$<$ (bit \& 7)}\label{bitstring_8h_a2a7616f3b4368143672b404d438e3ecc}
+\hypertarget{bitstring_8h_a93f008609298a5b055aeb9d82ea99241}{}\index{bitstring.\+h@{bitstring.\+h}!bit\+\_\+test@{bit\+\_\+test}}
+\index{bit\+\_\+test@{bit\+\_\+test}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bit\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+\_\+test(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf name}, }
+\item[{}]{bit}
+\end{DoxyParamCaption}
+)~( {\bf name}\mbox{[}bit $>$$>$ 3\mbox{]} \& (1 $<$$<$ (bit \& 7) ) )}\label{bitstring_8h_a93f008609298a5b055aeb9d82ea99241}
+\hypertarget{bitstring_8h_af56d9c00418bdec6df891b395d134c74}{}\index{bitstring.\+h@{bitstring.\+h}!bitstr\+\_\+size@{bitstr\+\_\+size}}
+\index{bitstr\+\_\+size@{bitstr\+\_\+size}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bitstr\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}\#define bitstr\+\_\+size(
+\begin{DoxyParamCaption}
+\item[{}]{nbits}
+\end{DoxyParamCaption}
+)~( (nbits + 7) $>$$>$ 3 )}\label{bitstring_8h_af56d9c00418bdec6df891b395d134c74}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{bitstring_8h_a733b85aa57711b83cdd8b89f05698e3d}{}\index{bitstring.\+h@{bitstring.\+h}!bitstr\+\_\+t@{bitstr\+\_\+t}}
+\index{bitstr\+\_\+t@{bitstr\+\_\+t}!bitstring.\+h@{bitstring.\+h}}
+\subsubsection[{bitstr\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned char {\bf bitstr\+\_\+t}}\label{bitstring_8h_a733b85aa57711b83cdd8b89f05698e3d}
+
+
+P\+S\+X\+S\+D\+K. 
+
+\hyperlink{bitstring_8h}{bitstring.\+h}
+
+Implementation of \hyperlink{bitstring_8h}{bitstring.\+h}, a family of macros found in $\ast$\+B\+S\+D to manipulate bit strings 

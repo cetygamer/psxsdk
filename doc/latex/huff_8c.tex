@@ -1,0 +1,67 @@
+\hypertarget{huff_8c}{}\section{libhuff/huff.c File Reference}
+\label{huff_8c}\index{libhuff/huff.\+c@{libhuff/huff.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$psx.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}huff.\+h\char`\"{}}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structCodeNode}{Code\+Node}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{huff_8c_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}~1024
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{huff_8c_a27b848f83c5752c90c8256f90299dfce}{huff\+\_\+decompress} (void $\ast$dst, void $\ast$src, int size\+Limit)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{huff_8c_a9b8c851a8d6d2853249d7ed39c540a43}{libhuff\+\_\+in\+Buffer} \mbox{[}\hyperlink{huff_8c_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}\mbox{]}
+\item 
+unsigned char \hyperlink{huff_8c_ae1c23497bc5bf467daf3bccec62bb55b}{libhuff\+\_\+out\+Buffer} \mbox{[}\hyperlink{huff_8c_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}\mbox{]}
+\item 
+struct \hyperlink{structCodeNode}{Code\+Node} \hyperlink{huff_8c_afbc74735f656fd42145b281e66cdb041}{libhuff\+\_\+codes} \mbox{[}256\mbox{]}
+\item 
+unsigned int \hyperlink{huff_8c_a5be9575c41d68d135847688012cd4549}{libhuff\+\_\+codes\+Used}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{huff_8c_a6b20d41d6252e9871430c242cb1a56e7}{}\index{huff.\+c@{huff.\+c}!B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}!huff.\+c@{huff.\+c}}
+\subsubsection[{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E~1024}\label{huff_8c_a6b20d41d6252e9871430c242cb1a56e7}
+
+
+\subsection{Function Documentation}
+\hypertarget{huff_8c_a27b848f83c5752c90c8256f90299dfce}{}\index{huff.\+c@{huff.\+c}!huff\+\_\+decompress@{huff\+\_\+decompress}}
+\index{huff\+\_\+decompress@{huff\+\_\+decompress}!huff.\+c@{huff.\+c}}
+\subsubsection[{huff\+\_\+decompress}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int huff\+\_\+decompress (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{dst, }
+\item[{void $\ast$}]{src, }
+\item[{int}]{size\+Limit}
+\end{DoxyParamCaption}
+)}\label{huff_8c_a27b848f83c5752c90c8256f90299dfce}
+
+
+\subsection{Variable Documentation}
+\hypertarget{huff_8c_afbc74735f656fd42145b281e66cdb041}{}\index{huff.\+c@{huff.\+c}!libhuff\+\_\+codes@{libhuff\+\_\+codes}}
+\index{libhuff\+\_\+codes@{libhuff\+\_\+codes}!huff.\+c@{huff.\+c}}
+\subsubsection[{libhuff\+\_\+codes}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Code\+Node} libhuff\+\_\+codes\mbox{[}256\mbox{]}}\label{huff_8c_afbc74735f656fd42145b281e66cdb041}
+\hypertarget{huff_8c_a5be9575c41d68d135847688012cd4549}{}\index{huff.\+c@{huff.\+c}!libhuff\+\_\+codes\+Used@{libhuff\+\_\+codes\+Used}}
+\index{libhuff\+\_\+codes\+Used@{libhuff\+\_\+codes\+Used}!huff.\+c@{huff.\+c}}
+\subsubsection[{libhuff\+\_\+codes\+Used}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int libhuff\+\_\+codes\+Used}\label{huff_8c_a5be9575c41d68d135847688012cd4549}
+\hypertarget{huff_8c_a9b8c851a8d6d2853249d7ed39c540a43}{}\index{huff.\+c@{huff.\+c}!libhuff\+\_\+in\+Buffer@{libhuff\+\_\+in\+Buffer}}
+\index{libhuff\+\_\+in\+Buffer@{libhuff\+\_\+in\+Buffer}!huff.\+c@{huff.\+c}}
+\subsubsection[{libhuff\+\_\+in\+Buffer}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char libhuff\+\_\+in\+Buffer\mbox{[}{\bf B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}\mbox{]}}\label{huff_8c_a9b8c851a8d6d2853249d7ed39c540a43}
+\hypertarget{huff_8c_ae1c23497bc5bf467daf3bccec62bb55b}{}\index{huff.\+c@{huff.\+c}!libhuff\+\_\+out\+Buffer@{libhuff\+\_\+out\+Buffer}}
+\index{libhuff\+\_\+out\+Buffer@{libhuff\+\_\+out\+Buffer}!huff.\+c@{huff.\+c}}
+\subsubsection[{libhuff\+\_\+out\+Buffer}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char libhuff\+\_\+out\+Buffer\mbox{[}{\bf B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}\mbox{]}}\label{huff_8c_ae1c23497bc5bf467daf3bccec62bb55b}

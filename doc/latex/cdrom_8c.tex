@@ -1,0 +1,185 @@
+\hypertarget{cdrom_8c}{}\section{libpsx/src/cdrom.c File Reference}
+\label{cdrom_8c}\index{libpsx/src/cdrom.\+c@{libpsx/src/cdrom.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+{\ttfamily \#include $<$psx.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{cdrom_8c_a900c9faaefc8223c81506616a3af08a8}{C\+D\+R\+E\+G}(x)~$\ast$((unsigned char$\ast$)(0x1f801800+x))
+\item 
+\#define \hyperlink{cdrom_8c_a836b6805a266d890bcfe30a459b077fa}{I\+M\+A\+S\+K}~$\ast$((unsigned int$\ast$)0x1f801074)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{cdrom_8c_a478eaae5a364b27b8d33fa2b735605bb}{\+\_\+internal\+\_\+cdrom\+\_\+handler} ()
+\item 
+void \hyperlink{cdrom_8c_ad8440e39efb4a0a95665bd521527ec1e}{Cd\+Send\+Command} (int cmd, int num,...)
+\item 
+int \hyperlink{cdrom_8c_aa81e8e59b6bc843b9c7db86790611408}{Cd\+Read\+Results} (unsigned char $\ast$out, int max)
+\begin{DoxyCompactList}\small\item\em Reads the results of a low-\/level C\+D\+R\+O\+M command. \end{DoxyCompactList}\item 
+void \hyperlink{cdrom_8c_a7d9396fc194d3a362df5443db6a178d0}{\+\_\+internal\+\_\+cdromlib\+\_\+callback} ()
+\item 
+void \hyperlink{cdrom_8c_a42a05538009ff91f2531c4f64c9c035a}{\+\_\+internal\+\_\+cdromlib\+\_\+init} ()
+\item 
+int \hyperlink{cdrom_8c_a0e7b601187c899f822fa961bf23d7a37}{Cd\+Get\+Status} ()
+\begin{DoxyCompactList}\small\item\em Gets C\+D\+R\+O\+M drive status. \end{DoxyCompactList}\item 
+int \hyperlink{cdrom_8c_ab715277846f7fc6f733d445c1ae0a85d}{Cd\+Play\+Track} (unsigned int track)
+\begin{DoxyCompactList}\small\item\em Play an Audio C\+D track. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{cdrom_8c_ab5cdb7b1cc14d146f221fe5631bf213c}{Cd\+Ram\+Read} (unsigned short addr)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+void($\ast$ \hyperlink{cdrom_8c_a35167006e497164427be53f4c1c16a4e}{cdrom\+\_\+handler\+\_\+callback} )()
+\item 
+volatile int \hyperlink{cdrom_8c_a85c620910c7656fc8eebb2f1e334c5b4}{cdrom\+\_\+command\+\_\+direct} = 0
+\item 
+volatile int \hyperlink{cdrom_8c_aa0e4f2c16c5006fdc66b4ef65435dcc5}{cdrom\+\_\+command\+\_\+done} = 0
+\item 
+volatile int \hyperlink{cdrom_8c_a26d5c849c498d05e0eb4736cc8a8d427}{cdrom\+\_\+direct\+\_\+cmd}
+\item 
+volatile int \hyperlink{cdrom_8c_a3e0194de4f35cda0116afeef8b32531c}{cdrom\+\_\+command\+\_\+dpos} = 0
+\item 
+volatile unsigned char \hyperlink{cdrom_8c_a87b3da91d9ac53274c71faa55b35469f}{cdrom\+\_\+last\+\_\+command}
+\item 
+volatile unsigned char \hyperlink{cdrom_8c_a2c0ee416326fe1a17d7752d19f0745c1}{cdrom\+\_\+command\+\_\+stat} \mbox{[}2\mbox{]}
+\item 
+unsigned int \hyperlink{cdrom_8c_a5b6eaa02368cb979a57d64ce2121c389}{cdrom\+\_\+queue\+\_\+buf} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{cdrom_8c_a900c9faaefc8223c81506616a3af08a8}{}\index{cdrom.\+c@{cdrom.\+c}!C\+D\+R\+E\+G@{C\+D\+R\+E\+G}}
+\index{C\+D\+R\+E\+G@{C\+D\+R\+E\+G}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{C\+D\+R\+E\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+D\+R\+E\+G(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~$\ast$((unsigned char$\ast$)(0x1f801800+x))}\label{cdrom_8c_a900c9faaefc8223c81506616a3af08a8}
+\hypertarget{cdrom_8c_a836b6805a266d890bcfe30a459b077fa}{}\index{cdrom.\+c@{cdrom.\+c}!I\+M\+A\+S\+K@{I\+M\+A\+S\+K}}
+\index{I\+M\+A\+S\+K@{I\+M\+A\+S\+K}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{I\+M\+A\+S\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+M\+A\+S\+K~$\ast$((unsigned int$\ast$)0x1f801074)}\label{cdrom_8c_a836b6805a266d890bcfe30a459b077fa}
+
+
+\subsection{Function Documentation}
+\hypertarget{cdrom_8c_a478eaae5a364b27b8d33fa2b735605bb}{}\index{cdrom.\+c@{cdrom.\+c}!\+\_\+internal\+\_\+cdrom\+\_\+handler@{\+\_\+internal\+\_\+cdrom\+\_\+handler}}
+\index{\+\_\+internal\+\_\+cdrom\+\_\+handler@{\+\_\+internal\+\_\+cdrom\+\_\+handler}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{\+\_\+internal\+\_\+cdrom\+\_\+handler}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+internal\+\_\+cdrom\+\_\+handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{cdrom_8c_a478eaae5a364b27b8d33fa2b735605bb}
+\hypertarget{cdrom_8c_a7d9396fc194d3a362df5443db6a178d0}{}\index{cdrom.\+c@{cdrom.\+c}!\+\_\+internal\+\_\+cdromlib\+\_\+callback@{\+\_\+internal\+\_\+cdromlib\+\_\+callback}}
+\index{\+\_\+internal\+\_\+cdromlib\+\_\+callback@{\+\_\+internal\+\_\+cdromlib\+\_\+callback}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{\+\_\+internal\+\_\+cdromlib\+\_\+callback}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+internal\+\_\+cdromlib\+\_\+callback (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{cdrom_8c_a7d9396fc194d3a362df5443db6a178d0}
+\hypertarget{cdrom_8c_a42a05538009ff91f2531c4f64c9c035a}{}\index{cdrom.\+c@{cdrom.\+c}!\+\_\+internal\+\_\+cdromlib\+\_\+init@{\+\_\+internal\+\_\+cdromlib\+\_\+init}}
+\index{\+\_\+internal\+\_\+cdromlib\+\_\+init@{\+\_\+internal\+\_\+cdromlib\+\_\+init}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{\+\_\+internal\+\_\+cdromlib\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+internal\+\_\+cdromlib\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{cdrom_8c_a42a05538009ff91f2531c4f64c9c035a}
+\hypertarget{cdrom_8c_a0e7b601187c899f822fa961bf23d7a37}{}\index{cdrom.\+c@{cdrom.\+c}!Cd\+Get\+Status@{Cd\+Get\+Status}}
+\index{Cd\+Get\+Status@{Cd\+Get\+Status}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{Cd\+Get\+Status}]{\setlength{\rightskip}{0pt plus 5cm}int Cd\+Get\+Status (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{cdrom_8c_a0e7b601187c899f822fa961bf23d7a37}
+
+
+Gets C\+D\+R\+O\+M drive status. 
+
+\begin{DoxyReturn}{Returns}
+C\+D\+R\+O\+M drive status bitmask 
+\end{DoxyReturn}
+\hypertarget{cdrom_8c_ab715277846f7fc6f733d445c1ae0a85d}{}\index{cdrom.\+c@{cdrom.\+c}!Cd\+Play\+Track@{Cd\+Play\+Track}}
+\index{Cd\+Play\+Track@{Cd\+Play\+Track}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{Cd\+Play\+Track}]{\setlength{\rightskip}{0pt plus 5cm}int Cd\+Play\+Track (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{track}
+\end{DoxyParamCaption}
+)}\label{cdrom_8c_ab715277846f7fc6f733d445c1ae0a85d}
+
+
+Play an Audio C\+D track. 
+
+\begin{DoxyReturn}{Returns}
+1 on success, 0 on failure 
+\end{DoxyReturn}
+\hypertarget{cdrom_8c_ab5cdb7b1cc14d146f221fe5631bf213c}{}\index{cdrom.\+c@{cdrom.\+c}!Cd\+Ram\+Read@{Cd\+Ram\+Read}}
+\index{Cd\+Ram\+Read@{Cd\+Ram\+Read}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{Cd\+Ram\+Read}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char Cd\+Ram\+Read (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{addr}
+\end{DoxyParamCaption}
+)}\label{cdrom_8c_ab5cdb7b1cc14d146f221fe5631bf213c}
+\hypertarget{cdrom_8c_aa81e8e59b6bc843b9c7db86790611408}{}\index{cdrom.\+c@{cdrom.\+c}!Cd\+Read\+Results@{Cd\+Read\+Results}}
+\index{Cd\+Read\+Results@{Cd\+Read\+Results}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{Cd\+Read\+Results}]{\setlength{\rightskip}{0pt plus 5cm}int Cd\+Read\+Results (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{out, }
+\item[{int}]{max}
+\end{DoxyParamCaption}
+)}\label{cdrom_8c_aa81e8e59b6bc843b9c7db86790611408}
+
+
+Reads the results of a low-\/level C\+D\+R\+O\+M command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Pointer to array of chars where the output will be stored \\
+\hline
+{\em max} & Maximum number of bytes to store\\
+\hline
+\end{DoxyParams}
+Return value\+: number of results. \hypertarget{cdrom_8c_ad8440e39efb4a0a95665bd521527ec1e}{}\index{cdrom.\+c@{cdrom.\+c}!Cd\+Send\+Command@{Cd\+Send\+Command}}
+\index{Cd\+Send\+Command@{Cd\+Send\+Command}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{Cd\+Send\+Command}]{\setlength{\rightskip}{0pt plus 5cm}void Cd\+Send\+Command (
+\begin{DoxyParamCaption}
+\item[{int}]{cmd, }
+\item[{int}]{num, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\label{cdrom_8c_ad8440e39efb4a0a95665bd521527ec1e}
+
+
+\subsection{Variable Documentation}
+\hypertarget{cdrom_8c_a85c620910c7656fc8eebb2f1e334c5b4}{}\index{cdrom.\+c@{cdrom.\+c}!cdrom\+\_\+command\+\_\+direct@{cdrom\+\_\+command\+\_\+direct}}
+\index{cdrom\+\_\+command\+\_\+direct@{cdrom\+\_\+command\+\_\+direct}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{cdrom\+\_\+command\+\_\+direct}]{\setlength{\rightskip}{0pt plus 5cm}volatile int cdrom\+\_\+command\+\_\+direct = 0}\label{cdrom_8c_a85c620910c7656fc8eebb2f1e334c5b4}
+\hypertarget{cdrom_8c_aa0e4f2c16c5006fdc66b4ef65435dcc5}{}\index{cdrom.\+c@{cdrom.\+c}!cdrom\+\_\+command\+\_\+done@{cdrom\+\_\+command\+\_\+done}}
+\index{cdrom\+\_\+command\+\_\+done@{cdrom\+\_\+command\+\_\+done}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{cdrom\+\_\+command\+\_\+done}]{\setlength{\rightskip}{0pt plus 5cm}volatile int cdrom\+\_\+command\+\_\+done = 0}\label{cdrom_8c_aa0e4f2c16c5006fdc66b4ef65435dcc5}
+\hypertarget{cdrom_8c_a3e0194de4f35cda0116afeef8b32531c}{}\index{cdrom.\+c@{cdrom.\+c}!cdrom\+\_\+command\+\_\+dpos@{cdrom\+\_\+command\+\_\+dpos}}
+\index{cdrom\+\_\+command\+\_\+dpos@{cdrom\+\_\+command\+\_\+dpos}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{cdrom\+\_\+command\+\_\+dpos}]{\setlength{\rightskip}{0pt plus 5cm}volatile int cdrom\+\_\+command\+\_\+dpos = 0}\label{cdrom_8c_a3e0194de4f35cda0116afeef8b32531c}
+\hypertarget{cdrom_8c_a2c0ee416326fe1a17d7752d19f0745c1}{}\index{cdrom.\+c@{cdrom.\+c}!cdrom\+\_\+command\+\_\+stat@{cdrom\+\_\+command\+\_\+stat}}
+\index{cdrom\+\_\+command\+\_\+stat@{cdrom\+\_\+command\+\_\+stat}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{cdrom\+\_\+command\+\_\+stat}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned char cdrom\+\_\+command\+\_\+stat\mbox{[}2\mbox{]}}\label{cdrom_8c_a2c0ee416326fe1a17d7752d19f0745c1}
+\hypertarget{cdrom_8c_a26d5c849c498d05e0eb4736cc8a8d427}{}\index{cdrom.\+c@{cdrom.\+c}!cdrom\+\_\+direct\+\_\+cmd@{cdrom\+\_\+direct\+\_\+cmd}}
+\index{cdrom\+\_\+direct\+\_\+cmd@{cdrom\+\_\+direct\+\_\+cmd}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{cdrom\+\_\+direct\+\_\+cmd}]{\setlength{\rightskip}{0pt plus 5cm}volatile int cdrom\+\_\+direct\+\_\+cmd}\label{cdrom_8c_a26d5c849c498d05e0eb4736cc8a8d427}
+\hypertarget{cdrom_8c_a35167006e497164427be53f4c1c16a4e}{}\index{cdrom.\+c@{cdrom.\+c}!cdrom\+\_\+handler\+\_\+callback@{cdrom\+\_\+handler\+\_\+callback}}
+\index{cdrom\+\_\+handler\+\_\+callback@{cdrom\+\_\+handler\+\_\+callback}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{cdrom\+\_\+handler\+\_\+callback}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ cdrom\+\_\+handler\+\_\+callback) ()}\label{cdrom_8c_a35167006e497164427be53f4c1c16a4e}
+\hypertarget{cdrom_8c_a87b3da91d9ac53274c71faa55b35469f}{}\index{cdrom.\+c@{cdrom.\+c}!cdrom\+\_\+last\+\_\+command@{cdrom\+\_\+last\+\_\+command}}
+\index{cdrom\+\_\+last\+\_\+command@{cdrom\+\_\+last\+\_\+command}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{cdrom\+\_\+last\+\_\+command}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned char cdrom\+\_\+last\+\_\+command}\label{cdrom_8c_a87b3da91d9ac53274c71faa55b35469f}
+\hypertarget{cdrom_8c_a5b6eaa02368cb979a57d64ce2121c389}{}\index{cdrom.\+c@{cdrom.\+c}!cdrom\+\_\+queue\+\_\+buf@{cdrom\+\_\+queue\+\_\+buf}}
+\index{cdrom\+\_\+queue\+\_\+buf@{cdrom\+\_\+queue\+\_\+buf}!cdrom.\+c@{cdrom.\+c}}
+\subsubsection[{cdrom\+\_\+queue\+\_\+buf}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int cdrom\+\_\+queue\+\_\+buf\mbox{[}4\mbox{]}}\label{cdrom_8c_a5b6eaa02368cb979a57d64ce2121c389}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{0x0, 
+                                    0x0, 
+                    (\textcolor{keywordtype}{unsigned} int)\hyperlink{cdrom_8c_a478eaae5a364b27b8d33fa2b735605bb}{\_internal\_cdrom\_handler}, 
+                    0x0, 
+                   \}
+\end{DoxyCode}

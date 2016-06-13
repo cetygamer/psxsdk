@@ -1,0 +1,187 @@
+\hypertarget{fcntl_8h}{}\section{libpsx/include/fcntl.h File Reference}
+\label{fcntl_8h}\index{libpsx/include/fcntl.\+h@{libpsx/include/fcntl.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\+\_\+\+R\+D\+O\+N\+L\+Y}~1
+\item 
+\#define \hyperlink{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\+\_\+\+W\+R\+O\+N\+L\+Y}~2
+\item 
+\#define \hyperlink{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}~4
+\item 
+\#define \hyperlink{fcntl_8h_a8df2f5a1dbc3680f7ae10a70c0256dd8}{O\+\_\+\+R\+D\+L\+O\+C\+K}~16
+\begin{DoxyCompactList}\small\item\em Read locked, not shared. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_a48558e3b7225e41de2c0e0962a3b1bd2}{O\+\_\+\+W\+R\+L\+O\+C\+K}~32
+\begin{DoxyCompactList}\small\item\em Write locked, not shared. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_abb0586253488ee61072b73557eeb873b}{O\+\_\+\+R\+D\+W\+R}~(\hyperlink{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\+\_\+\+R\+D\+O\+N\+L\+Y} $\vert$ \hyperlink{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\+\_\+\+W\+R\+O\+N\+L\+Y})
+\item 
+\#define \hyperlink{fcntl_8h_ae036f789407d21f07b211552d67b3214}{O\+\_\+\+A\+P\+P\+E\+N\+D}~256
+\item 
+\#define \hyperlink{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{O\+\_\+\+C\+R\+E\+A\+T}~512
+\item 
+\#define \hyperlink{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{O\+\_\+\+T\+R\+U\+N\+C}~1024
+\item 
+\#define \hyperlink{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}{O\+\_\+\+E\+X\+C\+L}~0
+\begin{DoxyCompactList}\small\item\em Obviously, O\+\_\+\+E\+X\+C\+L has no effect in the P\+S\+X\+S\+D\+K. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_ac10dac3951425075a1adcc9ca1ebb271}{O\+\_\+\+S\+C\+A\+N}~4096
+\begin{DoxyCompactList}\small\item\em The following are Play\+Station B\+I\+O\+S extensions. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_a41bbb4920d5f5e5956650ecc12de4bb1}{O\+\_\+\+R\+C\+O\+M}~8192
+\begin{DoxyCompactList}\small\item\em Setup for remote command entry. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_ad34d06f6efba113ed0e00933c82e0688}{O\+\_\+\+N\+O\+B\+U\+F}~16384
+\begin{DoxyCompactList}\small\item\em No buffering and console interrupt. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}{O\+\_\+\+N\+O\+W\+A\+I\+T}~32768
+\begin{DoxyCompactList}\small\item\em Asynchronous I/\+O mode. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_ac5d0c9848f853f8b026b1211b93f78b1}{O\+\_\+\+A\+S\+Y\+N\+C}~\hyperlink{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}{O\+\_\+\+N\+O\+W\+A\+I\+T}
+\begin{DoxyCompactList}\small\item\em Asynchronous I/\+O mode, alias. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}{open}(filename,  \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags}, ...)~open(filename, \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags})
+\begin{DoxyCompactList}\small\item\em These are standard C library file I/\+O functions provided by the P\+S\+X B\+I\+O\+S. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{open} (const char $\ast$filename, int \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags})
+\begin{DoxyCompactList}\small\item\em In previous versions, the second argument for \hyperlink{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}{open()} was named `mode\textquotesingle{}. \end{DoxyCompactList}\item 
+int \hyperlink{fcntl_8h_a766f8143056e83ea199010473a93ca2e}{read} (int d, void $\ast$buf, int nbytes)
+\item 
+int \hyperlink{fcntl_8h_aeeff2698944daacf14e8bde82fd04222}{close} (int d)
+\item 
+int \hyperlink{fcntl_8h_a1d9b5be1e8e3b5a6153fd22d800dc4d7}{lseek} (int fildes, int offset, int whence)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{fcntl_8h_ae036f789407d21f07b211552d67b3214}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+A\+P\+P\+E\+N\+D@{O\+\_\+\+A\+P\+P\+E\+N\+D}}
+\index{O\+\_\+\+A\+P\+P\+E\+N\+D@{O\+\_\+\+A\+P\+P\+E\+N\+D}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+A\+P\+P\+E\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+A\+P\+P\+E\+N\+D~256}\label{fcntl_8h_ae036f789407d21f07b211552d67b3214}
+\hypertarget{fcntl_8h_ac5d0c9848f853f8b026b1211b93f78b1}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+A\+S\+Y\+N\+C@{O\+\_\+\+A\+S\+Y\+N\+C}}
+\index{O\+\_\+\+A\+S\+Y\+N\+C@{O\+\_\+\+A\+S\+Y\+N\+C}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+A\+S\+Y\+N\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+A\+S\+Y\+N\+C~{\bf O\+\_\+\+N\+O\+W\+A\+I\+T}}\label{fcntl_8h_ac5d0c9848f853f8b026b1211b93f78b1}
+
+
+Asynchronous I/\+O mode, alias. 
+
+\hypertarget{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+C\+R\+E\+A\+T@{O\+\_\+\+C\+R\+E\+A\+T}}
+\index{O\+\_\+\+C\+R\+E\+A\+T@{O\+\_\+\+C\+R\+E\+A\+T}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+C\+R\+E\+A\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+C\+R\+E\+A\+T~512}\label{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}
+\hypertarget{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+E\+X\+C\+L@{O\+\_\+\+E\+X\+C\+L}}
+\index{O\+\_\+\+E\+X\+C\+L@{O\+\_\+\+E\+X\+C\+L}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+E\+X\+C\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+E\+X\+C\+L~0}\label{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}
+
+
+Obviously, O\+\_\+\+E\+X\+C\+L has no effect in the P\+S\+X\+S\+D\+K. 
+
+\hypertarget{fcntl_8h_ad34d06f6efba113ed0e00933c82e0688}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+N\+O\+B\+U\+F@{O\+\_\+\+N\+O\+B\+U\+F}}
+\index{O\+\_\+\+N\+O\+B\+U\+F@{O\+\_\+\+N\+O\+B\+U\+F}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+N\+O\+B\+U\+F}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+N\+O\+B\+U\+F~16384}\label{fcntl_8h_ad34d06f6efba113ed0e00933c82e0688}
+
+
+No buffering and console interrupt. 
+
+\hypertarget{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K@{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}}
+\index{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K@{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+N\+O\+N\+B\+L\+O\+C\+K~4}\label{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}
+\hypertarget{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+N\+O\+W\+A\+I\+T@{O\+\_\+\+N\+O\+W\+A\+I\+T}}
+\index{O\+\_\+\+N\+O\+W\+A\+I\+T@{O\+\_\+\+N\+O\+W\+A\+I\+T}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+N\+O\+W\+A\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+N\+O\+W\+A\+I\+T~32768}\label{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}
+
+
+Asynchronous I/\+O mode. 
+
+\hypertarget{fcntl_8h_a41bbb4920d5f5e5956650ecc12de4bb1}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+C\+O\+M@{O\+\_\+\+R\+C\+O\+M}}
+\index{O\+\_\+\+R\+C\+O\+M@{O\+\_\+\+R\+C\+O\+M}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+R\+C\+O\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+R\+C\+O\+M~8192}\label{fcntl_8h_a41bbb4920d5f5e5956650ecc12de4bb1}
+
+
+Setup for remote command entry. 
+
+Real purpose unknown. \hypertarget{fcntl_8h_a8df2f5a1dbc3680f7ae10a70c0256dd8}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+D\+L\+O\+C\+K@{O\+\_\+\+R\+D\+L\+O\+C\+K}}
+\index{O\+\_\+\+R\+D\+L\+O\+C\+K@{O\+\_\+\+R\+D\+L\+O\+C\+K}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+R\+D\+L\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+R\+D\+L\+O\+C\+K~16}\label{fcntl_8h_a8df2f5a1dbc3680f7ae10a70c0256dd8}
+
+
+Read locked, not shared. 
+
+\hypertarget{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+D\+O\+N\+L\+Y@{O\+\_\+\+R\+D\+O\+N\+L\+Y}}
+\index{O\+\_\+\+R\+D\+O\+N\+L\+Y@{O\+\_\+\+R\+D\+O\+N\+L\+Y}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+R\+D\+O\+N\+L\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+R\+D\+O\+N\+L\+Y~1}\label{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}
+\hypertarget{fcntl_8h_abb0586253488ee61072b73557eeb873b}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+D\+W\+R@{O\+\_\+\+R\+D\+W\+R}}
+\index{O\+\_\+\+R\+D\+W\+R@{O\+\_\+\+R\+D\+W\+R}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+R\+D\+W\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+R\+D\+W\+R~({\bf O\+\_\+\+R\+D\+O\+N\+L\+Y} $\vert$ {\bf O\+\_\+\+W\+R\+O\+N\+L\+Y})}\label{fcntl_8h_abb0586253488ee61072b73557eeb873b}
+\hypertarget{fcntl_8h_ac10dac3951425075a1adcc9ca1ebb271}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+S\+C\+A\+N@{O\+\_\+\+S\+C\+A\+N}}
+\index{O\+\_\+\+S\+C\+A\+N@{O\+\_\+\+S\+C\+A\+N}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+S\+C\+A\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+S\+C\+A\+N~4096}\label{fcntl_8h_ac10dac3951425075a1adcc9ca1ebb271}
+
+
+The following are Play\+Station B\+I\+O\+S extensions. 
+
+Set to scanning type. Real purpose unknown. \hypertarget{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+T\+R\+U\+N\+C@{O\+\_\+\+T\+R\+U\+N\+C}}
+\index{O\+\_\+\+T\+R\+U\+N\+C@{O\+\_\+\+T\+R\+U\+N\+C}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+T\+R\+U\+N\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+T\+R\+U\+N\+C~1024}\label{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}
+\hypertarget{fcntl_8h_a48558e3b7225e41de2c0e0962a3b1bd2}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+W\+R\+L\+O\+C\+K@{O\+\_\+\+W\+R\+L\+O\+C\+K}}
+\index{O\+\_\+\+W\+R\+L\+O\+C\+K@{O\+\_\+\+W\+R\+L\+O\+C\+K}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+W\+R\+L\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+W\+R\+L\+O\+C\+K~32}\label{fcntl_8h_a48558e3b7225e41de2c0e0962a3b1bd2}
+
+
+Write locked, not shared. 
+
+\hypertarget{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{}\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+W\+R\+O\+N\+L\+Y@{O\+\_\+\+W\+R\+O\+N\+L\+Y}}
+\index{O\+\_\+\+W\+R\+O\+N\+L\+Y@{O\+\_\+\+W\+R\+O\+N\+L\+Y}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{O\+\_\+\+W\+R\+O\+N\+L\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+\_\+\+W\+R\+O\+N\+L\+Y~2}\label{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}
+\hypertarget{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}{}\index{fcntl.\+h@{fcntl.\+h}!open@{open}}
+\index{open@{open}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}\#define open(
+\begin{DoxyParamCaption}
+\item[{}]{filename, }
+\item[{}]{{\bf flags}, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~open(filename, {\bf flags})}\label{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}
+
+
+These are standard C library file I/\+O functions provided by the P\+S\+X B\+I\+O\+S. 
+
+Filenames have to be specified in this way\+:
+
+Where device specifies the device the file is on\+: \char`\"{}tty\+:\char`\"{} Console \char`\"{}cdrom\+:\char`\"{} C\+D-\/\+R\+O\+M \char`\"{}bu\+X\+X\+:\char`\"{} Memory cards
+
+When using cdrom\+: as device, append file version (;1) to filename Example\+: cdrom\+:R\+E\+A\+D\+M\+E.\+T\+X\+T;1
+
+Subdirectory paths have to be specified with backslashes (), like M\+S-\/\+D\+O\+S. Read and write operations can be carried only in blocks. Blocks are 2048 bytes for the C\+D-\/\+R\+O\+M device, and 128 bytes for memory cards. 
+
+\subsection{Function Documentation}
+\hypertarget{fcntl_8h_aeeff2698944daacf14e8bde82fd04222}{}\index{fcntl.\+h@{fcntl.\+h}!close@{close}}
+\index{close@{close}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}int close (
+\begin{DoxyParamCaption}
+\item[{int}]{d}
+\end{DoxyParamCaption}
+)}\label{fcntl_8h_aeeff2698944daacf14e8bde82fd04222}
+\hypertarget{fcntl_8h_a1d9b5be1e8e3b5a6153fd22d800dc4d7}{}\index{fcntl.\+h@{fcntl.\+h}!lseek@{lseek}}
+\index{lseek@{lseek}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{lseek}]{\setlength{\rightskip}{0pt plus 5cm}int lseek (
+\begin{DoxyParamCaption}
+\item[{int}]{fildes, }
+\item[{int}]{offset, }
+\item[{int}]{whence}
+\end{DoxyParamCaption}
+)}\label{fcntl_8h_a1d9b5be1e8e3b5a6153fd22d800dc4d7}
+\hypertarget{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{}\index{fcntl.\+h@{fcntl.\+h}!open@{open}}
+\index{open@{open}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}int open (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\label{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}
+
+
+In previous versions, the second argument for \hyperlink{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}{open()} was named `mode\textquotesingle{}. 
+
+That was incorrect; now it is correctly named `flags\textquotesingle{}. \hypertarget{fcntl_8h_a766f8143056e83ea199010473a93ca2e}{}\index{fcntl.\+h@{fcntl.\+h}!read@{read}}
+\index{read@{read}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int read (
+\begin{DoxyParamCaption}
+\item[{int}]{d, }
+\item[{void $\ast$}]{buf, }
+\item[{int}]{nbytes}
+\end{DoxyParamCaption}
+)}\label{fcntl_8h_a766f8143056e83ea199010473a93ca2e}

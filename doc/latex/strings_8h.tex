@@ -1,0 +1,175 @@
+\hypertarget{strings_8h}{}\section{libpsx/include/strings.h File Reference}
+\label{strings_8h}\index{libpsx/include/strings.\+h@{libpsx/include/strings.\+h}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$types.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{strings_8h_a44c4efafeb8def719ad013ce4e3708d2}{bcopy}(src,  dst,  \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})~\hyperlink{string_8c_ab1dfe8337890b29fd09ecb9a6406fa72}{memmove}(dst,src,\hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+\#define \hyperlink{strings_8h_a96cd5ee1ea80143163f9f7e5a86b470b}{bzero}(ptr,  \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})~\hyperlink{string_8c_aeb2b8ac78e3820a4e5049ed5ac06bdc4}{memset}(ptr, 0, \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+\#define \hyperlink{strings_8h_a5ff0acc4b4213d656c1fb54275543358}{bcmp}(b1,  b2,  \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})~\hyperlink{string_8c_a895f825792e65472848083abd481dd8e}{memcmp}(b1,b2,\hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+\#define \hyperlink{strings_8h_a4da57af702c29650efdb4449c5266f8f}{index}(s,  c)~\hyperlink{string_8c_a12871ed234858ef0e363d2b8aa572fc1}{strchr}(s, c)
+\item 
+\#define \hyperlink{strings_8h_a6d8c40946211e7cd7f1798b570a4c406}{rindex}(s,  c)~\hyperlink{string_8c_a0c05a458deff028ef4d4e64059098db4}{strrchr}(s, c)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{strings_8h_a741fb9de6584cb7b710fb9f0a1fc8223}{ffs} (int value)
+\item 
+char $\ast$ \hyperlink{strings_8h_a1d3748ca570dcb09a2fb28e8015107dd}{index} (const char $\ast$s, int c)
+\item 
+char $\ast$ \hyperlink{strings_8h_a83d9aa3251fdee263ad43bf75933de46}{rindex} (const char $\ast$s, int c)
+\item 
+unsigned int \hyperlink{strings_8h_ad7464c175539ac6c8ea9e65b1e98d08c}{popcount} (unsigned int value)
+\begin{DoxyCompactList}\small\item\em Returns the number of bits set in the value. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{strings_8h_a8a872fb5a423ba7c04fdca8d8e1bb6fe}{popcountl} (unsigned long value)
+\item 
+unsigned int \hyperlink{strings_8h_a30709e726f112d9bf5eefcadd71af050}{popcountll} (unsigned long long value)
+\item 
+unsigned int \hyperlink{strings_8h_aae250cf4ba00ab471c4dd2a0d5217229}{popcount32} (\hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} value)
+\item 
+unsigned int \hyperlink{strings_8h_a130ed8a90a715ba21af2d1dd36bdf79b}{popcount64} (\hyperlink{inttypes_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} value)
+\item 
+int \hyperlink{strings_8h_a706b36f3a672f84685576723c3928baa}{strcasecmp} (const char $\ast$s1, const char $\ast$s2)
+\item 
+int \hyperlink{strings_8h_af4913b45cb0c03415fe25bd778a2b8ea}{strncasecmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{strings_8h_a5ff0acc4b4213d656c1fb54275543358}{}\index{strings.\+h@{strings.\+h}!bcmp@{bcmp}}
+\index{bcmp@{bcmp}!strings.\+h@{strings.\+h}}
+\subsubsection[{bcmp}]{\setlength{\rightskip}{0pt plus 5cm}\#define bcmp(
+\begin{DoxyParamCaption}
+\item[{}]{b1, }
+\item[{}]{b2, }
+\item[{}]{{\bf len}}
+\end{DoxyParamCaption}
+)~{\bf memcmp}(b1,b2,{\bf len})}\label{strings_8h_a5ff0acc4b4213d656c1fb54275543358}
+\hypertarget{strings_8h_a44c4efafeb8def719ad013ce4e3708d2}{}\index{strings.\+h@{strings.\+h}!bcopy@{bcopy}}
+\index{bcopy@{bcopy}!strings.\+h@{strings.\+h}}
+\subsubsection[{bcopy}]{\setlength{\rightskip}{0pt plus 5cm}\#define bcopy(
+\begin{DoxyParamCaption}
+\item[{}]{src, }
+\item[{}]{dst, }
+\item[{}]{{\bf len}}
+\end{DoxyParamCaption}
+)~{\bf memmove}(dst,src,{\bf len})}\label{strings_8h_a44c4efafeb8def719ad013ce4e3708d2}
+\hypertarget{strings_8h_a96cd5ee1ea80143163f9f7e5a86b470b}{}\index{strings.\+h@{strings.\+h}!bzero@{bzero}}
+\index{bzero@{bzero}!strings.\+h@{strings.\+h}}
+\subsubsection[{bzero}]{\setlength{\rightskip}{0pt plus 5cm}\#define bzero(
+\begin{DoxyParamCaption}
+\item[{}]{ptr, }
+\item[{}]{{\bf len}}
+\end{DoxyParamCaption}
+)~{\bf memset}(ptr, 0, {\bf len})}\label{strings_8h_a96cd5ee1ea80143163f9f7e5a86b470b}
+\hypertarget{strings_8h_a4da57af702c29650efdb4449c5266f8f}{}\index{strings.\+h@{strings.\+h}!index@{index}}
+\index{index@{index}!strings.\+h@{strings.\+h}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}\#define index(
+\begin{DoxyParamCaption}
+\item[{}]{s, }
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~{\bf strchr}(s, c)}\label{strings_8h_a4da57af702c29650efdb4449c5266f8f}
+\hypertarget{strings_8h_a6d8c40946211e7cd7f1798b570a4c406}{}\index{strings.\+h@{strings.\+h}!rindex@{rindex}}
+\index{rindex@{rindex}!strings.\+h@{strings.\+h}}
+\subsubsection[{rindex}]{\setlength{\rightskip}{0pt plus 5cm}\#define rindex(
+\begin{DoxyParamCaption}
+\item[{}]{s, }
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~{\bf strrchr}(s, c)}\label{strings_8h_a6d8c40946211e7cd7f1798b570a4c406}
+
+
+\subsection{Function Documentation}
+\hypertarget{strings_8h_a741fb9de6584cb7b710fb9f0a1fc8223}{}\index{strings.\+h@{strings.\+h}!ffs@{ffs}}
+\index{ffs@{ffs}!strings.\+h@{strings.\+h}}
+\subsubsection[{ffs}]{\setlength{\rightskip}{0pt plus 5cm}int ffs (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\label{strings_8h_a741fb9de6584cb7b710fb9f0a1fc8223}
+\hypertarget{strings_8h_a1d3748ca570dcb09a2fb28e8015107dd}{}\index{strings.\+h@{strings.\+h}!index@{index}}
+\index{index@{index}!strings.\+h@{strings.\+h}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ index (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{strings_8h_a1d3748ca570dcb09a2fb28e8015107dd}
+\hypertarget{strings_8h_ad7464c175539ac6c8ea9e65b1e98d08c}{}\index{strings.\+h@{strings.\+h}!popcount@{popcount}}
+\index{popcount@{popcount}!strings.\+h@{strings.\+h}}
+\subsubsection[{popcount}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int popcount (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{value}
+\end{DoxyParamCaption}
+)}\label{strings_8h_ad7464c175539ac6c8ea9e65b1e98d08c}
+
+
+Returns the number of bits set in the value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bits set in value 
+\end{DoxyReturn}
+\hypertarget{strings_8h_aae250cf4ba00ab471c4dd2a0d5217229}{}\index{strings.\+h@{strings.\+h}!popcount32@{popcount32}}
+\index{popcount32@{popcount32}!strings.\+h@{strings.\+h}}
+\subsubsection[{popcount32}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int popcount32 (
+\begin{DoxyParamCaption}
+\item[{{\bf uint32\+\_\+t}}]{value}
+\end{DoxyParamCaption}
+)}\label{strings_8h_aae250cf4ba00ab471c4dd2a0d5217229}
+\hypertarget{strings_8h_a130ed8a90a715ba21af2d1dd36bdf79b}{}\index{strings.\+h@{strings.\+h}!popcount64@{popcount64}}
+\index{popcount64@{popcount64}!strings.\+h@{strings.\+h}}
+\subsubsection[{popcount64}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int popcount64 (
+\begin{DoxyParamCaption}
+\item[{{\bf uint64\+\_\+t}}]{value}
+\end{DoxyParamCaption}
+)}\label{strings_8h_a130ed8a90a715ba21af2d1dd36bdf79b}
+\hypertarget{strings_8h_a8a872fb5a423ba7c04fdca8d8e1bb6fe}{}\index{strings.\+h@{strings.\+h}!popcountl@{popcountl}}
+\index{popcountl@{popcountl}!strings.\+h@{strings.\+h}}
+\subsubsection[{popcountl}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int popcountl (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{value}
+\end{DoxyParamCaption}
+)}\label{strings_8h_a8a872fb5a423ba7c04fdca8d8e1bb6fe}
+\hypertarget{strings_8h_a30709e726f112d9bf5eefcadd71af050}{}\index{strings.\+h@{strings.\+h}!popcountll@{popcountll}}
+\index{popcountll@{popcountll}!strings.\+h@{strings.\+h}}
+\subsubsection[{popcountll}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int popcountll (
+\begin{DoxyParamCaption}
+\item[{unsigned long long}]{value}
+\end{DoxyParamCaption}
+)}\label{strings_8h_a30709e726f112d9bf5eefcadd71af050}
+\hypertarget{strings_8h_a83d9aa3251fdee263ad43bf75933de46}{}\index{strings.\+h@{strings.\+h}!rindex@{rindex}}
+\index{rindex@{rindex}!strings.\+h@{strings.\+h}}
+\subsubsection[{rindex}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ rindex (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{strings_8h_a83d9aa3251fdee263ad43bf75933de46}
+\hypertarget{strings_8h_a706b36f3a672f84685576723c3928baa}{}\index{strings.\+h@{strings.\+h}!strcasecmp@{strcasecmp}}
+\index{strcasecmp@{strcasecmp}!strings.\+h@{strings.\+h}}
+\subsubsection[{strcasecmp}]{\setlength{\rightskip}{0pt plus 5cm}int strcasecmp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2}
+\end{DoxyParamCaption}
+)}\label{strings_8h_a706b36f3a672f84685576723c3928baa}
+\hypertarget{strings_8h_af4913b45cb0c03415fe25bd778a2b8ea}{}\index{strings.\+h@{strings.\+h}!strncasecmp@{strncasecmp}}
+\index{strncasecmp@{strncasecmp}!strings.\+h@{strings.\+h}}
+\subsubsection[{strncasecmp}]{\setlength{\rightskip}{0pt plus 5cm}int strncasecmp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s1, }
+\item[{const char $\ast$}]{s2, }
+\item[{{\bf size\+\_\+t}}]{len}
+\end{DoxyParamCaption}
+)}\label{strings_8h_af4913b45cb0c03415fe25bd778a2b8ea}

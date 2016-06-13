@@ -1,0 +1,89 @@
+\hypertarget{memcard_8c}{}\section{libpsx/src/memcard.c File Reference}
+\label{memcard_8c}\index{libpsx/src/memcard.\+c@{libpsx/src/memcard.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$memcard.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$psx.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{memcard_8c_a55abf0019a69a84a7c64a2710db42713}{Mc\+Read\+Sector} (int card\+\_\+slot, int sector, unsigned char $\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Reads a 128-\/byte sector from a memory card. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{memcard_8c_a2513a1fc9d197c4df46e33d074e8afd7}{Mc\+Write\+Sector} (int card\+\_\+slot, int sector, unsigned char $\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Writes a 128-\/byte sector to a memory card. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{memcard_8c_aa563f87cd3694e4d30503b719f0a7ffa}{Mc\+Get\+Status} (int card\+\_\+slot)
+\begin{DoxyCompactList}\small\item\em Get memory card status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{memcard_8c_aa563f87cd3694e4d30503b719f0a7ffa}{}\index{memcard.\+c@{memcard.\+c}!Mc\+Get\+Status@{Mc\+Get\+Status}}
+\index{Mc\+Get\+Status@{Mc\+Get\+Status}!memcard.\+c@{memcard.\+c}}
+\subsubsection[{Mc\+Get\+Status}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Mc\+Get\+Status (
+\begin{DoxyParamCaption}
+\item[{int}]{card\+\_\+slot}
+\end{DoxyParamCaption}
+)}\label{memcard_8c_aa563f87cd3694e4d30503b719f0a7ffa}
+
+
+Get memory card status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em card\+\_\+slot} & Memory card slot (0 = first slot, 1 = second slot) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bitmask for current memory card status (flags in memcard\+\_\+status enum) 
+\end{DoxyReturn}
+\hypertarget{memcard_8c_a55abf0019a69a84a7c64a2710db42713}{}\index{memcard.\+c@{memcard.\+c}!Mc\+Read\+Sector@{Mc\+Read\+Sector}}
+\index{Mc\+Read\+Sector@{Mc\+Read\+Sector}!memcard.\+c@{memcard.\+c}}
+\subsubsection[{Mc\+Read\+Sector}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char Mc\+Read\+Sector (
+\begin{DoxyParamCaption}
+\item[{int}]{card\+\_\+slot, }
+\item[{int}]{sector, }
+\item[{unsigned char $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}\label{memcard_8c_a55abf0019a69a84a7c64a2710db42713}
+
+
+Reads a 128-\/byte sector from a memory card. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em card\+\_\+slot} & Memory card slot (0 = first slot, 1 = second slot) \\
+\hline
+{\em sector} & Sector number (0-\/511) \\
+\hline
+{\em buffer} & Pointer to data buffer in which data will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of operation (possible values in memcard\+\_\+operation\+\_\+result enum) 
+\end{DoxyReturn}
+\hypertarget{memcard_8c_a2513a1fc9d197c4df46e33d074e8afd7}{}\index{memcard.\+c@{memcard.\+c}!Mc\+Write\+Sector@{Mc\+Write\+Sector}}
+\index{Mc\+Write\+Sector@{Mc\+Write\+Sector}!memcard.\+c@{memcard.\+c}}
+\subsubsection[{Mc\+Write\+Sector}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char Mc\+Write\+Sector (
+\begin{DoxyParamCaption}
+\item[{int}]{card\+\_\+slot, }
+\item[{int}]{sector, }
+\item[{unsigned char $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}\label{memcard_8c_a2513a1fc9d197c4df46e33d074e8afd7}
+
+
+Writes a 128-\/byte sector to a memory card. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em card\+\_\+slot} & Memory card slot (0 = first slot, 1 = second slot) \\
+\hline
+{\em sector} & Sector number (0-\/511) \\
+\hline
+{\em buffer} & Pointer to data buffer containing data to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of operation (possible values in memcard\+\_\+operation\+\_\+result enum) 
+\end{DoxyReturn}

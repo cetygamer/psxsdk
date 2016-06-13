@@ -1,0 +1,58 @@
+\hypertarget{structpsx__pad__state_1_1extra_1_1analogPad}{}\section{psx\+\_\+pad\+\_\+state\+:\+:extra\+:\+:analog\+Pad Struct Reference}
+\label{structpsx__pad__state_1_1extra_1_1analogPad}\index{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad@{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad}}
+
+
+Data for analog joypads (controller).  
+
+
+
+
+{\ttfamily \#include $<$psxpad.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+signed char \hyperlink{structpsx__pad__state_1_1extra_1_1analogPad_a9f1cce7fb30ad35f6b58a3f3219cbdc4}{x} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em X coordinates for the left analog stick and the right analog stick. \end{DoxyCompactList}\item 
+signed char \hyperlink{structpsx__pad__state_1_1extra_1_1analogPad_a4c3c2de2ba57dfb45bfc1d0d59a3d14a}{y} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Y coordinates for the left analog stick and the right analog stick. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data for analog joypads (controller). 
+
+\begin{DoxyAttention}{Attention}
+Due to the poor calibration of the analog sticks, it is recommended that you do not assume \char`\"{}left\char`\"{} for X values lower than zero and \char`\"{}right\char`\"{} for X values higher than zero.
+
+It is recommended to pick a value, for instance 64, and assume \char`\"{}left\char`\"{} for values lower than -\/64, \char`\"{}right\char`\"{} for values higher than 64, and no movement for values between -\/64 and 64.
+
+The same is valid for Y values, \char`\"{}up\char`\"{} and \char`\"{}down\char`\"{}. 
+\end{DoxyAttention}
+
+
+\subsection{Field Documentation}
+\hypertarget{structpsx__pad__state_1_1extra_1_1analogPad_a9f1cce7fb30ad35f6b58a3f3219cbdc4}{}\index{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad@{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad}!x@{x}}
+\index{x@{x}!psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad@{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}signed char psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad\+::x\mbox{[}2\mbox{]}}\label{structpsx__pad__state_1_1extra_1_1analogPad_a9f1cce7fb30ad35f6b58a3f3219cbdc4}
+
+
+X coordinates for the left analog stick and the right analog stick. 
+
+\begin{DoxyParagraph}{Value }
+Totally left\+: -\/128, totally right\+: 127 
+\end{DoxyParagraph}
+\hypertarget{structpsx__pad__state_1_1extra_1_1analogPad_a4c3c2de2ba57dfb45bfc1d0d59a3d14a}{}\index{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad@{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad}!y@{y}}
+\index{y@{y}!psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad@{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}signed char psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad\+::y\mbox{[}2\mbox{]}}\label{structpsx__pad__state_1_1extra_1_1analogPad_a4c3c2de2ba57dfb45bfc1d0d59a3d14a}
+
+
+Y coordinates for the left analog stick and the right analog stick. 
+
+\begin{DoxyParagraph}{Value }
+Totally up\+: -\/128, totally down\+: 127 
+\end{DoxyParagraph}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+libpsx/include/\hyperlink{psxpad_8h}{psxpad.\+h}\end{DoxyCompactItemize}

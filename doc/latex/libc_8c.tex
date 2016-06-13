@@ -1,0 +1,455 @@
+\hypertarget{libc_8c}{}\section{libpsx/src/libc.c File Reference}
+\label{libc_8c}\index{libpsx/src/libc.\+c@{libpsx/src/libc.\+c}}
+{\ttfamily \#include $<$psx.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$strings.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{libc_8c_a4f60471edd4a835c4d2f64c3005cb14f}{N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S}~259
+\item 
+\#define \hyperlink{libc_8c_ad06492d6c01f3125e06e651049738441}{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+I\+N}(f)~(f-\/$>$fildes == 0)
+\item 
+\#define \hyperlink{libc_8c_a42d4ac14c311c8bb960bdda36a011bd1}{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+O\+U\+T}(f)~(f-\/$>$fildes == 1 $\vert$$\vert$ f-\/$>$fildes == 2)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libc_8c_ad1900a398fcd3549c15f4e4cc70b270f}{libc\+\_\+get\+\_\+transtbl\+\_\+fname} (const char $\ast$tofind, char $\ast$outstr, int outl)
+\item 
+unsigned int \hyperlink{libc_8c_a3317a22488abfe1ca05423c3c96c58be}{fmode\+\_\+to\+\_\+desmode} (const char $\ast$fmode)
+\item 
+\hyperlink{structFILE}{F\+I\+L\+E} $\ast$ \hyperlink{libc_8c_a8762a0c51a450e3a4bc76a67600f125a}{fdopen} (int fildes, const char $\ast$mode)
+\item 
+\hyperlink{structFILE}{F\+I\+L\+E} $\ast$ \hyperlink{libc_8c_a61171f829f6067fa0c9936fc4e0cbb82}{fopen} (const char $\ast$path, const char $\ast$mode)
+\item 
+int \hyperlink{libc_8c_a76370407f9ab0402564c2bb9bc9664e0}{fclose} (\hyperlink{structFILE}{F\+I\+L\+E} $\ast$stream)
+\item 
+int \hyperlink{libc_8c_a0ed443724d17c435c3b4996d935f2482}{fread} (void $\ast$ptr, int size, int nmemb, \hyperlink{structFILE}{F\+I\+L\+E} $\ast$f)
+\item 
+int \hyperlink{libc_8c_a2c4fad5f95f4c5242c3ea25d791df6e5}{fgetc} (\hyperlink{structFILE}{F\+I\+L\+E} $\ast$f)
+\item 
+int \hyperlink{libc_8c_a03733afa3675e4ba38c6dc76f4075043}{ftell} (\hyperlink{structFILE}{F\+I\+L\+E} $\ast$f)
+\item 
+int \hyperlink{libc_8c_ad2be1e37c073bdc7851168382f69f303}{fseek} (\hyperlink{structFILE}{F\+I\+L\+E} $\ast$f, int offset, int whence)
+\item 
+int \hyperlink{libc_8c_a9c2f57ac3865af9006fdbfd5db9fd517}{toupper} (int c)
+\item 
+int \hyperlink{libc_8c_ac79d6114c9df7350cedcd8cf921a6ea4}{tolower} (int c)
+\item 
+int \hyperlink{libc_8c_adadd6582d46775aab6a51e29d16d9f77}{isupper} (int c)
+\item 
+int \hyperlink{libc_8c_a7b8f652a0423a80922dd89d8829db5f2}{islower} (int c)
+\item 
+int \hyperlink{libc_8c_a3fa45b35c8abf67a950b6d3d4063dede}{isdigit} (int c)
+\item 
+int \hyperlink{libc_8c_adaf3aadefe3fc4fb07b6be0d7b880f53}{isxdigit} (int c)
+\item 
+int \hyperlink{libc_8c_a25908ae63aac2df990634e1ae5bd14d9}{isalpha} (int c)
+\item 
+int \hyperlink{libc_8c_adf38e126f73a010f30af76db2a28c6e1}{isalnum} (int c)
+\item 
+int \hyperlink{libc_8c_a56be4166e4673843042a548a7f513dbc}{isspace} (int c)
+\item 
+int \hyperlink{libc_8c_a99355d8f0fb41ec43effb95189db0ed4}{isprint} (int c)
+\item 
+int \hyperlink{libc_8c_a49f40fd869fd0c90e4497fda08c89561}{isgraph} (int c)
+\item 
+int \hyperlink{libc_8c_a0008a4e8e7889734dc1d83297de07158}{iscntrl} (int c)
+\item 
+int \hyperlink{libc_8c_aea4929b1b41f1a6d723e0312b1f050ed}{isblank} (int c)
+\item 
+void \hyperlink{libc_8c_a3f4ad05b2197c7bbfe1fdd225a850090}{redirect\+\_\+stdio\+\_\+to\+\_\+sio} (void)
+\begin{DoxyCompactList}\small\item\em Redirects S\+T\+D\+I\+O to S\+I\+O (serial port) \end{DoxyCompactList}\item 
+void \hyperlink{libc_8c_a448c41b769f2c602596f33d7b46e5dd3}{sio\+\_\+stdio\+\_\+mapcr} (unsigned int setting)
+\begin{DoxyCompactList}\small\item\em Sets whether a carriage return must be written before a line feed. \end{DoxyCompactList}\item 
+int \hyperlink{libc_8c_a82b01091ed61d64af5fd6af7d30220ff}{sio\+\_\+putchar} (int c)
+\begin{DoxyCompactList}\small\item\em S\+T\+D\+I\+O for S\+I\+O. \end{DoxyCompactList}\item 
+int \hyperlink{libc_8c_a5d3c6145fbbe97bdbceb29eba9d113d6}{sio\+\_\+puts} (const char $\ast$str)
+\item 
+int \hyperlink{libc_8c_a1cb6947d5eba5d69dc914d81ab6087fb}{bios\+\_\+putchar} (int c)
+\item 
+int \hyperlink{libc_8c_a68ea84a15568975445db8f9d54a1cd50}{bios\+\_\+puts} (const char $\ast$str)
+\item 
+int \hyperlink{libc_8c_af4de2514b7778805db3815e8dd6cf09a}{putchar} (int c)
+\item 
+int \hyperlink{libc_8c_a24df0c04767d20bfc8337baa088605ff}{puts} (const char $\ast$str)
+\item 
+int \hyperlink{libc_8c_a49beba159052924a222965b8edaf7f56}{fwrite} (void $\ast$ptr, int size, int nmemb, \hyperlink{structFILE}{F\+I\+L\+E} $\ast$f)
+\item 
+int \hyperlink{libc_8c_a11b4ead021aa4b215a292baf04bb9638}{fputs} (const char $\ast$str, \hyperlink{structFILE}{F\+I\+L\+E} $\ast$stream)
+\item 
+\hyperlink{structFILE}{F\+I\+L\+E} $\ast$ \hyperlink{libc_8c_a317d5eb3bcd77341b0c2d5ba95859410}{freopen} (const char $\ast$path, const char $\ast$mode, \hyperlink{structFILE}{F\+I\+L\+E} $\ast$stream)
+\item 
+void \hyperlink{libc_8c_ab5de865c3093158c70bf4bd88a9deea5}{clearerr} (\hyperlink{structFILE}{F\+I\+L\+E} $\ast$stream)
+\item 
+int \hyperlink{libc_8c_a9e71f513ad2496acb5361aedc065e3d8}{feof} (\hyperlink{structFILE}{F\+I\+L\+E} $\ast$stream)
+\item 
+int \hyperlink{libc_8c_a4a98383bb54291c2abede7aa28acf597}{ferror} (\hyperlink{structFILE}{F\+I\+L\+E} $\ast$stream)
+\item 
+int \hyperlink{libc_8c_af86fa14728c9bad5418a6d29cad9f9ff}{fileno} (\hyperlink{structFILE}{F\+I\+L\+E} $\ast$stream)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{libc_8c_a8fc5c7c9f806edfd9d2dcba0061686fb}{onesec\+\_\+buf} \mbox{[}2048\mbox{]}
+\item 
+int \hyperlink{libc_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+int \hyperlink{libc_8c_a21e2490428be6251e3218e7439143666}{\+\_\+\+\_\+stdio\+\_\+direction} = \hyperlink{stdio_8h_aa2dc19d87c7b055e5af5407e89442fd6a697611a9d4f90a825b94faccc840d8a0}{S\+T\+D\+I\+O\+\_\+\+D\+I\+R\+E\+C\+T\+I\+O\+N\+\_\+\+B\+I\+O\+S}
+\item 
+\hyperlink{structFILE}{F\+I\+L\+E} \hyperlink{libc_8c_a83543d9a7ea06b9b9d563126bec1a294}{file\+\_\+structs} \mbox{[}\hyperlink{libc_8c_a4f60471edd4a835c4d2f64c3005cb14f}{N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S}\mbox{]}
+\item 
+\hyperlink{structFILE}{F\+I\+L\+E} $\ast$ \hyperlink{libc_8c_acab9c1fe2a80b10e01858bda28a04244}{stdin} = \&\hyperlink{libc_8c_a83543d9a7ea06b9b9d563126bec1a294}{file\+\_\+structs}\mbox{[}0\mbox{]}
+\item 
+\hyperlink{structFILE}{F\+I\+L\+E} $\ast$ \hyperlink{libc_8c_ac80f4484175bf6c48d7b7ca4e9897ae6}{stdout} = \&\hyperlink{libc_8c_a83543d9a7ea06b9b9d563126bec1a294}{file\+\_\+structs}\mbox{[}1\mbox{]}
+\item 
+\hyperlink{structFILE}{F\+I\+L\+E} $\ast$ \hyperlink{libc_8c_ac9e47c346a25e2e7edd2c9b4ca5d0262}{stderr} = \&\hyperlink{libc_8c_a83543d9a7ea06b9b9d563126bec1a294}{file\+\_\+structs}\mbox{[}2\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{libc_8c_ad06492d6c01f3125e06e651049738441}{}\index{libc.\+c@{libc.\+c}!I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+I\+N@{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+I\+N}}
+\index{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+I\+N@{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+I\+N}!libc.\+c@{libc.\+c}}
+\subsubsection[{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+I\+N(
+\begin{DoxyParamCaption}
+\item[{}]{f}
+\end{DoxyParamCaption}
+)~(f-\/$>$fildes == 0)}\label{libc_8c_ad06492d6c01f3125e06e651049738441}
+\hypertarget{libc_8c_a42d4ac14c311c8bb960bdda36a011bd1}{}\index{libc.\+c@{libc.\+c}!I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+O\+U\+T@{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+O\+U\+T}}
+\index{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+O\+U\+T@{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+O\+U\+T}!libc.\+c@{libc.\+c}}
+\subsubsection[{I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+O\+U\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+S\+\_\+\+C\+O\+N\+S\+\_\+\+O\+U\+T(
+\begin{DoxyParamCaption}
+\item[{}]{f}
+\end{DoxyParamCaption}
+)~(f-\/$>$fildes == 1 $\vert$$\vert$ f-\/$>$fildes == 2)}\label{libc_8c_a42d4ac14c311c8bb960bdda36a011bd1}
+\hypertarget{libc_8c_a4f60471edd4a835c4d2f64c3005cb14f}{}\index{libc.\+c@{libc.\+c}!N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S@{N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S}}
+\index{N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S@{N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S}!libc.\+c@{libc.\+c}}
+\subsubsection[{N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S~259}\label{libc_8c_a4f60471edd4a835c4d2f64c3005cb14f}
+
+
+\subsection{Function Documentation}
+\hypertarget{libc_8c_a1cb6947d5eba5d69dc914d81ab6087fb}{}\index{libc.\+c@{libc.\+c}!bios\+\_\+putchar@{bios\+\_\+putchar}}
+\index{bios\+\_\+putchar@{bios\+\_\+putchar}!libc.\+c@{libc.\+c}}
+\subsubsection[{bios\+\_\+putchar}]{\setlength{\rightskip}{0pt plus 5cm}int bios\+\_\+putchar (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a1cb6947d5eba5d69dc914d81ab6087fb}
+\hypertarget{libc_8c_a68ea84a15568975445db8f9d54a1cd50}{}\index{libc.\+c@{libc.\+c}!bios\+\_\+puts@{bios\+\_\+puts}}
+\index{bios\+\_\+puts@{bios\+\_\+puts}!libc.\+c@{libc.\+c}}
+\subsubsection[{bios\+\_\+puts}]{\setlength{\rightskip}{0pt plus 5cm}int bios\+\_\+puts (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a68ea84a15568975445db8f9d54a1cd50}
+\hypertarget{libc_8c_ab5de865c3093158c70bf4bd88a9deea5}{}\index{libc.\+c@{libc.\+c}!clearerr@{clearerr}}
+\index{clearerr@{clearerr}!libc.\+c@{libc.\+c}}
+\subsubsection[{clearerr}]{\setlength{\rightskip}{0pt plus 5cm}void clearerr (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}\label{libc_8c_ab5de865c3093158c70bf4bd88a9deea5}
+\hypertarget{libc_8c_a76370407f9ab0402564c2bb9bc9664e0}{}\index{libc.\+c@{libc.\+c}!fclose@{fclose}}
+\index{fclose@{fclose}!libc.\+c@{libc.\+c}}
+\subsubsection[{fclose}]{\setlength{\rightskip}{0pt plus 5cm}int fclose (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a76370407f9ab0402564c2bb9bc9664e0}
+\hypertarget{libc_8c_a8762a0c51a450e3a4bc76a67600f125a}{}\index{libc.\+c@{libc.\+c}!fdopen@{fdopen}}
+\index{fdopen@{fdopen}!libc.\+c@{libc.\+c}}
+\subsubsection[{fdopen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E}$\ast$ fdopen (
+\begin{DoxyParamCaption}
+\item[{int}]{fildes, }
+\item[{const char $\ast$}]{mode}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a8762a0c51a450e3a4bc76a67600f125a}
+\hypertarget{libc_8c_a9e71f513ad2496acb5361aedc065e3d8}{}\index{libc.\+c@{libc.\+c}!feof@{feof}}
+\index{feof@{feof}!libc.\+c@{libc.\+c}}
+\subsubsection[{feof}]{\setlength{\rightskip}{0pt plus 5cm}int feof (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a9e71f513ad2496acb5361aedc065e3d8}
+\hypertarget{libc_8c_a4a98383bb54291c2abede7aa28acf597}{}\index{libc.\+c@{libc.\+c}!ferror@{ferror}}
+\index{ferror@{ferror}!libc.\+c@{libc.\+c}}
+\subsubsection[{ferror}]{\setlength{\rightskip}{0pt plus 5cm}int ferror (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a4a98383bb54291c2abede7aa28acf597}
+\hypertarget{libc_8c_a2c4fad5f95f4c5242c3ea25d791df6e5}{}\index{libc.\+c@{libc.\+c}!fgetc@{fgetc}}
+\index{fgetc@{fgetc}!libc.\+c@{libc.\+c}}
+\subsubsection[{fgetc}]{\setlength{\rightskip}{0pt plus 5cm}int fgetc (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a2c4fad5f95f4c5242c3ea25d791df6e5}
+\hypertarget{libc_8c_af86fa14728c9bad5418a6d29cad9f9ff}{}\index{libc.\+c@{libc.\+c}!fileno@{fileno}}
+\index{fileno@{fileno}!libc.\+c@{libc.\+c}}
+\subsubsection[{fileno}]{\setlength{\rightskip}{0pt plus 5cm}int fileno (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}\label{libc_8c_af86fa14728c9bad5418a6d29cad9f9ff}
+\hypertarget{libc_8c_a3317a22488abfe1ca05423c3c96c58be}{}\index{libc.\+c@{libc.\+c}!fmode\+\_\+to\+\_\+desmode@{fmode\+\_\+to\+\_\+desmode}}
+\index{fmode\+\_\+to\+\_\+desmode@{fmode\+\_\+to\+\_\+desmode}!libc.\+c@{libc.\+c}}
+\subsubsection[{fmode\+\_\+to\+\_\+desmode}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int fmode\+\_\+to\+\_\+desmode (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fmode}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a3317a22488abfe1ca05423c3c96c58be}
+\hypertarget{libc_8c_a61171f829f6067fa0c9936fc4e0cbb82}{}\index{libc.\+c@{libc.\+c}!fopen@{fopen}}
+\index{fopen@{fopen}!libc.\+c@{libc.\+c}}
+\subsubsection[{fopen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E}$\ast$ fopen (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{const char $\ast$}]{mode}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a61171f829f6067fa0c9936fc4e0cbb82}
+\hypertarget{libc_8c_a11b4ead021aa4b215a292baf04bb9638}{}\index{libc.\+c@{libc.\+c}!fputs@{fputs}}
+\index{fputs@{fputs}!libc.\+c@{libc.\+c}}
+\subsubsection[{fputs}]{\setlength{\rightskip}{0pt plus 5cm}int fputs (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a11b4ead021aa4b215a292baf04bb9638}
+\hypertarget{libc_8c_a0ed443724d17c435c3b4996d935f2482}{}\index{libc.\+c@{libc.\+c}!fread@{fread}}
+\index{fread@{fread}!libc.\+c@{libc.\+c}}
+\subsubsection[{fread}]{\setlength{\rightskip}{0pt plus 5cm}int fread (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{size, }
+\item[{int}]{nmemb, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a0ed443724d17c435c3b4996d935f2482}
+\hypertarget{libc_8c_a317d5eb3bcd77341b0c2d5ba95859410}{}\index{libc.\+c@{libc.\+c}!freopen@{freopen}}
+\index{freopen@{freopen}!libc.\+c@{libc.\+c}}
+\subsubsection[{freopen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E}$\ast$ freopen (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{const char $\ast$}]{mode, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{stream}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a317d5eb3bcd77341b0c2d5ba95859410}
+\hypertarget{libc_8c_ad2be1e37c073bdc7851168382f69f303}{}\index{libc.\+c@{libc.\+c}!fseek@{fseek}}
+\index{fseek@{fseek}!libc.\+c@{libc.\+c}}
+\subsubsection[{fseek}]{\setlength{\rightskip}{0pt plus 5cm}int fseek (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{f, }
+\item[{int}]{offset, }
+\item[{int}]{whence}
+\end{DoxyParamCaption}
+)}\label{libc_8c_ad2be1e37c073bdc7851168382f69f303}
+\hypertarget{libc_8c_a03733afa3675e4ba38c6dc76f4075043}{}\index{libc.\+c@{libc.\+c}!ftell@{ftell}}
+\index{ftell@{ftell}!libc.\+c@{libc.\+c}}
+\subsubsection[{ftell}]{\setlength{\rightskip}{0pt plus 5cm}int ftell (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E} $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a03733afa3675e4ba38c6dc76f4075043}
+\hypertarget{libc_8c_a49beba159052924a222965b8edaf7f56}{}\index{libc.\+c@{libc.\+c}!fwrite@{fwrite}}
+\index{fwrite@{fwrite}!libc.\+c@{libc.\+c}}
+\subsubsection[{fwrite}]{\setlength{\rightskip}{0pt plus 5cm}int fwrite (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{size, }
+\item[{int}]{nmemb, }
+\item[{{\bf F\+I\+L\+E} $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a49beba159052924a222965b8edaf7f56}
+\hypertarget{libc_8c_adf38e126f73a010f30af76db2a28c6e1}{}\index{libc.\+c@{libc.\+c}!isalnum@{isalnum}}
+\index{isalnum@{isalnum}!libc.\+c@{libc.\+c}}
+\subsubsection[{isalnum}]{\setlength{\rightskip}{0pt plus 5cm}int isalnum (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_adf38e126f73a010f30af76db2a28c6e1}
+\hypertarget{libc_8c_a25908ae63aac2df990634e1ae5bd14d9}{}\index{libc.\+c@{libc.\+c}!isalpha@{isalpha}}
+\index{isalpha@{isalpha}!libc.\+c@{libc.\+c}}
+\subsubsection[{isalpha}]{\setlength{\rightskip}{0pt plus 5cm}int isalpha (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a25908ae63aac2df990634e1ae5bd14d9}
+\hypertarget{libc_8c_aea4929b1b41f1a6d723e0312b1f050ed}{}\index{libc.\+c@{libc.\+c}!isblank@{isblank}}
+\index{isblank@{isblank}!libc.\+c@{libc.\+c}}
+\subsubsection[{isblank}]{\setlength{\rightskip}{0pt plus 5cm}int isblank (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_aea4929b1b41f1a6d723e0312b1f050ed}
+\hypertarget{libc_8c_a0008a4e8e7889734dc1d83297de07158}{}\index{libc.\+c@{libc.\+c}!iscntrl@{iscntrl}}
+\index{iscntrl@{iscntrl}!libc.\+c@{libc.\+c}}
+\subsubsection[{iscntrl}]{\setlength{\rightskip}{0pt plus 5cm}int iscntrl (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a0008a4e8e7889734dc1d83297de07158}
+\hypertarget{libc_8c_a3fa45b35c8abf67a950b6d3d4063dede}{}\index{libc.\+c@{libc.\+c}!isdigit@{isdigit}}
+\index{isdigit@{isdigit}!libc.\+c@{libc.\+c}}
+\subsubsection[{isdigit}]{\setlength{\rightskip}{0pt plus 5cm}int isdigit (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a3fa45b35c8abf67a950b6d3d4063dede}
+\hypertarget{libc_8c_a49f40fd869fd0c90e4497fda08c89561}{}\index{libc.\+c@{libc.\+c}!isgraph@{isgraph}}
+\index{isgraph@{isgraph}!libc.\+c@{libc.\+c}}
+\subsubsection[{isgraph}]{\setlength{\rightskip}{0pt plus 5cm}int isgraph (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a49f40fd869fd0c90e4497fda08c89561}
+\hypertarget{libc_8c_a7b8f652a0423a80922dd89d8829db5f2}{}\index{libc.\+c@{libc.\+c}!islower@{islower}}
+\index{islower@{islower}!libc.\+c@{libc.\+c}}
+\subsubsection[{islower}]{\setlength{\rightskip}{0pt plus 5cm}int islower (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a7b8f652a0423a80922dd89d8829db5f2}
+\hypertarget{libc_8c_a99355d8f0fb41ec43effb95189db0ed4}{}\index{libc.\+c@{libc.\+c}!isprint@{isprint}}
+\index{isprint@{isprint}!libc.\+c@{libc.\+c}}
+\subsubsection[{isprint}]{\setlength{\rightskip}{0pt plus 5cm}int isprint (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a99355d8f0fb41ec43effb95189db0ed4}
+\hypertarget{libc_8c_a56be4166e4673843042a548a7f513dbc}{}\index{libc.\+c@{libc.\+c}!isspace@{isspace}}
+\index{isspace@{isspace}!libc.\+c@{libc.\+c}}
+\subsubsection[{isspace}]{\setlength{\rightskip}{0pt plus 5cm}int isspace (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a56be4166e4673843042a548a7f513dbc}
+\hypertarget{libc_8c_adadd6582d46775aab6a51e29d16d9f77}{}\index{libc.\+c@{libc.\+c}!isupper@{isupper}}
+\index{isupper@{isupper}!libc.\+c@{libc.\+c}}
+\subsubsection[{isupper}]{\setlength{\rightskip}{0pt plus 5cm}int isupper (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_adadd6582d46775aab6a51e29d16d9f77}
+\hypertarget{libc_8c_adaf3aadefe3fc4fb07b6be0d7b880f53}{}\index{libc.\+c@{libc.\+c}!isxdigit@{isxdigit}}
+\index{isxdigit@{isxdigit}!libc.\+c@{libc.\+c}}
+\subsubsection[{isxdigit}]{\setlength{\rightskip}{0pt plus 5cm}int isxdigit (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_adaf3aadefe3fc4fb07b6be0d7b880f53}
+\hypertarget{libc_8c_ad1900a398fcd3549c15f4e4cc70b270f}{}\index{libc.\+c@{libc.\+c}!libc\+\_\+get\+\_\+transtbl\+\_\+fname@{libc\+\_\+get\+\_\+transtbl\+\_\+fname}}
+\index{libc\+\_\+get\+\_\+transtbl\+\_\+fname@{libc\+\_\+get\+\_\+transtbl\+\_\+fname}!libc.\+c@{libc.\+c}}
+\subsubsection[{libc\+\_\+get\+\_\+transtbl\+\_\+fname}]{\setlength{\rightskip}{0pt plus 5cm}int libc\+\_\+get\+\_\+transtbl\+\_\+fname (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{tofind, }
+\item[{char $\ast$}]{outstr, }
+\item[{int}]{outl}
+\end{DoxyParamCaption}
+)}\label{libc_8c_ad1900a398fcd3549c15f4e4cc70b270f}
+\hypertarget{libc_8c_af4de2514b7778805db3815e8dd6cf09a}{}\index{libc.\+c@{libc.\+c}!putchar@{putchar}}
+\index{putchar@{putchar}!libc.\+c@{libc.\+c}}
+\subsubsection[{putchar}]{\setlength{\rightskip}{0pt plus 5cm}int putchar (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_af4de2514b7778805db3815e8dd6cf09a}
+\hypertarget{libc_8c_a24df0c04767d20bfc8337baa088605ff}{}\index{libc.\+c@{libc.\+c}!puts@{puts}}
+\index{puts@{puts}!libc.\+c@{libc.\+c}}
+\subsubsection[{puts}]{\setlength{\rightskip}{0pt plus 5cm}int puts (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a24df0c04767d20bfc8337baa088605ff}
+\hypertarget{libc_8c_a3f4ad05b2197c7bbfe1fdd225a850090}{}\index{libc.\+c@{libc.\+c}!redirect\+\_\+stdio\+\_\+to\+\_\+sio@{redirect\+\_\+stdio\+\_\+to\+\_\+sio}}
+\index{redirect\+\_\+stdio\+\_\+to\+\_\+sio@{redirect\+\_\+stdio\+\_\+to\+\_\+sio}!libc.\+c@{libc.\+c}}
+\subsubsection[{redirect\+\_\+stdio\+\_\+to\+\_\+sio}]{\setlength{\rightskip}{0pt plus 5cm}void redirect\+\_\+stdio\+\_\+to\+\_\+sio (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a3f4ad05b2197c7bbfe1fdd225a850090}
+
+
+Redirects S\+T\+D\+I\+O to S\+I\+O (serial port) 
+
+\hypertarget{libc_8c_a82b01091ed61d64af5fd6af7d30220ff}{}\index{libc.\+c@{libc.\+c}!sio\+\_\+putchar@{sio\+\_\+putchar}}
+\index{sio\+\_\+putchar@{sio\+\_\+putchar}!libc.\+c@{libc.\+c}}
+\subsubsection[{sio\+\_\+putchar}]{\setlength{\rightskip}{0pt plus 5cm}int sio\+\_\+putchar (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a82b01091ed61d64af5fd6af7d30220ff}
+
+
+S\+T\+D\+I\+O for S\+I\+O. 
+
+\hypertarget{libc_8c_a5d3c6145fbbe97bdbceb29eba9d113d6}{}\index{libc.\+c@{libc.\+c}!sio\+\_\+puts@{sio\+\_\+puts}}
+\index{sio\+\_\+puts@{sio\+\_\+puts}!libc.\+c@{libc.\+c}}
+\subsubsection[{sio\+\_\+puts}]{\setlength{\rightskip}{0pt plus 5cm}int sio\+\_\+puts (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a5d3c6145fbbe97bdbceb29eba9d113d6}
+\hypertarget{libc_8c_a448c41b769f2c602596f33d7b46e5dd3}{}\index{libc.\+c@{libc.\+c}!sio\+\_\+stdio\+\_\+mapcr@{sio\+\_\+stdio\+\_\+mapcr}}
+\index{sio\+\_\+stdio\+\_\+mapcr@{sio\+\_\+stdio\+\_\+mapcr}!libc.\+c@{libc.\+c}}
+\subsubsection[{sio\+\_\+stdio\+\_\+mapcr}]{\setlength{\rightskip}{0pt plus 5cm}void sio\+\_\+stdio\+\_\+mapcr (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{setting}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a448c41b769f2c602596f33d7b46e5dd3}
+
+
+Sets whether a carriage return must be written before a line feed. 
+
+In simpler words, whether \textquotesingle{}~\newline
+\textquotesingle{} must be translated to a \textquotesingle{}~\newline
+\textquotesingle{} sequence. If you come from the Unix world, you most likely want to set this.
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & New status of the setting (0 = disabled, 1 = enabled) \\
+\hline
+\end{DoxyParams}
+\hypertarget{libc_8c_ac79d6114c9df7350cedcd8cf921a6ea4}{}\index{libc.\+c@{libc.\+c}!tolower@{tolower}}
+\index{tolower@{tolower}!libc.\+c@{libc.\+c}}
+\subsubsection[{tolower}]{\setlength{\rightskip}{0pt plus 5cm}int tolower (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_ac79d6114c9df7350cedcd8cf921a6ea4}
+\hypertarget{libc_8c_a9c2f57ac3865af9006fdbfd5db9fd517}{}\index{libc.\+c@{libc.\+c}!toupper@{toupper}}
+\index{toupper@{toupper}!libc.\+c@{libc.\+c}}
+\subsubsection[{toupper}]{\setlength{\rightskip}{0pt plus 5cm}int toupper (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\label{libc_8c_a9c2f57ac3865af9006fdbfd5db9fd517}
+
+
+\subsection{Variable Documentation}
+\hypertarget{libc_8c_a21e2490428be6251e3218e7439143666}{}\index{libc.\+c@{libc.\+c}!\+\_\+\+\_\+stdio\+\_\+direction@{\+\_\+\+\_\+stdio\+\_\+direction}}
+\index{\+\_\+\+\_\+stdio\+\_\+direction@{\+\_\+\+\_\+stdio\+\_\+direction}!libc.\+c@{libc.\+c}}
+\subsubsection[{\+\_\+\+\_\+stdio\+\_\+direction}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+\+\_\+stdio\+\_\+direction = {\bf S\+T\+D\+I\+O\+\_\+\+D\+I\+R\+E\+C\+T\+I\+O\+N\+\_\+\+B\+I\+O\+S}}\label{libc_8c_a21e2490428be6251e3218e7439143666}
+\hypertarget{libc_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\index{libc.\+c@{libc.\+c}!errno@{errno}}
+\index{errno@{errno}!libc.\+c@{libc.\+c}}
+\subsubsection[{errno}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\label{libc_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\hypertarget{libc_8c_a83543d9a7ea06b9b9d563126bec1a294}{}\index{libc.\+c@{libc.\+c}!file\+\_\+structs@{file\+\_\+structs}}
+\index{file\+\_\+structs@{file\+\_\+structs}!libc.\+c@{libc.\+c}}
+\subsubsection[{file\+\_\+structs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E} file\+\_\+structs\mbox{[}{\bf N\+U\+M\+\_\+\+O\+F\+\_\+\+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T\+S}\mbox{]}}\label{libc_8c_a83543d9a7ea06b9b9d563126bec1a294}
+\hypertarget{libc_8c_a8fc5c7c9f806edfd9d2dcba0061686fb}{}\index{libc.\+c@{libc.\+c}!onesec\+\_\+buf@{onesec\+\_\+buf}}
+\index{onesec\+\_\+buf@{onesec\+\_\+buf}!libc.\+c@{libc.\+c}}
+\subsubsection[{onesec\+\_\+buf}]{\setlength{\rightskip}{0pt plus 5cm}char onesec\+\_\+buf\mbox{[}2048\mbox{]}}\label{libc_8c_a8fc5c7c9f806edfd9d2dcba0061686fb}
+\hypertarget{libc_8c_ac9e47c346a25e2e7edd2c9b4ca5d0262}{}\index{libc.\+c@{libc.\+c}!stderr@{stderr}}
+\index{stderr@{stderr}!libc.\+c@{libc.\+c}}
+\subsubsection[{stderr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E}$\ast$ stderr = \&{\bf file\+\_\+structs}\mbox{[}2\mbox{]}}\label{libc_8c_ac9e47c346a25e2e7edd2c9b4ca5d0262}
+\hypertarget{libc_8c_acab9c1fe2a80b10e01858bda28a04244}{}\index{libc.\+c@{libc.\+c}!stdin@{stdin}}
+\index{stdin@{stdin}!libc.\+c@{libc.\+c}}
+\subsubsection[{stdin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E}$\ast$ stdin = \&{\bf file\+\_\+structs}\mbox{[}0\mbox{]}}\label{libc_8c_acab9c1fe2a80b10e01858bda28a04244}
+\hypertarget{libc_8c_ac80f4484175bf6c48d7b7ca4e9897ae6}{}\index{libc.\+c@{libc.\+c}!stdout@{stdout}}
+\index{stdout@{stdout}!libc.\+c@{libc.\+c}}
+\subsubsection[{stdout}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E}$\ast$ stdout = \&{\bf file\+\_\+structs}\mbox{[}1\mbox{]}}\label{libc_8c_ac80f4484175bf6c48d7b7ca4e9897ae6}

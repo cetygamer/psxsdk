@@ -1,0 +1,464 @@
+\hypertarget{psxbios_8h}{}\section{libpsx/include/psxbios.h File Reference}
+\label{psxbios_8h}\index{libpsx/include/psxbios.\+h@{libpsx/include/psxbios.\+h}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structDIRENTRY}{D\+I\+R\+E\+N\+T\+R\+Y}
+\begin{DoxyCompactList}\small\item\em Directory entry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{psxbios_8h_a5e03b4365dd0f92c5e3a40dc4b1538d4}{P\+A\+D\+\_\+init} (unsigned long mode, unsigned long $\ast$pad\+\_\+buf)
+\item 
+int \hyperlink{psxbios_8h_a0769cb9c04110f637484da582559d0d5}{P\+A\+D\+\_\+dr} (void)
+\item 
+unsigned long \hyperlink{psxbios_8h_a3c71ac2b29b601601b3eae1f54eb9e78}{Get\+Kernel\+Date} (void)
+\begin{DoxyCompactList}\small\item\em Returns P\+S\+X kernel date. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{psxbios_8h_aa504fdc96f72b6cdbdfdaabd6f3cd36f}{Get\+Kernel\+Rom\+Version} (void)
+\begin{DoxyCompactList}\small\item\em Returns a pointer to a zero-\/terminated string which contains the kernel R\+O\+M version. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{psxbios_8h_a66b2d44ad09a4d85251e2460da420634}{Get\+System\+Rom\+Version} (void)
+\begin{DoxyCompactList}\small\item\em Returns a pointer to a zero-\/terminated string which contains the system R\+O\+M version. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{psxbios_8h_a58edc852ee737591c6ac76dff5ee72ae}{Get\+Ram\+Size} (void)
+\begin{DoxyCompactList}\small\item\em \hyperlink{psxbios_8h_a58edc852ee737591c6ac76dff5ee72ae}{Get\+Ram\+Size()} should return size of R\+A\+M in bytes. \end{DoxyCompactList}\item 
+void \hyperlink{psxbios_8h_a549c19ab6adb4f93464663120eee522f}{Enter\+Critical\+Section} (void)
+\begin{DoxyCompactList}\small\item\em Enters a critical section. \end{DoxyCompactList}\item 
+void \hyperlink{psxbios_8h_ad4768f2fd66e21fc8ee3cbcacbad205a}{Exit\+Critical\+Section} (void)
+\begin{DoxyCompactList}\small\item\em Exits a critical section. \end{DoxyCompactList}\item 
+void \hyperlink{psxbios_8h_a9b79cb33f98f34c3807deb7e4bf1f326}{Sys\+Enq\+Int\+R\+P} (int \hyperlink{strings_8h_a1d3748ca570dcb09a2fb28e8015107dd}{index}, unsigned int $\ast$buf)
+\item 
+void \hyperlink{psxbios_8h_a430b3954768dbbaf1e0dc50a9c5d0cfa}{Sys\+Deq\+Int\+R\+P} (int \hyperlink{strings_8h_a1d3748ca570dcb09a2fb28e8015107dd}{index}, unsigned int $\ast$buf)
+\item 
+void \hyperlink{psxbios_8h_aef1d7bee4b9c874afd1022c8a93c200b}{Reset\+Entry\+Int} (void)
+\item 
+struct \hyperlink{structDIRENTRY}{D\+I\+R\+E\+N\+T\+R\+Y} $\ast$ \hyperlink{psxbios_8h_ad8502fc1fd70536f6449b33681a8660a}{firstfile} (const char $\ast$\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}, struct \hyperlink{structDIRENTRY}{D\+I\+R\+E\+N\+T\+R\+Y} $\ast$dirent)
+\begin{DoxyCompactList}\small\item\em Gets information about the first file which matches the pattern. \end{DoxyCompactList}\item 
+struct \hyperlink{structDIRENTRY}{D\+I\+R\+E\+N\+T\+R\+Y} $\ast$ \hyperlink{psxbios_8h_a77711607ddd67fe72e4f7ad745343a1b}{nextfile} (struct \hyperlink{structDIRENTRY}{D\+I\+R\+E\+N\+T\+R\+Y} $\ast$dir)
+\begin{DoxyCompactList}\small\item\em Finds a file with the same conditions as the previous call to \hyperlink{psxbios_8h_ad8502fc1fd70536f6449b33681a8660a}{firstfile()}. \end{DoxyCompactList}\item 
+int \hyperlink{psxbios_8h_a6dbc3e4fc55029b884c1f9936a7e988d}{get\+\_\+file\+\_\+size} (const char $\ast$\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name})
+\begin{DoxyCompactList}\small\item\em Gets the file size of the file named \char`\"{}name\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{psxbios_8h_a2ecbc531e3d9f97df5110b2598cc0333}{get\+\_\+real\+\_\+file\+\_\+size} (const char $\ast$\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name})
+\begin{DoxyCompactList}\small\item\em This function is like \hyperlink{psxbios_8h_a6dbc3e4fc55029b884c1f9936a7e988d}{get\+\_\+file\+\_\+size()} but doesn\textquotesingle{}t round the file size to the block size. \end{DoxyCompactList}\item 
+void \hyperlink{psxbios_8h_a631bf3a8e2051fcf15a44cdb4a6ffa92}{Init\+Heap} (void $\ast$block, int size)
+\item 
+void \hyperlink{psxbios_8h_a90ece15bef7a4076acc0d8f4977aedee}{Flush\+Cache} (void)
+\item 
+void \hyperlink{psxbios_8h_a50991dfa531f73b55470ffa1bbc502d6}{Set\+R\+Cnt\+Handler} (void($\ast$callback)(), int spec, unsigned short target)
+\item 
+void \hyperlink{psxbios_8h_a838195c23dd155643f6aab9d521a69dd}{Remove\+R\+Cnt\+Handler} (int spec)
+\item 
+int \hyperlink{psxbios_8h_a1eb5d0b3272b48108ee2d2f3daca35ae}{Open\+Event} (int desc, int spec, int mode, int $\ast$($\ast$func)(void))
+\begin{DoxyCompactList}\small\item\em Opens an event, and returns its identifier Must be executed in a critical section. \end{DoxyCompactList}\item 
+int \hyperlink{psxbios_8h_a48873a008383ca170f7488e3d620e827}{Enable\+Event} (unsigned int event)
+\begin{DoxyCompactList}\small\item\em Enables an event by its identifier returned by \hyperlink{psxbios_8h_a1eb5d0b3272b48108ee2d2f3daca35ae}{Open\+Event()} \end{DoxyCompactList}\item 
+int \hyperlink{psxbios_8h_aa68ddf0bdc5caa6b015b54934ef0692f}{Close\+Event} (unsigned int event)
+\begin{DoxyCompactList}\small\item\em Closes an event by its identifier. \end{DoxyCompactList}\item 
+int \hyperlink{psxbios_8h_afe91ed30928cb267b0965eec1b0a3792}{Disable\+Event} (unsigned int event)
+\begin{DoxyCompactList}\small\item\em Disables an event by its identifier. \end{DoxyCompactList}\item 
+int \hyperlink{psxbios_8h_ad4cd1505e1d6534a58b7078140d45764}{Deliver\+Event} (unsigned int ev1, int ev2)
+\begin{DoxyCompactList}\small\item\em Generates an event. \end{DoxyCompactList}\item 
+int \hyperlink{psxbios_8h_a8bde602bcdfff76cebf596a025cb46cb}{Test\+Event} (unsigned int event)
+\begin{DoxyCompactList}\small\item\em Checks if the event specified by its identifier has occured. \end{DoxyCompactList}\item 
+int \hyperlink{psxbios_8h_a1c5a93d3001cc9137460b33178866d8b}{Wait\+Event} (unsigned int event)
+\begin{DoxyCompactList}\small\item\em Waits until the event specified by identifier occurs. \end{DoxyCompactList}\item 
+void \hyperlink{psxbios_8h_ac2099f76111a63979b37723f6c4b1a83}{Load\+Exec} (char $\ast$\hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name}, int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Replaces the executable image in memory with the one contained in another executable file in P\+S\+X-\/\+E\+X\+E format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{psxbios_8h_aa68ddf0bdc5caa6b015b54934ef0692f}{}\index{psxbios.\+h@{psxbios.\+h}!Close\+Event@{Close\+Event}}
+\index{Close\+Event@{Close\+Event}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Close\+Event}]{\setlength{\rightskip}{0pt plus 5cm}int Close\+Event (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{event}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_aa68ddf0bdc5caa6b015b54934ef0692f}
+
+
+Closes an event by its identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Numerical event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+??? 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_ad4cd1505e1d6534a58b7078140d45764}{}\index{psxbios.\+h@{psxbios.\+h}!Deliver\+Event@{Deliver\+Event}}
+\index{Deliver\+Event@{Deliver\+Event}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Deliver\+Event}]{\setlength{\rightskip}{0pt plus 5cm}int Deliver\+Event (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{ev1, }
+\item[{int}]{ev2}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_ad4cd1505e1d6534a58b7078140d45764}
+
+
+Generates an event. 
+
+This must be executed in a critical section. If the event to deliver is set to generate an interrupt, the handler function is called. 
+\begin{DoxyParams}{Parameters}
+{\em ev1} & Numerical cause descriptor \\
+\hline
+{\em ev2} & Numerical event class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+??? 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_afe91ed30928cb267b0965eec1b0a3792}{}\index{psxbios.\+h@{psxbios.\+h}!Disable\+Event@{Disable\+Event}}
+\index{Disable\+Event@{Disable\+Event}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Disable\+Event}]{\setlength{\rightskip}{0pt plus 5cm}int Disable\+Event (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{event}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_afe91ed30928cb267b0965eec1b0a3792}
+
+
+Disables an event by its identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Numerical event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+??? 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a48873a008383ca170f7488e3d620e827}{}\index{psxbios.\+h@{psxbios.\+h}!Enable\+Event@{Enable\+Event}}
+\index{Enable\+Event@{Enable\+Event}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Enable\+Event}]{\setlength{\rightskip}{0pt plus 5cm}int Enable\+Event (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{event}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a48873a008383ca170f7488e3d620e827}
+
+
+Enables an event by its identifier returned by \hyperlink{psxbios_8h_a1eb5d0b3272b48108ee2d2f3daca35ae}{Open\+Event()} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Numerical event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+??? 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a549c19ab6adb4f93464663120eee522f}{}\index{psxbios.\+h@{psxbios.\+h}!Enter\+Critical\+Section@{Enter\+Critical\+Section}}
+\index{Enter\+Critical\+Section@{Enter\+Critical\+Section}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Enter\+Critical\+Section}]{\setlength{\rightskip}{0pt plus 5cm}void Enter\+Critical\+Section (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a549c19ab6adb4f93464663120eee522f}
+
+
+Enters a critical section. 
+
+\hypertarget{psxbios_8h_ad4768f2fd66e21fc8ee3cbcacbad205a}{}\index{psxbios.\+h@{psxbios.\+h}!Exit\+Critical\+Section@{Exit\+Critical\+Section}}
+\index{Exit\+Critical\+Section@{Exit\+Critical\+Section}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Exit\+Critical\+Section}]{\setlength{\rightskip}{0pt plus 5cm}void Exit\+Critical\+Section (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_ad4768f2fd66e21fc8ee3cbcacbad205a}
+
+
+Exits a critical section. 
+
+\hypertarget{psxbios_8h_ad8502fc1fd70536f6449b33681a8660a}{}\index{psxbios.\+h@{psxbios.\+h}!firstfile@{firstfile}}
+\index{firstfile@{firstfile}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{firstfile}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf D\+I\+R\+E\+N\+T\+R\+Y}$\ast$ firstfile (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{struct {\bf D\+I\+R\+E\+N\+T\+R\+Y} $\ast$}]{dirent}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_ad8502fc1fd70536f6449b33681a8660a}
+
+
+Gets information about the first file which matches the pattern. 
+
+? and $\ast$ wildcards can be used. Characters after $\ast$ are ignored. 
+\begin{DoxyParams}{Parameters}
+{\em name} & File name string \\
+\hline
+{\em dirent} & Pointer to a struct \hyperlink{structDIRENTRY}{D\+I\+R\+E\+N\+T\+R\+Y} object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+dirent on success, N\+U\+L\+L on failure. 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a90ece15bef7a4076acc0d8f4977aedee}{}\index{psxbios.\+h@{psxbios.\+h}!Flush\+Cache@{Flush\+Cache}}
+\index{Flush\+Cache@{Flush\+Cache}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Flush\+Cache}]{\setlength{\rightskip}{0pt plus 5cm}void Flush\+Cache (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a90ece15bef7a4076acc0d8f4977aedee}
+\hypertarget{psxbios_8h_a6dbc3e4fc55029b884c1f9936a7e988d}{}\index{psxbios.\+h@{psxbios.\+h}!get\+\_\+file\+\_\+size@{get\+\_\+file\+\_\+size}}
+\index{get\+\_\+file\+\_\+size@{get\+\_\+file\+\_\+size}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{get\+\_\+file\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+file\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a6dbc3e4fc55029b884c1f9936a7e988d}
+
+
+Gets the file size of the file named \char`\"{}name\char`\"{}. 
+
+It is actually just a wrapper around firstfile. It rounds the file size to the block size (2048). 
+\begin{DoxyParams}{Parameters}
+{\em name} & F\+Ile name string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File size in bytes, rounded. 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a2ecbc531e3d9f97df5110b2598cc0333}{}\index{psxbios.\+h@{psxbios.\+h}!get\+\_\+real\+\_\+file\+\_\+size@{get\+\_\+real\+\_\+file\+\_\+size}}
+\index{get\+\_\+real\+\_\+file\+\_\+size@{get\+\_\+real\+\_\+file\+\_\+size}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{get\+\_\+real\+\_\+file\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+real\+\_\+file\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a2ecbc531e3d9f97df5110b2598cc0333}
+
+
+This function is like \hyperlink{psxbios_8h_a6dbc3e4fc55029b884c1f9936a7e988d}{get\+\_\+file\+\_\+size()} but doesn\textquotesingle{}t round the file size to the block size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & File name string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File size in bytes, unrounded. 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a3c71ac2b29b601601b3eae1f54eb9e78}{}\index{psxbios.\+h@{psxbios.\+h}!Get\+Kernel\+Date@{Get\+Kernel\+Date}}
+\index{Get\+Kernel\+Date@{Get\+Kernel\+Date}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Get\+Kernel\+Date}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long Get\+Kernel\+Date (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a3c71ac2b29b601601b3eae1f54eb9e78}
+
+
+Returns P\+S\+X kernel date. 
+
+\begin{DoxyReturn}{Returns}
+Kernel date n 0x\+Y\+Y\+Y\+Y\+M\+M\+D\+D B\+C\+D format. 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_aa504fdc96f72b6cdbdfdaabd6f3cd36f}{}\index{psxbios.\+h@{psxbios.\+h}!Get\+Kernel\+Rom\+Version@{Get\+Kernel\+Rom\+Version}}
+\index{Get\+Kernel\+Rom\+Version@{Get\+Kernel\+Rom\+Version}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Get\+Kernel\+Rom\+Version}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Get\+Kernel\+Rom\+Version (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_aa504fdc96f72b6cdbdfdaabd6f3cd36f}
+
+
+Returns a pointer to a zero-\/terminated string which contains the kernel R\+O\+M version. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to a zero-\/terminated string which contains the kernel R\+O\+M version. 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a58edc852ee737591c6ac76dff5ee72ae}{}\index{psxbios.\+h@{psxbios.\+h}!Get\+Ram\+Size@{Get\+Ram\+Size}}
+\index{Get\+Ram\+Size@{Get\+Ram\+Size}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Get\+Ram\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Ram\+Size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a58edc852ee737591c6ac76dff5ee72ae}
+
+
+\hyperlink{psxbios_8h_a58edc852ee737591c6ac76dff5ee72ae}{Get\+Ram\+Size()} should return size of R\+A\+M in bytes. 
+
+It doesn\textquotesingle{}t seem to work most times. On S\+C\+P\+H1001, it returns 0. On S\+C\+P\+H1000, it returns 2 (which is the number of megabytes of R\+A\+M the P\+S\+X has.) \begin{DoxyReturn}{Returns}
+Size of R\+A\+M in bytes. 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a66b2d44ad09a4d85251e2460da420634}{}\index{psxbios.\+h@{psxbios.\+h}!Get\+System\+Rom\+Version@{Get\+System\+Rom\+Version}}
+\index{Get\+System\+Rom\+Version@{Get\+System\+Rom\+Version}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Get\+System\+Rom\+Version}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Get\+System\+Rom\+Version (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a66b2d44ad09a4d85251e2460da420634}
+
+
+Returns a pointer to a zero-\/terminated string which contains the system R\+O\+M version. 
+
+\begin{DoxyReturn}{Returns}
+Zero-\/terminated string which contains the system R\+O\+M version. 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a631bf3a8e2051fcf15a44cdb4a6ffa92}{}\index{psxbios.\+h@{psxbios.\+h}!Init\+Heap@{Init\+Heap}}
+\index{Init\+Heap@{Init\+Heap}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Init\+Heap}]{\setlength{\rightskip}{0pt plus 5cm}void Init\+Heap (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{block, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a631bf3a8e2051fcf15a44cdb4a6ffa92}
+\hypertarget{psxbios_8h_ac2099f76111a63979b37723f6c4b1a83}{}\index{psxbios.\+h@{psxbios.\+h}!Load\+Exec@{Load\+Exec}}
+\index{Load\+Exec@{Load\+Exec}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Load\+Exec}]{\setlength{\rightskip}{0pt plus 5cm}void Load\+Exec (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_ac2099f76111a63979b37723f6c4b1a83}
+
+
+Replaces the executable image in memory with the one contained in another executable file in P\+S\+X-\/\+E\+X\+E format. 
+
+W\+A\+R\+N\+I\+N\+G\+: Does not work right now.
+
+Most likely you want \hyperlink{runexe_8h_aa420b9e1698b96e0c5be7becee98986d}{P\+S\+X\+\_\+\+Run\+Exe()} 
+\begin{DoxyParams}{Parameters}
+{\em name} & Path name of P\+S\+X-\/\+E\+X\+E executable \\
+\hline
+{\em argc} & Number of arguments \\
+\hline
+{\em argv} & Pointer to an array of string pointers for each argument \\
+\hline
+\end{DoxyParams}
+\hypertarget{psxbios_8h_a77711607ddd67fe72e4f7ad745343a1b}{}\index{psxbios.\+h@{psxbios.\+h}!nextfile@{nextfile}}
+\index{nextfile@{nextfile}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{nextfile}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf D\+I\+R\+E\+N\+T\+R\+Y}$\ast$ nextfile (
+\begin{DoxyParamCaption}
+\item[{struct {\bf D\+I\+R\+E\+N\+T\+R\+Y} $\ast$}]{dir}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a77711607ddd67fe72e4f7ad745343a1b}
+
+
+Finds a file with the same conditions as the previous call to \hyperlink{psxbios_8h_ad8502fc1fd70536f6449b33681a8660a}{firstfile()}. 
+
+If a corresponding file is found, file information is stored to the structure pointed to by dir.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Pointer to a struct \hyperlink{structDIRENTRY}{D\+I\+R\+E\+N\+T\+R\+Y} object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+dir on success, N\+U\+L\+L on failure. 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a1eb5d0b3272b48108ee2d2f3daca35ae}{}\index{psxbios.\+h@{psxbios.\+h}!Open\+Event@{Open\+Event}}
+\index{Open\+Event@{Open\+Event}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Open\+Event}]{\setlength{\rightskip}{0pt plus 5cm}int Open\+Event (
+\begin{DoxyParamCaption}
+\item[{int}]{desc, }
+\item[{int}]{spec, }
+\item[{int}]{mode, }
+\item[{int $\ast$($\ast$)(void)}]{func}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a1eb5d0b3272b48108ee2d2f3daca35ae}
+
+
+Opens an event, and returns its identifier Must be executed in a critical section. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em desc} & Numerical cause descriptor \\
+\hline
+{\em spec} & Numerical event type \\
+\hline
+{\em mode} & Numerical mode \\
+\hline
+{\em func} & Function pointer to callback function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Numerical identifier for the event opened 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a0769cb9c04110f637484da582559d0d5}{}\index{psxbios.\+h@{psxbios.\+h}!P\+A\+D\+\_\+dr@{P\+A\+D\+\_\+dr}}
+\index{P\+A\+D\+\_\+dr@{P\+A\+D\+\_\+dr}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{P\+A\+D\+\_\+dr}]{\setlength{\rightskip}{0pt plus 5cm}int P\+A\+D\+\_\+dr (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a0769cb9c04110f637484da582559d0d5}
+\hypertarget{psxbios_8h_a5e03b4365dd0f92c5e3a40dc4b1538d4}{}\index{psxbios.\+h@{psxbios.\+h}!P\+A\+D\+\_\+init@{P\+A\+D\+\_\+init}}
+\index{P\+A\+D\+\_\+init@{P\+A\+D\+\_\+init}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{P\+A\+D\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void P\+A\+D\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{mode, }
+\item[{unsigned long $\ast$}]{pad\+\_\+buf}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a5e03b4365dd0f92c5e3a40dc4b1538d4}
+\hypertarget{psxbios_8h_a838195c23dd155643f6aab9d521a69dd}{}\index{psxbios.\+h@{psxbios.\+h}!Remove\+R\+Cnt\+Handler@{Remove\+R\+Cnt\+Handler}}
+\index{Remove\+R\+Cnt\+Handler@{Remove\+R\+Cnt\+Handler}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Remove\+R\+Cnt\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Remove\+R\+Cnt\+Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{spec}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a838195c23dd155643f6aab9d521a69dd}
+\hypertarget{psxbios_8h_aef1d7bee4b9c874afd1022c8a93c200b}{}\index{psxbios.\+h@{psxbios.\+h}!Reset\+Entry\+Int@{Reset\+Entry\+Int}}
+\index{Reset\+Entry\+Int@{Reset\+Entry\+Int}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Reset\+Entry\+Int}]{\setlength{\rightskip}{0pt plus 5cm}void Reset\+Entry\+Int (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_aef1d7bee4b9c874afd1022c8a93c200b}
+\hypertarget{psxbios_8h_a50991dfa531f73b55470ffa1bbc502d6}{}\index{psxbios.\+h@{psxbios.\+h}!Set\+R\+Cnt\+Handler@{Set\+R\+Cnt\+Handler}}
+\index{Set\+R\+Cnt\+Handler@{Set\+R\+Cnt\+Handler}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Set\+R\+Cnt\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Set\+R\+Cnt\+Handler (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)()}]{callback, }
+\item[{int}]{spec, }
+\item[{unsigned short}]{target}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a50991dfa531f73b55470ffa1bbc502d6}
+\hypertarget{psxbios_8h_a430b3954768dbbaf1e0dc50a9c5d0cfa}{}\index{psxbios.\+h@{psxbios.\+h}!Sys\+Deq\+Int\+R\+P@{Sys\+Deq\+Int\+R\+P}}
+\index{Sys\+Deq\+Int\+R\+P@{Sys\+Deq\+Int\+R\+P}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Sys\+Deq\+Int\+R\+P}]{\setlength{\rightskip}{0pt plus 5cm}void Sys\+Deq\+Int\+R\+P (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{unsigned int $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a430b3954768dbbaf1e0dc50a9c5d0cfa}
+\hypertarget{psxbios_8h_a9b79cb33f98f34c3807deb7e4bf1f326}{}\index{psxbios.\+h@{psxbios.\+h}!Sys\+Enq\+Int\+R\+P@{Sys\+Enq\+Int\+R\+P}}
+\index{Sys\+Enq\+Int\+R\+P@{Sys\+Enq\+Int\+R\+P}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Sys\+Enq\+Int\+R\+P}]{\setlength{\rightskip}{0pt plus 5cm}void Sys\+Enq\+Int\+R\+P (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{unsigned int $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a9b79cb33f98f34c3807deb7e4bf1f326}
+\hypertarget{psxbios_8h_a8bde602bcdfff76cebf596a025cb46cb}{}\index{psxbios.\+h@{psxbios.\+h}!Test\+Event@{Test\+Event}}
+\index{Test\+Event@{Test\+Event}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Test\+Event}]{\setlength{\rightskip}{0pt plus 5cm}int Test\+Event (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{event}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a8bde602bcdfff76cebf596a025cb46cb}
+
+
+Checks if the event specified by its identifier has occured. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Numerical event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the event has occured, 0 if it has not 
+\end{DoxyReturn}
+\hypertarget{psxbios_8h_a1c5a93d3001cc9137460b33178866d8b}{}\index{psxbios.\+h@{psxbios.\+h}!Wait\+Event@{Wait\+Event}}
+\index{Wait\+Event@{Wait\+Event}!psxbios.\+h@{psxbios.\+h}}
+\subsubsection[{Wait\+Event}]{\setlength{\rightskip}{0pt plus 5cm}int Wait\+Event (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{event}
+\end{DoxyParamCaption}
+)}\label{psxbios_8h_a1c5a93d3001cc9137460b33178866d8b}
+
+
+Waits until the event specified by identifier occurs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Numerical event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, 0 on failure. 
+\end{DoxyReturn}

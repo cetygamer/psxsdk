@@ -1,0 +1,509 @@
+\hypertarget{errno_8h}{}\section{libpsx/include/errno.h File Reference}
+\label{errno_8h}\index{libpsx/include/errno.\+h@{libpsx/include/errno.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{errno_8h_add669d31505a077f769cff8e66c780b3}{E\+P\+E\+R\+M}~1		/$\ast$ Operation not permitted $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a03e689f378f643d16ea7537918528a48}{E\+N\+O\+E\+N\+T}~2		/$\ast$ No such file or directory $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a462e47a8af6288232a5df548221ada4c}{E\+S\+R\+C\+H}~3		/$\ast$ No such process $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a46b83d9f6c23b1b65a8cecfd775ddaed}{E\+I\+N\+T\+R}~4		/$\ast$ Interrupted system call $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a70979f50f9c83e5aebab3d6a1bd4cf35}{E\+I\+O}~5		/$\ast$ Input/output error $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a2b3884b11e4932bd372bb6d899d6fbfe}{E\+N\+X\+I\+O}~6		/$\ast$ Device not configured $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aba8481985c201ff726f349d7f2d09895}{E2\+B\+I\+G}~7		/$\ast$ Argument list too long $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4d0b1b435ec441e7d50a430b83df5832}{E\+N\+O\+E\+X\+E\+C}~8		/$\ast$ Exec format error $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ac54507d66b43ad12f9356257323c0018}{E\+B\+A\+D\+F}~9		/$\ast$ Bad file descriptor $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a47b42c351e0e011a048058d224205c0f}{E\+C\+H\+I\+L\+D}~10		/$\ast$ No child processes $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a55cc70ce0ba661298f3c412095dfeeb6}{E\+D\+E\+A\+D\+L\+K}~11		/$\ast$ Resource deadlock avoided $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a6a05c923dad0c1208043e9c20a58c8e5}{E\+N\+O\+M\+E\+M}~12		/$\ast$ Cannot allocate memory $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ac2a2e9fa555401f94478f74e01868032}{E\+A\+C\+C\+E\+S}~13		/$\ast$ Permission denied $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a3f317946e043623f9d6b93dbf60e6316}{E\+F\+A\+U\+L\+T}~14		/$\ast$ Bad address $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa0a4b0e307e83f52be51099f01156936}{E\+N\+O\+T\+B\+L\+K}~15		/$\ast$ Block device required $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a8368025077a0385849d6817b2007c095}{E\+B\+U\+S\+Y}~16		/$\ast$ Device busy $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a0a3bef9e5c47e42917692b5dae3b5498}{E\+E\+X\+I\+S\+T}~17		/$\ast$ File exists $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a3396cf9fb0ff5af3a18dd2a2bbdb21e1}{E\+X\+D\+E\+V}~18		/$\ast$ Cross-\/device link $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ab9b8cc17d1947160d13faaba7a18d6d1}{E\+N\+O\+D\+E\+V}~19		/$\ast$ Operation not supported by device $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a9262fb92f7ef662d0bdd577912a5b101}{E\+N\+O\+T\+D\+I\+R}~20		/$\ast$ Not a directory $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae22c3a1e0a38f3896de238cc30d0e19b}{E\+I\+S\+D\+I\+R}~21		/$\ast$ Is a directory $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a2d1678d5a7cc8ce499643f3b8957def4}{E\+I\+N\+V\+A\+L}~22		/$\ast$ Invalid argument $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5554094b3fb4bb6ebeb0157cb3f82a55}{E\+N\+F\+I\+L\+E}~23		/$\ast$ Too many \hyperlink{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{open} files in system $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a64a75c174882ddbfa726c7fd040f87a1}{E\+M\+F\+I\+L\+E}~24		/$\ast$ Too many \hyperlink{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{open} files $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ac3daf409082bb528032f4452a81e1034}{E\+N\+O\+T\+T\+Y}~25		/$\ast$ Inappropriate ioctl for device $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aaed12e82224923d599b6f1939c8e0971}{E\+T\+X\+T\+B\+S\+Y}~26		/$\ast$ Text file busy $\ast$/
+\item 
+\#define \hyperlink{errno_8h_af5401a500939ed1812c04ca200b95eef}{E\+F\+B\+I\+G}~27		/$\ast$ File too large $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a088abe8bad2df798edad3053d719b937}{E\+N\+O\+S\+P\+C}~28		/$\ast$ No space left on device $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a0e42d4f9fecdcf5fcca2b333252173c3}{E\+S\+P\+I\+P\+E}~29		/$\ast$ Illegal seek $\ast$/
+\item 
+\#define \hyperlink{errno_8h_acb02bb67dddd7ca8cf82634a0781d58d}{E\+R\+O\+F\+S}~30		/$\ast$ Read-\/only file system $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a97f59fa1a5a2f61b792c1b9dfc218072}{E\+M\+L\+I\+N\+K}~31		/$\ast$ Too many links $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5f8d33deb08fa27c04897b278ac7f965}{E\+P\+I\+P\+E}~32		/$\ast$ Broken pipe $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5fe247e079b591a68e0fdbf7caec5b70}{E\+D\+O\+M}~33		/$\ast$ Numerical argument out of domain $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa1591a4f3a86360108de5b9ba34980ca}{E\+R\+A\+N\+G\+E}~34		/$\ast$ Result too large or too small $\ast$/
+\item 
+\#define \hyperlink{errno_8h_af0fac1cea1165b4debec7f686edf3313}{E\+A\+G\+A\+I\+N}~35		/$\ast$ Resource temporarily unavailable $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4a3a0b3605fd3b2336455062ee8e25f0}{E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}~\hyperlink{errno_8h_af0fac1cea1165b4debec7f686edf3313}{E\+A\+G\+A\+I\+N}		/$\ast$ Operation would block $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a6c045d5be06e715cc335784a7320714e}{E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}~36		/$\ast$ Operation now in progress $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa4ccb54aa806de3e41a8515f06db85d4}{E\+A\+L\+R\+E\+A\+D\+Y}~37		/$\ast$ Operation already in progress $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae34fa7a550ac1c415daa2e114a1c0f38}{E\+N\+O\+T\+S\+O\+C\+K}~38		/$\ast$ Socket operation on non-\/socket $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a0e416d3478cf030e37e90c55d68ad97a}{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+E\+Q}~39		/$\ast$ Destination address required $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae37becfaa095a9df5c5c788bce5aa06f}{E\+M\+S\+G\+S\+I\+Z\+E}~40		/$\ast$ Message too long $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae6014faa948366b8321d755204acf755}{E\+P\+R\+O\+T\+O\+T\+Y\+P\+E}~41		/$\ast$ Protocol wrong type for socket $\ast$/
+\item 
+\#define \hyperlink{errno_8h_acd570f8ab92198653b4459773dc3bca3}{E\+N\+O\+P\+R\+O\+T\+O\+O\+P\+T}~42		/$\ast$ Protocol option not available $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ad581c46fdd4dee9419f60eaff40415e7}{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+R\+T}~43		/$\ast$ Protocol not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a891103a0628442461b41d4d85fb6d945}{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+R\+T}~44		/$\ast$ Socket type not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4b807895c74cea4d0302bf27725d4b9d}{E\+O\+P\+N\+O\+T\+S\+U\+P\+P}~45		/$\ast$ Operation not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a871b9fabb281dbc2d3b81cb79c163c20}{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T}~46		/$\ast$ Protocol family not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4c3a793b4d51cb7dd020af92e536fe21}{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T}~47		/$\ast$ Address family not supported by protocol family $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a61676e39b42371c65c3b960a91887b03}{E\+A\+D\+D\+R\+I\+N\+U\+S\+E}~48		/$\ast$ Address already in use $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a556612e55358838192165684c971a44f}{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+I\+L}~49		/$\ast$ Can\textquotesingle{}t assign requested address $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aac51995026fa19cdd0ad84a272304af0}{E\+N\+E\+T\+D\+O\+W\+N}~50		/$\ast$ Network is down $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a3f91f1ad503432783c7a5d1481b45419}{E\+N\+E\+T\+U\+N\+R\+E\+A\+C\+H}~51		/$\ast$ Network is unreachable $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a92750db73ff8e83591c977bbb3a5bea1}{E\+N\+E\+T\+R\+E\+S\+E\+T}~52		/$\ast$ Network dropped connection on reset $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a45342991e001e28bbf87916d92b7e09a}{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+E\+D}~53		/$\ast$ Software caused connection \hyperlink{misc_8c_a8dec7c95227ff149687066cf04029191}{abort} $\ast$/
+\item 
+\#define \hyperlink{errno_8h_add4258b08af02fbe4590fbaae7260037}{E\+C\+O\+N\+N\+R\+E\+S\+E\+T}~54		/$\ast$ Connection reset by peer $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a9e655f47bfd914a1174f281fc31cf63d}{E\+N\+O\+B\+U\+F\+S}~55		/$\ast$ No buffer space available $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a164ca8549da7a385e2fe1cba823b9eaf}{E\+I\+S\+C\+O\+N\+N}~56		/$\ast$ Socket is already connected $\ast$/
+\item 
+\#define \hyperlink{errno_8h_af23e48762a0676f49d480db91cfd5e4b}{E\+N\+O\+T\+C\+O\+N\+N}~57		/$\ast$ Socket is not connected $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a2a55c5dd8b54ff5aace6c274c6726d68}{E\+S\+H\+U\+T\+D\+O\+W\+N}~58		/$\ast$ Can\textquotesingle{}t send after socket shutdown $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a10426080250efba47f4aaf254036ff00}{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+F\+S}~59		/$\ast$ Too many references\+: can\textquotesingle{}t splice $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a597718e59a8fc9c4d4ab63f5a34e28b1}{E\+T\+I\+M\+E\+D\+O\+U\+T}~60		/$\ast$ Operation timed out $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aad88020b394ef1aa4af2f4ef9b4c8b39}{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+E\+D}~61		/$\ast$ Connection refused $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a2f78c246352d2bf2f19dc5d43da2f0c9}{E\+L\+O\+O\+P}~62		/$\ast$ Too many levels of symbolic links $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a41d5ab3a8a05f9c5eab536c9cfba305b}{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+N\+G}~63		/$\ast$ File \hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name} too long $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa92bcaf70544db6998f4c503026359c5}{E\+H\+O\+S\+T\+D\+O\+W\+N}~64		/$\ast$ Host is down $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a53e186028fc992c3341ccb0d4d239b24}{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+C\+H}~65		/$\ast$ No route to host $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa0f602f3fd369a6fede82190710b9c5c}{E\+N\+O\+T\+E\+M\+P\+T\+Y}~66		/$\ast$ Directory not empty $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a801513ca187af849409e07fda8554a83}{E\+P\+R\+O\+C\+L\+I\+M}~67		/$\ast$ Too many processes $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a9b153104ed38c8579f009f81bc7b2dc9}{E\+U\+S\+E\+R\+S}~68		/$\ast$ Too many users $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa5a48566b00cf9062d9deeeb0682cdaf}{E\+D\+Q\+U\+O\+T}~69		/$\ast$ Disc quota exceeded $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a09e189d2214d9fe2847d27bf270ca1d7}{E\+S\+T\+A\+L\+E}~70		/$\ast$ Stale N\+F\+S file handle $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5e1edba49c18fc631dbf54ff53702d4a}{E\+R\+E\+M\+O\+T\+E}~71		/$\ast$ Too many levels of remote in path $\ast$/
+\item 
+\#define \hyperlink{errno_8h_accd95700f2ccb6e1b7209f333d097fbd}{E\+B\+A\+D\+R\+P\+C}~72		/$\ast$ R\+P\+C struct is bad $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a04d0929518f1e98cf4bc19e369e1c22e}{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+C\+H}~73		/$\ast$ R\+P\+C version wrong $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a90f3aa66e6674d20ee8865cf13ceef96}{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+I\+L}~74		/$\ast$ R\+P\+C prog. not avail $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ab8b339b25f51a8258322489cd156297d}{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+C\+H}~75		/$\ast$ Program version wrong $\ast$/
+\item 
+\#define \hyperlink{errno_8h_acf125cc6a4f2ebea3cd54c56026dd019}{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+I\+L}~76		/$\ast$ Bad procedure for program $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a65e1a7bda392be276a701988d0604e63}{E\+N\+O\+L\+C\+K}~77		/$\ast$ No locks available $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a43785b9969e0bd1af532dbde06c5540b}{E\+N\+O\+S\+Y\+S}~78		/$\ast$ Function not implemented $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a940ffe53c91c0b90f8188122ea1bdbf0}{E\+F\+T\+Y\+P\+E}~79		/$\ast$ Inappropriate file type or format $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a337712b7a18369302de561206ac9fe67}{E\+A\+U\+T\+H}~80		/$\ast$ Authentication error $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5ce75bab474b7024f241605d2ace2011}{E\+N\+E\+E\+D\+A\+U\+T\+H}~81		/$\ast$ Need authenticator $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ad9913290fef890d46a6b7e8b4bfb1c29}{E\+I\+D\+R\+M}~82		/$\ast$ Identifier removed $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae40596feaa3f66f5440b485bf7c1c2d1}{E\+N\+O\+M\+S\+G}~83		/$\ast$ No message of desired type $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a888552a5e3c78b5883904cf5d55244ab}{E\+O\+V\+E\+R\+F\+L\+O\+W}~84		/$\ast$ Value too large to be stored in data type $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ac6c071293826a4e66a717bb38db7794d}{E\+I\+L\+S\+E\+Q}~85		/$\ast$ Illegal byte sequence $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a91457bbf35f0f1085619a99423bb1f33}{E\+N\+O\+T\+S\+U\+P}~86		/$\ast$ Not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a9532d840ef91fd8e1ecc5d7ca7cbf212}{E\+C\+A\+N\+C\+E\+L\+E\+D}~87		/$\ast$ Operation canceled $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a251e9b536ed96ccb16aa28ca2d5bd656}{E\+B\+A\+D\+M\+S\+G}~88		/$\ast$ Bad or Corrupt message $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a0030614bc864d1b24eaedd71585acc27}{E\+N\+O\+D\+A\+T\+A}~89		/$\ast$ No message available $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ad88bc6ea94ec1a5e91d3651677d85c00}{E\+N\+O\+S\+R}~90		/$\ast$ No S\+T\+R\+E\+A\+M resources $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a7cea86ddbdacae0b391674e680f17bdb}{E\+N\+O\+S\+T\+R}~91		/$\ast$ Not a S\+T\+R\+E\+A\+M $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ab59cf3c65eaf836d5c647fa2a24ca649}{E\+T\+I\+M\+E}~92		/$\ast$ S\+T\+R\+E\+A\+M ioctl timeout $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a55a8e5eff7a0d587756f49933483f876}{E\+N\+O\+A\+T\+T\+R}~93		/$\ast$ Attribute not found $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4d7b69d7ce0dfa0a9b998403b4ffe226}{E\+M\+U\+L\+T\+I\+H\+O\+P}~94		/$\ast$ Multihop attempted $\ast$/
+\item 
+\#define \hyperlink{errno_8h_add4408349a756880be9d91efadb8aed0}{E\+N\+O\+L\+I\+N\+K}~95		/$\ast$ Link has been severed $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5a92de56e8ebe19cbd8a2ce8c80ad03e}{E\+P\+R\+O\+T\+O}~96		/$\ast$ Protocol error $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa17adaafb4877f1753128a30266ea0fd}{E\+L\+A\+S\+T}~96		/$\ast$ Must equal largest \hyperlink{libc_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno} $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{errno_8h_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{errno_8h_aba8481985c201ff726f349d7f2d09895}{}\index{errno.\+h@{errno.\+h}!E2\+B\+I\+G@{E2\+B\+I\+G}}
+\index{E2\+B\+I\+G@{E2\+B\+I\+G}!errno.\+h@{errno.\+h}}
+\subsubsection[{E2\+B\+I\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E2\+B\+I\+G~7		/$\ast$ Argument list too long $\ast$/}\label{errno_8h_aba8481985c201ff726f349d7f2d09895}
+\hypertarget{errno_8h_ac2a2e9fa555401f94478f74e01868032}{}\index{errno.\+h@{errno.\+h}!E\+A\+C\+C\+E\+S@{E\+A\+C\+C\+E\+S}}
+\index{E\+A\+C\+C\+E\+S@{E\+A\+C\+C\+E\+S}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+A\+C\+C\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+A\+C\+C\+E\+S~13		/$\ast$ Permission denied $\ast$/}\label{errno_8h_ac2a2e9fa555401f94478f74e01868032}
+\hypertarget{errno_8h_a61676e39b42371c65c3b960a91887b03}{}\index{errno.\+h@{errno.\+h}!E\+A\+D\+D\+R\+I\+N\+U\+S\+E@{E\+A\+D\+D\+R\+I\+N\+U\+S\+E}}
+\index{E\+A\+D\+D\+R\+I\+N\+U\+S\+E@{E\+A\+D\+D\+R\+I\+N\+U\+S\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+A\+D\+D\+R\+I\+N\+U\+S\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+A\+D\+D\+R\+I\+N\+U\+S\+E~48		/$\ast$ Address already in use $\ast$/}\label{errno_8h_a61676e39b42371c65c3b960a91887b03}
+\hypertarget{errno_8h_a556612e55358838192165684c971a44f}{}\index{errno.\+h@{errno.\+h}!E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+I\+L@{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+I\+L}}
+\index{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+I\+L@{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+I\+L}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+I\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+I\+L~49		/$\ast$ Can\textquotesingle{}t assign requested address $\ast$/}\label{errno_8h_a556612e55358838192165684c971a44f}
+\hypertarget{errno_8h_a4c3a793b4d51cb7dd020af92e536fe21}{}\index{errno.\+h@{errno.\+h}!E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T@{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T}}
+\index{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T@{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T~47		/$\ast$ Address family not supported by protocol family $\ast$/}\label{errno_8h_a4c3a793b4d51cb7dd020af92e536fe21}
+\hypertarget{errno_8h_af0fac1cea1165b4debec7f686edf3313}{}\index{errno.\+h@{errno.\+h}!E\+A\+G\+A\+I\+N@{E\+A\+G\+A\+I\+N}}
+\index{E\+A\+G\+A\+I\+N@{E\+A\+G\+A\+I\+N}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+A\+G\+A\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+A\+G\+A\+I\+N~35		/$\ast$ Resource temporarily unavailable $\ast$/}\label{errno_8h_af0fac1cea1165b4debec7f686edf3313}
+\hypertarget{errno_8h_aa4ccb54aa806de3e41a8515f06db85d4}{}\index{errno.\+h@{errno.\+h}!E\+A\+L\+R\+E\+A\+D\+Y@{E\+A\+L\+R\+E\+A\+D\+Y}}
+\index{E\+A\+L\+R\+E\+A\+D\+Y@{E\+A\+L\+R\+E\+A\+D\+Y}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+A\+L\+R\+E\+A\+D\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+A\+L\+R\+E\+A\+D\+Y~37		/$\ast$ Operation already in progress $\ast$/}\label{errno_8h_aa4ccb54aa806de3e41a8515f06db85d4}
+\hypertarget{errno_8h_a337712b7a18369302de561206ac9fe67}{}\index{errno.\+h@{errno.\+h}!E\+A\+U\+T\+H@{E\+A\+U\+T\+H}}
+\index{E\+A\+U\+T\+H@{E\+A\+U\+T\+H}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+A\+U\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+A\+U\+T\+H~80		/$\ast$ Authentication error $\ast$/}\label{errno_8h_a337712b7a18369302de561206ac9fe67}
+\hypertarget{errno_8h_ac54507d66b43ad12f9356257323c0018}{}\index{errno.\+h@{errno.\+h}!E\+B\+A\+D\+F@{E\+B\+A\+D\+F}}
+\index{E\+B\+A\+D\+F@{E\+B\+A\+D\+F}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+B\+A\+D\+F}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+B\+A\+D\+F~9		/$\ast$ Bad file descriptor $\ast$/}\label{errno_8h_ac54507d66b43ad12f9356257323c0018}
+\hypertarget{errno_8h_a251e9b536ed96ccb16aa28ca2d5bd656}{}\index{errno.\+h@{errno.\+h}!E\+B\+A\+D\+M\+S\+G@{E\+B\+A\+D\+M\+S\+G}}
+\index{E\+B\+A\+D\+M\+S\+G@{E\+B\+A\+D\+M\+S\+G}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+B\+A\+D\+M\+S\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+B\+A\+D\+M\+S\+G~88		/$\ast$ Bad or Corrupt message $\ast$/}\label{errno_8h_a251e9b536ed96ccb16aa28ca2d5bd656}
+\hypertarget{errno_8h_accd95700f2ccb6e1b7209f333d097fbd}{}\index{errno.\+h@{errno.\+h}!E\+B\+A\+D\+R\+P\+C@{E\+B\+A\+D\+R\+P\+C}}
+\index{E\+B\+A\+D\+R\+P\+C@{E\+B\+A\+D\+R\+P\+C}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+B\+A\+D\+R\+P\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+B\+A\+D\+R\+P\+C~72		/$\ast$ R\+P\+C struct is bad $\ast$/}\label{errno_8h_accd95700f2ccb6e1b7209f333d097fbd}
+\hypertarget{errno_8h_a8368025077a0385849d6817b2007c095}{}\index{errno.\+h@{errno.\+h}!E\+B\+U\+S\+Y@{E\+B\+U\+S\+Y}}
+\index{E\+B\+U\+S\+Y@{E\+B\+U\+S\+Y}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+B\+U\+S\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+B\+U\+S\+Y~16		/$\ast$ Device busy $\ast$/}\label{errno_8h_a8368025077a0385849d6817b2007c095}
+\hypertarget{errno_8h_a9532d840ef91fd8e1ecc5d7ca7cbf212}{}\index{errno.\+h@{errno.\+h}!E\+C\+A\+N\+C\+E\+L\+E\+D@{E\+C\+A\+N\+C\+E\+L\+E\+D}}
+\index{E\+C\+A\+N\+C\+E\+L\+E\+D@{E\+C\+A\+N\+C\+E\+L\+E\+D}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+C\+A\+N\+C\+E\+L\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+C\+A\+N\+C\+E\+L\+E\+D~87		/$\ast$ Operation canceled $\ast$/}\label{errno_8h_a9532d840ef91fd8e1ecc5d7ca7cbf212}
+\hypertarget{errno_8h_a47b42c351e0e011a048058d224205c0f}{}\index{errno.\+h@{errno.\+h}!E\+C\+H\+I\+L\+D@{E\+C\+H\+I\+L\+D}}
+\index{E\+C\+H\+I\+L\+D@{E\+C\+H\+I\+L\+D}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+C\+H\+I\+L\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+C\+H\+I\+L\+D~10		/$\ast$ No child processes $\ast$/}\label{errno_8h_a47b42c351e0e011a048058d224205c0f}
+\hypertarget{errno_8h_a45342991e001e28bbf87916d92b7e09a}{}\index{errno.\+h@{errno.\+h}!E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+E\+D@{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+E\+D}}
+\index{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+E\+D@{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+E\+D}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+E\+D~53		/$\ast$ Software caused connection {\bf abort} $\ast$/}\label{errno_8h_a45342991e001e28bbf87916d92b7e09a}
+\hypertarget{errno_8h_aad88020b394ef1aa4af2f4ef9b4c8b39}{}\index{errno.\+h@{errno.\+h}!E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+E\+D@{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+E\+D}}
+\index{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+E\+D@{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+E\+D}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+E\+D~61		/$\ast$ Connection refused $\ast$/}\label{errno_8h_aad88020b394ef1aa4af2f4ef9b4c8b39}
+\hypertarget{errno_8h_add4258b08af02fbe4590fbaae7260037}{}\index{errno.\+h@{errno.\+h}!E\+C\+O\+N\+N\+R\+E\+S\+E\+T@{E\+C\+O\+N\+N\+R\+E\+S\+E\+T}}
+\index{E\+C\+O\+N\+N\+R\+E\+S\+E\+T@{E\+C\+O\+N\+N\+R\+E\+S\+E\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+C\+O\+N\+N\+R\+E\+S\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+C\+O\+N\+N\+R\+E\+S\+E\+T~54		/$\ast$ Connection reset by peer $\ast$/}\label{errno_8h_add4258b08af02fbe4590fbaae7260037}
+\hypertarget{errno_8h_a55cc70ce0ba661298f3c412095dfeeb6}{}\index{errno.\+h@{errno.\+h}!E\+D\+E\+A\+D\+L\+K@{E\+D\+E\+A\+D\+L\+K}}
+\index{E\+D\+E\+A\+D\+L\+K@{E\+D\+E\+A\+D\+L\+K}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+D\+E\+A\+D\+L\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+D\+E\+A\+D\+L\+K~11		/$\ast$ Resource deadlock avoided $\ast$/}\label{errno_8h_a55cc70ce0ba661298f3c412095dfeeb6}
+\hypertarget{errno_8h_a0e416d3478cf030e37e90c55d68ad97a}{}\index{errno.\+h@{errno.\+h}!E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+E\+Q@{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+E\+Q}}
+\index{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+E\+Q@{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+E\+Q}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+E\+Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+E\+Q~39		/$\ast$ Destination address required $\ast$/}\label{errno_8h_a0e416d3478cf030e37e90c55d68ad97a}
+\hypertarget{errno_8h_a5fe247e079b591a68e0fdbf7caec5b70}{}\index{errno.\+h@{errno.\+h}!E\+D\+O\+M@{E\+D\+O\+M}}
+\index{E\+D\+O\+M@{E\+D\+O\+M}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+D\+O\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+D\+O\+M~33		/$\ast$ Numerical argument out of domain $\ast$/}\label{errno_8h_a5fe247e079b591a68e0fdbf7caec5b70}
+\hypertarget{errno_8h_aa5a48566b00cf9062d9deeeb0682cdaf}{}\index{errno.\+h@{errno.\+h}!E\+D\+Q\+U\+O\+T@{E\+D\+Q\+U\+O\+T}}
+\index{E\+D\+Q\+U\+O\+T@{E\+D\+Q\+U\+O\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+D\+Q\+U\+O\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+D\+Q\+U\+O\+T~69		/$\ast$ Disc quota exceeded $\ast$/}\label{errno_8h_aa5a48566b00cf9062d9deeeb0682cdaf}
+\hypertarget{errno_8h_a0a3bef9e5c47e42917692b5dae3b5498}{}\index{errno.\+h@{errno.\+h}!E\+E\+X\+I\+S\+T@{E\+E\+X\+I\+S\+T}}
+\index{E\+E\+X\+I\+S\+T@{E\+E\+X\+I\+S\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+E\+X\+I\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+E\+X\+I\+S\+T~17		/$\ast$ File exists $\ast$/}\label{errno_8h_a0a3bef9e5c47e42917692b5dae3b5498}
+\hypertarget{errno_8h_a3f317946e043623f9d6b93dbf60e6316}{}\index{errno.\+h@{errno.\+h}!E\+F\+A\+U\+L\+T@{E\+F\+A\+U\+L\+T}}
+\index{E\+F\+A\+U\+L\+T@{E\+F\+A\+U\+L\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+F\+A\+U\+L\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+F\+A\+U\+L\+T~14		/$\ast$ Bad address $\ast$/}\label{errno_8h_a3f317946e043623f9d6b93dbf60e6316}
+\hypertarget{errno_8h_af5401a500939ed1812c04ca200b95eef}{}\index{errno.\+h@{errno.\+h}!E\+F\+B\+I\+G@{E\+F\+B\+I\+G}}
+\index{E\+F\+B\+I\+G@{E\+F\+B\+I\+G}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+F\+B\+I\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+F\+B\+I\+G~27		/$\ast$ File too large $\ast$/}\label{errno_8h_af5401a500939ed1812c04ca200b95eef}
+\hypertarget{errno_8h_a940ffe53c91c0b90f8188122ea1bdbf0}{}\index{errno.\+h@{errno.\+h}!E\+F\+T\+Y\+P\+E@{E\+F\+T\+Y\+P\+E}}
+\index{E\+F\+T\+Y\+P\+E@{E\+F\+T\+Y\+P\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+F\+T\+Y\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+F\+T\+Y\+P\+E~79		/$\ast$ Inappropriate file type or format $\ast$/}\label{errno_8h_a940ffe53c91c0b90f8188122ea1bdbf0}
+\hypertarget{errno_8h_aa92bcaf70544db6998f4c503026359c5}{}\index{errno.\+h@{errno.\+h}!E\+H\+O\+S\+T\+D\+O\+W\+N@{E\+H\+O\+S\+T\+D\+O\+W\+N}}
+\index{E\+H\+O\+S\+T\+D\+O\+W\+N@{E\+H\+O\+S\+T\+D\+O\+W\+N}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+H\+O\+S\+T\+D\+O\+W\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+H\+O\+S\+T\+D\+O\+W\+N~64		/$\ast$ Host is down $\ast$/}\label{errno_8h_aa92bcaf70544db6998f4c503026359c5}
+\hypertarget{errno_8h_a53e186028fc992c3341ccb0d4d239b24}{}\index{errno.\+h@{errno.\+h}!E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+C\+H@{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+C\+H}}
+\index{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+C\+H@{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+C\+H}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+C\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+C\+H~65		/$\ast$ No route to host $\ast$/}\label{errno_8h_a53e186028fc992c3341ccb0d4d239b24}
+\hypertarget{errno_8h_ad9913290fef890d46a6b7e8b4bfb1c29}{}\index{errno.\+h@{errno.\+h}!E\+I\+D\+R\+M@{E\+I\+D\+R\+M}}
+\index{E\+I\+D\+R\+M@{E\+I\+D\+R\+M}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+I\+D\+R\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+I\+D\+R\+M~82		/$\ast$ Identifier removed $\ast$/}\label{errno_8h_ad9913290fef890d46a6b7e8b4bfb1c29}
+\hypertarget{errno_8h_ac6c071293826a4e66a717bb38db7794d}{}\index{errno.\+h@{errno.\+h}!E\+I\+L\+S\+E\+Q@{E\+I\+L\+S\+E\+Q}}
+\index{E\+I\+L\+S\+E\+Q@{E\+I\+L\+S\+E\+Q}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+I\+L\+S\+E\+Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+I\+L\+S\+E\+Q~85		/$\ast$ Illegal byte sequence $\ast$/}\label{errno_8h_ac6c071293826a4e66a717bb38db7794d}
+\hypertarget{errno_8h_a6c045d5be06e715cc335784a7320714e}{}\index{errno.\+h@{errno.\+h}!E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S@{E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}}
+\index{E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S@{E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S~36		/$\ast$ Operation now in progress $\ast$/}\label{errno_8h_a6c045d5be06e715cc335784a7320714e}
+\hypertarget{errno_8h_a46b83d9f6c23b1b65a8cecfd775ddaed}{}\index{errno.\+h@{errno.\+h}!E\+I\+N\+T\+R@{E\+I\+N\+T\+R}}
+\index{E\+I\+N\+T\+R@{E\+I\+N\+T\+R}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+I\+N\+T\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+I\+N\+T\+R~4		/$\ast$ Interrupted system call $\ast$/}\label{errno_8h_a46b83d9f6c23b1b65a8cecfd775ddaed}
+\hypertarget{errno_8h_a2d1678d5a7cc8ce499643f3b8957def4}{}\index{errno.\+h@{errno.\+h}!E\+I\+N\+V\+A\+L@{E\+I\+N\+V\+A\+L}}
+\index{E\+I\+N\+V\+A\+L@{E\+I\+N\+V\+A\+L}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+I\+N\+V\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+I\+N\+V\+A\+L~22		/$\ast$ Invalid argument $\ast$/}\label{errno_8h_a2d1678d5a7cc8ce499643f3b8957def4}
+\hypertarget{errno_8h_a70979f50f9c83e5aebab3d6a1bd4cf35}{}\index{errno.\+h@{errno.\+h}!E\+I\+O@{E\+I\+O}}
+\index{E\+I\+O@{E\+I\+O}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+I\+O~5		/$\ast$ Input/output error $\ast$/}\label{errno_8h_a70979f50f9c83e5aebab3d6a1bd4cf35}
+\hypertarget{errno_8h_a164ca8549da7a385e2fe1cba823b9eaf}{}\index{errno.\+h@{errno.\+h}!E\+I\+S\+C\+O\+N\+N@{E\+I\+S\+C\+O\+N\+N}}
+\index{E\+I\+S\+C\+O\+N\+N@{E\+I\+S\+C\+O\+N\+N}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+I\+S\+C\+O\+N\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+I\+S\+C\+O\+N\+N~56		/$\ast$ Socket is already connected $\ast$/}\label{errno_8h_a164ca8549da7a385e2fe1cba823b9eaf}
+\hypertarget{errno_8h_ae22c3a1e0a38f3896de238cc30d0e19b}{}\index{errno.\+h@{errno.\+h}!E\+I\+S\+D\+I\+R@{E\+I\+S\+D\+I\+R}}
+\index{E\+I\+S\+D\+I\+R@{E\+I\+S\+D\+I\+R}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+I\+S\+D\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+I\+S\+D\+I\+R~21		/$\ast$ Is a directory $\ast$/}\label{errno_8h_ae22c3a1e0a38f3896de238cc30d0e19b}
+\hypertarget{errno_8h_aa17adaafb4877f1753128a30266ea0fd}{}\index{errno.\+h@{errno.\+h}!E\+L\+A\+S\+T@{E\+L\+A\+S\+T}}
+\index{E\+L\+A\+S\+T@{E\+L\+A\+S\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+L\+A\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+L\+A\+S\+T~96		/$\ast$ Must equal largest {\bf errno} $\ast$/}\label{errno_8h_aa17adaafb4877f1753128a30266ea0fd}
+\hypertarget{errno_8h_a2f78c246352d2bf2f19dc5d43da2f0c9}{}\index{errno.\+h@{errno.\+h}!E\+L\+O\+O\+P@{E\+L\+O\+O\+P}}
+\index{E\+L\+O\+O\+P@{E\+L\+O\+O\+P}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+L\+O\+O\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+L\+O\+O\+P~62		/$\ast$ Too many levels of symbolic links $\ast$/}\label{errno_8h_a2f78c246352d2bf2f19dc5d43da2f0c9}
+\hypertarget{errno_8h_a64a75c174882ddbfa726c7fd040f87a1}{}\index{errno.\+h@{errno.\+h}!E\+M\+F\+I\+L\+E@{E\+M\+F\+I\+L\+E}}
+\index{E\+M\+F\+I\+L\+E@{E\+M\+F\+I\+L\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+M\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+M\+F\+I\+L\+E~24		/$\ast$ Too many {\bf open} files $\ast$/}\label{errno_8h_a64a75c174882ddbfa726c7fd040f87a1}
+\hypertarget{errno_8h_a97f59fa1a5a2f61b792c1b9dfc218072}{}\index{errno.\+h@{errno.\+h}!E\+M\+L\+I\+N\+K@{E\+M\+L\+I\+N\+K}}
+\index{E\+M\+L\+I\+N\+K@{E\+M\+L\+I\+N\+K}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+M\+L\+I\+N\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+M\+L\+I\+N\+K~31		/$\ast$ Too many links $\ast$/}\label{errno_8h_a97f59fa1a5a2f61b792c1b9dfc218072}
+\hypertarget{errno_8h_ae37becfaa095a9df5c5c788bce5aa06f}{}\index{errno.\+h@{errno.\+h}!E\+M\+S\+G\+S\+I\+Z\+E@{E\+M\+S\+G\+S\+I\+Z\+E}}
+\index{E\+M\+S\+G\+S\+I\+Z\+E@{E\+M\+S\+G\+S\+I\+Z\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+M\+S\+G\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+M\+S\+G\+S\+I\+Z\+E~40		/$\ast$ Message too long $\ast$/}\label{errno_8h_ae37becfaa095a9df5c5c788bce5aa06f}
+\hypertarget{errno_8h_a4d7b69d7ce0dfa0a9b998403b4ffe226}{}\index{errno.\+h@{errno.\+h}!E\+M\+U\+L\+T\+I\+H\+O\+P@{E\+M\+U\+L\+T\+I\+H\+O\+P}}
+\index{E\+M\+U\+L\+T\+I\+H\+O\+P@{E\+M\+U\+L\+T\+I\+H\+O\+P}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+M\+U\+L\+T\+I\+H\+O\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+M\+U\+L\+T\+I\+H\+O\+P~94		/$\ast$ Multihop attempted $\ast$/}\label{errno_8h_a4d7b69d7ce0dfa0a9b998403b4ffe226}
+\hypertarget{errno_8h_a41d5ab3a8a05f9c5eab536c9cfba305b}{}\index{errno.\+h@{errno.\+h}!E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+N\+G@{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+N\+G}}
+\index{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+N\+G@{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+N\+G}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+N\+G~63		/$\ast$ File {\bf name} too long $\ast$/}\label{errno_8h_a41d5ab3a8a05f9c5eab536c9cfba305b}
+\hypertarget{errno_8h_a5ce75bab474b7024f241605d2ace2011}{}\index{errno.\+h@{errno.\+h}!E\+N\+E\+E\+D\+A\+U\+T\+H@{E\+N\+E\+E\+D\+A\+U\+T\+H}}
+\index{E\+N\+E\+E\+D\+A\+U\+T\+H@{E\+N\+E\+E\+D\+A\+U\+T\+H}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+E\+E\+D\+A\+U\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+E\+E\+D\+A\+U\+T\+H~81		/$\ast$ Need authenticator $\ast$/}\label{errno_8h_a5ce75bab474b7024f241605d2ace2011}
+\hypertarget{errno_8h_aac51995026fa19cdd0ad84a272304af0}{}\index{errno.\+h@{errno.\+h}!E\+N\+E\+T\+D\+O\+W\+N@{E\+N\+E\+T\+D\+O\+W\+N}}
+\index{E\+N\+E\+T\+D\+O\+W\+N@{E\+N\+E\+T\+D\+O\+W\+N}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+E\+T\+D\+O\+W\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+E\+T\+D\+O\+W\+N~50		/$\ast$ Network is down $\ast$/}\label{errno_8h_aac51995026fa19cdd0ad84a272304af0}
+\hypertarget{errno_8h_a92750db73ff8e83591c977bbb3a5bea1}{}\index{errno.\+h@{errno.\+h}!E\+N\+E\+T\+R\+E\+S\+E\+T@{E\+N\+E\+T\+R\+E\+S\+E\+T}}
+\index{E\+N\+E\+T\+R\+E\+S\+E\+T@{E\+N\+E\+T\+R\+E\+S\+E\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+E\+T\+R\+E\+S\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+E\+T\+R\+E\+S\+E\+T~52		/$\ast$ Network dropped connection on reset $\ast$/}\label{errno_8h_a92750db73ff8e83591c977bbb3a5bea1}
+\hypertarget{errno_8h_a3f91f1ad503432783c7a5d1481b45419}{}\index{errno.\+h@{errno.\+h}!E\+N\+E\+T\+U\+N\+R\+E\+A\+C\+H@{E\+N\+E\+T\+U\+N\+R\+E\+A\+C\+H}}
+\index{E\+N\+E\+T\+U\+N\+R\+E\+A\+C\+H@{E\+N\+E\+T\+U\+N\+R\+E\+A\+C\+H}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+E\+T\+U\+N\+R\+E\+A\+C\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+E\+T\+U\+N\+R\+E\+A\+C\+H~51		/$\ast$ Network is unreachable $\ast$/}\label{errno_8h_a3f91f1ad503432783c7a5d1481b45419}
+\hypertarget{errno_8h_a5554094b3fb4bb6ebeb0157cb3f82a55}{}\index{errno.\+h@{errno.\+h}!E\+N\+F\+I\+L\+E@{E\+N\+F\+I\+L\+E}}
+\index{E\+N\+F\+I\+L\+E@{E\+N\+F\+I\+L\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+F\+I\+L\+E~23		/$\ast$ Too many {\bf open} files in system $\ast$/}\label{errno_8h_a5554094b3fb4bb6ebeb0157cb3f82a55}
+\hypertarget{errno_8h_a55a8e5eff7a0d587756f49933483f876}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+A\+T\+T\+R@{E\+N\+O\+A\+T\+T\+R}}
+\index{E\+N\+O\+A\+T\+T\+R@{E\+N\+O\+A\+T\+T\+R}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+A\+T\+T\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+A\+T\+T\+R~93		/$\ast$ Attribute not found $\ast$/}\label{errno_8h_a55a8e5eff7a0d587756f49933483f876}
+\hypertarget{errno_8h_a9e655f47bfd914a1174f281fc31cf63d}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+B\+U\+F\+S@{E\+N\+O\+B\+U\+F\+S}}
+\index{E\+N\+O\+B\+U\+F\+S@{E\+N\+O\+B\+U\+F\+S}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+B\+U\+F\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+B\+U\+F\+S~55		/$\ast$ No buffer space available $\ast$/}\label{errno_8h_a9e655f47bfd914a1174f281fc31cf63d}
+\hypertarget{errno_8h_a0030614bc864d1b24eaedd71585acc27}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+D\+A\+T\+A@{E\+N\+O\+D\+A\+T\+A}}
+\index{E\+N\+O\+D\+A\+T\+A@{E\+N\+O\+D\+A\+T\+A}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+D\+A\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+D\+A\+T\+A~89		/$\ast$ No message available $\ast$/}\label{errno_8h_a0030614bc864d1b24eaedd71585acc27}
+\hypertarget{errno_8h_ab9b8cc17d1947160d13faaba7a18d6d1}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+D\+E\+V@{E\+N\+O\+D\+E\+V}}
+\index{E\+N\+O\+D\+E\+V@{E\+N\+O\+D\+E\+V}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+D\+E\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+D\+E\+V~19		/$\ast$ Operation not supported by device $\ast$/}\label{errno_8h_ab9b8cc17d1947160d13faaba7a18d6d1}
+\hypertarget{errno_8h_a03e689f378f643d16ea7537918528a48}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+E\+N\+T@{E\+N\+O\+E\+N\+T}}
+\index{E\+N\+O\+E\+N\+T@{E\+N\+O\+E\+N\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+E\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+E\+N\+T~2		/$\ast$ No such file or directory $\ast$/}\label{errno_8h_a03e689f378f643d16ea7537918528a48}
+\hypertarget{errno_8h_a4d0b1b435ec441e7d50a430b83df5832}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+E\+X\+E\+C@{E\+N\+O\+E\+X\+E\+C}}
+\index{E\+N\+O\+E\+X\+E\+C@{E\+N\+O\+E\+X\+E\+C}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+E\+X\+E\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+E\+X\+E\+C~8		/$\ast$ Exec format error $\ast$/}\label{errno_8h_a4d0b1b435ec441e7d50a430b83df5832}
+\hypertarget{errno_8h_a65e1a7bda392be276a701988d0604e63}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+L\+C\+K@{E\+N\+O\+L\+C\+K}}
+\index{E\+N\+O\+L\+C\+K@{E\+N\+O\+L\+C\+K}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+L\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+L\+C\+K~77		/$\ast$ No locks available $\ast$/}\label{errno_8h_a65e1a7bda392be276a701988d0604e63}
+\hypertarget{errno_8h_add4408349a756880be9d91efadb8aed0}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+L\+I\+N\+K@{E\+N\+O\+L\+I\+N\+K}}
+\index{E\+N\+O\+L\+I\+N\+K@{E\+N\+O\+L\+I\+N\+K}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+L\+I\+N\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+L\+I\+N\+K~95		/$\ast$ Link has been severed $\ast$/}\label{errno_8h_add4408349a756880be9d91efadb8aed0}
+\hypertarget{errno_8h_a6a05c923dad0c1208043e9c20a58c8e5}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+M\+E\+M@{E\+N\+O\+M\+E\+M}}
+\index{E\+N\+O\+M\+E\+M@{E\+N\+O\+M\+E\+M}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+M\+E\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+M\+E\+M~12		/$\ast$ Cannot allocate memory $\ast$/}\label{errno_8h_a6a05c923dad0c1208043e9c20a58c8e5}
+\hypertarget{errno_8h_ae40596feaa3f66f5440b485bf7c1c2d1}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+M\+S\+G@{E\+N\+O\+M\+S\+G}}
+\index{E\+N\+O\+M\+S\+G@{E\+N\+O\+M\+S\+G}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+M\+S\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+M\+S\+G~83		/$\ast$ No message of desired type $\ast$/}\label{errno_8h_ae40596feaa3f66f5440b485bf7c1c2d1}
+\hypertarget{errno_8h_acd570f8ab92198653b4459773dc3bca3}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+P\+R\+O\+T\+O\+O\+P\+T@{E\+N\+O\+P\+R\+O\+T\+O\+O\+P\+T}}
+\index{E\+N\+O\+P\+R\+O\+T\+O\+O\+P\+T@{E\+N\+O\+P\+R\+O\+T\+O\+O\+P\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+P\+R\+O\+T\+O\+O\+P\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+P\+R\+O\+T\+O\+O\+P\+T~42		/$\ast$ Protocol option not available $\ast$/}\label{errno_8h_acd570f8ab92198653b4459773dc3bca3}
+\hypertarget{errno_8h_a088abe8bad2df798edad3053d719b937}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+S\+P\+C@{E\+N\+O\+S\+P\+C}}
+\index{E\+N\+O\+S\+P\+C@{E\+N\+O\+S\+P\+C}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+S\+P\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+S\+P\+C~28		/$\ast$ No space left on device $\ast$/}\label{errno_8h_a088abe8bad2df798edad3053d719b937}
+\hypertarget{errno_8h_ad88bc6ea94ec1a5e91d3651677d85c00}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+S\+R@{E\+N\+O\+S\+R}}
+\index{E\+N\+O\+S\+R@{E\+N\+O\+S\+R}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+S\+R~90		/$\ast$ No S\+T\+R\+E\+A\+M resources $\ast$/}\label{errno_8h_ad88bc6ea94ec1a5e91d3651677d85c00}
+\hypertarget{errno_8h_a7cea86ddbdacae0b391674e680f17bdb}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+S\+T\+R@{E\+N\+O\+S\+T\+R}}
+\index{E\+N\+O\+S\+T\+R@{E\+N\+O\+S\+T\+R}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+S\+T\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+S\+T\+R~91		/$\ast$ Not a S\+T\+R\+E\+A\+M $\ast$/}\label{errno_8h_a7cea86ddbdacae0b391674e680f17bdb}
+\hypertarget{errno_8h_a43785b9969e0bd1af532dbde06c5540b}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+S\+Y\+S@{E\+N\+O\+S\+Y\+S}}
+\index{E\+N\+O\+S\+Y\+S@{E\+N\+O\+S\+Y\+S}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+S\+Y\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+S\+Y\+S~78		/$\ast$ Function not implemented $\ast$/}\label{errno_8h_a43785b9969e0bd1af532dbde06c5540b}
+\hypertarget{errno_8h_aa0a4b0e307e83f52be51099f01156936}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+B\+L\+K@{E\+N\+O\+T\+B\+L\+K}}
+\index{E\+N\+O\+T\+B\+L\+K@{E\+N\+O\+T\+B\+L\+K}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+T\+B\+L\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+T\+B\+L\+K~15		/$\ast$ Block device required $\ast$/}\label{errno_8h_aa0a4b0e307e83f52be51099f01156936}
+\hypertarget{errno_8h_af23e48762a0676f49d480db91cfd5e4b}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+C\+O\+N\+N@{E\+N\+O\+T\+C\+O\+N\+N}}
+\index{E\+N\+O\+T\+C\+O\+N\+N@{E\+N\+O\+T\+C\+O\+N\+N}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+T\+C\+O\+N\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+T\+C\+O\+N\+N~57		/$\ast$ Socket is not connected $\ast$/}\label{errno_8h_af23e48762a0676f49d480db91cfd5e4b}
+\hypertarget{errno_8h_a9262fb92f7ef662d0bdd577912a5b101}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+D\+I\+R@{E\+N\+O\+T\+D\+I\+R}}
+\index{E\+N\+O\+T\+D\+I\+R@{E\+N\+O\+T\+D\+I\+R}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+T\+D\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+T\+D\+I\+R~20		/$\ast$ Not a directory $\ast$/}\label{errno_8h_a9262fb92f7ef662d0bdd577912a5b101}
+\hypertarget{errno_8h_aa0f602f3fd369a6fede82190710b9c5c}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+E\+M\+P\+T\+Y@{E\+N\+O\+T\+E\+M\+P\+T\+Y}}
+\index{E\+N\+O\+T\+E\+M\+P\+T\+Y@{E\+N\+O\+T\+E\+M\+P\+T\+Y}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+T\+E\+M\+P\+T\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+T\+E\+M\+P\+T\+Y~66		/$\ast$ Directory not empty $\ast$/}\label{errno_8h_aa0f602f3fd369a6fede82190710b9c5c}
+\hypertarget{errno_8h_ae34fa7a550ac1c415daa2e114a1c0f38}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+S\+O\+C\+K@{E\+N\+O\+T\+S\+O\+C\+K}}
+\index{E\+N\+O\+T\+S\+O\+C\+K@{E\+N\+O\+T\+S\+O\+C\+K}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+T\+S\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+T\+S\+O\+C\+K~38		/$\ast$ Socket operation on non-\/socket $\ast$/}\label{errno_8h_ae34fa7a550ac1c415daa2e114a1c0f38}
+\hypertarget{errno_8h_a91457bbf35f0f1085619a99423bb1f33}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+S\+U\+P@{E\+N\+O\+T\+S\+U\+P}}
+\index{E\+N\+O\+T\+S\+U\+P@{E\+N\+O\+T\+S\+U\+P}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+T\+S\+U\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+T\+S\+U\+P~86		/$\ast$ Not supported $\ast$/}\label{errno_8h_a91457bbf35f0f1085619a99423bb1f33}
+\hypertarget{errno_8h_ac3daf409082bb528032f4452a81e1034}{}\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+T\+Y@{E\+N\+O\+T\+T\+Y}}
+\index{E\+N\+O\+T\+T\+Y@{E\+N\+O\+T\+T\+Y}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+O\+T\+T\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+O\+T\+T\+Y~25		/$\ast$ Inappropriate ioctl for device $\ast$/}\label{errno_8h_ac3daf409082bb528032f4452a81e1034}
+\hypertarget{errno_8h_a2b3884b11e4932bd372bb6d899d6fbfe}{}\index{errno.\+h@{errno.\+h}!E\+N\+X\+I\+O@{E\+N\+X\+I\+O}}
+\index{E\+N\+X\+I\+O@{E\+N\+X\+I\+O}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+N\+X\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+X\+I\+O~6		/$\ast$ Device not configured $\ast$/}\label{errno_8h_a2b3884b11e4932bd372bb6d899d6fbfe}
+\hypertarget{errno_8h_a4b807895c74cea4d0302bf27725d4b9d}{}\index{errno.\+h@{errno.\+h}!E\+O\+P\+N\+O\+T\+S\+U\+P\+P@{E\+O\+P\+N\+O\+T\+S\+U\+P\+P}}
+\index{E\+O\+P\+N\+O\+T\+S\+U\+P\+P@{E\+O\+P\+N\+O\+T\+S\+U\+P\+P}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+O\+P\+N\+O\+T\+S\+U\+P\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+O\+P\+N\+O\+T\+S\+U\+P\+P~45		/$\ast$ Operation not supported $\ast$/}\label{errno_8h_a4b807895c74cea4d0302bf27725d4b9d}
+\hypertarget{errno_8h_a888552a5e3c78b5883904cf5d55244ab}{}\index{errno.\+h@{errno.\+h}!E\+O\+V\+E\+R\+F\+L\+O\+W@{E\+O\+V\+E\+R\+F\+L\+O\+W}}
+\index{E\+O\+V\+E\+R\+F\+L\+O\+W@{E\+O\+V\+E\+R\+F\+L\+O\+W}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+O\+V\+E\+R\+F\+L\+O\+W}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+O\+V\+E\+R\+F\+L\+O\+W~84		/$\ast$ Value too large to be stored in data type $\ast$/}\label{errno_8h_a888552a5e3c78b5883904cf5d55244ab}
+\hypertarget{errno_8h_add669d31505a077f769cff8e66c780b3}{}\index{errno.\+h@{errno.\+h}!E\+P\+E\+R\+M@{E\+P\+E\+R\+M}}
+\index{E\+P\+E\+R\+M@{E\+P\+E\+R\+M}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+E\+R\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+E\+R\+M~1		/$\ast$ Operation not permitted $\ast$/}\label{errno_8h_add669d31505a077f769cff8e66c780b3}
+\hypertarget{errno_8h_a871b9fabb281dbc2d3b81cb79c163c20}{}\index{errno.\+h@{errno.\+h}!E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T@{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T}}
+\index{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T@{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+R\+T~46		/$\ast$ Protocol family not supported $\ast$/}\label{errno_8h_a871b9fabb281dbc2d3b81cb79c163c20}
+\hypertarget{errno_8h_a5f8d33deb08fa27c04897b278ac7f965}{}\index{errno.\+h@{errno.\+h}!E\+P\+I\+P\+E@{E\+P\+I\+P\+E}}
+\index{E\+P\+I\+P\+E@{E\+P\+I\+P\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+I\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+I\+P\+E~32		/$\ast$ Broken pipe $\ast$/}\label{errno_8h_a5f8d33deb08fa27c04897b278ac7f965}
+\hypertarget{errno_8h_a801513ca187af849409e07fda8554a83}{}\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+C\+L\+I\+M@{E\+P\+R\+O\+C\+L\+I\+M}}
+\index{E\+P\+R\+O\+C\+L\+I\+M@{E\+P\+R\+O\+C\+L\+I\+M}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+R\+O\+C\+L\+I\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+R\+O\+C\+L\+I\+M~67		/$\ast$ Too many processes $\ast$/}\label{errno_8h_a801513ca187af849409e07fda8554a83}
+\hypertarget{errno_8h_acf125cc6a4f2ebea3cd54c56026dd019}{}\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+I\+L@{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+I\+L}}
+\index{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+I\+L@{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+I\+L}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+I\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+I\+L~76		/$\ast$ Bad procedure for program $\ast$/}\label{errno_8h_acf125cc6a4f2ebea3cd54c56026dd019}
+\hypertarget{errno_8h_ab8b339b25f51a8258322489cd156297d}{}\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+C\+H@{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+C\+H}}
+\index{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+C\+H@{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+C\+H}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+C\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+C\+H~75		/$\ast$ Program version wrong $\ast$/}\label{errno_8h_ab8b339b25f51a8258322489cd156297d}
+\hypertarget{errno_8h_a90f3aa66e6674d20ee8865cf13ceef96}{}\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+I\+L@{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+I\+L}}
+\index{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+I\+L@{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+I\+L}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+I\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+I\+L~74		/$\ast$ R\+P\+C prog. not avail $\ast$/}\label{errno_8h_a90f3aa66e6674d20ee8865cf13ceef96}
+\hypertarget{errno_8h_a5a92de56e8ebe19cbd8a2ce8c80ad03e}{}\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+T\+O@{E\+P\+R\+O\+T\+O}}
+\index{E\+P\+R\+O\+T\+O@{E\+P\+R\+O\+T\+O}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+R\+O\+T\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+R\+O\+T\+O~96		/$\ast$ Protocol error $\ast$/}\label{errno_8h_a5a92de56e8ebe19cbd8a2ce8c80ad03e}
+\hypertarget{errno_8h_ad581c46fdd4dee9419f60eaff40415e7}{}\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+R\+T@{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+R\+T}}
+\index{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+R\+T@{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+R\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+R\+T~43		/$\ast$ Protocol not supported $\ast$/}\label{errno_8h_ad581c46fdd4dee9419f60eaff40415e7}
+\hypertarget{errno_8h_ae6014faa948366b8321d755204acf755}{}\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+T\+O\+T\+Y\+P\+E@{E\+P\+R\+O\+T\+O\+T\+Y\+P\+E}}
+\index{E\+P\+R\+O\+T\+O\+T\+Y\+P\+E@{E\+P\+R\+O\+T\+O\+T\+Y\+P\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+P\+R\+O\+T\+O\+T\+Y\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+P\+R\+O\+T\+O\+T\+Y\+P\+E~41		/$\ast$ Protocol wrong type for socket $\ast$/}\label{errno_8h_ae6014faa948366b8321d755204acf755}
+\hypertarget{errno_8h_aa1591a4f3a86360108de5b9ba34980ca}{}\index{errno.\+h@{errno.\+h}!E\+R\+A\+N\+G\+E@{E\+R\+A\+N\+G\+E}}
+\index{E\+R\+A\+N\+G\+E@{E\+R\+A\+N\+G\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+R\+A\+N\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+A\+N\+G\+E~34		/$\ast$ Result too large or too small $\ast$/}\label{errno_8h_aa1591a4f3a86360108de5b9ba34980ca}
+\hypertarget{errno_8h_a5e1edba49c18fc631dbf54ff53702d4a}{}\index{errno.\+h@{errno.\+h}!E\+R\+E\+M\+O\+T\+E@{E\+R\+E\+M\+O\+T\+E}}
+\index{E\+R\+E\+M\+O\+T\+E@{E\+R\+E\+M\+O\+T\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+R\+E\+M\+O\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+E\+M\+O\+T\+E~71		/$\ast$ Too many levels of remote in path $\ast$/}\label{errno_8h_a5e1edba49c18fc631dbf54ff53702d4a}
+\hypertarget{errno_8h_acb02bb67dddd7ca8cf82634a0781d58d}{}\index{errno.\+h@{errno.\+h}!E\+R\+O\+F\+S@{E\+R\+O\+F\+S}}
+\index{E\+R\+O\+F\+S@{E\+R\+O\+F\+S}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+R\+O\+F\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+O\+F\+S~30		/$\ast$ Read-\/only file system $\ast$/}\label{errno_8h_acb02bb67dddd7ca8cf82634a0781d58d}
+\hypertarget{errno_8h_a04d0929518f1e98cf4bc19e369e1c22e}{}\index{errno.\+h@{errno.\+h}!E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+C\+H@{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+C\+H}}
+\index{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+C\+H@{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+C\+H}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+C\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+C\+H~73		/$\ast$ R\+P\+C version wrong $\ast$/}\label{errno_8h_a04d0929518f1e98cf4bc19e369e1c22e}
+\hypertarget{errno_8h_a2a55c5dd8b54ff5aace6c274c6726d68}{}\index{errno.\+h@{errno.\+h}!E\+S\+H\+U\+T\+D\+O\+W\+N@{E\+S\+H\+U\+T\+D\+O\+W\+N}}
+\index{E\+S\+H\+U\+T\+D\+O\+W\+N@{E\+S\+H\+U\+T\+D\+O\+W\+N}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+S\+H\+U\+T\+D\+O\+W\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+S\+H\+U\+T\+D\+O\+W\+N~58		/$\ast$ Can\textquotesingle{}t send after socket shutdown $\ast$/}\label{errno_8h_a2a55c5dd8b54ff5aace6c274c6726d68}
+\hypertarget{errno_8h_a891103a0628442461b41d4d85fb6d945}{}\index{errno.\+h@{errno.\+h}!E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+R\+T@{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+R\+T}}
+\index{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+R\+T@{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+R\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+R\+T~44		/$\ast$ Socket type not supported $\ast$/}\label{errno_8h_a891103a0628442461b41d4d85fb6d945}
+\hypertarget{errno_8h_a0e42d4f9fecdcf5fcca2b333252173c3}{}\index{errno.\+h@{errno.\+h}!E\+S\+P\+I\+P\+E@{E\+S\+P\+I\+P\+E}}
+\index{E\+S\+P\+I\+P\+E@{E\+S\+P\+I\+P\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+S\+P\+I\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+S\+P\+I\+P\+E~29		/$\ast$ Illegal seek $\ast$/}\label{errno_8h_a0e42d4f9fecdcf5fcca2b333252173c3}
+\hypertarget{errno_8h_a462e47a8af6288232a5df548221ada4c}{}\index{errno.\+h@{errno.\+h}!E\+S\+R\+C\+H@{E\+S\+R\+C\+H}}
+\index{E\+S\+R\+C\+H@{E\+S\+R\+C\+H}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+S\+R\+C\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+S\+R\+C\+H~3		/$\ast$ No such process $\ast$/}\label{errno_8h_a462e47a8af6288232a5df548221ada4c}
+\hypertarget{errno_8h_a09e189d2214d9fe2847d27bf270ca1d7}{}\index{errno.\+h@{errno.\+h}!E\+S\+T\+A\+L\+E@{E\+S\+T\+A\+L\+E}}
+\index{E\+S\+T\+A\+L\+E@{E\+S\+T\+A\+L\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+S\+T\+A\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+S\+T\+A\+L\+E~70		/$\ast$ Stale N\+F\+S file handle $\ast$/}\label{errno_8h_a09e189d2214d9fe2847d27bf270ca1d7}
+\hypertarget{errno_8h_ab59cf3c65eaf836d5c647fa2a24ca649}{}\index{errno.\+h@{errno.\+h}!E\+T\+I\+M\+E@{E\+T\+I\+M\+E}}
+\index{E\+T\+I\+M\+E@{E\+T\+I\+M\+E}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+T\+I\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+T\+I\+M\+E~92		/$\ast$ S\+T\+R\+E\+A\+M ioctl timeout $\ast$/}\label{errno_8h_ab59cf3c65eaf836d5c647fa2a24ca649}
+\hypertarget{errno_8h_a597718e59a8fc9c4d4ab63f5a34e28b1}{}\index{errno.\+h@{errno.\+h}!E\+T\+I\+M\+E\+D\+O\+U\+T@{E\+T\+I\+M\+E\+D\+O\+U\+T}}
+\index{E\+T\+I\+M\+E\+D\+O\+U\+T@{E\+T\+I\+M\+E\+D\+O\+U\+T}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+T\+I\+M\+E\+D\+O\+U\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+T\+I\+M\+E\+D\+O\+U\+T~60		/$\ast$ Operation timed out $\ast$/}\label{errno_8h_a597718e59a8fc9c4d4ab63f5a34e28b1}
+\hypertarget{errno_8h_a10426080250efba47f4aaf254036ff00}{}\index{errno.\+h@{errno.\+h}!E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+F\+S@{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+F\+S}}
+\index{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+F\+S@{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+F\+S}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+F\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+F\+S~59		/$\ast$ Too many references\+: can\textquotesingle{}t splice $\ast$/}\label{errno_8h_a10426080250efba47f4aaf254036ff00}
+\hypertarget{errno_8h_aaed12e82224923d599b6f1939c8e0971}{}\index{errno.\+h@{errno.\+h}!E\+T\+X\+T\+B\+S\+Y@{E\+T\+X\+T\+B\+S\+Y}}
+\index{E\+T\+X\+T\+B\+S\+Y@{E\+T\+X\+T\+B\+S\+Y}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+T\+X\+T\+B\+S\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+T\+X\+T\+B\+S\+Y~26		/$\ast$ Text file busy $\ast$/}\label{errno_8h_aaed12e82224923d599b6f1939c8e0971}
+\hypertarget{errno_8h_a9b153104ed38c8579f009f81bc7b2dc9}{}\index{errno.\+h@{errno.\+h}!E\+U\+S\+E\+R\+S@{E\+U\+S\+E\+R\+S}}
+\index{E\+U\+S\+E\+R\+S@{E\+U\+S\+E\+R\+S}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+U\+S\+E\+R\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+U\+S\+E\+R\+S~68		/$\ast$ Too many users $\ast$/}\label{errno_8h_a9b153104ed38c8579f009f81bc7b2dc9}
+\hypertarget{errno_8h_a4a3a0b3605fd3b2336455062ee8e25f0}{}\index{errno.\+h@{errno.\+h}!E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K@{E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}}
+\index{E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K@{E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K~{\bf E\+A\+G\+A\+I\+N}		/$\ast$ Operation would block $\ast$/}\label{errno_8h_a4a3a0b3605fd3b2336455062ee8e25f0}
+\hypertarget{errno_8h_a3396cf9fb0ff5af3a18dd2a2bbdb21e1}{}\index{errno.\+h@{errno.\+h}!E\+X\+D\+E\+V@{E\+X\+D\+E\+V}}
+\index{E\+X\+D\+E\+V@{E\+X\+D\+E\+V}!errno.\+h@{errno.\+h}}
+\subsubsection[{E\+X\+D\+E\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+D\+E\+V~18		/$\ast$ Cross-\/device link $\ast$/}\label{errno_8h_a3396cf9fb0ff5af3a18dd2a2bbdb21e1}
+
+
+\subsection{Variable Documentation}
+\hypertarget{errno_8h_ad65a8842cc674e3ddf69355898c0ecbf}{}\index{errno.\+h@{errno.\+h}!errno@{errno}}
+\index{errno@{errno}!errno.\+h@{errno.\+h}}
+\subsubsection[{errno}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\label{errno_8h_ad65a8842cc674e3ddf69355898c0ecbf}

@@ -1,0 +1,59 @@
+\hypertarget{util_8c}{}\section{libpsx/src/util.c File Reference}
+\label{util_8c}\index{libpsx/src/util.\+c@{libpsx/src/util.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$psxutil.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{util_8c_abbaf8b7ca60c0892f7ccb84620c0a060}{P\+S\+X\+\_\+\+Get\+Button\+Name} (unsigned short button, char $\ast$out, unsigned int out\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Given a button bitmask, returns the name for the buttons that the bitmask reports activated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{util_8c_a8eb30aa41a401b727c40a73e3d54976a}{psxsdk\+\_\+btn\+\_\+names} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{util_8c_abbaf8b7ca60c0892f7ccb84620c0a060}{}\index{util.\+c@{util.\+c}!P\+S\+X\+\_\+\+Get\+Button\+Name@{P\+S\+X\+\_\+\+Get\+Button\+Name}}
+\index{P\+S\+X\+\_\+\+Get\+Button\+Name@{P\+S\+X\+\_\+\+Get\+Button\+Name}!util.\+c@{util.\+c}}
+\subsubsection[{P\+S\+X\+\_\+\+Get\+Button\+Name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ P\+S\+X\+\_\+\+Get\+Button\+Name (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{button, }
+\item[{char $\ast$}]{out, }
+\item[{unsigned int}]{out\+\_\+len}
+\end{DoxyParamCaption}
+)}\label{util_8c_abbaf8b7ca60c0892f7ccb84620c0a060}
+
+
+Given a button bitmask, returns the name for the buttons that the bitmask reports activated. 
+
+If more than one button is found in the bitmask, it is specified by the symbol \& followed by the other button name and so on...
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & Button bitmask as returned by \hyperlink{psx_8h_a6261361d0fcac6e836faa1f31042ef75}{P\+S\+X\+\_\+\+Read\+Pad()} \\
+\hline
+{\em out} & Pointer to a string, to which the button names will be output \\
+\hline
+{\em out\+\_\+len} & The maximum length of the string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to passed as the \char`\"{}out\char`\"{} parameter 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\hypertarget{util_8c_a8eb30aa41a401b727c40a73e3d54976a}{}\index{util.\+c@{util.\+c}!psxsdk\+\_\+btn\+\_\+names@{psxsdk\+\_\+btn\+\_\+names}}
+\index{psxsdk\+\_\+btn\+\_\+names@{psxsdk\+\_\+btn\+\_\+names}!util.\+c@{util.\+c}}
+\subsubsection[{psxsdk\+\_\+btn\+\_\+names}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ psxsdk\+\_\+btn\+\_\+names\mbox{[}$\,$\mbox{]}}\label{util_8c_a8eb30aa41a401b727c40a73e3d54976a}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+                                 \{ \textcolor{stringliteral}{"L2"}, \textcolor{stringliteral}{"R2"}, \textcolor{stringliteral}{"L1"}, \textcolor{stringliteral}{"R1"}, \textcolor{stringliteral}{"Triangle"}, \textcolor{stringliteral}{"Circle"}, \textcolor{stringliteral}{"Cross"},
+                                 \textcolor{stringliteral}{"Square"}, \textcolor{stringliteral}{"Select"}, \textcolor{stringliteral}{"Res1"}, \textcolor{stringliteral}{"Res2"}, \textcolor{stringliteral}{"Start"},
+                                 \textcolor{stringliteral}{"Up"}, \textcolor{stringliteral}{"Right"}, \textcolor{stringliteral}{"Down"}, \textcolor{stringliteral}{"Left"}\}
+\end{DoxyCode}

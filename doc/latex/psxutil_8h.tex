@@ -1,0 +1,37 @@
+\hypertarget{psxutil_8h}{}\section{libpsx/include/psxutil.h File Reference}
+\label{psxutil_8h}\index{libpsx/include/psxutil.\+h@{libpsx/include/psxutil.\+h}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{psxutil_8h_abbaf8b7ca60c0892f7ccb84620c0a060}{P\+S\+X\+\_\+\+Get\+Button\+Name} (unsigned short button, char $\ast$out, unsigned int out\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Given a button bitmask, returns the name for the buttons that the bitmask reports activated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{psxutil_8h_abbaf8b7ca60c0892f7ccb84620c0a060}{}\index{psxutil.\+h@{psxutil.\+h}!P\+S\+X\+\_\+\+Get\+Button\+Name@{P\+S\+X\+\_\+\+Get\+Button\+Name}}
+\index{P\+S\+X\+\_\+\+Get\+Button\+Name@{P\+S\+X\+\_\+\+Get\+Button\+Name}!psxutil.\+h@{psxutil.\+h}}
+\subsubsection[{P\+S\+X\+\_\+\+Get\+Button\+Name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ P\+S\+X\+\_\+\+Get\+Button\+Name (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{button, }
+\item[{char $\ast$}]{out, }
+\item[{unsigned int}]{out\+\_\+len}
+\end{DoxyParamCaption}
+)}\label{psxutil_8h_abbaf8b7ca60c0892f7ccb84620c0a060}
+
+
+Given a button bitmask, returns the name for the buttons that the bitmask reports activated. 
+
+If more than one button is found in the bitmask, it is specified by the symbol \& followed by the other button name and so on...
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & Button bitmask as returned by \hyperlink{psx_8h_a6261361d0fcac6e836faa1f31042ef75}{P\+S\+X\+\_\+\+Read\+Pad()} \\
+\hline
+{\em out} & Pointer to a string, to which the button names will be output \\
+\hline
+{\em out\+\_\+len} & The maximum length of the string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to passed as the \char`\"{}out\char`\"{} parameter 
+\end{DoxyReturn}

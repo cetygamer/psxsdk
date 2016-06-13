@@ -1,0 +1,207 @@
+\hypertarget{psxpad_8h}{}\section{libpsx/include/psxpad.h File Reference}
+\label{psxpad_8h}\index{libpsx/include/psxpad.\+h@{libpsx/include/psxpad.\+h}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpsx__pad__state}{psx\+\_\+pad\+\_\+state}
+\begin{DoxyCompactList}\small\item\em This structure contains the state of the pad (game controller) after polling it with \hyperlink{psx_8h_a3375af2214d2bb2d8694e65c586d3fa4}{P\+S\+X\+\_\+\+Poll\+Pad()} \end{DoxyCompactList}\item 
+union \hyperlink{unionpsx__pad__state_1_1extra}{psx\+\_\+pad\+\_\+state\+::extra}
+\begin{DoxyCompactList}\small\item\em Extra data for non-\/normal controllers. \end{DoxyCompactList}\item 
+struct \hyperlink{structpsx__pad__state_1_1extra_1_1analogJoy}{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Joy}
+\begin{DoxyCompactList}\small\item\em Data for analog joysticks. \end{DoxyCompactList}\item 
+struct \hyperlink{structpsx__pad__state_1_1extra_1_1analogPad}{psx\+\_\+pad\+\_\+state\+::extra\+::analog\+Pad}
+\begin{DoxyCompactList}\small\item\em Data for analog joypads (controller). \end{DoxyCompactList}\item 
+struct \hyperlink{structpsx__pad__state_1_1extra_1_1negCon}{psx\+\_\+pad\+\_\+state\+::extra\+::neg\+Con}
+\begin{DoxyCompactList}\small\item\em Data for Namco Ne\+Gcon and steering wheels using its protocol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{psxpad_8h_adaf081f3dd52e90153df31490f68f96d}{P\+A\+D\+\_\+\+L\+E\+F\+T}~(1$<$$<$15)
+\item 
+\#define \hyperlink{psxpad_8h_a6fd5dddc97219412ab1c4483ce144aef}{P\+A\+D\+\_\+\+R\+I\+G\+H\+T}~(1$<$$<$13)
+\item 
+\#define \hyperlink{psxpad_8h_acdb66227c1cd67fa1c5a98548c75b504}{P\+A\+D\+\_\+\+U\+P}~(1$<$$<$12)
+\item 
+\#define \hyperlink{psxpad_8h_a69326cdea2530a1bb929dd121a852010}{P\+A\+D\+\_\+\+D\+O\+W\+N}~(1$<$$<$14)
+\item 
+\#define \hyperlink{psxpad_8h_a9b52ab0285d5151b4c9cf5f6f2455c24}{P\+A\+D\+\_\+\+L2}~1
+\item 
+\#define \hyperlink{psxpad_8h_ae50bcaf323409decbdb955366390cf1a}{P\+A\+D\+\_\+\+R2}~(1$<$$<$1)
+\item 
+\#define \hyperlink{psxpad_8h_ad23d5d4d3cf92ad27d6e16356788e4b9}{P\+A\+D\+\_\+\+L1}~(1$<$$<$2)
+\item 
+\#define \hyperlink{psxpad_8h_aec6d97340fbc52e777da7d982fabd10c}{P\+A\+D\+\_\+\+R1}~(1$<$$<$3)
+\item 
+\#define \hyperlink{psxpad_8h_a9221aecfa49642278b962529ddbb39c5}{P\+A\+D\+\_\+\+T\+R\+I\+A\+N\+G\+L\+E}~(1$<$$<$4)
+\item 
+\#define \hyperlink{psxpad_8h_a5b13cc28c3e9fd60c4aa8342cad3446c}{P\+A\+D\+\_\+\+C\+I\+R\+C\+L\+E}~(1$<$$<$5)
+\item 
+\#define \hyperlink{psxpad_8h_a0372125cfe2bb34a66ac4c3ab6065bea}{P\+A\+D\+\_\+\+C\+R\+O\+S\+S}~(1$<$$<$6)
+\item 
+\#define \hyperlink{psxpad_8h_a8c695f383b751e18f438895e5e6049b3}{P\+A\+D\+\_\+\+S\+Q\+U\+A\+R\+E}~(1$<$$<$7)
+\item 
+\#define \hyperlink{psxpad_8h_a174bc9e18932fc1833fdb291d28268d0}{P\+A\+D\+\_\+\+S\+E\+L\+E\+C\+T}~(1$<$$<$8)
+\item 
+\#define \hyperlink{psxpad_8h_a246b5ec304706aba06d6dab3b5f0ac22}{P\+A\+D\+\_\+\+L\+A\+N\+A\+L\+O\+G\+B}~(1$<$$<$9)
+\item 
+\#define \hyperlink{psxpad_8h_a53771ec8b5a222e81bad86653e0e9e00}{P\+A\+D\+\_\+\+R\+A\+N\+A\+L\+O\+G\+B}~(1$<$$<$10)
+\item 
+\#define \hyperlink{psxpad_8h_a1754f0c837e05e32d0850bb1f427c336}{P\+A\+D\+\_\+\+S\+T\+A\+R\+T}~(1$<$$<$11)
+\item 
+\#define \hyperlink{psxpad_8h_a1e9b6da6eadb7648ef9d1f575c7bccd1}{P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+R\+A\+W\+\_\+\+S\+I\+Z\+E}~21
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936}{psx\+\_\+pad\+\_\+types} \{ \\*
+\hyperlink{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a8f9158f79202815f576fcf04c1f3d48b}{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+N\+E}, 
+\hyperlink{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936acf96509968767ff714e0a117f8fc4b75}{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+R\+M\+A\+L\+P\+A\+D}, 
+\hyperlink{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a807ad26e185ab07f9f148c0dd2baa04e}{P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+J\+O\+Y}, 
+\hyperlink{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a4a12ffb4a1e030ff46e63f51c1655521}{P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+P\+A\+D}, 
+\\*
+\hyperlink{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a136fbedf2931cc187551d12c3335de40}{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+E\+G\+C\+O\+N}, 
+\hyperlink{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936abcb06b5a7bd0fdd252e50c859a7df6e6}{P\+A\+D\+T\+Y\+P\+E\+\_\+\+K\+O\+N\+A\+M\+I\+G\+U\+N}, 
+\hyperlink{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936af7ef0fed48a6bf5dac39643e23f7388a}{P\+A\+D\+T\+Y\+P\+E\+\_\+\+U\+N\+K\+N\+O\+W\+N}
+ \}
+\begin{DoxyCompactList}\small\item\em These values below are to be used for evalauting the type field of the \hyperlink{structpsx__pad__state}{psx\+\_\+pad\+\_\+state} structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{psxpad_8h_a4b30613b671fc797b84d3f58850028c3}{Query\+P\+A\+D} (int pad\+\_\+n, unsigned char $\ast$in, unsigned char $\ast$out, int \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+void \hyperlink{psxpad_8h_a1a7913860aca3e046be1f9ab78c3bd35}{pad\+\_\+read\+\_\+raw} (int pad\+\_\+n, unsigned char $\ast$arr)
+\item 
+void \hyperlink{psxpad_8h_a6b4672ce2a7733dd1951e4cd55fad05e}{pad\+\_\+escape\+\_\+mode} (int pad\+\_\+n, int enable)
+\item 
+void \hyperlink{psxpad_8h_aacb281f3d0695da7848867afb2638280}{pad\+\_\+enable\+\_\+vibration} (int pad\+\_\+n)
+\item 
+void \hyperlink{psxpad_8h_ac517bbac0d262ee7ee516afaebecc589}{pad\+\_\+set\+\_\+vibration} (int pad\+\_\+n, unsigned char small, unsigned char big)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{psxpad_8h_a5b13cc28c3e9fd60c4aa8342cad3446c}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+C\+I\+R\+C\+L\+E@{P\+A\+D\+\_\+\+C\+I\+R\+C\+L\+E}}
+\index{P\+A\+D\+\_\+\+C\+I\+R\+C\+L\+E@{P\+A\+D\+\_\+\+C\+I\+R\+C\+L\+E}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+C\+I\+R\+C\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+C\+I\+R\+C\+L\+E~(1$<$$<$5)}\label{psxpad_8h_a5b13cc28c3e9fd60c4aa8342cad3446c}
+\hypertarget{psxpad_8h_a0372125cfe2bb34a66ac4c3ab6065bea}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+C\+R\+O\+S\+S@{P\+A\+D\+\_\+\+C\+R\+O\+S\+S}}
+\index{P\+A\+D\+\_\+\+C\+R\+O\+S\+S@{P\+A\+D\+\_\+\+C\+R\+O\+S\+S}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+C\+R\+O\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+C\+R\+O\+S\+S~(1$<$$<$6)}\label{psxpad_8h_a0372125cfe2bb34a66ac4c3ab6065bea}
+\hypertarget{psxpad_8h_a69326cdea2530a1bb929dd121a852010}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+D\+O\+W\+N@{P\+A\+D\+\_\+\+D\+O\+W\+N}}
+\index{P\+A\+D\+\_\+\+D\+O\+W\+N@{P\+A\+D\+\_\+\+D\+O\+W\+N}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+D\+O\+W\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+D\+O\+W\+N~(1$<$$<$14)}\label{psxpad_8h_a69326cdea2530a1bb929dd121a852010}
+\hypertarget{psxpad_8h_ad23d5d4d3cf92ad27d6e16356788e4b9}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+L1@{P\+A\+D\+\_\+\+L1}}
+\index{P\+A\+D\+\_\+\+L1@{P\+A\+D\+\_\+\+L1}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+L1}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+L1~(1$<$$<$2)}\label{psxpad_8h_ad23d5d4d3cf92ad27d6e16356788e4b9}
+\hypertarget{psxpad_8h_a9b52ab0285d5151b4c9cf5f6f2455c24}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+L2@{P\+A\+D\+\_\+\+L2}}
+\index{P\+A\+D\+\_\+\+L2@{P\+A\+D\+\_\+\+L2}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+L2}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+L2~1}\label{psxpad_8h_a9b52ab0285d5151b4c9cf5f6f2455c24}
+\hypertarget{psxpad_8h_a246b5ec304706aba06d6dab3b5f0ac22}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+L\+A\+N\+A\+L\+O\+G\+B@{P\+A\+D\+\_\+\+L\+A\+N\+A\+L\+O\+G\+B}}
+\index{P\+A\+D\+\_\+\+L\+A\+N\+A\+L\+O\+G\+B@{P\+A\+D\+\_\+\+L\+A\+N\+A\+L\+O\+G\+B}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+L\+A\+N\+A\+L\+O\+G\+B}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+L\+A\+N\+A\+L\+O\+G\+B~(1$<$$<$9)}\label{psxpad_8h_a246b5ec304706aba06d6dab3b5f0ac22}
+\hypertarget{psxpad_8h_adaf081f3dd52e90153df31490f68f96d}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+L\+E\+F\+T@{P\+A\+D\+\_\+\+L\+E\+F\+T}}
+\index{P\+A\+D\+\_\+\+L\+E\+F\+T@{P\+A\+D\+\_\+\+L\+E\+F\+T}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+L\+E\+F\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+L\+E\+F\+T~(1$<$$<$15)}\label{psxpad_8h_adaf081f3dd52e90153df31490f68f96d}
+\hypertarget{psxpad_8h_aec6d97340fbc52e777da7d982fabd10c}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+R1@{P\+A\+D\+\_\+\+R1}}
+\index{P\+A\+D\+\_\+\+R1@{P\+A\+D\+\_\+\+R1}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+R1}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+R1~(1$<$$<$3)}\label{psxpad_8h_aec6d97340fbc52e777da7d982fabd10c}
+\hypertarget{psxpad_8h_ae50bcaf323409decbdb955366390cf1a}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+R2@{P\+A\+D\+\_\+\+R2}}
+\index{P\+A\+D\+\_\+\+R2@{P\+A\+D\+\_\+\+R2}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+R2}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+R2~(1$<$$<$1)}\label{psxpad_8h_ae50bcaf323409decbdb955366390cf1a}
+\hypertarget{psxpad_8h_a53771ec8b5a222e81bad86653e0e9e00}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+R\+A\+N\+A\+L\+O\+G\+B@{P\+A\+D\+\_\+\+R\+A\+N\+A\+L\+O\+G\+B}}
+\index{P\+A\+D\+\_\+\+R\+A\+N\+A\+L\+O\+G\+B@{P\+A\+D\+\_\+\+R\+A\+N\+A\+L\+O\+G\+B}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+R\+A\+N\+A\+L\+O\+G\+B}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+R\+A\+N\+A\+L\+O\+G\+B~(1$<$$<$10)}\label{psxpad_8h_a53771ec8b5a222e81bad86653e0e9e00}
+\hypertarget{psxpad_8h_a1e9b6da6eadb7648ef9d1f575c7bccd1}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+R\+A\+W\+\_\+\+S\+I\+Z\+E@{P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+R\+A\+W\+\_\+\+S\+I\+Z\+E}}
+\index{P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+R\+A\+W\+\_\+\+S\+I\+Z\+E@{P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+R\+A\+W\+\_\+\+S\+I\+Z\+E}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+R\+A\+W\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+R\+A\+W\+\_\+\+S\+I\+Z\+E~21}\label{psxpad_8h_a1e9b6da6eadb7648ef9d1f575c7bccd1}
+\hypertarget{psxpad_8h_a6fd5dddc97219412ab1c4483ce144aef}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+R\+I\+G\+H\+T@{P\+A\+D\+\_\+\+R\+I\+G\+H\+T}}
+\index{P\+A\+D\+\_\+\+R\+I\+G\+H\+T@{P\+A\+D\+\_\+\+R\+I\+G\+H\+T}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+R\+I\+G\+H\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+R\+I\+G\+H\+T~(1$<$$<$13)}\label{psxpad_8h_a6fd5dddc97219412ab1c4483ce144aef}
+\hypertarget{psxpad_8h_a174bc9e18932fc1833fdb291d28268d0}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+S\+E\+L\+E\+C\+T@{P\+A\+D\+\_\+\+S\+E\+L\+E\+C\+T}}
+\index{P\+A\+D\+\_\+\+S\+E\+L\+E\+C\+T@{P\+A\+D\+\_\+\+S\+E\+L\+E\+C\+T}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+S\+E\+L\+E\+C\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+S\+E\+L\+E\+C\+T~(1$<$$<$8)}\label{psxpad_8h_a174bc9e18932fc1833fdb291d28268d0}
+\hypertarget{psxpad_8h_a8c695f383b751e18f438895e5e6049b3}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+S\+Q\+U\+A\+R\+E@{P\+A\+D\+\_\+\+S\+Q\+U\+A\+R\+E}}
+\index{P\+A\+D\+\_\+\+S\+Q\+U\+A\+R\+E@{P\+A\+D\+\_\+\+S\+Q\+U\+A\+R\+E}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+S\+Q\+U\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+S\+Q\+U\+A\+R\+E~(1$<$$<$7)}\label{psxpad_8h_a8c695f383b751e18f438895e5e6049b3}
+\hypertarget{psxpad_8h_a1754f0c837e05e32d0850bb1f427c336}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+S\+T\+A\+R\+T@{P\+A\+D\+\_\+\+S\+T\+A\+R\+T}}
+\index{P\+A\+D\+\_\+\+S\+T\+A\+R\+T@{P\+A\+D\+\_\+\+S\+T\+A\+R\+T}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+S\+T\+A\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+S\+T\+A\+R\+T~(1$<$$<$11)}\label{psxpad_8h_a1754f0c837e05e32d0850bb1f427c336}
+\hypertarget{psxpad_8h_a9221aecfa49642278b962529ddbb39c5}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+T\+R\+I\+A\+N\+G\+L\+E@{P\+A\+D\+\_\+\+T\+R\+I\+A\+N\+G\+L\+E}}
+\index{P\+A\+D\+\_\+\+T\+R\+I\+A\+N\+G\+L\+E@{P\+A\+D\+\_\+\+T\+R\+I\+A\+N\+G\+L\+E}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+T\+R\+I\+A\+N\+G\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+T\+R\+I\+A\+N\+G\+L\+E~(1$<$$<$4)}\label{psxpad_8h_a9221aecfa49642278b962529ddbb39c5}
+\hypertarget{psxpad_8h_acdb66227c1cd67fa1c5a98548c75b504}{}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+\_\+\+U\+P@{P\+A\+D\+\_\+\+U\+P}}
+\index{P\+A\+D\+\_\+\+U\+P@{P\+A\+D\+\_\+\+U\+P}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{P\+A\+D\+\_\+\+U\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+D\+\_\+\+U\+P~(1$<$$<$12)}\label{psxpad_8h_acdb66227c1cd67fa1c5a98548c75b504}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936}{}\index{psxpad.\+h@{psxpad.\+h}!psx\+\_\+pad\+\_\+types@{psx\+\_\+pad\+\_\+types}}
+\index{psx\+\_\+pad\+\_\+types@{psx\+\_\+pad\+\_\+types}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{psx\+\_\+pad\+\_\+types}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf psx\+\_\+pad\+\_\+types}}\label{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936}
+
+
+These values below are to be used for evalauting the type field of the \hyperlink{structpsx__pad__state}{psx\+\_\+pad\+\_\+state} structure. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+N\+E@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+N\+E}!psxpad.\+h@{psxpad.\+h}}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+N\+E@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+N\+E}}\item[{\em 
+\hypertarget{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a8f9158f79202815f576fcf04c1f3d48b}{}P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+N\+E\label{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a8f9158f79202815f576fcf04c1f3d48b}
+}]No pad connected. \index{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+R\+M\+A\+L\+P\+A\+D@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+R\+M\+A\+L\+P\+A\+D}!psxpad.\+h@{psxpad.\+h}}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+R\+M\+A\+L\+P\+A\+D@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+R\+M\+A\+L\+P\+A\+D}}\item[{\em 
+\hypertarget{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936acf96509968767ff714e0a117f8fc4b75}{}P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+O\+R\+M\+A\+L\+P\+A\+D\label{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936acf96509968767ff714e0a117f8fc4b75}
+}]Normal pad. \index{P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+J\+O\+Y@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+J\+O\+Y}!psxpad.\+h@{psxpad.\+h}}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+J\+O\+Y@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+J\+O\+Y}}\item[{\em 
+\hypertarget{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a807ad26e185ab07f9f148c0dd2baa04e}{}P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+J\+O\+Y\label{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a807ad26e185ab07f9f148c0dd2baa04e}
+}]Analog joystick, the early ones with analog. \index{P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+P\+A\+D@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+P\+A\+D}!psxpad.\+h@{psxpad.\+h}}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+P\+A\+D@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+P\+A\+D}}\item[{\em 
+\hypertarget{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a4a12ffb4a1e030ff46e63f51c1655521}{}P\+A\+D\+T\+Y\+P\+E\+\_\+\+A\+N\+A\+L\+O\+G\+P\+A\+D\label{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a4a12ffb4a1e030ff46e63f51c1655521}
+}]Analog pad, the Dual Shock controller. \index{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+E\+G\+C\+O\+N@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+E\+G\+C\+O\+N}!psxpad.\+h@{psxpad.\+h}}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+E\+G\+C\+O\+N@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+E\+G\+C\+O\+N}}\item[{\em 
+\hypertarget{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a136fbedf2931cc187551d12c3335de40}{}P\+A\+D\+T\+Y\+P\+E\+\_\+\+N\+E\+G\+C\+O\+N\label{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936a136fbedf2931cc187551d12c3335de40}
+}]Namco Ne\+Gcon. Many steering wheels implement this protocol as well. \index{P\+A\+D\+T\+Y\+P\+E\+\_\+\+K\+O\+N\+A\+M\+I\+G\+U\+N@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+K\+O\+N\+A\+M\+I\+G\+U\+N}!psxpad.\+h@{psxpad.\+h}}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+T\+Y\+P\+E\+\_\+\+K\+O\+N\+A\+M\+I\+G\+U\+N@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+K\+O\+N\+A\+M\+I\+G\+U\+N}}\item[{\em 
+\hypertarget{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936abcb06b5a7bd0fdd252e50c859a7df6e6}{}P\+A\+D\+T\+Y\+P\+E\+\_\+\+K\+O\+N\+A\+M\+I\+G\+U\+N\label{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936abcb06b5a7bd0fdd252e50c859a7df6e6}
+}]Konami Justifier gun controller. Many third party gun controllers implement this protocol. \index{P\+A\+D\+T\+Y\+P\+E\+\_\+\+U\+N\+K\+N\+O\+W\+N@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+U\+N\+K\+N\+O\+W\+N}!psxpad.\+h@{psxpad.\+h}}\index{psxpad.\+h@{psxpad.\+h}!P\+A\+D\+T\+Y\+P\+E\+\_\+\+U\+N\+K\+N\+O\+W\+N@{P\+A\+D\+T\+Y\+P\+E\+\_\+\+U\+N\+K\+N\+O\+W\+N}}\item[{\em 
+\hypertarget{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936af7ef0fed48a6bf5dac39643e23f7388a}{}P\+A\+D\+T\+Y\+P\+E\+\_\+\+U\+N\+K\+N\+O\+W\+N\label{psxpad_8h_a0e0155fcb676b4eacf4943605a69c936af7ef0fed48a6bf5dac39643e23f7388a}
+}]Unknown pad type. \end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{psxpad_8h_aacb281f3d0695da7848867afb2638280}{}\index{psxpad.\+h@{psxpad.\+h}!pad\+\_\+enable\+\_\+vibration@{pad\+\_\+enable\+\_\+vibration}}
+\index{pad\+\_\+enable\+\_\+vibration@{pad\+\_\+enable\+\_\+vibration}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{pad\+\_\+enable\+\_\+vibration}]{\setlength{\rightskip}{0pt plus 5cm}void pad\+\_\+enable\+\_\+vibration (
+\begin{DoxyParamCaption}
+\item[{int}]{pad\+\_\+n}
+\end{DoxyParamCaption}
+)}\label{psxpad_8h_aacb281f3d0695da7848867afb2638280}
+\hypertarget{psxpad_8h_a6b4672ce2a7733dd1951e4cd55fad05e}{}\index{psxpad.\+h@{psxpad.\+h}!pad\+\_\+escape\+\_\+mode@{pad\+\_\+escape\+\_\+mode}}
+\index{pad\+\_\+escape\+\_\+mode@{pad\+\_\+escape\+\_\+mode}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{pad\+\_\+escape\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}void pad\+\_\+escape\+\_\+mode (
+\begin{DoxyParamCaption}
+\item[{int}]{pad\+\_\+n, }
+\item[{int}]{enable}
+\end{DoxyParamCaption}
+)}\label{psxpad_8h_a6b4672ce2a7733dd1951e4cd55fad05e}
+\hypertarget{psxpad_8h_a1a7913860aca3e046be1f9ab78c3bd35}{}\index{psxpad.\+h@{psxpad.\+h}!pad\+\_\+read\+\_\+raw@{pad\+\_\+read\+\_\+raw}}
+\index{pad\+\_\+read\+\_\+raw@{pad\+\_\+read\+\_\+raw}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{pad\+\_\+read\+\_\+raw}]{\setlength{\rightskip}{0pt plus 5cm}void pad\+\_\+read\+\_\+raw (
+\begin{DoxyParamCaption}
+\item[{int}]{pad\+\_\+n, }
+\item[{unsigned char $\ast$}]{arr}
+\end{DoxyParamCaption}
+)}\label{psxpad_8h_a1a7913860aca3e046be1f9ab78c3bd35}
+\hypertarget{psxpad_8h_ac517bbac0d262ee7ee516afaebecc589}{}\index{psxpad.\+h@{psxpad.\+h}!pad\+\_\+set\+\_\+vibration@{pad\+\_\+set\+\_\+vibration}}
+\index{pad\+\_\+set\+\_\+vibration@{pad\+\_\+set\+\_\+vibration}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{pad\+\_\+set\+\_\+vibration}]{\setlength{\rightskip}{0pt plus 5cm}void pad\+\_\+set\+\_\+vibration (
+\begin{DoxyParamCaption}
+\item[{int}]{pad\+\_\+n, }
+\item[{unsigned char}]{small, }
+\item[{unsigned char}]{big}
+\end{DoxyParamCaption}
+)}\label{psxpad_8h_ac517bbac0d262ee7ee516afaebecc589}
+\hypertarget{psxpad_8h_a4b30613b671fc797b84d3f58850028c3}{}\index{psxpad.\+h@{psxpad.\+h}!Query\+P\+A\+D@{Query\+P\+A\+D}}
+\index{Query\+P\+A\+D@{Query\+P\+A\+D}!psxpad.\+h@{psxpad.\+h}}
+\subsubsection[{Query\+P\+A\+D}]{\setlength{\rightskip}{0pt plus 5cm}void Query\+P\+A\+D (
+\begin{DoxyParamCaption}
+\item[{int}]{pad\+\_\+n, }
+\item[{unsigned char $\ast$}]{in, }
+\item[{unsigned char $\ast$}]{out, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}\label{psxpad_8h_a4b30613b671fc797b84d3f58850028c3}

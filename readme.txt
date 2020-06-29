@@ -1,3 +1,6 @@
+Note: This is a copy of PSXSDK project from http://unhaut.x10host.com/psxsdk/
+Pre-built binaries can be found in GitHub release artifacts.
+
 PSXSDK 0.6.2
 ReadMe and FAQ
 Last updated: April 10th 2019

@@ -1,0 +1,414 @@
+\hypertarget{meidogte_8h}{}\section{libmeidogte/meidogte.h File Reference}
+\label{meidogte_8h}\index{libmeidogte/meidogte.\+h@{libmeidogte/meidogte.\+h}}
+{\ttfamily \#include $<$meidogte\+\_\+inline.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}
+\item 
+struct \hyperlink{structVECTOR}{V\+E\+C\+T\+OR}
+\item 
+struct \hyperlink{structSVECTOR}{S\+V\+E\+C\+T\+OR}
+\item 
+struct \hyperlink{structCVECTOR}{C\+V\+E\+C\+T\+OR}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{meidogte_8h_a206b6f5362e56b51ca957635350b70b6}{O\+NE}~4096
+\begin{DoxyCompactList}\small\item\em One degree = 4096. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{meidogte_8h_a5f175b9dd974dbacf63359bdd4c927f9}{Init\+Geom} ()
+\begin{DoxyCompactList}\small\item\em Initialize Meido\+G\+TE library. \end{DoxyCompactList}\item 
+int \hyperlink{meidogte_8h_a73016a29dcdca976ce518ecbb3c9b80f}{isin} (int a)
+\begin{DoxyCompactList}\small\item\em Integer sine function (4096 = 360 degrees) \end{DoxyCompactList}\item 
+int \hyperlink{meidogte_8h_a0070a9a1e091c6fc4bb4c56ca0ae4b42}{icos} (int a)
+\begin{DoxyCompactList}\small\item\em Integer cosine function (4096 = 360 degrees) \end{DoxyCompactList}\item 
+int \hyperlink{meidogte_8h_ae8c23d094562c50f9936f7d5ab32141d}{hisin} (int a)
+\begin{DoxyCompactList}\small\item\em Higher precision integer sine function (131072 = 360 degrees) \end{DoxyCompactList}\item 
+int \hyperlink{meidogte_8h_a61024bccb1faec0f5bd505c53824055f}{hicos} (int a)
+\begin{DoxyCompactList}\small\item\em Higher precision integer cosine function (131072 = 360 degrees) \end{DoxyCompactList}\item 
+void \hyperlink{meidogte_8h_a16ced344e89fbf68fb10b44bfdeb82a7}{Push\+Matrix} ()
+\begin{DoxyCompactList}\small\item\em Save a constant rotation matrix in stack. \end{DoxyCompactList}\item 
+void \hyperlink{meidogte_8h_aa50d265a38c2f8fa28d531177f3524b8}{Pop\+Matrix} ()
+\begin{DoxyCompactList}\small\item\em Reset a constant rotation matrix from stack. \end{DoxyCompactList}\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{meidogte_8h_abf0e8850281eeea2811c46d7f5a6a6b8}{Rot\+Matrix} (\hyperlink{structSVECTOR}{S\+V\+E\+C\+T\+OR} $\ast$r, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Find rotation matrix from a rotation angle. \end{DoxyCompactList}\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{meidogte_8h_ad47fbed32556bd699e0f2de8a35f745c}{Hi\+Rot\+Matrix} (\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$r, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Find rotation matrix from a rotation angle. \end{DoxyCompactList}\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{meidogte_8h_a76718ca67c443dff89b654bb68b4659e}{Trans\+Matrix} (\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m, \hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$r)
+\begin{DoxyCompactList}\small\item\em Give an amount of parallel transfer expressed by v to the matrix m. \end{DoxyCompactList}\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{meidogte_8h_aa91f4c570fe232e3168702bfdf1f6736}{Scale\+Matrix} (\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m, \hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$s)
+\begin{DoxyCompactList}\small\item\em Scale m by v. \end{DoxyCompactList}\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{meidogte_8h_ad7de40bbb84fec294aa98d94be47ab08}{Mul\+Matrix} (\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m0, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m1)
+\begin{DoxyCompactList}\small\item\em Multiply two matrices. \end{DoxyCompactList}\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{meidogte_8h_a7dd5f8ed56070b97a4a328df0d5ce4cc}{Mul\+Matrix0} (\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m0, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m1, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m2)
+\begin{DoxyCompactList}\small\item\em Multiply two matrices. \end{DoxyCompactList}\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{meidogte_8h_aeb63f193a8b05999b6de012ff094452f}{Comp\+Matrix\+LV} (\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$v0, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$v1, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$v2)
+\begin{DoxyCompactList}\small\item\em Make a composite coordinate transformation matrix. \end{DoxyCompactList}\item 
+\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$ \hyperlink{meidogte_8h_a06c15ede80f11a435f60d067961ca826}{Apply\+Matrix\+LV} (\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m, \hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$v0, \hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$v1)
+\begin{DoxyCompactList}\small\item\em Multiply a vector by a matrix. \end{DoxyCompactList}\item 
+void \hyperlink{meidogte_8h_add57908a453a1eeb7c6bd050925fe2e7}{Vector\+NormalS} (\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$v0, \hyperlink{structSVECTOR}{S\+V\+E\+C\+T\+OR} $\ast$v1)
+\begin{DoxyCompactList}\small\item\em Normalize a vector. \end{DoxyCompactList}\item 
+void \hyperlink{meidogte_8h_afa073514c8be87580f03a08fc1a2ab6c}{Square0} (\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$v0, \hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$v1)
+\begin{DoxyCompactList}\small\item\em Return a vector, obtained by squaring each term of the vector v0, to v1. \end{DoxyCompactList}\item 
+int \hyperlink{meidogte_8h_a4b0504f8b5d8c9238154283c35ff0299}{Square\+Root0} (int a)
+\begin{DoxyCompactList}\small\item\em Square root. \end{DoxyCompactList}\item 
+int \hyperlink{meidogte_8h_a933e8de8486c94a79a95f6b4f2b31e4c}{Square\+Root12} (int a)
+\begin{DoxyCompactList}\small\item\em Square root. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{meidogte_8h_a206b6f5362e56b51ca957635350b70b6}\label{meidogte_8h_a206b6f5362e56b51ca957635350b70b6}} 
+\index{meidogte.\+h@{meidogte.\+h}!O\+NE@{O\+NE}}
+\index{O\+NE@{O\+NE}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{O\+NE}{ONE}}
+{\footnotesize\ttfamily \#define O\+NE~4096}
+
+
+
+One degree = 4096. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{meidogte_8h_a06c15ede80f11a435f60d067961ca826}\label{meidogte_8h_a06c15ede80f11a435f60d067961ca826}} 
+\index{meidogte.\+h@{meidogte.\+h}!Apply\+Matrix\+LV@{Apply\+Matrix\+LV}}
+\index{Apply\+Matrix\+LV@{Apply\+Matrix\+LV}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Apply\+Matrix\+L\+V()}{ApplyMatrixLV()}}
+{\footnotesize\ttfamily \hyperlink{structVECTOR}{V\+E\+C\+T\+OR}$\ast$ Apply\+Matrix\+LV (\begin{DoxyParamCaption}\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m,  }\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{v0,  }\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{v1 }\end{DoxyParamCaption})}
+
+
+
+Multiply a vector by a matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Pointer to matrix to be multiplied \\
+\hline
+{\em v0} & Pointer to vector (input) \\
+\hline
+{\em v1} & Pointer to vector (output) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to v1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_aeb63f193a8b05999b6de012ff094452f}\label{meidogte_8h_aeb63f193a8b05999b6de012ff094452f}} 
+\index{meidogte.\+h@{meidogte.\+h}!Comp\+Matrix\+LV@{Comp\+Matrix\+LV}}
+\index{Comp\+Matrix\+LV@{Comp\+Matrix\+LV}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Comp\+Matrix\+L\+V()}{CompMatrixLV()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Comp\+Matrix\+LV (\begin{DoxyParamCaption}\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{v0,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{v1,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{v2 }\end{DoxyParamCaption})}
+
+
+
+Make a composite coordinate transformation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m0} & First matrix \\
+\hline
+{\em m1} & Second matrix \\
+\hline
+{\em m2} & Output matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_a61024bccb1faec0f5bd505c53824055f}\label{meidogte_8h_a61024bccb1faec0f5bd505c53824055f}} 
+\index{meidogte.\+h@{meidogte.\+h}!hicos@{hicos}}
+\index{hicos@{hicos}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{hicos()}{hicos()}}
+{\footnotesize\ttfamily int hicos (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Higher precision integer cosine function (131072 = 360 degrees) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cosine of input 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_ad47fbed32556bd699e0f2de8a35f745c}\label{meidogte_8h_ad47fbed32556bd699e0f2de8a35f745c}} 
+\index{meidogte.\+h@{meidogte.\+h}!Hi\+Rot\+Matrix@{Hi\+Rot\+Matrix}}
+\index{Hi\+Rot\+Matrix@{Hi\+Rot\+Matrix}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Hi\+Rot\+Matrix()}{HiRotMatrix()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Hi\+Rot\+Matrix (\begin{DoxyParamCaption}\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{r,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Find rotation matrix from a rotation angle. 
+
+(high-\/precision) (131072 = 360 degrees) 
+\begin{DoxyParams}{Parameters}
+{\em r} & Rotation angle (input) \\
+\hline
+{\em m} & Rotation matrix (output) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_ae8c23d094562c50f9936f7d5ab32141d}\label{meidogte_8h_ae8c23d094562c50f9936f7d5ab32141d}} 
+\index{meidogte.\+h@{meidogte.\+h}!hisin@{hisin}}
+\index{hisin@{hisin}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{hisin()}{hisin()}}
+{\footnotesize\ttfamily int hisin (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Higher precision integer sine function (131072 = 360 degrees) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sine of input 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_a0070a9a1e091c6fc4bb4c56ca0ae4b42}\label{meidogte_8h_a0070a9a1e091c6fc4bb4c56ca0ae4b42}} 
+\index{meidogte.\+h@{meidogte.\+h}!icos@{icos}}
+\index{icos@{icos}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{icos()}{icos()}}
+{\footnotesize\ttfamily int icos (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Integer cosine function (4096 = 360 degrees) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cosine of input 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_a5f175b9dd974dbacf63359bdd4c927f9}\label{meidogte_8h_a5f175b9dd974dbacf63359bdd4c927f9}} 
+\index{meidogte.\+h@{meidogte.\+h}!Init\+Geom@{Init\+Geom}}
+\index{Init\+Geom@{Init\+Geom}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Init\+Geom()}{InitGeom()}}
+{\footnotesize\ttfamily void Init\+Geom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize Meido\+G\+TE library. 
+
+\mbox{\Hypertarget{meidogte_8h_a73016a29dcdca976ce518ecbb3c9b80f}\label{meidogte_8h_a73016a29dcdca976ce518ecbb3c9b80f}} 
+\index{meidogte.\+h@{meidogte.\+h}!isin@{isin}}
+\index{isin@{isin}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{isin()}{isin()}}
+{\footnotesize\ttfamily int isin (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Integer sine function (4096 = 360 degrees) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sine of input 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_ad7de40bbb84fec294aa98d94be47ab08}\label{meidogte_8h_ad7de40bbb84fec294aa98d94be47ab08}} 
+\index{meidogte.\+h@{meidogte.\+h}!Mul\+Matrix@{Mul\+Matrix}}
+\index{Mul\+Matrix@{Mul\+Matrix}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Mul\+Matrix()}{MulMatrix()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Mul\+Matrix (\begin{DoxyParamCaption}\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m0,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m1 }\end{DoxyParamCaption})}
+
+
+
+Multiply two matrices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m0} & First matrix (result is saved here) \\
+\hline
+{\em m1} & Second matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m0. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_a7dd5f8ed56070b97a4a328df0d5ce4cc}\label{meidogte_8h_a7dd5f8ed56070b97a4a328df0d5ce4cc}} 
+\index{meidogte.\+h@{meidogte.\+h}!Mul\+Matrix0@{Mul\+Matrix0}}
+\index{Mul\+Matrix0@{Mul\+Matrix0}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Mul\+Matrix0()}{MulMatrix0()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Mul\+Matrix0 (\begin{DoxyParamCaption}\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m0,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m1,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m2 }\end{DoxyParamCaption})}
+
+
+
+Multiply two matrices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m0} & First matrix \\
+\hline
+{\em m1} & Second matrix \\
+\hline
+{\em m2} & Output matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_aa50d265a38c2f8fa28d531177f3524b8}\label{meidogte_8h_aa50d265a38c2f8fa28d531177f3524b8}} 
+\index{meidogte.\+h@{meidogte.\+h}!Pop\+Matrix@{Pop\+Matrix}}
+\index{Pop\+Matrix@{Pop\+Matrix}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Pop\+Matrix()}{PopMatrix()}}
+{\footnotesize\ttfamily void Pop\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset a constant rotation matrix from stack. 
+
+\mbox{\Hypertarget{meidogte_8h_a16ced344e89fbf68fb10b44bfdeb82a7}\label{meidogte_8h_a16ced344e89fbf68fb10b44bfdeb82a7}} 
+\index{meidogte.\+h@{meidogte.\+h}!Push\+Matrix@{Push\+Matrix}}
+\index{Push\+Matrix@{Push\+Matrix}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Push\+Matrix()}{PushMatrix()}}
+{\footnotesize\ttfamily void Push\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Save a constant rotation matrix in stack. 
+
+\mbox{\Hypertarget{meidogte_8h_abf0e8850281eeea2811c46d7f5a6a6b8}\label{meidogte_8h_abf0e8850281eeea2811c46d7f5a6a6b8}} 
+\index{meidogte.\+h@{meidogte.\+h}!Rot\+Matrix@{Rot\+Matrix}}
+\index{Rot\+Matrix@{Rot\+Matrix}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Rot\+Matrix()}{RotMatrix()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Rot\+Matrix (\begin{DoxyParamCaption}\item[{\hyperlink{structSVECTOR}{S\+V\+E\+C\+T\+OR} $\ast$}]{r,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Find rotation matrix from a rotation angle. 
+
+(4096 = 360 degrees) 
+\begin{DoxyParams}{Parameters}
+{\em r} & Rotation angle (input) \\
+\hline
+{\em m} & Rotation matrix (output) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_aa91f4c570fe232e3168702bfdf1f6736}\label{meidogte_8h_aa91f4c570fe232e3168702bfdf1f6736}} 
+\index{meidogte.\+h@{meidogte.\+h}!Scale\+Matrix@{Scale\+Matrix}}
+\index{Scale\+Matrix@{Scale\+Matrix}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Scale\+Matrix()}{ScaleMatrix()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Scale\+Matrix (\begin{DoxyParamCaption}\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m,  }\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Scale m by v. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Pointer to matrix (output) \\
+\hline
+{\em v} & Pointer to scale vector (input) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_afa073514c8be87580f03a08fc1a2ab6c}\label{meidogte_8h_afa073514c8be87580f03a08fc1a2ab6c}} 
+\index{meidogte.\+h@{meidogte.\+h}!Square0@{Square0}}
+\index{Square0@{Square0}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Square0()}{Square0()}}
+{\footnotesize\ttfamily void Square0 (\begin{DoxyParamCaption}\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{v0,  }\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{v1 }\end{DoxyParamCaption})}
+
+
+
+Return a vector, obtained by squaring each term of the vector v0, to v1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v0} & Pointer to vector (input) \\
+\hline
+{\em v1} & Pointer to vector (output) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{meidogte_8h_a4b0504f8b5d8c9238154283c35ff0299}\label{meidogte_8h_a4b0504f8b5d8c9238154283c35ff0299}} 
+\index{meidogte.\+h@{meidogte.\+h}!Square\+Root0@{Square\+Root0}}
+\index{Square\+Root0@{Square\+Root0}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Square\+Root0()}{SquareRoot0()}}
+{\footnotesize\ttfamily int Square\+Root0 (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Square root. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Square root of input value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_a933e8de8486c94a79a95f6b4f2b31e4c}\label{meidogte_8h_a933e8de8486c94a79a95f6b4f2b31e4c}} 
+\index{meidogte.\+h@{meidogte.\+h}!Square\+Root12@{Square\+Root12}}
+\index{Square\+Root12@{Square\+Root12}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Square\+Root12()}{SquareRoot12()}}
+{\footnotesize\ttfamily int Square\+Root12 (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Square root. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input value in (0, 20, 12) format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Square root of input value in (0, 20, 12) format 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_a76718ca67c443dff89b654bb68b4659e}\label{meidogte_8h_a76718ca67c443dff89b654bb68b4659e}} 
+\index{meidogte.\+h@{meidogte.\+h}!Trans\+Matrix@{Trans\+Matrix}}
+\index{Trans\+Matrix@{Trans\+Matrix}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Trans\+Matrix()}{TransMatrix()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Trans\+Matrix (\begin{DoxyParamCaption}\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m,  }\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{r }\end{DoxyParamCaption})}
+
+
+
+Give an amount of parallel transfer expressed by v to the matrix m. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Pointer to matrix (output) \\
+\hline
+{\em v} & Pointer to transfer vector (input) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m 
+\end{DoxyReturn}
+\mbox{\Hypertarget{meidogte_8h_add57908a453a1eeb7c6bd050925fe2e7}\label{meidogte_8h_add57908a453a1eeb7c6bd050925fe2e7}} 
+\index{meidogte.\+h@{meidogte.\+h}!Vector\+NormalS@{Vector\+NormalS}}
+\index{Vector\+NormalS@{Vector\+NormalS}!meidogte.\+h@{meidogte.\+h}}
+\subsubsection{\texorpdfstring{Vector\+Normal\+S()}{VectorNormalS()}}
+{\footnotesize\ttfamily void Vector\+NormalS (\begin{DoxyParamCaption}\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{v0,  }\item[{\hyperlink{structSVECTOR}{S\+V\+E\+C\+T\+OR} $\ast$}]{v1 }\end{DoxyParamCaption})}
+
+
+
+Normalize a vector. 
+
+Warning\+: if ((v0-\/$>$vx)$^\wedge$2 + (v1-\/$>$vx)$^\wedge$2 +(v2-\/$>$vx)$^\wedge$2) $>$ 0x7\+F\+F\+F\+F\+FF, a processor exception will occur. 
+\begin{DoxyParams}{Parameters}
+{\em v0} & Pointer to vector (input) \\
+\hline
+{\em v1} & Pointer to vector (output) \\
+\hline
+\end{DoxyParams}

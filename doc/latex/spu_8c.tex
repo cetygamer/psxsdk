@@ -1,0 +1,393 @@
+\hypertarget{spu_8c}{}\section{libpsx/src/spu.c File Reference}
+\label{spu_8c}\index{libpsx/src/spu.\+c@{libpsx/src/spu.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$psx.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{spu_8c_ad006dc4a9cda6789623ca9cb207edc5d}{Ss\+Voice\+Vol} (int voice, unsigned short left, unsigned short right)
+\begin{DoxyCompactList}\small\item\em Set voice volume. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a622fb9532465a7acf59c4c053b4038bd}{Ss\+Voice\+Pitch} (int voice, unsigned short pitch)
+\begin{DoxyCompactList}\small\item\em Set voice pitch. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a611b385fd717fd7d0cdd0ef96c4c8494}{Ss\+Voice\+Start\+Addr} (int voice, unsigned int addr)
+\begin{DoxyCompactList}\small\item\em Set start Sound R\+AM address for voice. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a65c81681ca625f4e99b94d1b21f0432e}{Ss\+Voice\+A\+D\+S\+R\+Raw} (int voice, unsigned short level, unsigned short rate)
+\begin{DoxyCompactList}\small\item\em Set A\+D\+SR level for voice. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_aee95ab60677251a10348ca58dbc690b3}{Ss\+Voice\+Repeat\+Addr} (int voice, unsigned int addr)
+\begin{DoxyCompactList}\small\item\em Set repeat address for voice. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a98d8aadf39be5b6f15ae5139fbc88466}{Ss\+Key\+On} (int voice)
+\begin{DoxyCompactList}\small\item\em Set a voice to \textquotesingle{}on\textquotesingle{}. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a9ba3a1a64a1dc9ccf9c3340f7bf7e562}{Ss\+Key\+Off} (int voice)
+\begin{DoxyCompactList}\small\item\em Set a voice to \textquotesingle{}off\textquotesingle{}. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_aa7260694b6ed489e251f584e71a7df43}{Ss\+Key\+On\+Mask} (int mask)
+\begin{DoxyCompactList}\small\item\em Set the voices specified by the bitmask to \textquotesingle{}on\textquotesingle{}. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a46fa76356f73b729171585f68e09167a}{Ss\+Key\+Off\+Mask} (int mask)
+\begin{DoxyCompactList}\small\item\em Set the voices specified by the bitmask to \textquotesingle{}off\textquotesingle{}. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a8273527c5d7c245f244ccb8a31b56461}{Ss\+Wait} ()
+\begin{DoxyCompactList}\small\item\em Wait for the S\+PU to be ready. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a0ef2d622f6fa2dfdf017ebba3bd1b8f3}{Ss\+Init} ()
+\begin{DoxyCompactList}\small\item\em Intialize the S\+PU. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a6d05dc4918ebd079c27074502d9cd67e}{Ss\+Upload} (void $\ast$addr, int size, int spu\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Uploads sound data in P\+SX A\+D\+P\+CM format to Sound R\+AM. \end{DoxyCompactList}\item 
+unsigned short \hyperlink{spu_8c_ade6edee38ce34cf3c1261de3cc81ed4b}{Ss\+Freq\+To\+Pitch} (int hz)
+\begin{DoxyCompactList}\small\item\em Converts a sampling rate in hertz to Play\+Station pitch rate used by the S\+PU. \end{DoxyCompactList}\item 
+int \hyperlink{spu_8c_a6b751f74cce77a9e09ca79c83249bd7f}{Ss\+Read\+Vag} (\hyperlink{structSsVag}{Ss\+Vag} $\ast$vag, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Reads information from a buffer containg a V\+AG file and stores it inside a \hyperlink{structSsVag}{Ss\+Vag} structure. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a2b35a0b883ff4be60bfafa29c73de4e9}{Ss\+Upload\+Vag\+Ex} (\hyperlink{structSsVag}{Ss\+Vag} $\ast$vag, int spu\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Uploads the sound data specified by a \hyperlink{structSsVag}{Ss\+Vag} structure to the specified address in Sound R\+AM. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_ab648ea73ff5cb5f8aa0aa2338f2a545c}{Ss\+Upload\+Vag} (\hyperlink{structSsVag}{Ss\+Vag} $\ast$vag)
+\begin{DoxyCompactList}\small\item\em Uploads the sound data specified by a \hyperlink{structSsVag}{Ss\+Vag} structure to Sound R\+AM, beginning from the base of usable Sound R\+AM and continuing from there, in an automatic fashion. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a45df24a7c866efd0615d467a19735678}{Ss\+Play\+Vag} (\hyperlink{structSsVag}{Ss\+Vag} $\ast$vag, unsigned char voice, unsigned short vl, unsigned short vr)
+\begin{DoxyCompactList}\small\item\em Plays the sound specified by the \hyperlink{structSsVag}{Ss\+Vag} structure at specified voice and volume. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_ae8f349a6f05114d531fe847347e2dbce}{Ss\+Stop\+Vag} (\hyperlink{structSsVag}{Ss\+Vag} $\ast$vag)
+\begin{DoxyCompactList}\small\item\em Stops the sound specified by the \hyperlink{structSsVag}{Ss\+Vag} structure. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a7e92880a3fcf0f22a23dc77f431d01bf}{Ss\+Reset\+Vag\+Addr} ()
+\begin{DoxyCompactList}\small\item\em Tell \hyperlink{psxspu_8h_ab648ea73ff5cb5f8aa0aa2338f2a545c}{Ss\+Upload\+Vag()} to start uploading from the base of usable Sound R\+AM again. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a514dbb28f4ba1dcd554f85b3cee6367e}{Ss\+Enable\+Cd} ()
+\begin{DoxyCompactList}\small\item\em Enable CD Audio. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_a176d43ad06beb8108d7f7fe50a6faa21}{Ss\+Enable\+Ext} ()
+\begin{DoxyCompactList}\small\item\em Enable External audio. \end{DoxyCompactList}\item 
+void \hyperlink{spu_8c_aa4d31739bd2348ae6299ddde8721d05f}{Ss\+Cd\+Vol} (unsigned short left, unsigned short right)
+\begin{DoxyCompactList}\small\item\em Set CD Audio volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{spu_8c_aa4d31739bd2348ae6299ddde8721d05f}\label{spu_8c_aa4d31739bd2348ae6299ddde8721d05f}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Cd\+Vol@{Ss\+Cd\+Vol}}
+\index{Ss\+Cd\+Vol@{Ss\+Cd\+Vol}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Cd\+Vol()}{SsCdVol()}}
+{\footnotesize\ttfamily void Ss\+Cd\+Vol (\begin{DoxyParamCaption}\item[{unsigned short}]{left,  }\item[{unsigned short}]{right }\end{DoxyParamCaption})}
+
+
+
+Set CD Audio volume. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & Left channel volume \\
+\hline
+{\em right} & Right channel volume \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a514dbb28f4ba1dcd554f85b3cee6367e}\label{spu_8c_a514dbb28f4ba1dcd554f85b3cee6367e}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Enable\+Cd@{Ss\+Enable\+Cd}}
+\index{Ss\+Enable\+Cd@{Ss\+Enable\+Cd}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Enable\+Cd()}{SsEnableCd()}}
+{\footnotesize\ttfamily void Ss\+Enable\+Cd (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Enable CD Audio. 
+
+\mbox{\Hypertarget{spu_8c_a176d43ad06beb8108d7f7fe50a6faa21}\label{spu_8c_a176d43ad06beb8108d7f7fe50a6faa21}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Enable\+Ext@{Ss\+Enable\+Ext}}
+\index{Ss\+Enable\+Ext@{Ss\+Enable\+Ext}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Enable\+Ext()}{SsEnableExt()}}
+{\footnotesize\ttfamily void Ss\+Enable\+Ext (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Enable External audio. 
+
+(???) \mbox{\Hypertarget{spu_8c_ade6edee38ce34cf3c1261de3cc81ed4b}\label{spu_8c_ade6edee38ce34cf3c1261de3cc81ed4b}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Freq\+To\+Pitch@{Ss\+Freq\+To\+Pitch}}
+\index{Ss\+Freq\+To\+Pitch@{Ss\+Freq\+To\+Pitch}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Freq\+To\+Pitch()}{SsFreqToPitch()}}
+{\footnotesize\ttfamily unsigned short Ss\+Freq\+To\+Pitch (\begin{DoxyParamCaption}\item[{int}]{hz }\end{DoxyParamCaption})}
+
+
+
+Converts a sampling rate in hertz to Play\+Station pitch rate used by the S\+PU. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hz} & Sampling rate in hertz. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Play\+Station pitch rate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{spu_8c_a0ef2d622f6fa2dfdf017ebba3bd1b8f3}\label{spu_8c_a0ef2d622f6fa2dfdf017ebba3bd1b8f3}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Init@{Ss\+Init}}
+\index{Ss\+Init@{Ss\+Init}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Init()}{SsInit()}}
+{\footnotesize\ttfamily void Ss\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Intialize the S\+PU. 
+
+\mbox{\Hypertarget{spu_8c_a9ba3a1a64a1dc9ccf9c3340f7bf7e562}\label{spu_8c_a9ba3a1a64a1dc9ccf9c3340f7bf7e562}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Key\+Off@{Ss\+Key\+Off}}
+\index{Ss\+Key\+Off@{Ss\+Key\+Off}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Key\+Off()}{SsKeyOff()}}
+{\footnotesize\ttfamily void Ss\+Key\+Off (\begin{DoxyParamCaption}\item[{int}]{voice }\end{DoxyParamCaption})}
+
+
+
+Set a voice to \textquotesingle{}off\textquotesingle{}. 
+
+This stops the sound specified for the voice. 
+\begin{DoxyParams}{Parameters}
+{\em voice} & Voice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a46fa76356f73b729171585f68e09167a}\label{spu_8c_a46fa76356f73b729171585f68e09167a}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Key\+Off\+Mask@{Ss\+Key\+Off\+Mask}}
+\index{Ss\+Key\+Off\+Mask@{Ss\+Key\+Off\+Mask}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Key\+Off\+Mask()}{SsKeyOffMask()}}
+{\footnotesize\ttfamily void Ss\+Key\+Off\+Mask (\begin{DoxyParamCaption}\item[{int}]{mask }\end{DoxyParamCaption})}
+
+
+
+Set the voices specified by the bitmask to \textquotesingle{}off\textquotesingle{}. 
+
+Like \hyperlink{psxspu_8h_a9ba3a1a64a1dc9ccf9c3340f7bf7e562}{Ss\+Key\+Off()} 
+\begin{DoxyParams}{Parameters}
+{\em mask} & Bitmask \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a98d8aadf39be5b6f15ae5139fbc88466}\label{spu_8c_a98d8aadf39be5b6f15ae5139fbc88466}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Key\+On@{Ss\+Key\+On}}
+\index{Ss\+Key\+On@{Ss\+Key\+On}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Key\+On()}{SsKeyOn()}}
+{\footnotesize\ttfamily void Ss\+Key\+On (\begin{DoxyParamCaption}\item[{int}]{voice }\end{DoxyParamCaption})}
+
+
+
+Set a voice to \textquotesingle{}on\textquotesingle{}. 
+
+This has the effect of playing the sound specified for the voice. 
+\begin{DoxyParams}{Parameters}
+{\em voice} & Voice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_aa7260694b6ed489e251f584e71a7df43}\label{spu_8c_aa7260694b6ed489e251f584e71a7df43}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Key\+On\+Mask@{Ss\+Key\+On\+Mask}}
+\index{Ss\+Key\+On\+Mask@{Ss\+Key\+On\+Mask}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Key\+On\+Mask()}{SsKeyOnMask()}}
+{\footnotesize\ttfamily void Ss\+Key\+On\+Mask (\begin{DoxyParamCaption}\item[{int}]{mask }\end{DoxyParamCaption})}
+
+
+
+Set the voices specified by the bitmask to \textquotesingle{}on\textquotesingle{}. 
+
+Like \hyperlink{psxspu_8h_a98d8aadf39be5b6f15ae5139fbc88466}{Ss\+Key\+On()} 
+\begin{DoxyParams}{Parameters}
+{\em mask} & Bitmask \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a45df24a7c866efd0615d467a19735678}\label{spu_8c_a45df24a7c866efd0615d467a19735678}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Play\+Vag@{Ss\+Play\+Vag}}
+\index{Ss\+Play\+Vag@{Ss\+Play\+Vag}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Play\+Vag()}{SsPlayVag()}}
+{\footnotesize\ttfamily void Ss\+Play\+Vag (\begin{DoxyParamCaption}\item[{\hyperlink{structSsVag}{Ss\+Vag} $\ast$}]{vag,  }\item[{unsigned char}]{voice,  }\item[{unsigned short}]{vl,  }\item[{unsigned short}]{vr }\end{DoxyParamCaption})}
+
+
+
+Plays the sound specified by the \hyperlink{structSsVag}{Ss\+Vag} structure at specified voice and volume. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vag} & Pointer to \hyperlink{structSsVag}{Ss\+Vag} structure \\
+\hline
+{\em voice} & Voice \\
+\hline
+{\em vl} & Left channel volume \\
+\hline
+{\em vr} & Right channel volume \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a6b751f74cce77a9e09ca79c83249bd7f}\label{spu_8c_a6b751f74cce77a9e09ca79c83249bd7f}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Read\+Vag@{Ss\+Read\+Vag}}
+\index{Ss\+Read\+Vag@{Ss\+Read\+Vag}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Read\+Vag()}{SsReadVag()}}
+{\footnotesize\ttfamily int Ss\+Read\+Vag (\begin{DoxyParamCaption}\item[{\hyperlink{structSsVag}{Ss\+Vag} $\ast$}]{vag,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Reads information from a buffer containg a V\+AG file and stores it inside a \hyperlink{structSsVag}{Ss\+Vag} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vag} & Pointer to structure in which to store information. \\
+\hline
+{\em data} & Pointer to V\+AG file data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a7e92880a3fcf0f22a23dc77f431d01bf}\label{spu_8c_a7e92880a3fcf0f22a23dc77f431d01bf}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Reset\+Vag\+Addr@{Ss\+Reset\+Vag\+Addr}}
+\index{Ss\+Reset\+Vag\+Addr@{Ss\+Reset\+Vag\+Addr}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Reset\+Vag\+Addr()}{SsResetVagAddr()}}
+{\footnotesize\ttfamily void Ss\+Reset\+Vag\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Tell \hyperlink{psxspu_8h_ab648ea73ff5cb5f8aa0aa2338f2a545c}{Ss\+Upload\+Vag()} to start uploading from the base of usable Sound R\+AM again. 
+
+\mbox{\Hypertarget{spu_8c_ae8f349a6f05114d531fe847347e2dbce}\label{spu_8c_ae8f349a6f05114d531fe847347e2dbce}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Stop\+Vag@{Ss\+Stop\+Vag}}
+\index{Ss\+Stop\+Vag@{Ss\+Stop\+Vag}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Stop\+Vag()}{SsStopVag()}}
+{\footnotesize\ttfamily void Ss\+Stop\+Vag (\begin{DoxyParamCaption}\item[{\hyperlink{structSsVag}{Ss\+Vag} $\ast$}]{vag }\end{DoxyParamCaption})}
+
+
+
+Stops the sound specified by the \hyperlink{structSsVag}{Ss\+Vag} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vag} & Pointer to \hyperlink{structSsVag}{Ss\+Vag} structure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a6d05dc4918ebd079c27074502d9cd67e}\label{spu_8c_a6d05dc4918ebd079c27074502d9cd67e}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Upload@{Ss\+Upload}}
+\index{Ss\+Upload@{Ss\+Upload}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Upload()}{SsUpload()}}
+{\footnotesize\ttfamily void Ss\+Upload (\begin{DoxyParamCaption}\item[{void $\ast$}]{addr,  }\item[{int}]{size,  }\item[{int}]{spu\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+Uploads sound data in P\+SX A\+D\+P\+CM format to Sound R\+AM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Pointer to P\+SX A\+D\+P\+CM sound data in main R\+AM \\
+\hline
+{\em size} & Sound data size \\
+\hline
+{\em spu\+\_\+addr} & Destination address in Sound R\+AM (multiplier of 8). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_ab648ea73ff5cb5f8aa0aa2338f2a545c}\label{spu_8c_ab648ea73ff5cb5f8aa0aa2338f2a545c}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Upload\+Vag@{Ss\+Upload\+Vag}}
+\index{Ss\+Upload\+Vag@{Ss\+Upload\+Vag}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Upload\+Vag()}{SsUploadVag()}}
+{\footnotesize\ttfamily void Ss\+Upload\+Vag (\begin{DoxyParamCaption}\item[{\hyperlink{structSsVag}{Ss\+Vag} $\ast$}]{vag }\end{DoxyParamCaption})}
+
+
+
+Uploads the sound data specified by a \hyperlink{structSsVag}{Ss\+Vag} structure to Sound R\+AM, beginning from the base of usable Sound R\+AM and continuing from there, in an automatic fashion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vag} & Pointer to \hyperlink{structSsVag}{Ss\+Vag} structure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a2b35a0b883ff4be60bfafa29c73de4e9}\label{spu_8c_a2b35a0b883ff4be60bfafa29c73de4e9}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Upload\+Vag\+Ex@{Ss\+Upload\+Vag\+Ex}}
+\index{Ss\+Upload\+Vag\+Ex@{Ss\+Upload\+Vag\+Ex}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Upload\+Vag\+Ex()}{SsUploadVagEx()}}
+{\footnotesize\ttfamily void Ss\+Upload\+Vag\+Ex (\begin{DoxyParamCaption}\item[{\hyperlink{structSsVag}{Ss\+Vag} $\ast$}]{vag,  }\item[{int}]{spu\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+Uploads the sound data specified by a \hyperlink{structSsVag}{Ss\+Vag} structure to the specified address in Sound R\+AM. 
+
+The \hyperlink{structSsVag}{Ss\+Vag} structure can then be used for playing with \hyperlink{psxspu_8h_a45df24a7c866efd0615d467a19735678}{Ss\+Play\+Vag()} 
+\begin{DoxyParams}{Parameters}
+{\em vag} & Pointer to \hyperlink{structSsVag}{Ss\+Vag} structure \\
+\hline
+{\em spu\+\_\+addr} & Destination address in Sound R\+AM (multiplier of 8) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a65c81681ca625f4e99b94d1b21f0432e}\label{spu_8c_a65c81681ca625f4e99b94d1b21f0432e}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Voice\+A\+D\+S\+R\+Raw@{Ss\+Voice\+A\+D\+S\+R\+Raw}}
+\index{Ss\+Voice\+A\+D\+S\+R\+Raw@{Ss\+Voice\+A\+D\+S\+R\+Raw}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Voice\+A\+D\+S\+R\+Raw()}{SsVoiceADSRRaw()}}
+{\footnotesize\ttfamily void Ss\+Voice\+A\+D\+S\+R\+Raw (\begin{DoxyParamCaption}\item[{int}]{voice,  }\item[{unsigned short}]{level,  }\item[{unsigned short}]{rate }\end{DoxyParamCaption})}
+
+
+
+Set A\+D\+SR level for voice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voice} & Voice \\
+\hline
+{\em level} & A\+D\+SR level \\
+\hline
+{\em rate} & A\+D\+SR rate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a622fb9532465a7acf59c4c053b4038bd}\label{spu_8c_a622fb9532465a7acf59c4c053b4038bd}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Voice\+Pitch@{Ss\+Voice\+Pitch}}
+\index{Ss\+Voice\+Pitch@{Ss\+Voice\+Pitch}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Voice\+Pitch()}{SsVoicePitch()}}
+{\footnotesize\ttfamily void Ss\+Voice\+Pitch (\begin{DoxyParamCaption}\item[{int}]{voice,  }\item[{unsigned short}]{pitch }\end{DoxyParamCaption})}
+
+
+
+Set voice pitch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voice} & Voice \\
+\hline
+{\em pitch} & Pitch. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_aee95ab60677251a10348ca58dbc690b3}\label{spu_8c_aee95ab60677251a10348ca58dbc690b3}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Voice\+Repeat\+Addr@{Ss\+Voice\+Repeat\+Addr}}
+\index{Ss\+Voice\+Repeat\+Addr@{Ss\+Voice\+Repeat\+Addr}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Voice\+Repeat\+Addr()}{SsVoiceRepeatAddr()}}
+{\footnotesize\ttfamily void Ss\+Voice\+Repeat\+Addr (\begin{DoxyParamCaption}\item[{int}]{voice,  }\item[{unsigned int}]{addr }\end{DoxyParamCaption})}
+
+
+
+Set repeat address for voice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voice} & Voice \\
+\hline
+{\em addr} & Address in Sound R\+AM (multiplier of 8) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a611b385fd717fd7d0cdd0ef96c4c8494}\label{spu_8c_a611b385fd717fd7d0cdd0ef96c4c8494}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Voice\+Start\+Addr@{Ss\+Voice\+Start\+Addr}}
+\index{Ss\+Voice\+Start\+Addr@{Ss\+Voice\+Start\+Addr}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Voice\+Start\+Addr()}{SsVoiceStartAddr()}}
+{\footnotesize\ttfamily void Ss\+Voice\+Start\+Addr (\begin{DoxyParamCaption}\item[{int}]{voice,  }\item[{unsigned int}]{addr }\end{DoxyParamCaption})}
+
+
+
+Set start Sound R\+AM address for voice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voice} & Voice \\
+\hline
+{\em addr} & Start address in Sound R\+AM (multiplier of 8) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_ad006dc4a9cda6789623ca9cb207edc5d}\label{spu_8c_ad006dc4a9cda6789623ca9cb207edc5d}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Voice\+Vol@{Ss\+Voice\+Vol}}
+\index{Ss\+Voice\+Vol@{Ss\+Voice\+Vol}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Voice\+Vol()}{SsVoiceVol()}}
+{\footnotesize\ttfamily void Ss\+Voice\+Vol (\begin{DoxyParamCaption}\item[{int}]{voice,  }\item[{unsigned short}]{left,  }\item[{unsigned short}]{right }\end{DoxyParamCaption})}
+
+
+
+Set voice volume. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voice} & Voice number (0-\/23) \\
+\hline
+{\em left} & Left channel volume \\
+\hline
+{\em right} & Right channel volume \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spu_8c_a8273527c5d7c245f244ccb8a31b56461}\label{spu_8c_a8273527c5d7c245f244ccb8a31b56461}} 
+\index{spu.\+c@{spu.\+c}!Ss\+Wait@{Ss\+Wait}}
+\index{Ss\+Wait@{Ss\+Wait}!spu.\+c@{spu.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Wait()}{SsWait()}}
+{\footnotesize\ttfamily void Ss\+Wait (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Wait for the S\+PU to be ready. 
+

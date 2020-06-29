@@ -5,6 +5,12 @@
 #include <psx.h>
 #include <modplay.h>
 
+#if defined(EXAMPLES_VMODE) == VMODE_PAL
+	#define TICKS_PER_SECOND		50
+#else
+	#define TICKS_PER_SECOND		60
+#endif
+
 unsigned char fileBuffer[0x80000]; // 512 kilobytes
 
 unsigned int primList[0x8000];
@@ -192,8 +198,7 @@ void file_browser(int redraw)
 					
 					memcpy(name_buf, fileBuffer, 8);
 					name_buf[8] = 0;
-				//	printf("NJUE = %s\n", name_buf);
-				//	printf("NUIEI = %d\n", 
+
 					MOD4PSX_Upload(fileBuffer, SPU_DATA_BASE_ADDR);
 				}
 				else
@@ -270,12 +275,6 @@ void file_browser(int redraw)
 	
 	if(file_list_size > 24)
 	{
-		//if((((file_list_size-1)-k)*8)+32) <= 216)
-		
-		//printf("IS = %d\n", ((((file_list_size-1)-k)*8)+32));
-	
-		//if(((((file_list_size-1)-k)*8)+32) <= 216)		
-		//	k = file_list_size - 25;
 		if(file_list_pos > 12)
 		{
 			k = file_list_pos - 12;
@@ -320,13 +319,15 @@ void music_player_draw()
 	GsPrintFont(0, 0, "-= PsxMod =-");
 	GsPrintFont(0, 8, "File: %s", music_player_fname);
 	GsPrintFont(0, 16, "Title: %s", music->title);
-	GsPrintFont(0, 24, "pat:%03d/%03d pos:%02X spd: %d/%d", 
+	GsPrintFont(0, 24, "pat:%03d/%03d pos:%02X spd:%d/%d", 
 		music->song_pos, music->song_pos_num - 1, music->pat_pos,
 		music->ticks_division, music->beats_minute);
-	GsPrintFont(0, 32, "vol: %03d%%/100%% time: %d:%02d chn: %d",
-		music_player_vol_pc, music_player_time / 3000, (music_player_time % 3000) / 50,
-		music->channel_num);
 
+	GsPrintFont(0, 32, "vol: %03d%%/100%% time: %d:%02d chn: %d",
+		music_player_vol_pc, music_player_time /  (TICKS_PER_SECOND * 60), 
+			(music_player_time % (TICKS_PER_SECOND * 60) ) / TICKS_PER_SECOND,
+		music->channel_num);
+		
 	GsPrintFont(0, 56, "Press X to change music.");
 	
 	dbuf = !dbuf;
@@ -355,12 +356,10 @@ void music_player_draw()
 	{
 		if(!wasLeft)
 		{
+			music->pat_pos = 0;
 			
 			if(music->song_pos > 0)
-			{
-				music->pat_pos = 0;
 				music->song_pos--;
-			}
 		}
 			
 		wasLeft++;
@@ -370,11 +369,12 @@ void music_player_draw()
 	{
 		if(!wasRight)
 		{
+			music->pat_pos = 0;
+			
 			if(music->song_pos < (music->song_pos_num - 1))
-			{
-				music->pat_pos = 0;
 				music->song_pos++;
-			}
+			else
+				music->song_pos = 0;
 		}
 		
 		wasRight++;
@@ -426,7 +426,7 @@ int main()
 	GsClearMem();
 	GsSetAutoWait();
 	GsSetList(primList);
-	GsSetVideoMode(320, 240, VMODE_PAL);
+	GsSetVideoMode(320, 240, EXAMPLES_VMODE);
 	GsLoadFont(768, 0, 768, 256);
 	
 	SetVBlankHandler(program_vblank_handler);

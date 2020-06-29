@@ -26,6 +26,4 @@ extern char rawArgv[64][128];
 extern FILE *asmOut;
 extern int line_number;
 extern int atoiT[64];
-extern int inMacro, macroArgc;
-extern char macroArgv[16][256];
 #endif

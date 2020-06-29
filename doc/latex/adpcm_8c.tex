@@ -1,0 +1,67 @@
+\hypertarget{adpcm_8c}{}\section{libadpcm/adpcm.c File Reference}
+\label{adpcm_8c}\index{libadpcm/adpcm.\+c@{libadpcm/adpcm.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$strings.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$psx.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}adpcm.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{adpcm_8c_afb134291fff6dfdc86740cbc3db6bb62}{P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}~128$\ast$28
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{adpcm_8c_a5f90c91df5f7e31df667760bd0d42924}{Ss\+Adpcm\+\_\+find\+\_\+predict} (short $\ast$samples, int $\ast$d\+\_\+samples, int $\ast$predict\+\_\+nr, int $\ast$shift\+\_\+factor)
+\item 
+void \hyperlink{adpcm_8c_a39fdedc26f4ba2eb63ba1e037ca6c497}{Ss\+Adpcm\+\_\+pack} (int $\ast$d\+\_\+samples, short $\ast$four\+\_\+bit, int predict\+\_\+nr, int shift\+\_\+factor)
+\item 
+int \hyperlink{adpcm_8c_a52f0d377b1323dc3ff73b616130fe28b}{Ss\+Adpcm\+Pack} (void $\ast$pcm\+\_\+data, void $\ast$adpcm\+\_\+data, int sample\+\_\+len, int sample\+\_\+fmt, int adpcm\+\_\+len, int enable\+\_\+looping)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+short \hyperlink{adpcm_8c_a4a6e5f84ffebe078f9eecc41b76f90c1}{pcm\+\_\+buffer} \mbox{[}\hyperlink{adpcm_8c_afb134291fff6dfdc86740cbc3db6bb62}{P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{adpcm_8c_afb134291fff6dfdc86740cbc3db6bb62}\label{adpcm_8c_afb134291fff6dfdc86740cbc3db6bb62}} 
+\index{adpcm.\+c@{adpcm.\+c}!P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!adpcm.\+c@{adpcm.\+c}}
+\subsubsection{\texorpdfstring{P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{PCM\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~128$\ast$28}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{adpcm_8c_a5f90c91df5f7e31df667760bd0d42924}\label{adpcm_8c_a5f90c91df5f7e31df667760bd0d42924}} 
+\index{adpcm.\+c@{adpcm.\+c}!Ss\+Adpcm\+\_\+find\+\_\+predict@{Ss\+Adpcm\+\_\+find\+\_\+predict}}
+\index{Ss\+Adpcm\+\_\+find\+\_\+predict@{Ss\+Adpcm\+\_\+find\+\_\+predict}!adpcm.\+c@{adpcm.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Adpcm\+\_\+find\+\_\+predict()}{SsAdpcm\_find\_predict()}}
+{\footnotesize\ttfamily void Ss\+Adpcm\+\_\+find\+\_\+predict (\begin{DoxyParamCaption}\item[{short $\ast$}]{samples,  }\item[{int $\ast$}]{d\+\_\+samples,  }\item[{int $\ast$}]{predict\+\_\+nr,  }\item[{int $\ast$}]{shift\+\_\+factor }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{adpcm_8c_a39fdedc26f4ba2eb63ba1e037ca6c497}\label{adpcm_8c_a39fdedc26f4ba2eb63ba1e037ca6c497}} 
+\index{adpcm.\+c@{adpcm.\+c}!Ss\+Adpcm\+\_\+pack@{Ss\+Adpcm\+\_\+pack}}
+\index{Ss\+Adpcm\+\_\+pack@{Ss\+Adpcm\+\_\+pack}!adpcm.\+c@{adpcm.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Adpcm\+\_\+pack()}{SsAdpcm\_pack()}}
+{\footnotesize\ttfamily void Ss\+Adpcm\+\_\+pack (\begin{DoxyParamCaption}\item[{int $\ast$}]{d\+\_\+samples,  }\item[{short $\ast$}]{four\+\_\+bit,  }\item[{int}]{predict\+\_\+nr,  }\item[{int}]{shift\+\_\+factor }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{adpcm_8c_a52f0d377b1323dc3ff73b616130fe28b}\label{adpcm_8c_a52f0d377b1323dc3ff73b616130fe28b}} 
+\index{adpcm.\+c@{adpcm.\+c}!Ss\+Adpcm\+Pack@{Ss\+Adpcm\+Pack}}
+\index{Ss\+Adpcm\+Pack@{Ss\+Adpcm\+Pack}!adpcm.\+c@{adpcm.\+c}}
+\subsubsection{\texorpdfstring{Ss\+Adpcm\+Pack()}{SsAdpcmPack()}}
+{\footnotesize\ttfamily int Ss\+Adpcm\+Pack (\begin{DoxyParamCaption}\item[{void $\ast$}]{pcm\+\_\+data,  }\item[{void $\ast$}]{adpcm\+\_\+data,  }\item[{int}]{sample\+\_\+len,  }\item[{int}]{sample\+\_\+fmt,  }\item[{int}]{adpcm\+\_\+len,  }\item[{int}]{enable\+\_\+looping }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{adpcm_8c_a4a6e5f84ffebe078f9eecc41b76f90c1}\label{adpcm_8c_a4a6e5f84ffebe078f9eecc41b76f90c1}} 
+\index{adpcm.\+c@{adpcm.\+c}!pcm\+\_\+buffer@{pcm\+\_\+buffer}}
+\index{pcm\+\_\+buffer@{pcm\+\_\+buffer}!adpcm.\+c@{adpcm.\+c}}
+\subsubsection{\texorpdfstring{pcm\+\_\+buffer}{pcm\_buffer}}
+{\footnotesize\ttfamily short pcm\+\_\+buffer\mbox{[}\hyperlink{adpcm_8c_afb134291fff6dfdc86740cbc3db6bb62}{P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}\mbox{]}}
+

@@ -164,7 +164,6 @@ static FILE *fopen_internal(const char *path, const char *mode, FILE *f)
 		
 	if(strncmp(path, "cdromL:", 7) == 0)
 	{
-		//printf("strncmp=%d\n", strncmp(path, "cdromL:", 7) );
 		s = malloc(1024);
 
 		if(libc_get_transtbl_fname(path+7, s, 1024) == 0)

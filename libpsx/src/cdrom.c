@@ -7,7 +7,6 @@
 #include <psx.h>
 
 #define CDREG(x)	*((unsigned char*)(0x1f801800+x))
-#define IMASK		*((unsigned int*)0x1f801074)
 
 void _internal_cdrom_handler();
 void (*cdrom_handler_callback)();

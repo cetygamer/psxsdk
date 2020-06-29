@@ -1,0 +1,90 @@
+\hypertarget{misc_8c}{}\section{libpsx/src/libc/misc.c File Reference}
+\label{misc_8c}\index{libpsx/src/libc/misc.\+c@{libpsx/src/libc/misc.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{misc_8c_a196e7f007a501cf9d0907cb2bab0b622}{abs} (int x)
+\item 
+void \hyperlink{misc_8c_a83a727cc697aea22e24cad5f39198dd2}{srand} (unsigned int seed)
+\item 
+int \hyperlink{misc_8c_a20e50ab9d6b10af0e2940d9419448f42}{rand} ()
+\item 
+char $\ast$ \hyperlink{misc_8c_ae7e665b2cd7db799a932a8745e34d821}{ulltoa} (unsigned long long value, char $\ast$str, int base)
+\item 
+char $\ast$ \hyperlink{misc_8c_abcb262a9b96810d8483a665d6100f813}{ultoa} (unsigned long value, char $\ast$str, int base)
+\item 
+char $\ast$ \hyperlink{misc_8c_a5a74d28d5863f08790d9457b84994276}{utoa} (unsigned int value, char $\ast$str, int base)
+\item 
+char $\ast$ \hyperlink{misc_8c_acd218cd10c147ffe997dc19954fbfb25}{lltoa} (long long value, char $\ast$str, int base)
+\item 
+char $\ast$ \hyperlink{misc_8c_aa6683b7bc1b45d9c3f62ca9c68c904b0}{ltoa} (long value, char $\ast$str, int base)
+\item 
+char $\ast$ \hyperlink{misc_8c_ab42640268f26e065efd044cfe80591bd}{itoa} (int value, char $\ast$str, int base)
+\item 
+void \hyperlink{misc_8c_a8dec7c95227ff149687066cf04029191}{abort} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{misc_8c_a8dec7c95227ff149687066cf04029191}\label{misc_8c_a8dec7c95227ff149687066cf04029191}} 
+\index{misc.\+c@{misc.\+c}!abort@{abort}}
+\index{abort@{abort}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{abort()}{abort()}}
+{\footnotesize\ttfamily void abort (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_a196e7f007a501cf9d0907cb2bab0b622}\label{misc_8c_a196e7f007a501cf9d0907cb2bab0b622}} 
+\index{misc.\+c@{misc.\+c}!abs@{abs}}
+\index{abs@{abs}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{abs()}{abs()}}
+{\footnotesize\ttfamily int abs (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_ab42640268f26e065efd044cfe80591bd}\label{misc_8c_ab42640268f26e065efd044cfe80591bd}} 
+\index{misc.\+c@{misc.\+c}!itoa@{itoa}}
+\index{itoa@{itoa}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{itoa()}{itoa()}}
+{\footnotesize\ttfamily char$\ast$ itoa (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{char $\ast$}]{str,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_acd218cd10c147ffe997dc19954fbfb25}\label{misc_8c_acd218cd10c147ffe997dc19954fbfb25}} 
+\index{misc.\+c@{misc.\+c}!lltoa@{lltoa}}
+\index{lltoa@{lltoa}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{lltoa()}{lltoa()}}
+{\footnotesize\ttfamily char$\ast$ lltoa (\begin{DoxyParamCaption}\item[{long long}]{value,  }\item[{char $\ast$}]{str,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_aa6683b7bc1b45d9c3f62ca9c68c904b0}\label{misc_8c_aa6683b7bc1b45d9c3f62ca9c68c904b0}} 
+\index{misc.\+c@{misc.\+c}!ltoa@{ltoa}}
+\index{ltoa@{ltoa}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{ltoa()}{ltoa()}}
+{\footnotesize\ttfamily char$\ast$ ltoa (\begin{DoxyParamCaption}\item[{long}]{value,  }\item[{char $\ast$}]{str,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_a20e50ab9d6b10af0e2940d9419448f42}\label{misc_8c_a20e50ab9d6b10af0e2940d9419448f42}} 
+\index{misc.\+c@{misc.\+c}!rand@{rand}}
+\index{rand@{rand}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{rand()}{rand()}}
+{\footnotesize\ttfamily int rand (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_a83a727cc697aea22e24cad5f39198dd2}\label{misc_8c_a83a727cc697aea22e24cad5f39198dd2}} 
+\index{misc.\+c@{misc.\+c}!srand@{srand}}
+\index{srand@{srand}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{srand()}{srand()}}
+{\footnotesize\ttfamily void srand (\begin{DoxyParamCaption}\item[{unsigned int}]{seed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_ae7e665b2cd7db799a932a8745e34d821}\label{misc_8c_ae7e665b2cd7db799a932a8745e34d821}} 
+\index{misc.\+c@{misc.\+c}!ulltoa@{ulltoa}}
+\index{ulltoa@{ulltoa}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{ulltoa()}{ulltoa()}}
+{\footnotesize\ttfamily char$\ast$ ulltoa (\begin{DoxyParamCaption}\item[{unsigned long long}]{value,  }\item[{char $\ast$}]{str,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_abcb262a9b96810d8483a665d6100f813}\label{misc_8c_abcb262a9b96810d8483a665d6100f813}} 
+\index{misc.\+c@{misc.\+c}!ultoa@{ultoa}}
+\index{ultoa@{ultoa}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{ultoa()}{ultoa()}}
+{\footnotesize\ttfamily char$\ast$ ultoa (\begin{DoxyParamCaption}\item[{unsigned long}]{value,  }\item[{char $\ast$}]{str,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{misc_8c_a5a74d28d5863f08790d9457b84994276}\label{misc_8c_a5a74d28d5863f08790d9457b84994276}} 
+\index{misc.\+c@{misc.\+c}!utoa@{utoa}}
+\index{utoa@{utoa}!misc.\+c@{misc.\+c}}
+\subsubsection{\texorpdfstring{utoa()}{utoa()}}
+{\footnotesize\ttfamily char$\ast$ utoa (\begin{DoxyParamCaption}\item[{unsigned int}]{value,  }\item[{char $\ast$}]{str,  }\item[{int}]{base }\end{DoxyParamCaption})}
+

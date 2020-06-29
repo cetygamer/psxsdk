@@ -9,36 +9,6 @@
 #include <string.h>
 #include <psx.h>
 
-#define SPU_ADDR				*((unsigned short*)0x1f801da6)
-#define SPU_DATA				*((unsigned short*)0x1f801da8)
-#define SPU_CONTROL 			*((unsigned short*)0x1f801daa)
-#define SPU_STATUS			*((unsigned short*)0x1f801dac)
-#define SPU_STATUS2			*((unsigned short*)0x1f801dae)
-#define SPU_MVOL_L			*((unsigned short*)0x1f801d80)
-#define SPU_MVOL_R			*((unsigned short*)0x1f801d82)
-#define SPU_REVERB_L			*((unsigned short*)0x1f801d84)
-#define SPU_REVERB_R			*((unsigned short*)0x1f801d86)
-#define SPU_KEY_ON1           		*((unsigned short*)0x1f801d88)
-#define SPU_KEY_ON2	            	*((unsigned short*)0x1f801d8a)
-#define SPU_KEY_OFF1           		*((unsigned short*)0x1f801d8c)
-#define SPU_KEY_OFF2            	*((unsigned short*)0x1f801d8e)
-#define SPU_KEY_FM_MODE1		*((unsigned short*)0x1f801d90)
-#define SPU_KEY_FM_MODE2		*((unsigned short*)0x1f801d92)
-#define SPU_KEY_NOISE_MODE1		*((unsigned short*)0x1f801d94)
-#define SPU_KEY_NOISE_MODE2		*((unsigned short*)0x1f801d96)
-#define SPU_KEY_REVERB_MODE1		*((unsigned short*)0x1f801d98)
-#define SPU_KEY_REVERB_MODE2		*((unsigned short*)0x1f801d9a)
-#define SPU_CD_MVOL_L			*((unsigned short*)0x1f801db0)
-#define SPU_CD_MVOL_R			*((unsigned short*)0x1f801db2)
-#define SPU_EXT_VOL_L			*((unsigned short*)0x1f801db4)
-#define SPU_EXT_VOL_R			*((unsigned short*)0x1f801db6)
-#define SPU_REVERB_WORK_ADDR		*((unsigned short*)0x1f801da2)
-#define SPU_VOICE_BASE_ADDR(x)		(0x1f801c00 + (x<<4))
-
-// DPCR and other DMA defines will be eventually shared between GPU and SPU
-
-#define DPCR				*((unsigned int*)0x1f8010f0)
-
 static unsigned int ss_vag_addr;
 
 void SsVoiceVol(int voice, unsigned short left, unsigned short right)

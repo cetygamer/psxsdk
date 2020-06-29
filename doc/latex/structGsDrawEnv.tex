@@ -1,0 +1,123 @@
+\hypertarget{structGsDrawEnv}{}\section{Gs\+Draw\+Env Struct Reference}
+\label{structGsDrawEnv}\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+
+
+Drawing environment.  
+
+
+
+
+{\ttfamily \#include $<$psxgpu.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{structGsDrawEnv_aaaed8f80f352d5e88563072418176aa3}{dither}
+\begin{DoxyCompactList}\small\item\em Dithering enabled flag. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structGsDrawEnv_a308c7cb65b6076160c23905b2946fcfe}{draw\+\_\+on\+\_\+display}
+\begin{DoxyCompactList}\small\item\em Enable drawing on display area flag. \end{DoxyCompactList}\item 
+short \hyperlink{structGsDrawEnv_a6fb0977769dc3447f2f1679dc99d1a86}{x}
+\begin{DoxyCompactList}\small\item\em Drawing area X start coordinate in framebuffer. \end{DoxyCompactList}\item 
+short \hyperlink{structGsDrawEnv_a9a6e3bb414996687c92f747fdaefd394}{y}
+\begin{DoxyCompactList}\small\item\em Drawing area Y start coordinate in framebuffer. \end{DoxyCompactList}\item 
+short \hyperlink{structGsDrawEnv_a1a0cd2e7dc81367a7020044f4552b3f5}{w}
+\begin{DoxyCompactList}\small\item\em Drawing area width. \end{DoxyCompactList}\item 
+short \hyperlink{structGsDrawEnv_a010f8d7cc07b6287f3b5cc33c772bbec}{h}
+\begin{DoxyCompactList}\small\item\em Drawing area height. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structGsDrawEnv_a4702f6a0dc9e014fffc7c83a5d94dda2}{ignore\+\_\+mask}
+\begin{DoxyCompactList}\small\item\em Masking settings (can also be set with \hyperlink{psxgpu_8h_a3227c6006b054de313ff717ee00d8314}{Gs\+Set\+Masking()}) \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structGsDrawEnv_a9c7f33c1da333d45f478dc9eb77bf0a1}{set\+\_\+mask}
+\begin{DoxyCompactList}\small\item\em If this is set, every pixel drawn will have the mask bit set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Drawing environment. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structGsDrawEnv_aaaed8f80f352d5e88563072418176aa3}\label{structGsDrawEnv_aaaed8f80f352d5e88563072418176aa3}} 
+\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}!dither@{dither}}
+\index{dither@{dither}!Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+\subsubsection{\texorpdfstring{dither}{dither}}
+{\footnotesize\ttfamily unsigned char Gs\+Draw\+Env\+::dither}
+
+
+
+Dithering enabled flag. 
+
+\mbox{\Hypertarget{structGsDrawEnv_a308c7cb65b6076160c23905b2946fcfe}\label{structGsDrawEnv_a308c7cb65b6076160c23905b2946fcfe}} 
+\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}!draw\+\_\+on\+\_\+display@{draw\+\_\+on\+\_\+display}}
+\index{draw\+\_\+on\+\_\+display@{draw\+\_\+on\+\_\+display}!Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+\subsubsection{\texorpdfstring{draw\+\_\+on\+\_\+display}{draw\_on\_display}}
+{\footnotesize\ttfamily unsigned char Gs\+Draw\+Env\+::draw\+\_\+on\+\_\+display}
+
+
+
+Enable drawing on display area flag. 
+
+If this flag is enabled, drawing on display area is allowed.
+
+Usually you enable this flag when you do not want to use double buffering. \mbox{\Hypertarget{structGsDrawEnv_a010f8d7cc07b6287f3b5cc33c772bbec}\label{structGsDrawEnv_a010f8d7cc07b6287f3b5cc33c772bbec}} 
+\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}!h@{h}}
+\index{h@{h}!Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+\subsubsection{\texorpdfstring{h}{h}}
+{\footnotesize\ttfamily short Gs\+Draw\+Env\+::h}
+
+
+
+Drawing area height. 
+
+\mbox{\Hypertarget{structGsDrawEnv_a4702f6a0dc9e014fffc7c83a5d94dda2}\label{structGsDrawEnv_a4702f6a0dc9e014fffc7c83a5d94dda2}} 
+\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}!ignore\+\_\+mask@{ignore\+\_\+mask}}
+\index{ignore\+\_\+mask@{ignore\+\_\+mask}!Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+\subsubsection{\texorpdfstring{ignore\+\_\+mask}{ignore\_mask}}
+{\footnotesize\ttfamily unsigned char Gs\+Draw\+Env\+::ignore\+\_\+mask}
+
+
+
+Masking settings (can also be set with \hyperlink{psxgpu_8h_a3227c6006b054de313ff717ee00d8314}{Gs\+Set\+Masking()}) 
+
+Do not draw over pixels which have their mask bit set \mbox{\Hypertarget{structGsDrawEnv_a9c7f33c1da333d45f478dc9eb77bf0a1}\label{structGsDrawEnv_a9c7f33c1da333d45f478dc9eb77bf0a1}} 
+\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}!set\+\_\+mask@{set\+\_\+mask}}
+\index{set\+\_\+mask@{set\+\_\+mask}!Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+\subsubsection{\texorpdfstring{set\+\_\+mask}{set\_mask}}
+{\footnotesize\ttfamily unsigned char Gs\+Draw\+Env\+::set\+\_\+mask}
+
+
+
+If this is set, every pixel drawn will have the mask bit set. 
+
+\mbox{\Hypertarget{structGsDrawEnv_a1a0cd2e7dc81367a7020044f4552b3f5}\label{structGsDrawEnv_a1a0cd2e7dc81367a7020044f4552b3f5}} 
+\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}!w@{w}}
+\index{w@{w}!Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+\subsubsection{\texorpdfstring{w}{w}}
+{\footnotesize\ttfamily short Gs\+Draw\+Env\+::w}
+
+
+
+Drawing area width. 
+
+\mbox{\Hypertarget{structGsDrawEnv_a6fb0977769dc3447f2f1679dc99d1a86}\label{structGsDrawEnv_a6fb0977769dc3447f2f1679dc99d1a86}} 
+\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}!x@{x}}
+\index{x@{x}!Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+\subsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily short Gs\+Draw\+Env\+::x}
+
+
+
+Drawing area X start coordinate in framebuffer. 
+
+\mbox{\Hypertarget{structGsDrawEnv_a9a6e3bb414996687c92f747fdaefd394}\label{structGsDrawEnv_a9a6e3bb414996687c92f747fdaefd394}} 
+\index{Gs\+Draw\+Env@{Gs\+Draw\+Env}!y@{y}}
+\index{y@{y}!Gs\+Draw\+Env@{Gs\+Draw\+Env}}
+\subsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily short Gs\+Draw\+Env\+::y}
+
+
+
+Drawing area Y start coordinate in framebuffer. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+libpsx/include/\hyperlink{psxgpu_8h}{psxgpu.\+h}\end{DoxyCompactItemize}

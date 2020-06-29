@@ -148,6 +148,7 @@ unsigned int f3m_player_init_ex(player_s *player, mod_s *mod, int basevoice, uns
 
 	player->speed = mod->ispeed;
 	player->tempo = mod->itempo;
+	player->gvol = mod->gvol;
 	player->ctick = player->speed;
 	player->tempo_samples = f3m_calc_tempo_samples(player->tempo);
 	player->tempo_wait = 0;
@@ -156,8 +157,11 @@ unsigned int f3m_player_init_ex(player_s *player, mod_s *mod, int basevoice, uns
 	player->cpat = 0;
 	player->crow = 64;
 	player->patptr = NULL;
+	player->patptr_next = NULL;
 	player->sfxoffs = 0;
 	player->ccount = 16;
+	player->repeat_row = 0;
+	player->repeat_count = 0;
 	
 	player->baseaddr = baseaddr;
 	player->basevoice = basevoice;
@@ -180,7 +184,9 @@ unsigned int f3m_player_init_ex(player_s *player, mod_s *mod, int basevoice, uns
 
 		vchn->gxx_period = 0;
 		vchn->period = 0;
-		vchn->vol = 0;
+		vchn->insvol = 0;
+		vchn->midvol = 0;
+		vchn->outvol = 0;
 		vchn->pan = ((mod->mvol&0x80)==0)
 			? 0x8
 			: (mod->defpanFC == 0xFC
@@ -188,6 +194,7 @@ unsigned int f3m_player_init_ex(player_s *player, mod_s *mod, int basevoice, uns
 				: ((i&1)?0xC:0x3));
 
 		vchn->vib_offs = 0;
+		vchn->tre_offs = 0;
 		vchn->rtg_count = 0;
 
 		vchn->eft = 0;
@@ -307,6 +314,11 @@ unsigned int f3m_player_init_ex(player_s *player, mod_s *mod, int basevoice, uns
 	return spu_offs << 3;
 }
 
+static void f3m_update_outvol(player_s *player, vchn_s *vchn)
+{
+	vchn->outvol = (vchn->midvol * player->gvol) >> 6;
+}
+
 static void f3m_player_eff_slide_vol(player_s *player, vchn_s *vchn, int isfirst)
 {
 	(void)player; // "player" is only there to check the fast slide flag (TODO!)
@@ -331,12 +343,14 @@ static void f3m_player_eff_slide_vol(player_s *player, vchn_s *vchn, int isfirst
 
 	if(samt > 0)
 	{
-		vchn->vol += samt;
-		if(vchn->vol > 63) vchn->vol = 63;
+		vchn->midvol += samt;
+		if(vchn->midvol > 63) vchn->midvol = 63;
 	} else if(samt < 0) {
-		if(vchn->vol < (uint8_t)-samt) vchn->vol = 0;
-		else vchn->vol += samt;
+		if(vchn->midvol < (uint8_t)-samt) vchn->midvol = 0;
+		else vchn->midvol += samt;
 	}
+	
+	f3m_update_outvol(player, vchn);
 }
 
 static void f3m_player_eff_slide_period(vchn_s *vchn, int amt)
@@ -401,7 +415,41 @@ static void f3m_note_retrig(player_s *player, vchn_s *vchn)
 				vchn->offs = lefp;
 		}
 		vchn->vib_offs = 0; // TODO: find correct retrig point
+		vchn->tre_offs = 0; // TODO: find correct retrig point
 	}
+}
+
+static void f3m_jump_to_row(player_s *player, int nrow)
+{
+	int i;
+
+	// Ensure in range
+	// TODO: work out correct behaviour of out of range values
+	if(nrow < 0 || nrow >= 64)
+	{
+		return;
+	}
+
+	// Get patptr
+	const uint8_t *p = player->modbase + (((uint32_t)(f3m_get_para(&player->pat_para[player->cpat])))*16);
+	p += 2;
+
+	// Walk some number of rows
+	for(i = 0; i < nrow; i++)
+	{
+		for(;;)
+		{
+			uint8_t v = *(p++);
+			if(v == 0) break;
+			if((v & 0x80) != 0) p += 2;
+			if((v & 0x40) != 0) p += 1;
+			if((v & 0x20) != 0) p += 2;
+		}
+ 	}
+
+	// Update next patptr + values
+	player->patptr_next = p;
+	player->crow = nrow-1;
 }
 
 void f3m_effect_nop(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp)
@@ -435,8 +483,11 @@ void f3m_effect_Cxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp
 
 	if(tick == 0)
 	{
-		// TODO: actually look up the jump value
-		player->crow = 64; 
+		if(player->patptr_next == NULL)
+		{
+			// TODO: actually look up the jump value
+			player->crow = 64; 
+		}
 	}
 }
 
@@ -560,7 +611,7 @@ void f3m_effect_Qxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp
 	// Notes:
 	// 1. When effect is not Qxy, rtg_count is reset.
 	// 2. Current y (from lefp, not special mem) is used as a threshold.
-	// 3. When y is exceeded, change vol according to current x.
+	// 3. When y is exceeded, change volume according to current x.
 
 	int voldrop = (lefp>>4);
 	int rtick = (lefp&15);
@@ -568,7 +619,7 @@ void f3m_effect_Qxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp
 	if(rtick != 0 && vchn->rtg_count >= rtick)
 	{
 		// Retrigger
-		// TODO: work out what happens when we've already done a period or vol slide
+		// TODO: work out what happens when we've already done a period or volume slide
 		// TODO: 
 		f3m_note_retrig(player, vchn);
 
@@ -576,37 +627,67 @@ void f3m_effect_Qxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp
 		{
 			if(voldrop < 6)
 			{
-				vchn->vol -= (1<<voldrop);
-				if(vchn->vol < 0) vchn->vol = 0;
+				vchn->midvol -= (1<<voldrop);
+				if(vchn->midvol < 0) vchn->midvol = 0;
 			} else if(voldrop == 6) {
 				// *2/3, which according to FC is exactly the same as 5/8
-				vchn->vol = (vchn->vol*5)>>3;
+ 				vchn->midvol = (vchn->midvol*5)>>3; 				
 			} else {
 				// *1/2
-				vchn->vol = vchn->vol>>1;
+				vchn->midvol = vchn->midvol>>1;
 			}
 
 		} else {
 			voldrop -= 8;
 			if(voldrop < 6)
 			{
-				vchn->vol += (1<<voldrop);
+				vchn->midvol += (1<<voldrop);
 			} else if(voldrop == 6) {
 				// *3/2
-				vchn->vol = (vchn->vol*3)>>1;
+				vchn->midvol = (vchn->midvol*3)>>1;
 			} else {
 				// *2
-				vchn->vol = vchn->vol<<1;
+				vchn->midvol = vchn->midvol<<1;
 			}
 
-			// XXX: do we deal with the case where vol > 63 before doubling?
-			if(vchn->vol > 63) vchn->vol = 63;
+			// XXX: do we deal with the case where volume > 63 before doubling?
+			if(vchn->midvol > 63) vchn->midvol = 63;
 		}
 
 		vchn->rtg_count = 0;
+		f3m_update_outvol(player, vchn);
 	}
 
 	vchn->rtg_count++;
+}
+
+void f3m_effect_Rxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp)
+{
+	(void)player; (void)vchn; (void)tick; (void)pefp; (void)lefp;
+
+	// TODO: actual tremolo
+
+	if(tick != 0 && vchn->insvol != 0)
+	{
+		int vspeed = (lefp>>4);
+		int vdepth = (lefp&15);
+
+		// TODO: support other waveforms
+		// TODO: find rounding + direction
+		int vval = f3m_sintab[vchn->tre_offs&31];
+		if(vchn->tre_offs & 32) vval = -vval;
+		vval *= vdepth;
+		vval += (1<<(5-1));
+		vval >>= 5;
+
+		// TODO: get clamp range
+		vchn->midvol = vchn->insvol + vval;
+		if(vchn->midvol <  0) vchn->midvol = 0;
+		if(vchn->midvol > 63) vchn->midvol = 63;
+		f3m_update_outvol(player, vchn);
+
+		vchn->tre_offs += vspeed;
+	}
 }
 
 void f3m_effect_Sxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp)
@@ -623,13 +704,41 @@ void f3m_effect_Sxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp
 			}
 			break;
 
+		case 0xB:
+			// TODO confirm SBx behaviour
+			if(tick == 0)
+			{
+				if((lefp & 0x0F) == 0)
+				{
+					player->repeat_row = player->crow;
+				} else {
+					if(player->repeat_count == 0)
+					{
+						player->repeat_count = lefp & 0x0F;
+					} else {
+						player->repeat_count--;
+					}
+
+					if(player->repeat_count != 0)
+					{
+						f3m_jump_to_row(player, player->repeat_row);
+					} else {
+						player->repeat_row = player->crow + 1;
+					}
+				}
+			}
+			break;
+			
 		case 0xC:
-			// TODO confirm SC0 behaviour
+			// SC0 is ignored
+			// TODO: Make this work:
+			// "Playback is temporarily frozen and may be resumed by EFGHJKLU"
 			if(tick != 0 && (lefp&0x0F) == tick)
 			{
 				vchn->spu_data = 0;
 				vchn->priority = F3M_PRIO_MUSIC_OFF;
-				vchn->vol = 0;
+				vchn->midvol = 0;
+				f3m_update_outvol(player, vchn);
 			}
 			break;
 
@@ -672,6 +781,19 @@ void f3m_effect_Uxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp
 	}
 }
 
+void f3m_effect_Vxx(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp)
+{
+	(void)player; (void)vchn; (void)tick; (void)pefp; (void)lefp;
+
+	if(tick != 0)
+	{
+		if(pefp >= 0x00 && pefp <= 0x40)
+		{
+			player->gvol = lefp;
+		}
+	}
+}
+
 
 void (*(f3m_effect_tab[32]))(player_s *player, vchn_s *vchn, int tick, int pefp, int lefp) = {
 	f3m_effect_nop, f3m_effect_Axx, f3m_effect_Bxx, f3m_effect_Cxx,
@@ -679,8 +801,8 @@ void (*(f3m_effect_tab[32]))(player_s *player, vchn_s *vchn, int tick, int pefp,
 	f3m_effect_Hxx, f3m_effect_nop, f3m_effect_nop, f3m_effect_Kxx,
 	f3m_effect_Lxx, f3m_effect_nop, f3m_effect_nop, f3m_effect_nop,
 
-	f3m_effect_nop, f3m_effect_Qxx, f3m_effect_nop, f3m_effect_Sxx,
-	f3m_effect_Txx, f3m_effect_Uxx, f3m_effect_nop, f3m_effect_nop,
+	f3m_effect_nop, f3m_effect_Qxx, f3m_effect_Rxx, f3m_effect_Sxx,
+	f3m_effect_Txx, f3m_effect_Uxx, f3m_effect_Vxx, f3m_effect_nop,
 	f3m_effect_nop, f3m_effect_nop, f3m_effect_nop, f3m_effect_nop,
 	f3m_effect_nop, f3m_effect_nop, f3m_effect_nop, f3m_effect_nop,
 };
@@ -722,6 +844,12 @@ static void f3m_player_play_newnote(player_s *player)
 	}
 
 	// Read pattern data
+	if(player->patptr_next != NULL)
+	{
+		player->patptr = player->patptr_next;
+		player->patptr_next = NULL;
+	}
+	
 	if(player->patptr == NULL)
 		return;
 
@@ -774,10 +902,15 @@ static void f3m_player_play_newnote(player_s *player)
 			vchn->lins = iidx;
 			const ins_s *ins = player->modbase + (((uint32_t)(f3m_get_para(&player->ins_para[iidx-1])))*16);
 
-			vchn->vol = (pvol != 0xFF ? pvol
-				: pins != 0 ? ins->vol
-				: vchn->vol);
-			if(vchn->vol > 63) vchn->vol = 63; // lesser-known quirk
+			// TODO: work out correct rounding
+			if(pvol != 0xFF || pins != 0)
+			{
+				vchn->insvol = (pvol != 0xFF ? pvol
+					: pins != 0 ? ins->vol
+					: vchn->insvol);
+				if(vchn->insvol > 63) vchn->insvol = 63; // lesser-known quirk
+				vchn->midvol = vchn->insvol;
+			}
 
 			// TODO: work out what happens on note end when ins but no note
 
@@ -789,19 +922,23 @@ static void f3m_player_play_newnote(player_s *player)
 				if(peft != ('S'-'A'+1) || (lefp&0xF0) != 0xD0)
 					f3m_note_retrig(player, vchn);
 			}
+			
+			f3m_update_outvol(player, vchn);
 		}
 
 		if((peft == ('S'-'A'+1) && (lefp&0xF0) == 0xD0) && pnote >= 0x80)
 		{
 			// Cancel effect if no note to trigger (e.g. CLICK.S3M)
-			// TODO: Check if vol column has any effect
+			// TODO: Check if volume column has any effect
 			vchn->eft = 0;
 		}
 
 		if(pvol < 0x80)
 		{
-			vchn->vol = pvol;
-			if(vchn->vol > 63) vchn->vol = 63;
+			vchn->insvol = pvol;
+			if(vchn->insvol > 63) vchn->insvol = 63;
+			vchn->midvol = vchn->insvol;
+			f3m_update_outvol(player, vchn);
 		}
 
 		if(peft != ('Q'-'A'+1))
@@ -878,8 +1015,8 @@ void f3m_player_play(player_s *player)
 		uint16_t spu_offs = vchn->spu_data;
 		uint16_t spu_offs_lpbeg = vchn->spu_data_lpbeg;
 		int32_t offs = vchn->offs;
-		int32_t lvol = vchn->vol<<7;
-		int32_t rvol = vchn->vol<<7;
+		int32_t lvol = vchn->outvol<<7;
+		int32_t rvol = vchn->outvol<<7;
 		if(vchn->pan < 0x8)
 		{
 			lvol = (lvol*(vchn->pan*2+1))/15;

@@ -1,0 +1,117 @@
+\hypertarget{scanf_8c}{}\section{libpsx/src/libc/scanf.c File Reference}
+\label{scanf_8c}\index{libpsx/src/libc/scanf.\+c@{libpsx/src/libc/scanf.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$strings.\+h$>$}\newline
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{scanf_8c_a99fb83031ce9923c84392b4e92f956b5a70f57642e8a38bd69ba7631a160c5f11}{elem\+\_\+skip\+\_\+space} = 1
+ \}
+\item 
+enum \{ \newline
+\hyperlink{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a4f79d37cd38256e795c160d3c3eb56ca}{scanf\+\_\+s\+\_\+char}, 
+\hyperlink{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a2d5076fe20059ec61e0ec136442649b5}{scanf\+\_\+s\+\_\+short}, 
+\hyperlink{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a41adfb2e7fe59fe3ed9c4a92c8dba91a}{scanf\+\_\+s\+\_\+int}, 
+\hyperlink{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a53ed51ba6478527fb859e5b6bdede504}{scanf\+\_\+s\+\_\+long}, 
+\newline
+\hyperlink{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a24d597b751243596b29021aadb4ec161}{scanf\+\_\+s\+\_\+long\+\_\+long}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{scanf_8c_a860bf4ed15942a322ed46302c47ba572}{libc\+\_\+vsscanf\+\_\+get\+\_\+element} (char $\ast$dst, const char $\ast$src, int flag, int s)
+\item 
+int \hyperlink{scanf_8c_ab1c4552aba80fe03c9b45fe27f4331ad}{vsscanf} (const char $\ast$str, const char $\ast$format, va\+\_\+list ap)
+\begin{DoxyCompactList}\small\item\em scanf and friends \end{DoxyCompactList}\item 
+int \hyperlink{scanf_8c_a5f0b0bfa0933e03124596ac5cda16860}{sscanf} (const char $\ast$str, const char $\ast$fmt,...)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{scanf_8c_a29614a27befabd82d7f70c23c41f9eab}{libc\+\_\+vsscanf\+\_\+buf} \mbox{[}512\mbox{]}
+\item 
+char \hyperlink{scanf_8c_ae12d82fdb7fe15182f0db6d102066e0d}{libc\+\_\+vsscanf\+\_\+allow} \mbox{[}256\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{scanf_8c_a99fb83031ce9923c84392b4e92f956b5}\label{scanf_8c_a99fb83031ce9923c84392b4e92f956b5}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{elem\+\_\+skip\+\_\+space@{elem\+\_\+skip\+\_\+space}!scanf.\+c@{scanf.\+c}}\index{scanf.\+c@{scanf.\+c}!elem\+\_\+skip\+\_\+space@{elem\+\_\+skip\+\_\+space}}}\mbox{\Hypertarget{scanf_8c_a99fb83031ce9923c84392b4e92f956b5a70f57642e8a38bd69ba7631a160c5f11}\label{scanf_8c_a99fb83031ce9923c84392b4e92f956b5a70f57642e8a38bd69ba7631a160c5f11}} 
+elem\+\_\+skip\+\_\+space&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{scanf_8c_abc6126af1d45847bc59afa0aa3216b04}\label{scanf_8c_abc6126af1d45847bc59afa0aa3216b04}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{scanf\+\_\+s\+\_\+char@{scanf\+\_\+s\+\_\+char}!scanf.\+c@{scanf.\+c}}\index{scanf.\+c@{scanf.\+c}!scanf\+\_\+s\+\_\+char@{scanf\+\_\+s\+\_\+char}}}\mbox{\Hypertarget{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a4f79d37cd38256e795c160d3c3eb56ca}\label{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a4f79d37cd38256e795c160d3c3eb56ca}} 
+scanf\+\_\+s\+\_\+char&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{scanf\+\_\+s\+\_\+short@{scanf\+\_\+s\+\_\+short}!scanf.\+c@{scanf.\+c}}\index{scanf.\+c@{scanf.\+c}!scanf\+\_\+s\+\_\+short@{scanf\+\_\+s\+\_\+short}}}\mbox{\Hypertarget{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a2d5076fe20059ec61e0ec136442649b5}\label{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a2d5076fe20059ec61e0ec136442649b5}} 
+scanf\+\_\+s\+\_\+short&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{scanf\+\_\+s\+\_\+int@{scanf\+\_\+s\+\_\+int}!scanf.\+c@{scanf.\+c}}\index{scanf.\+c@{scanf.\+c}!scanf\+\_\+s\+\_\+int@{scanf\+\_\+s\+\_\+int}}}\mbox{\Hypertarget{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a41adfb2e7fe59fe3ed9c4a92c8dba91a}\label{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a41adfb2e7fe59fe3ed9c4a92c8dba91a}} 
+scanf\+\_\+s\+\_\+int&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{scanf\+\_\+s\+\_\+long@{scanf\+\_\+s\+\_\+long}!scanf.\+c@{scanf.\+c}}\index{scanf.\+c@{scanf.\+c}!scanf\+\_\+s\+\_\+long@{scanf\+\_\+s\+\_\+long}}}\mbox{\Hypertarget{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a53ed51ba6478527fb859e5b6bdede504}\label{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a53ed51ba6478527fb859e5b6bdede504}} 
+scanf\+\_\+s\+\_\+long&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{scanf\+\_\+s\+\_\+long\+\_\+long@{scanf\+\_\+s\+\_\+long\+\_\+long}!scanf.\+c@{scanf.\+c}}\index{scanf.\+c@{scanf.\+c}!scanf\+\_\+s\+\_\+long\+\_\+long@{scanf\+\_\+s\+\_\+long\+\_\+long}}}\mbox{\Hypertarget{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a24d597b751243596b29021aadb4ec161}\label{scanf_8c_abc6126af1d45847bc59afa0aa3216b04a24d597b751243596b29021aadb4ec161}} 
+scanf\+\_\+s\+\_\+long\+\_\+long&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{scanf_8c_a860bf4ed15942a322ed46302c47ba572}\label{scanf_8c_a860bf4ed15942a322ed46302c47ba572}} 
+\index{scanf.\+c@{scanf.\+c}!libc\+\_\+vsscanf\+\_\+get\+\_\+element@{libc\+\_\+vsscanf\+\_\+get\+\_\+element}}
+\index{libc\+\_\+vsscanf\+\_\+get\+\_\+element@{libc\+\_\+vsscanf\+\_\+get\+\_\+element}!scanf.\+c@{scanf.\+c}}
+\subsubsection{\texorpdfstring{libc\+\_\+vsscanf\+\_\+get\+\_\+element()}{libc\_vsscanf\_get\_element()}}
+{\footnotesize\ttfamily int libc\+\_\+vsscanf\+\_\+get\+\_\+element (\begin{DoxyParamCaption}\item[{char $\ast$}]{dst,  }\item[{const char $\ast$}]{src,  }\item[{int}]{flag,  }\item[{int}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{scanf_8c_a5f0b0bfa0933e03124596ac5cda16860}\label{scanf_8c_a5f0b0bfa0933e03124596ac5cda16860}} 
+\index{scanf.\+c@{scanf.\+c}!sscanf@{sscanf}}
+\index{sscanf@{sscanf}!scanf.\+c@{scanf.\+c}}
+\subsubsection{\texorpdfstring{sscanf()}{sscanf()}}
+{\footnotesize\ttfamily int sscanf (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{scanf_8c_ab1c4552aba80fe03c9b45fe27f4331ad}\label{scanf_8c_ab1c4552aba80fe03c9b45fe27f4331ad}} 
+\index{scanf.\+c@{scanf.\+c}!vsscanf@{vsscanf}}
+\index{vsscanf@{vsscanf}!scanf.\+c@{scanf.\+c}}
+\subsubsection{\texorpdfstring{vsscanf()}{vsscanf()}}
+{\footnotesize\ttfamily int vsscanf (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str,  }\item[{const char $\ast$}]{format,  }\item[{va\+\_\+list}]{ap }\end{DoxyParamCaption})}
+
+
+
+scanf and friends 
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{scanf_8c_ae12d82fdb7fe15182f0db6d102066e0d}\label{scanf_8c_ae12d82fdb7fe15182f0db6d102066e0d}} 
+\index{scanf.\+c@{scanf.\+c}!libc\+\_\+vsscanf\+\_\+allow@{libc\+\_\+vsscanf\+\_\+allow}}
+\index{libc\+\_\+vsscanf\+\_\+allow@{libc\+\_\+vsscanf\+\_\+allow}!scanf.\+c@{scanf.\+c}}
+\subsubsection{\texorpdfstring{libc\+\_\+vsscanf\+\_\+allow}{libc\_vsscanf\_allow}}
+{\footnotesize\ttfamily char libc\+\_\+vsscanf\+\_\+allow\mbox{[}256\mbox{]}}
+
+\mbox{\Hypertarget{scanf_8c_a29614a27befabd82d7f70c23c41f9eab}\label{scanf_8c_a29614a27befabd82d7f70c23c41f9eab}} 
+\index{scanf.\+c@{scanf.\+c}!libc\+\_\+vsscanf\+\_\+buf@{libc\+\_\+vsscanf\+\_\+buf}}
+\index{libc\+\_\+vsscanf\+\_\+buf@{libc\+\_\+vsscanf\+\_\+buf}!scanf.\+c@{scanf.\+c}}
+\subsubsection{\texorpdfstring{libc\+\_\+vsscanf\+\_\+buf}{libc\_vsscanf\_buf}}
+{\footnotesize\ttfamily char libc\+\_\+vsscanf\+\_\+buf\mbox{[}512\mbox{]}}
+

@@ -1,0 +1,289 @@
+\hypertarget{structModMusic}{}\section{Mod\+Music Struct Reference}
+\label{structModMusic}\index{Mod\+Music@{Mod\+Music}}
+
+
+Music.  
+
+
+
+
+{\ttfamily \#include $<$modplay.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{structModMusic_a7b9e83bdae925b85b8603f9f92cc22f6}{title} \mbox{[}32\mbox{]}
+\begin{DoxyCompactList}\small\item\em Music title. \end{DoxyCompactList}\item 
+int \hyperlink{structModMusic_a48e325665c0b710768b8310d8e3ab1f9}{sample\+\_\+num}
+\begin{DoxyCompactList}\small\item\em Number of samples in the music. \end{DoxyCompactList}\item 
+int \hyperlink{structModMusic_ae0ae287338ab6864050297cdf8fb9732}{channel\+\_\+num}
+\begin{DoxyCompactList}\small\item\em Number of channels used by the music. \end{DoxyCompactList}\item 
+int \hyperlink{structModMusic_a56e199510a0f4107e0ddeb4d6f3cbd6e}{instrument\+\_\+num}
+\begin{DoxyCompactList}\small\item\em Number of instruments used by the music. \end{DoxyCompactList}\item 
+\hyperlink{structModSample}{Mod\+Sample} $\ast$ \hyperlink{structModMusic_a9e2b2e857708204d12e33d10ef467e3c}{sample}
+\begin{DoxyCompactList}\small\item\em Pointer to an array of \hyperlink{structModSample}{Mod\+Sample} structures. \end{DoxyCompactList}\item 
+\hyperlink{structModInstrument}{Mod\+Instrument} $\ast$ \hyperlink{structModMusic_a6683f3be02e56150252cdda5caa3dc9b}{instrument}
+\begin{DoxyCompactList}\small\item\em Pointer to an array of \hyperlink{structModInstrument}{Mod\+Instrument} structures. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_a314b376f9b8b67475b70d1e3579da361}{song\+\_\+pos\+\_\+num}
+\begin{DoxyCompactList}\small\item\em Number of song positions. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_a48139937a46f8938045f3852dab34b33}{pattern\+\_\+tbl} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Pattern table. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_a4a84e33e38cc3b0734b3901276e8cf38}{pattern\+\_\+row\+\_\+num} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Number of rows for each pattern. \end{DoxyCompactList}\item 
+char \hyperlink{structModMusic_a5c5d6cb058ca58e045eb51e0b036b3fb}{id} \mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em ID, such as \char`\"{}\+M!\+K!\char`\"{},\char`\"{}\+M.\+K.\char`\"{},\char`\"{}\+F\+L\+T4\char`\"{}, etc. \end{DoxyCompactList}\item 
+int \hyperlink{structModMusic_a94311ad25e92db0711cc9dfb5f25103d}{pattern\+\_\+num}
+\begin{DoxyCompactList}\small\item\em Number of patterns. \end{DoxyCompactList}\item 
+unsigned char $\ast$ \hyperlink{structModMusic_a4f279f645c007e434d897b480510e748}{pattern\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Pointer to pattern data. \end{DoxyCompactList}\item 
+int \hyperlink{structModMusic_a8333fbe2d5747ef9397d371886d00a5c}{fmt}
+\begin{DoxyCompactList}\small\item\em Format of music. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_acece3d1a6fa99389d79490b812be31ba}{song\+\_\+pos}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} Current song position \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_a2dc34fe1aa5c7fd23be5f6dfbd47fa7d}{pat\+\_\+pos}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} Position inside the pattern currently being played \end{DoxyCompactList}\item 
+int \hyperlink{structModMusic_a64991ec01bd181942a99411e69713571}{divisions\+\_\+sec}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} Divisions per second \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_a69d46bccf5dd49685b43830ee03fbc3d}{beats\+\_\+minute}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} Beats per minute \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_afa6eab79cc47740d4f146e2adfc16c9c}{ticks\+\_\+division}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} Ticks per division \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_a34dae5fc4930940b0cda5fd44467c751}{cur\+\_\+tick}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} Current tick count \end{DoxyCompactList}\item 
+unsigned short \hyperlink{structModMusic_aaaa612da0b0920d51b87972c94e14ac0}{old\+\_\+periods} \mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} Old periods for each channel. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{structModMusic_a4a05f396814c9fd4cf163fad7ea0f852}{old\+\_\+samples} \mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} Old sample numbers for each channel. \end{DoxyCompactList}\item 
+short \hyperlink{structModMusic_a08eaea3acf218f237d5cfcb05870d7fc}{transpose}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Runtime\mbox{]} In Play\+Station pitch, this is added to the original sample pitch and can be used to change the pitch of the music for special effects \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Music. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structModMusic_a69d46bccf5dd49685b43830ee03fbc3d}\label{structModMusic_a69d46bccf5dd49685b43830ee03fbc3d}} 
+\index{Mod\+Music@{Mod\+Music}!beats\+\_\+minute@{beats\+\_\+minute}}
+\index{beats\+\_\+minute@{beats\+\_\+minute}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{beats\+\_\+minute}{beats\_minute}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::beats\+\_\+minute}
+
+
+
+\mbox{[}Runtime\mbox{]} Beats per minute 
+
+\mbox{\Hypertarget{structModMusic_ae0ae287338ab6864050297cdf8fb9732}\label{structModMusic_ae0ae287338ab6864050297cdf8fb9732}} 
+\index{Mod\+Music@{Mod\+Music}!channel\+\_\+num@{channel\+\_\+num}}
+\index{channel\+\_\+num@{channel\+\_\+num}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{channel\+\_\+num}{channel\_num}}
+{\footnotesize\ttfamily int Mod\+Music\+::channel\+\_\+num}
+
+
+
+Number of channels used by the music. 
+
+\mbox{\Hypertarget{structModMusic_a34dae5fc4930940b0cda5fd44467c751}\label{structModMusic_a34dae5fc4930940b0cda5fd44467c751}} 
+\index{Mod\+Music@{Mod\+Music}!cur\+\_\+tick@{cur\+\_\+tick}}
+\index{cur\+\_\+tick@{cur\+\_\+tick}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{cur\+\_\+tick}{cur\_tick}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::cur\+\_\+tick}
+
+
+
+\mbox{[}Runtime\mbox{]} Current tick count 
+
+\mbox{\Hypertarget{structModMusic_a64991ec01bd181942a99411e69713571}\label{structModMusic_a64991ec01bd181942a99411e69713571}} 
+\index{Mod\+Music@{Mod\+Music}!divisions\+\_\+sec@{divisions\+\_\+sec}}
+\index{divisions\+\_\+sec@{divisions\+\_\+sec}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{divisions\+\_\+sec}{divisions\_sec}}
+{\footnotesize\ttfamily int Mod\+Music\+::divisions\+\_\+sec}
+
+
+
+\mbox{[}Runtime\mbox{]} Divisions per second 
+
+\mbox{\Hypertarget{structModMusic_a8333fbe2d5747ef9397d371886d00a5c}\label{structModMusic_a8333fbe2d5747ef9397d371886d00a5c}} 
+\index{Mod\+Music@{Mod\+Music}!fmt@{fmt}}
+\index{fmt@{fmt}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{fmt}{fmt}}
+{\footnotesize\ttfamily int Mod\+Music\+::fmt}
+
+
+
+Format of music. 
+
+\mbox{\Hypertarget{structModMusic_a5c5d6cb058ca58e045eb51e0b036b3fb}\label{structModMusic_a5c5d6cb058ca58e045eb51e0b036b3fb}} 
+\index{Mod\+Music@{Mod\+Music}!id@{id}}
+\index{id@{id}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily char Mod\+Music\+::id\mbox{[}4\mbox{]}}
+
+
+
+ID, such as \char`\"{}\+M!\+K!\char`\"{},\char`\"{}\+M.\+K.\char`\"{},\char`\"{}\+F\+L\+T4\char`\"{}, etc. 
+
+\mbox{\Hypertarget{structModMusic_a6683f3be02e56150252cdda5caa3dc9b}\label{structModMusic_a6683f3be02e56150252cdda5caa3dc9b}} 
+\index{Mod\+Music@{Mod\+Music}!instrument@{instrument}}
+\index{instrument@{instrument}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{instrument}{instrument}}
+{\footnotesize\ttfamily \hyperlink{structModInstrument}{Mod\+Instrument}$\ast$ Mod\+Music\+::instrument}
+
+
+
+Pointer to an array of \hyperlink{structModInstrument}{Mod\+Instrument} structures. 
+
+\mbox{\Hypertarget{structModMusic_a56e199510a0f4107e0ddeb4d6f3cbd6e}\label{structModMusic_a56e199510a0f4107e0ddeb4d6f3cbd6e}} 
+\index{Mod\+Music@{Mod\+Music}!instrument\+\_\+num@{instrument\+\_\+num}}
+\index{instrument\+\_\+num@{instrument\+\_\+num}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{instrument\+\_\+num}{instrument\_num}}
+{\footnotesize\ttfamily int Mod\+Music\+::instrument\+\_\+num}
+
+
+
+Number of instruments used by the music. 
+
+\mbox{\Hypertarget{structModMusic_aaaa612da0b0920d51b87972c94e14ac0}\label{structModMusic_aaaa612da0b0920d51b87972c94e14ac0}} 
+\index{Mod\+Music@{Mod\+Music}!old\+\_\+periods@{old\+\_\+periods}}
+\index{old\+\_\+periods@{old\+\_\+periods}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{old\+\_\+periods}{old\_periods}}
+{\footnotesize\ttfamily unsigned short Mod\+Music\+::old\+\_\+periods\mbox{[}8\mbox{]}}
+
+
+
+\mbox{[}Runtime\mbox{]} Old periods for each channel. 
+
+\mbox{\Hypertarget{structModMusic_a4a05f396814c9fd4cf163fad7ea0f852}\label{structModMusic_a4a05f396814c9fd4cf163fad7ea0f852}} 
+\index{Mod\+Music@{Mod\+Music}!old\+\_\+samples@{old\+\_\+samples}}
+\index{old\+\_\+samples@{old\+\_\+samples}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{old\+\_\+samples}{old\_samples}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::old\+\_\+samples\mbox{[}8\mbox{]}}
+
+
+
+\mbox{[}Runtime\mbox{]} Old sample numbers for each channel. 
+
+\mbox{\Hypertarget{structModMusic_a2dc34fe1aa5c7fd23be5f6dfbd47fa7d}\label{structModMusic_a2dc34fe1aa5c7fd23be5f6dfbd47fa7d}} 
+\index{Mod\+Music@{Mod\+Music}!pat\+\_\+pos@{pat\+\_\+pos}}
+\index{pat\+\_\+pos@{pat\+\_\+pos}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{pat\+\_\+pos}{pat\_pos}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::pat\+\_\+pos}
+
+
+
+\mbox{[}Runtime\mbox{]} Position inside the pattern currently being played 
+
+\mbox{\Hypertarget{structModMusic_a4f279f645c007e434d897b480510e748}\label{structModMusic_a4f279f645c007e434d897b480510e748}} 
+\index{Mod\+Music@{Mod\+Music}!pattern\+\_\+data@{pattern\+\_\+data}}
+\index{pattern\+\_\+data@{pattern\+\_\+data}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{pattern\+\_\+data}{pattern\_data}}
+{\footnotesize\ttfamily unsigned char$\ast$ Mod\+Music\+::pattern\+\_\+data}
+
+
+
+Pointer to pattern data. 
+
+\mbox{\Hypertarget{structModMusic_a94311ad25e92db0711cc9dfb5f25103d}\label{structModMusic_a94311ad25e92db0711cc9dfb5f25103d}} 
+\index{Mod\+Music@{Mod\+Music}!pattern\+\_\+num@{pattern\+\_\+num}}
+\index{pattern\+\_\+num@{pattern\+\_\+num}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{pattern\+\_\+num}{pattern\_num}}
+{\footnotesize\ttfamily int Mod\+Music\+::pattern\+\_\+num}
+
+
+
+Number of patterns. 
+
+\mbox{\Hypertarget{structModMusic_a4a84e33e38cc3b0734b3901276e8cf38}\label{structModMusic_a4a84e33e38cc3b0734b3901276e8cf38}} 
+\index{Mod\+Music@{Mod\+Music}!pattern\+\_\+row\+\_\+num@{pattern\+\_\+row\+\_\+num}}
+\index{pattern\+\_\+row\+\_\+num@{pattern\+\_\+row\+\_\+num}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{pattern\+\_\+row\+\_\+num}{pattern\_row\_num}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::pattern\+\_\+row\+\_\+num\mbox{[}256\mbox{]}}
+
+
+
+Number of rows for each pattern. 
+
+\mbox{\Hypertarget{structModMusic_a48139937a46f8938045f3852dab34b33}\label{structModMusic_a48139937a46f8938045f3852dab34b33}} 
+\index{Mod\+Music@{Mod\+Music}!pattern\+\_\+tbl@{pattern\+\_\+tbl}}
+\index{pattern\+\_\+tbl@{pattern\+\_\+tbl}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{pattern\+\_\+tbl}{pattern\_tbl}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::pattern\+\_\+tbl\mbox{[}256\mbox{]}}
+
+
+
+Pattern table. 
+
+\mbox{\Hypertarget{structModMusic_a9e2b2e857708204d12e33d10ef467e3c}\label{structModMusic_a9e2b2e857708204d12e33d10ef467e3c}} 
+\index{Mod\+Music@{Mod\+Music}!sample@{sample}}
+\index{sample@{sample}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{sample}{sample}}
+{\footnotesize\ttfamily \hyperlink{structModSample}{Mod\+Sample}$\ast$ Mod\+Music\+::sample}
+
+
+
+Pointer to an array of \hyperlink{structModSample}{Mod\+Sample} structures. 
+
+\mbox{\Hypertarget{structModMusic_a48e325665c0b710768b8310d8e3ab1f9}\label{structModMusic_a48e325665c0b710768b8310d8e3ab1f9}} 
+\index{Mod\+Music@{Mod\+Music}!sample\+\_\+num@{sample\+\_\+num}}
+\index{sample\+\_\+num@{sample\+\_\+num}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{sample\+\_\+num}{sample\_num}}
+{\footnotesize\ttfamily int Mod\+Music\+::sample\+\_\+num}
+
+
+
+Number of samples in the music. 
+
+\mbox{\Hypertarget{structModMusic_acece3d1a6fa99389d79490b812be31ba}\label{structModMusic_acece3d1a6fa99389d79490b812be31ba}} 
+\index{Mod\+Music@{Mod\+Music}!song\+\_\+pos@{song\+\_\+pos}}
+\index{song\+\_\+pos@{song\+\_\+pos}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{song\+\_\+pos}{song\_pos}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::song\+\_\+pos}
+
+
+
+\mbox{[}Runtime\mbox{]} Current song position 
+
+\mbox{\Hypertarget{structModMusic_a314b376f9b8b67475b70d1e3579da361}\label{structModMusic_a314b376f9b8b67475b70d1e3579da361}} 
+\index{Mod\+Music@{Mod\+Music}!song\+\_\+pos\+\_\+num@{song\+\_\+pos\+\_\+num}}
+\index{song\+\_\+pos\+\_\+num@{song\+\_\+pos\+\_\+num}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{song\+\_\+pos\+\_\+num}{song\_pos\_num}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::song\+\_\+pos\+\_\+num}
+
+
+
+Number of song positions. 
+
+\mbox{\Hypertarget{structModMusic_afa6eab79cc47740d4f146e2adfc16c9c}\label{structModMusic_afa6eab79cc47740d4f146e2adfc16c9c}} 
+\index{Mod\+Music@{Mod\+Music}!ticks\+\_\+division@{ticks\+\_\+division}}
+\index{ticks\+\_\+division@{ticks\+\_\+division}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{ticks\+\_\+division}{ticks\_division}}
+{\footnotesize\ttfamily unsigned char Mod\+Music\+::ticks\+\_\+division}
+
+
+
+\mbox{[}Runtime\mbox{]} Ticks per division 
+
+\mbox{\Hypertarget{structModMusic_a7b9e83bdae925b85b8603f9f92cc22f6}\label{structModMusic_a7b9e83bdae925b85b8603f9f92cc22f6}} 
+\index{Mod\+Music@{Mod\+Music}!title@{title}}
+\index{title@{title}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{title}{title}}
+{\footnotesize\ttfamily char Mod\+Music\+::title\mbox{[}32\mbox{]}}
+
+
+
+Music title. 
+
+\mbox{\Hypertarget{structModMusic_a08eaea3acf218f237d5cfcb05870d7fc}\label{structModMusic_a08eaea3acf218f237d5cfcb05870d7fc}} 
+\index{Mod\+Music@{Mod\+Music}!transpose@{transpose}}
+\index{transpose@{transpose}!Mod\+Music@{Mod\+Music}}
+\subsubsection{\texorpdfstring{transpose}{transpose}}
+{\footnotesize\ttfamily short Mod\+Music\+::transpose}
+
+
+
+\mbox{[}Runtime\mbox{]} In Play\+Station pitch, this is added to the original sample pitch and can be used to change the pitch of the music for special effects 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+libmodplay/\hyperlink{modplay_8h}{modplay.\+h}\end{DoxyCompactItemize}

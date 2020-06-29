@@ -1,0 +1,485 @@
+\hypertarget{f3m_8c}{}\section{libf3m/f3m.c File Reference}
+\label{f3m_8c}\index{libf3m/f3m.\+c@{libf3m/f3m.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$psx.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}f3m.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structins}{ins}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structins}{ins} \hyperlink{f3m_8c_ac8d9ace2a0300af98b14b2445b0b2796}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((\+\_\+\+\_\+packed\+\_\+\+\_\+))
+\item 
+mod\+\_\+s $\ast$ \hyperlink{f3m_8c_aebf8b530ef31d358fa7ccb1c02bf80ae}{f3m\+\_\+mod\+\_\+load} (\hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} $\ast$d)
+\begin{DoxyCompactList}\small\item\em Create a module file structure from a data buffer. \end{DoxyCompactList}\item 
+mod\+\_\+s $\ast$ \hyperlink{f3m_8c_a346bc8b4b9689885842ce2ee3e96fcb9}{f3m\+\_\+mod\+\_\+load\+\_\+filename} (const char $\ast$\hyperlink{f3m_8c_a0ae3e32dce2f299603e211a367202e1b}{fname})
+\begin{DoxyCompactList}\small\item\em Create a module file structure from a file with the given filename, The file must be a valid S3M music module file. \end{DoxyCompactList}\item 
+void \hyperlink{f3m_8c_a5baf90102534bd00a815d68d7de88f77}{f3m\+\_\+mod\+\_\+free} (mod\+\_\+s $\ast$mod)
+\begin{DoxyCompactList}\small\item\em Free the memory associated to a module file structure. \end{DoxyCompactList}\item 
+int \hyperlink{f3m_8c_a99a12b2c4caed9cad8282c7fe28d40d5}{f3m\+\_\+set\+\_\+mono\+\_\+mode} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, int onoff)
+\begin{DoxyCompactList}\small\item\em Set a music player to mono mode. \end{DoxyCompactList}\item 
+\hyperlink{inttypes_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} \hyperlink{f3m_8c_a936ee663417f38612408721d42f9626b}{f3m\+\_\+set\+\_\+max\+\_\+volume} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{inttypes_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} maxvolume)
+\begin{DoxyCompactList}\small\item\em Set maximum volume for a music player. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{f3m_8c_a46c0a205734621e696544282d31d1cc6}{f3m\+\_\+player\+\_\+init} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, mod\+\_\+s $\ast$mod)
+\begin{DoxyCompactList}\small\item\em Initialize a music player from a module file structure. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{f3m_8c_a8b5bb278048736229e5972222036b5c7}{f3m\+\_\+player\+\_\+init\+\_\+ex} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, mod\+\_\+s $\ast$mod, int basevoice, unsigned int baseaddr)
+\begin{DoxyCompactList}\small\item\em Initialize a music player from a module file structure. \end{DoxyCompactList}\item 
+void \hyperlink{f3m_8c_ace819311c0c320dc25466d6925c43170}{f3m\+\_\+effect\+\_\+nop} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_ae928630157af1d4c3753dd5444664c89}{f3m\+\_\+effect\+\_\+\+Axx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a830715e2e048427c07980ca19ce97724}{f3m\+\_\+effect\+\_\+\+Bxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_ae7c61d27563b3666da730df03d4363df}{f3m\+\_\+effect\+\_\+\+Cxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a835ac381312ff7a4ceb451101e453d8a}{f3m\+\_\+effect\+\_\+\+Dxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_ab380dfaee18bf44a07c43cec9ad50062}{f3m\+\_\+effect\+\_\+\+Exx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a9536e7fb29cfdbbae122c44ec11c0b60}{f3m\+\_\+effect\+\_\+\+Fxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a6655b6431a8cd95084cb9429b54cb6ce}{f3m\+\_\+effect\+\_\+\+Gxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_ad50527834c51da38cf8fa7ac56259608}{f3m\+\_\+effect\+\_\+\+Hxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_ad8d51127185c10079be4da2fdeb5e640}{f3m\+\_\+effect\+\_\+\+Kxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a7c4c6ff5a037275f234e64a36841666f}{f3m\+\_\+effect\+\_\+\+Lxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_ae6ecec0b9aa6c2521c9ba3a0be706f6b}{f3m\+\_\+effect\+\_\+\+Qxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a9506a57f40321a1fbca593cea9c9c605}{f3m\+\_\+effect\+\_\+\+Rxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a94a8fbc084b44f01d009b869835fa48c}{f3m\+\_\+effect\+\_\+\+Sxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_ade1513a41fe642fab2375c75dec58157}{f3m\+\_\+effect\+\_\+\+Txx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a38838543d6aea6a435f70f4c52a6a7c3}{f3m\+\_\+effect\+\_\+\+Uxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a969073f6ca049afc893b73b9e073f14e}{f3m\+\_\+effect\+\_\+\+Vxx} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a12431b1dc4a49027f93afa9ee83d6fc2}{f3m\+\_\+effect\+\_\+tab} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player, \hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$vchn, int tick, int pefp, int lefp)
+\item 
+void \hyperlink{f3m_8c_a66e9315abd3b21b8fbf9eaf11e02dc76}{f3m\+\_\+player\+\_\+play\+\_\+newtick} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player)
+\item 
+void \hyperlink{f3m_8c_a6fac7b475052696876bed0dd5002139a}{f3m\+\_\+player\+\_\+play} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Make a music player play. \end{DoxyCompactList}\item 
+void \hyperlink{f3m_8c_a9f160e62cf59f0feff9c86eaa4df7e0f}{f3m\+\_\+player\+\_\+stop} (\hyperlink{structplayer__s}{player\+\_\+s} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Stop a music player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_a40300f7efdcc936081cd0975f4ca1847}{typ}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_a0ae3e32dce2f299603e211a367202e1b}{fname} \mbox{[}12\mbox{]}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_a7baa3eae2dc76aef0abf3b03577d456f}{dat\+\_\+para\+\_\+h}
+\item 
+\hyperlink{inttypes_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} \hyperlink{f3m_8c_adb11c94be8442dc04412928a8a6ff6a7}{dat\+\_\+para}
+\item 
+\hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len}
+\item 
+\hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{f3m_8c_a6367b97904769ce7cbd8a6c1cbb0b23d}{lpbeg}
+\item 
+\hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{f3m_8c_a2c781c8bd08e733056d0379a9a384755}{lpend}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_a9a1b920fc586ba344a1d44c5bdcc0bf2}{vol}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_af8b5e90a5abcd9e4d92ffbb54925de39}{rsv1}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_aa028dfddff82d2d17f7651ffab00761f}{pack}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags}
+\item 
+\hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{f3m_8c_a00585236374661eaa648c360657c0fb0}{c4freq}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_a83266db0554da6cc7583e012afbc8dc1}{rsv2} \mbox{[}12\mbox{]}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name} \mbox{[}28\mbox{]}
+\item 
+\hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{f3m_8c_ad7cd56f245d5dbca367259b8695c3c6e}{magic} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{f3m_8c_ac8d9ace2a0300af98b14b2445b0b2796}\label{f3m_8c_ac8d9ace2a0300af98b14b2445b0b2796}} 
+\index{f3m.\+c@{f3m.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily struct \hyperlink{structins}{ins} \hyperlink{struct____attribute____}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} (\begin{DoxyParamCaption}\item[{(\+\_\+\+\_\+packed\+\_\+\+\_\+)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_ae928630157af1d4c3753dd5444664c89}\label{f3m_8c_ae928630157af1d4c3753dd5444664c89}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Axx@{f3m\+\_\+effect\+\_\+\+Axx}}
+\index{f3m\+\_\+effect\+\_\+\+Axx@{f3m\+\_\+effect\+\_\+\+Axx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Axx()}{f3m\_effect\_Axx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Axx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a830715e2e048427c07980ca19ce97724}\label{f3m_8c_a830715e2e048427c07980ca19ce97724}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Bxx@{f3m\+\_\+effect\+\_\+\+Bxx}}
+\index{f3m\+\_\+effect\+\_\+\+Bxx@{f3m\+\_\+effect\+\_\+\+Bxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Bxx()}{f3m\_effect\_Bxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Bxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_ae7c61d27563b3666da730df03d4363df}\label{f3m_8c_ae7c61d27563b3666da730df03d4363df}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Cxx@{f3m\+\_\+effect\+\_\+\+Cxx}}
+\index{f3m\+\_\+effect\+\_\+\+Cxx@{f3m\+\_\+effect\+\_\+\+Cxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Cxx()}{f3m\_effect\_Cxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Cxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a835ac381312ff7a4ceb451101e453d8a}\label{f3m_8c_a835ac381312ff7a4ceb451101e453d8a}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Dxx@{f3m\+\_\+effect\+\_\+\+Dxx}}
+\index{f3m\+\_\+effect\+\_\+\+Dxx@{f3m\+\_\+effect\+\_\+\+Dxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Dxx()}{f3m\_effect\_Dxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Dxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_ab380dfaee18bf44a07c43cec9ad50062}\label{f3m_8c_ab380dfaee18bf44a07c43cec9ad50062}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Exx@{f3m\+\_\+effect\+\_\+\+Exx}}
+\index{f3m\+\_\+effect\+\_\+\+Exx@{f3m\+\_\+effect\+\_\+\+Exx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Exx()}{f3m\_effect\_Exx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Exx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a9536e7fb29cfdbbae122c44ec11c0b60}\label{f3m_8c_a9536e7fb29cfdbbae122c44ec11c0b60}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Fxx@{f3m\+\_\+effect\+\_\+\+Fxx}}
+\index{f3m\+\_\+effect\+\_\+\+Fxx@{f3m\+\_\+effect\+\_\+\+Fxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Fxx()}{f3m\_effect\_Fxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Fxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a6655b6431a8cd95084cb9429b54cb6ce}\label{f3m_8c_a6655b6431a8cd95084cb9429b54cb6ce}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Gxx@{f3m\+\_\+effect\+\_\+\+Gxx}}
+\index{f3m\+\_\+effect\+\_\+\+Gxx@{f3m\+\_\+effect\+\_\+\+Gxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Gxx()}{f3m\_effect\_Gxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Gxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_ad50527834c51da38cf8fa7ac56259608}\label{f3m_8c_ad50527834c51da38cf8fa7ac56259608}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Hxx@{f3m\+\_\+effect\+\_\+\+Hxx}}
+\index{f3m\+\_\+effect\+\_\+\+Hxx@{f3m\+\_\+effect\+\_\+\+Hxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Hxx()}{f3m\_effect\_Hxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Hxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_ad8d51127185c10079be4da2fdeb5e640}\label{f3m_8c_ad8d51127185c10079be4da2fdeb5e640}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Kxx@{f3m\+\_\+effect\+\_\+\+Kxx}}
+\index{f3m\+\_\+effect\+\_\+\+Kxx@{f3m\+\_\+effect\+\_\+\+Kxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Kxx()}{f3m\_effect\_Kxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Kxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a7c4c6ff5a037275f234e64a36841666f}\label{f3m_8c_a7c4c6ff5a037275f234e64a36841666f}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Lxx@{f3m\+\_\+effect\+\_\+\+Lxx}}
+\index{f3m\+\_\+effect\+\_\+\+Lxx@{f3m\+\_\+effect\+\_\+\+Lxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Lxx()}{f3m\_effect\_Lxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Lxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_ace819311c0c320dc25466d6925c43170}\label{f3m_8c_ace819311c0c320dc25466d6925c43170}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+nop@{f3m\+\_\+effect\+\_\+nop}}
+\index{f3m\+\_\+effect\+\_\+nop@{f3m\+\_\+effect\+\_\+nop}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+nop()}{f3m\_effect\_nop()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+nop (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_ae6ecec0b9aa6c2521c9ba3a0be706f6b}\label{f3m_8c_ae6ecec0b9aa6c2521c9ba3a0be706f6b}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Qxx@{f3m\+\_\+effect\+\_\+\+Qxx}}
+\index{f3m\+\_\+effect\+\_\+\+Qxx@{f3m\+\_\+effect\+\_\+\+Qxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Qxx()}{f3m\_effect\_Qxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Qxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a9506a57f40321a1fbca593cea9c9c605}\label{f3m_8c_a9506a57f40321a1fbca593cea9c9c605}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Rxx@{f3m\+\_\+effect\+\_\+\+Rxx}}
+\index{f3m\+\_\+effect\+\_\+\+Rxx@{f3m\+\_\+effect\+\_\+\+Rxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Rxx()}{f3m\_effect\_Rxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Rxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a94a8fbc084b44f01d009b869835fa48c}\label{f3m_8c_a94a8fbc084b44f01d009b869835fa48c}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Sxx@{f3m\+\_\+effect\+\_\+\+Sxx}}
+\index{f3m\+\_\+effect\+\_\+\+Sxx@{f3m\+\_\+effect\+\_\+\+Sxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Sxx()}{f3m\_effect\_Sxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Sxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a12431b1dc4a49027f93afa9ee83d6fc2}\label{f3m_8c_a12431b1dc4a49027f93afa9ee83d6fc2}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+tab@{f3m\+\_\+effect\+\_\+tab}}
+\index{f3m\+\_\+effect\+\_\+tab@{f3m\+\_\+effect\+\_\+tab}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+tab()}{f3m\_effect\_tab()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+tab (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_ade1513a41fe642fab2375c75dec58157}\label{f3m_8c_ade1513a41fe642fab2375c75dec58157}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Txx@{f3m\+\_\+effect\+\_\+\+Txx}}
+\index{f3m\+\_\+effect\+\_\+\+Txx@{f3m\+\_\+effect\+\_\+\+Txx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Txx()}{f3m\_effect\_Txx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Txx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a38838543d6aea6a435f70f4c52a6a7c3}\label{f3m_8c_a38838543d6aea6a435f70f4c52a6a7c3}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Uxx@{f3m\+\_\+effect\+\_\+\+Uxx}}
+\index{f3m\+\_\+effect\+\_\+\+Uxx@{f3m\+\_\+effect\+\_\+\+Uxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Uxx()}{f3m\_effect\_Uxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Uxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a969073f6ca049afc893b73b9e073f14e}\label{f3m_8c_a969073f6ca049afc893b73b9e073f14e}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+effect\+\_\+\+Vxx@{f3m\+\_\+effect\+\_\+\+Vxx}}
+\index{f3m\+\_\+effect\+\_\+\+Vxx@{f3m\+\_\+effect\+\_\+\+Vxx}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+effect\+\_\+\+Vxx()}{f3m\_effect\_Vxx()}}
+{\footnotesize\ttfamily void f3m\+\_\+effect\+\_\+\+Vxx (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{structvchn__s}{vchn\+\_\+s} $\ast$}]{vchn,  }\item[{int}]{tick,  }\item[{int}]{pefp,  }\item[{int}]{lefp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a5baf90102534bd00a815d68d7de88f77}\label{f3m_8c_a5baf90102534bd00a815d68d7de88f77}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+mod\+\_\+free@{f3m\+\_\+mod\+\_\+free}}
+\index{f3m\+\_\+mod\+\_\+free@{f3m\+\_\+mod\+\_\+free}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+mod\+\_\+free()}{f3m\_mod\_free()}}
+{\footnotesize\ttfamily void f3m\+\_\+mod\+\_\+free (\begin{DoxyParamCaption}\item[{mod\+\_\+s $\ast$}]{mod }\end{DoxyParamCaption})}
+
+
+
+Free the memory associated to a module file structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mod} & Pointer to module file structure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{f3m_8c_aebf8b530ef31d358fa7ccb1c02bf80ae}\label{f3m_8c_aebf8b530ef31d358fa7ccb1c02bf80ae}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+mod\+\_\+load@{f3m\+\_\+mod\+\_\+load}}
+\index{f3m\+\_\+mod\+\_\+load@{f3m\+\_\+mod\+\_\+load}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+mod\+\_\+load()}{f3m\_mod\_load()}}
+{\footnotesize\ttfamily mod\+\_\+s$\ast$ f3m\+\_\+mod\+\_\+load (\begin{DoxyParamCaption}\item[{\hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} $\ast$}]{d }\end{DoxyParamCaption})}
+
+
+
+Create a module file structure from a data buffer. 
+
+The data buffer must contain a valid S3M music module file. 
+\begin{DoxyParams}{Parameters}
+{\em d} & Pointer to buffer memory \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Module file structure (N\+U\+LL on error) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{f3m_8c_a346bc8b4b9689885842ce2ee3e96fcb9}\label{f3m_8c_a346bc8b4b9689885842ce2ee3e96fcb9}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+mod\+\_\+load\+\_\+filename@{f3m\+\_\+mod\+\_\+load\+\_\+filename}}
+\index{f3m\+\_\+mod\+\_\+load\+\_\+filename@{f3m\+\_\+mod\+\_\+load\+\_\+filename}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+mod\+\_\+load\+\_\+filename()}{f3m\_mod\_load\_filename()}}
+{\footnotesize\ttfamily mod\+\_\+s$\ast$ f3m\+\_\+mod\+\_\+load\+\_\+filename (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname }\end{DoxyParamCaption})}
+
+
+
+Create a module file structure from a file with the given filename, The file must be a valid S3M music module file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & Module file filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Module file structure (N\+U\+LL on error) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{f3m_8c_a46c0a205734621e696544282d31d1cc6}\label{f3m_8c_a46c0a205734621e696544282d31d1cc6}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+player\+\_\+init@{f3m\+\_\+player\+\_\+init}}
+\index{f3m\+\_\+player\+\_\+init@{f3m\+\_\+player\+\_\+init}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+player\+\_\+init()}{f3m\_player\_init()}}
+{\footnotesize\ttfamily unsigned int f3m\+\_\+player\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{mod\+\_\+s $\ast$}]{mod }\end{DoxyParamCaption})}
+
+
+
+Initialize a music player from a module file structure. 
+
+This is just like calling f3m\+\_\+player\+\_\+init\+\_\+ex(player, mod, 0, S\+P\+U\+\_\+\+D\+A\+T\+A\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R) 
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to memory of music player structure \\
+\hline
+{\em mod} & Pointer to module file structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Address in S\+PU memory after uploaded samples 
+\end{DoxyReturn}
+\mbox{\Hypertarget{f3m_8c_a8b5bb278048736229e5972222036b5c7}\label{f3m_8c_a8b5bb278048736229e5972222036b5c7}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+player\+\_\+init\+\_\+ex@{f3m\+\_\+player\+\_\+init\+\_\+ex}}
+\index{f3m\+\_\+player\+\_\+init\+\_\+ex@{f3m\+\_\+player\+\_\+init\+\_\+ex}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+player\+\_\+init\+\_\+ex()}{f3m\_player\_init\_ex()}}
+{\footnotesize\ttfamily unsigned int f3m\+\_\+player\+\_\+init\+\_\+ex (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{mod\+\_\+s $\ast$}]{mod,  }\item[{int}]{basevoice,  }\item[{unsigned int}]{baseaddr }\end{DoxyParamCaption})}
+
+
+
+Initialize a music player from a module file structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to memory of music player structure \\
+\hline
+{\em mod} & Pointer to module file structure \\
+\hline
+{\em basevoice} & Base voice to use to reproduce samples. Valid range is from 0 to (24 -\/ F3\+M\+\_\+\+V\+C\+H\+NS) \\
+\hline
+{\em baseaddr} & Base address in S\+PU memory for uploading samples. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Address in S\+PU memory after uploaded samples 
+\end{DoxyReturn}
+\mbox{\Hypertarget{f3m_8c_a6fac7b475052696876bed0dd5002139a}\label{f3m_8c_a6fac7b475052696876bed0dd5002139a}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+player\+\_\+play@{f3m\+\_\+player\+\_\+play}}
+\index{f3m\+\_\+player\+\_\+play@{f3m\+\_\+player\+\_\+play}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+player\+\_\+play()}{f3m\_player\_play()}}
+{\footnotesize\ttfamily void f3m\+\_\+player\+\_\+play (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Make a music player play. 
+
+This should be called roughly every 1/50th of a second on P\+AL systems, or every 1/60th of a second on N\+T\+SC systems; you can set a flag in a V\+Blank interrupt handler (see \hyperlink{psx_8h_a7cf4482e764f30f668878a45351d0c71}{Set\+V\+Blank\+Handler()}) to do this. This function is probably not re-\/entrant, so it is not recommended to call it directly from the V\+Blank handler. 
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to music player structure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{f3m_8c_a66e9315abd3b21b8fbf9eaf11e02dc76}\label{f3m_8c_a66e9315abd3b21b8fbf9eaf11e02dc76}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+player\+\_\+play\+\_\+newtick@{f3m\+\_\+player\+\_\+play\+\_\+newtick}}
+\index{f3m\+\_\+player\+\_\+play\+\_\+newtick@{f3m\+\_\+player\+\_\+play\+\_\+newtick}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+player\+\_\+play\+\_\+newtick()}{f3m\_player\_play\_newtick()}}
+{\footnotesize\ttfamily void f3m\+\_\+player\+\_\+play\+\_\+newtick (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{f3m_8c_a9f160e62cf59f0feff9c86eaa4df7e0f}\label{f3m_8c_a9f160e62cf59f0feff9c86eaa4df7e0f}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+player\+\_\+stop@{f3m\+\_\+player\+\_\+stop}}
+\index{f3m\+\_\+player\+\_\+stop@{f3m\+\_\+player\+\_\+stop}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+player\+\_\+stop()}{f3m\_player\_stop()}}
+{\footnotesize\ttfamily void f3m\+\_\+player\+\_\+stop (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Stop a music player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to music player structure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{f3m_8c_a936ee663417f38612408721d42f9626b}\label{f3m_8c_a936ee663417f38612408721d42f9626b}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+set\+\_\+max\+\_\+volume@{f3m\+\_\+set\+\_\+max\+\_\+volume}}
+\index{f3m\+\_\+set\+\_\+max\+\_\+volume@{f3m\+\_\+set\+\_\+max\+\_\+volume}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+set\+\_\+max\+\_\+volume()}{f3m\_set\_max\_volume()}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} f3m\+\_\+set\+\_\+max\+\_\+volume (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{\hyperlink{inttypes_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}]{maxvolume }\end{DoxyParamCaption})}
+
+
+
+Set maximum volume for a music player. 
+
+Default volume for a music player is the maximum allowed by the S\+PU. 
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to music player structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Previous maximum volume. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{f3m_8c_a99a12b2c4caed9cad8282c7fe28d40d5}\label{f3m_8c_a99a12b2c4caed9cad8282c7fe28d40d5}} 
+\index{f3m.\+c@{f3m.\+c}!f3m\+\_\+set\+\_\+mono\+\_\+mode@{f3m\+\_\+set\+\_\+mono\+\_\+mode}}
+\index{f3m\+\_\+set\+\_\+mono\+\_\+mode@{f3m\+\_\+set\+\_\+mono\+\_\+mode}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{f3m\+\_\+set\+\_\+mono\+\_\+mode()}{f3m\_set\_mono\_mode()}}
+{\footnotesize\ttfamily int f3m\+\_\+set\+\_\+mono\+\_\+mode (\begin{DoxyParamCaption}\item[{\hyperlink{structplayer__s}{player\+\_\+s} $\ast$}]{player,  }\item[{int}]{onoff }\end{DoxyParamCaption})}
+
+
+
+Set a music player to mono mode. 
+
+Music players are by default in stereo mode. 
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to music player structure \\
+\hline
+{\em onoff} & Non-\/zero for mono mode, zero for stereo mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Previous status of mono mode flag. 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{f3m_8c_a00585236374661eaa648c360657c0fb0}\label{f3m_8c_a00585236374661eaa648c360657c0fb0}} 
+\index{f3m.\+c@{f3m.\+c}!c4freq@{c4freq}}
+\index{c4freq@{c4freq}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{c4freq}{c4freq}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} c4freq}
+
+\mbox{\Hypertarget{f3m_8c_adb11c94be8442dc04412928a8a6ff6a7}\label{f3m_8c_adb11c94be8442dc04412928a8a6ff6a7}} 
+\index{f3m.\+c@{f3m.\+c}!dat\+\_\+para@{dat\+\_\+para}}
+\index{dat\+\_\+para@{dat\+\_\+para}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{dat\+\_\+para}{dat\_para}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} dat\+\_\+para}
+
+\mbox{\Hypertarget{f3m_8c_a7baa3eae2dc76aef0abf3b03577d456f}\label{f3m_8c_a7baa3eae2dc76aef0abf3b03577d456f}} 
+\index{f3m.\+c@{f3m.\+c}!dat\+\_\+para\+\_\+h@{dat\+\_\+para\+\_\+h}}
+\index{dat\+\_\+para\+\_\+h@{dat\+\_\+para\+\_\+h}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{dat\+\_\+para\+\_\+h}{dat\_para\_h}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} dat\+\_\+para\+\_\+h}
+
+\mbox{\Hypertarget{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}\label{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}} 
+\index{f3m.\+c@{f3m.\+c}!flags@{flags}}
+\index{flags@{flags}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} flags}
+
+\mbox{\Hypertarget{f3m_8c_a0ae3e32dce2f299603e211a367202e1b}\label{f3m_8c_a0ae3e32dce2f299603e211a367202e1b}} 
+\index{f3m.\+c@{f3m.\+c}!fname@{fname}}
+\index{fname@{fname}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{fname}{fname}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} fname\mbox{[}12\mbox{]}}
+
+\mbox{\Hypertarget{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}\label{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}} 
+\index{f3m.\+c@{f3m.\+c}!len@{len}}
+\index{len@{len}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{len}{len}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} len}
+
+\mbox{\Hypertarget{f3m_8c_a6367b97904769ce7cbd8a6c1cbb0b23d}\label{f3m_8c_a6367b97904769ce7cbd8a6c1cbb0b23d}} 
+\index{f3m.\+c@{f3m.\+c}!lpbeg@{lpbeg}}
+\index{lpbeg@{lpbeg}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{lpbeg}{lpbeg}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} lpbeg}
+
+\mbox{\Hypertarget{f3m_8c_a2c781c8bd08e733056d0379a9a384755}\label{f3m_8c_a2c781c8bd08e733056d0379a9a384755}} 
+\index{f3m.\+c@{f3m.\+c}!lpend@{lpend}}
+\index{lpend@{lpend}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{lpend}{lpend}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} lpend}
+
+\mbox{\Hypertarget{f3m_8c_ad7cd56f245d5dbca367259b8695c3c6e}\label{f3m_8c_ad7cd56f245d5dbca367259b8695c3c6e}} 
+\index{f3m.\+c@{f3m.\+c}!magic@{magic}}
+\index{magic@{magic}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{magic}{magic}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} magic\mbox{[}4\mbox{]}}
+
+\mbox{\Hypertarget{f3m_8c_a77451fc60f7982c0496a7763c638a868}\label{f3m_8c_a77451fc60f7982c0496a7763c638a868}} 
+\index{f3m.\+c@{f3m.\+c}!name@{name}}
+\index{name@{name}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} name\mbox{[}28\mbox{]}}
+
+\mbox{\Hypertarget{f3m_8c_aa028dfddff82d2d17f7651ffab00761f}\label{f3m_8c_aa028dfddff82d2d17f7651ffab00761f}} 
+\index{f3m.\+c@{f3m.\+c}!pack@{pack}}
+\index{pack@{pack}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{pack}{pack}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} pack}
+
+\mbox{\Hypertarget{f3m_8c_af8b5e90a5abcd9e4d92ffbb54925de39}\label{f3m_8c_af8b5e90a5abcd9e4d92ffbb54925de39}} 
+\index{f3m.\+c@{f3m.\+c}!rsv1@{rsv1}}
+\index{rsv1@{rsv1}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{rsv1}{rsv1}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} rsv1}
+
+\mbox{\Hypertarget{f3m_8c_a83266db0554da6cc7583e012afbc8dc1}\label{f3m_8c_a83266db0554da6cc7583e012afbc8dc1}} 
+\index{f3m.\+c@{f3m.\+c}!rsv2@{rsv2}}
+\index{rsv2@{rsv2}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{rsv2}{rsv2}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} rsv2\mbox{[}12\mbox{]}}
+
+\mbox{\Hypertarget{f3m_8c_a40300f7efdcc936081cd0975f4ca1847}\label{f3m_8c_a40300f7efdcc936081cd0975f4ca1847}} 
+\index{f3m.\+c@{f3m.\+c}!typ@{typ}}
+\index{typ@{typ}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{typ}{typ}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} typ}
+
+\mbox{\Hypertarget{f3m_8c_a9a1b920fc586ba344a1d44c5bdcc0bf2}\label{f3m_8c_a9a1b920fc586ba344a1d44c5bdcc0bf2}} 
+\index{f3m.\+c@{f3m.\+c}!vol@{vol}}
+\index{vol@{vol}!f3m.\+c@{f3m.\+c}}
+\subsubsection{\texorpdfstring{vol}{vol}}
+{\footnotesize\ttfamily \hyperlink{inttypes_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} vol}
+

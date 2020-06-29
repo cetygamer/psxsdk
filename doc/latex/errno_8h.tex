@@ -1,0 +1,806 @@
+\hypertarget{errno_8h}{}\section{libpsx/include/errno.h File Reference}
+\label{errno_8h}\index{libpsx/include/errno.\+h@{libpsx/include/errno.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{errno_8h_add669d31505a077f769cff8e66c780b3}{E\+P\+E\+RM}~1		/$\ast$ Operation not permitted $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a03e689f378f643d16ea7537918528a48}{E\+N\+O\+E\+NT}~2		/$\ast$ No such file or directory $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a462e47a8af6288232a5df548221ada4c}{E\+S\+R\+CH}~3		/$\ast$ No such process $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a46b83d9f6c23b1b65a8cecfd775ddaed}{E\+I\+N\+TR}~4		/$\ast$ Interrupted system call $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a70979f50f9c83e5aebab3d6a1bd4cf35}{E\+IO}~5		/$\ast$ Input/output error $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a2b3884b11e4932bd372bb6d899d6fbfe}{E\+N\+X\+IO}~6		/$\ast$ Device not configured $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aba8481985c201ff726f349d7f2d09895}{E2\+B\+IG}~7		/$\ast$ Argument list too long $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4d0b1b435ec441e7d50a430b83df5832}{E\+N\+O\+E\+X\+EC}~8		/$\ast$ Exec format error $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ac54507d66b43ad12f9356257323c0018}{E\+B\+A\+DF}~9		/$\ast$ Bad file descriptor $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a47b42c351e0e011a048058d224205c0f}{E\+C\+H\+I\+LD}~10		/$\ast$ No child processes $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a55cc70ce0ba661298f3c412095dfeeb6}{E\+D\+E\+A\+D\+LK}~11		/$\ast$ Resource deadlock avoided $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a6a05c923dad0c1208043e9c20a58c8e5}{E\+N\+O\+M\+EM}~12		/$\ast$ Cannot allocate memory $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ac2a2e9fa555401f94478f74e01868032}{E\+A\+C\+C\+ES}~13		/$\ast$ Permission denied $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a3f317946e043623f9d6b93dbf60e6316}{E\+F\+A\+U\+LT}~14		/$\ast$ Bad address $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa0a4b0e307e83f52be51099f01156936}{E\+N\+O\+T\+B\+LK}~15		/$\ast$ Block device required $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a8368025077a0385849d6817b2007c095}{E\+B\+U\+SY}~16		/$\ast$ Device busy $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a0a3bef9e5c47e42917692b5dae3b5498}{E\+E\+X\+I\+ST}~17		/$\ast$ File exists $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a3396cf9fb0ff5af3a18dd2a2bbdb21e1}{E\+X\+D\+EV}~18		/$\ast$ Cross-\/device link $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ab9b8cc17d1947160d13faaba7a18d6d1}{E\+N\+O\+D\+EV}~19		/$\ast$ Operation not supported by device $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a9262fb92f7ef662d0bdd577912a5b101}{E\+N\+O\+T\+D\+IR}~20		/$\ast$ Not a directory $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae22c3a1e0a38f3896de238cc30d0e19b}{E\+I\+S\+D\+IR}~21		/$\ast$ Is a directory $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a2d1678d5a7cc8ce499643f3b8957def4}{E\+I\+N\+V\+AL}~22		/$\ast$ Invalid argument $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5554094b3fb4bb6ebeb0157cb3f82a55}{E\+N\+F\+I\+LE}~23		/$\ast$ Too many \hyperlink{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{open} files in system $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a64a75c174882ddbfa726c7fd040f87a1}{E\+M\+F\+I\+LE}~24		/$\ast$ Too many \hyperlink{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{open} files $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ac3daf409082bb528032f4452a81e1034}{E\+N\+O\+T\+TY}~25		/$\ast$ Inappropriate ioctl for device $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aaed12e82224923d599b6f1939c8e0971}{E\+T\+X\+T\+B\+SY}~26		/$\ast$ Text file busy $\ast$/
+\item 
+\#define \hyperlink{errno_8h_af5401a500939ed1812c04ca200b95eef}{E\+F\+B\+IG}~27		/$\ast$ File too large $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a088abe8bad2df798edad3053d719b937}{E\+N\+O\+S\+PC}~28		/$\ast$ No space left on device $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a0e42d4f9fecdcf5fcca2b333252173c3}{E\+S\+P\+I\+PE}~29		/$\ast$ Illegal seek $\ast$/
+\item 
+\#define \hyperlink{errno_8h_acb02bb67dddd7ca8cf82634a0781d58d}{E\+R\+O\+FS}~30		/$\ast$ Read-\/only file system $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a97f59fa1a5a2f61b792c1b9dfc218072}{E\+M\+L\+I\+NK}~31		/$\ast$ Too many links $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5f8d33deb08fa27c04897b278ac7f965}{E\+P\+I\+PE}~32		/$\ast$ Broken pipe $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5fe247e079b591a68e0fdbf7caec5b70}{E\+D\+OM}~33		/$\ast$ Numerical argument out of domain $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa1591a4f3a86360108de5b9ba34980ca}{E\+R\+A\+N\+GE}~34		/$\ast$ Result too large or too small $\ast$/
+\item 
+\#define \hyperlink{errno_8h_af0fac1cea1165b4debec7f686edf3313}{E\+A\+G\+A\+IN}~35		/$\ast$ Resource temporarily unavailable $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4a3a0b3605fd3b2336455062ee8e25f0}{E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}~\hyperlink{errno_8h_af0fac1cea1165b4debec7f686edf3313}{E\+A\+G\+A\+IN}		/$\ast$ Operation would block $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a6c045d5be06e715cc335784a7320714e}{E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}~36		/$\ast$ Operation now in progress $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa4ccb54aa806de3e41a8515f06db85d4}{E\+A\+L\+R\+E\+A\+DY}~37		/$\ast$ Operation already in progress $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae34fa7a550ac1c415daa2e114a1c0f38}{E\+N\+O\+T\+S\+O\+CK}~38		/$\ast$ Socket operation on non-\/socket $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a0e416d3478cf030e37e90c55d68ad97a}{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+EQ}~39		/$\ast$ Destination address required $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae37becfaa095a9df5c5c788bce5aa06f}{E\+M\+S\+G\+S\+I\+ZE}~40		/$\ast$ Message too long $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae6014faa948366b8321d755204acf755}{E\+P\+R\+O\+T\+O\+T\+Y\+PE}~41		/$\ast$ Protocol wrong type for socket $\ast$/
+\item 
+\#define \hyperlink{errno_8h_acd570f8ab92198653b4459773dc3bca3}{E\+N\+O\+P\+R\+O\+T\+O\+O\+PT}~42		/$\ast$ Protocol option not available $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ad581c46fdd4dee9419f60eaff40415e7}{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+RT}~43		/$\ast$ Protocol not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a891103a0628442461b41d4d85fb6d945}{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+RT}~44		/$\ast$ Socket type not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4b807895c74cea4d0302bf27725d4b9d}{E\+O\+P\+N\+O\+T\+S\+U\+PP}~45		/$\ast$ Operation not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a871b9fabb281dbc2d3b81cb79c163c20}{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+RT}~46		/$\ast$ Protocol family not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4c3a793b4d51cb7dd020af92e536fe21}{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+RT}~47		/$\ast$ Address family not supported by protocol family $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a61676e39b42371c65c3b960a91887b03}{E\+A\+D\+D\+R\+I\+N\+U\+SE}~48		/$\ast$ Address already in use $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a556612e55358838192165684c971a44f}{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+IL}~49		/$\ast$ Can\textquotesingle{}t assign requested address $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aac51995026fa19cdd0ad84a272304af0}{E\+N\+E\+T\+D\+O\+WN}~50		/$\ast$ Network is down $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a3f91f1ad503432783c7a5d1481b45419}{E\+N\+E\+T\+U\+N\+R\+E\+A\+CH}~51		/$\ast$ Network is unreachable $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a92750db73ff8e83591c977bbb3a5bea1}{E\+N\+E\+T\+R\+E\+S\+ET}~52		/$\ast$ Network dropped connection on reset $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a45342991e001e28bbf87916d92b7e09a}{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+ED}~53		/$\ast$ Software caused connection \hyperlink{misc_8c_a8dec7c95227ff149687066cf04029191}{abort} $\ast$/
+\item 
+\#define \hyperlink{errno_8h_add4258b08af02fbe4590fbaae7260037}{E\+C\+O\+N\+N\+R\+E\+S\+ET}~54		/$\ast$ Connection reset by peer $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a9e655f47bfd914a1174f281fc31cf63d}{E\+N\+O\+B\+U\+FS}~55		/$\ast$ No buffer space available $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a164ca8549da7a385e2fe1cba823b9eaf}{E\+I\+S\+C\+O\+NN}~56		/$\ast$ Socket is already connected $\ast$/
+\item 
+\#define \hyperlink{errno_8h_af23e48762a0676f49d480db91cfd5e4b}{E\+N\+O\+T\+C\+O\+NN}~57		/$\ast$ Socket is not connected $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a2a55c5dd8b54ff5aace6c274c6726d68}{E\+S\+H\+U\+T\+D\+O\+WN}~58		/$\ast$ Can\textquotesingle{}t send after socket shutdown $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a10426080250efba47f4aaf254036ff00}{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+FS}~59		/$\ast$ Too many references\+: can\textquotesingle{}t splice $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a597718e59a8fc9c4d4ab63f5a34e28b1}{E\+T\+I\+M\+E\+D\+O\+UT}~60		/$\ast$ Operation timed out $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aad88020b394ef1aa4af2f4ef9b4c8b39}{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+ED}~61		/$\ast$ Connection refused $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a2f78c246352d2bf2f19dc5d43da2f0c9}{E\+L\+O\+OP}~62		/$\ast$ Too many levels of symbolic links $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a41d5ab3a8a05f9c5eab536c9cfba305b}{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+NG}~63		/$\ast$ File \hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name} too long $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa92bcaf70544db6998f4c503026359c5}{E\+H\+O\+S\+T\+D\+O\+WN}~64		/$\ast$ Host is down $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a53e186028fc992c3341ccb0d4d239b24}{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+CH}~65		/$\ast$ No route to host $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa0f602f3fd369a6fede82190710b9c5c}{E\+N\+O\+T\+E\+M\+P\+TY}~66		/$\ast$ Directory not empty $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a801513ca187af849409e07fda8554a83}{E\+P\+R\+O\+C\+L\+IM}~67		/$\ast$ Too many processes $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a9b153104ed38c8579f009f81bc7b2dc9}{E\+U\+S\+E\+RS}~68		/$\ast$ Too many users $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa5a48566b00cf9062d9deeeb0682cdaf}{E\+D\+Q\+U\+OT}~69		/$\ast$ Disc quota exceeded $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a09e189d2214d9fe2847d27bf270ca1d7}{E\+S\+T\+A\+LE}~70		/$\ast$ Stale N\+FS file handle $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5e1edba49c18fc631dbf54ff53702d4a}{E\+R\+E\+M\+O\+TE}~71		/$\ast$ Too many levels of remote in path $\ast$/
+\item 
+\#define \hyperlink{errno_8h_accd95700f2ccb6e1b7209f333d097fbd}{E\+B\+A\+D\+R\+PC}~72		/$\ast$ R\+PC struct is bad $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a04d0929518f1e98cf4bc19e369e1c22e}{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+CH}~73		/$\ast$ R\+PC version wrong $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a90f3aa66e6674d20ee8865cf13ceef96}{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+IL}~74		/$\ast$ R\+PC prog. not avail $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ab8b339b25f51a8258322489cd156297d}{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+CH}~75		/$\ast$ Program version wrong $\ast$/
+\item 
+\#define \hyperlink{errno_8h_acf125cc6a4f2ebea3cd54c56026dd019}{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+IL}~76		/$\ast$ Bad procedure for program $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a65e1a7bda392be276a701988d0604e63}{E\+N\+O\+L\+CK}~77		/$\ast$ No locks available $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a43785b9969e0bd1af532dbde06c5540b}{E\+N\+O\+S\+YS}~78		/$\ast$ Function not implemented $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a940ffe53c91c0b90f8188122ea1bdbf0}{E\+F\+T\+Y\+PE}~79		/$\ast$ Inappropriate file type or format $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a337712b7a18369302de561206ac9fe67}{E\+A\+U\+TH}~80		/$\ast$ Authentication error $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5ce75bab474b7024f241605d2ace2011}{E\+N\+E\+E\+D\+A\+U\+TH}~81		/$\ast$ Need authenticator $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ad9913290fef890d46a6b7e8b4bfb1c29}{E\+I\+D\+RM}~82		/$\ast$ Identifier removed $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ae40596feaa3f66f5440b485bf7c1c2d1}{E\+N\+O\+M\+SG}~83		/$\ast$ No message of desired type $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a888552a5e3c78b5883904cf5d55244ab}{E\+O\+V\+E\+R\+F\+L\+OW}~84		/$\ast$ Value too large to be stored in data type $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ac6c071293826a4e66a717bb38db7794d}{E\+I\+L\+S\+EQ}~85		/$\ast$ Illegal byte sequence $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a91457bbf35f0f1085619a99423bb1f33}{E\+N\+O\+T\+S\+UP}~86		/$\ast$ Not supported $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a9532d840ef91fd8e1ecc5d7ca7cbf212}{E\+C\+A\+N\+C\+E\+L\+ED}~87		/$\ast$ Operation canceled $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a251e9b536ed96ccb16aa28ca2d5bd656}{E\+B\+A\+D\+M\+SG}~88		/$\ast$ Bad or Corrupt message $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a0030614bc864d1b24eaedd71585acc27}{E\+N\+O\+D\+A\+TA}~89		/$\ast$ No message available $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ad88bc6ea94ec1a5e91d3651677d85c00}{E\+N\+O\+SR}~90		/$\ast$ No S\+T\+R\+E\+AM resources $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a7cea86ddbdacae0b391674e680f17bdb}{E\+N\+O\+S\+TR}~91		/$\ast$ Not a S\+T\+R\+E\+AM $\ast$/
+\item 
+\#define \hyperlink{errno_8h_ab59cf3c65eaf836d5c647fa2a24ca649}{E\+T\+I\+ME}~92		/$\ast$ S\+T\+R\+E\+AM ioctl timeout $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a55a8e5eff7a0d587756f49933483f876}{E\+N\+O\+A\+T\+TR}~93		/$\ast$ Attribute not found $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a4d7b69d7ce0dfa0a9b998403b4ffe226}{E\+M\+U\+L\+T\+I\+H\+OP}~94		/$\ast$ Multihop attempted $\ast$/
+\item 
+\#define \hyperlink{errno_8h_add4408349a756880be9d91efadb8aed0}{E\+N\+O\+L\+I\+NK}~95		/$\ast$ Link has been severed $\ast$/
+\item 
+\#define \hyperlink{errno_8h_a5a92de56e8ebe19cbd8a2ce8c80ad03e}{E\+P\+R\+O\+TO}~96		/$\ast$ Protocol error $\ast$/
+\item 
+\#define \hyperlink{errno_8h_aa17adaafb4877f1753128a30266ea0fd}{E\+L\+A\+ST}~96		/$\ast$ Must equal largest \hyperlink{libc_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno} $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{errno_8h_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{errno_8h_aba8481985c201ff726f349d7f2d09895}\label{errno_8h_aba8481985c201ff726f349d7f2d09895}} 
+\index{errno.\+h@{errno.\+h}!E2\+B\+IG@{E2\+B\+IG}}
+\index{E2\+B\+IG@{E2\+B\+IG}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E2\+B\+IG}{E2BIG}}
+{\footnotesize\ttfamily \#define E2\+B\+IG~7		/$\ast$ Argument list too long $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ac2a2e9fa555401f94478f74e01868032}\label{errno_8h_ac2a2e9fa555401f94478f74e01868032}} 
+\index{errno.\+h@{errno.\+h}!E\+A\+C\+C\+ES@{E\+A\+C\+C\+ES}}
+\index{E\+A\+C\+C\+ES@{E\+A\+C\+C\+ES}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+A\+C\+C\+ES}{EACCES}}
+{\footnotesize\ttfamily \#define E\+A\+C\+C\+ES~13		/$\ast$ Permission denied $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a61676e39b42371c65c3b960a91887b03}\label{errno_8h_a61676e39b42371c65c3b960a91887b03}} 
+\index{errno.\+h@{errno.\+h}!E\+A\+D\+D\+R\+I\+N\+U\+SE@{E\+A\+D\+D\+R\+I\+N\+U\+SE}}
+\index{E\+A\+D\+D\+R\+I\+N\+U\+SE@{E\+A\+D\+D\+R\+I\+N\+U\+SE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+A\+D\+D\+R\+I\+N\+U\+SE}{EADDRINUSE}}
+{\footnotesize\ttfamily \#define E\+A\+D\+D\+R\+I\+N\+U\+SE~48		/$\ast$ Address already in use $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a556612e55358838192165684c971a44f}\label{errno_8h_a556612e55358838192165684c971a44f}} 
+\index{errno.\+h@{errno.\+h}!E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+IL@{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+IL}}
+\index{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+IL@{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+IL}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+IL}{EADDRNOTAVAIL}}
+{\footnotesize\ttfamily \#define E\+A\+D\+D\+R\+N\+O\+T\+A\+V\+A\+IL~49		/$\ast$ Can\textquotesingle{}t assign requested address $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a4c3a793b4d51cb7dd020af92e536fe21}\label{errno_8h_a4c3a793b4d51cb7dd020af92e536fe21}} 
+\index{errno.\+h@{errno.\+h}!E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+RT@{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+RT}}
+\index{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+RT@{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+RT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+RT}{EAFNOSUPPORT}}
+{\footnotesize\ttfamily \#define E\+A\+F\+N\+O\+S\+U\+P\+P\+O\+RT~47		/$\ast$ Address family not supported by protocol family $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_af0fac1cea1165b4debec7f686edf3313}\label{errno_8h_af0fac1cea1165b4debec7f686edf3313}} 
+\index{errno.\+h@{errno.\+h}!E\+A\+G\+A\+IN@{E\+A\+G\+A\+IN}}
+\index{E\+A\+G\+A\+IN@{E\+A\+G\+A\+IN}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+A\+G\+A\+IN}{EAGAIN}}
+{\footnotesize\ttfamily \#define E\+A\+G\+A\+IN~35		/$\ast$ Resource temporarily unavailable $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aa4ccb54aa806de3e41a8515f06db85d4}\label{errno_8h_aa4ccb54aa806de3e41a8515f06db85d4}} 
+\index{errno.\+h@{errno.\+h}!E\+A\+L\+R\+E\+A\+DY@{E\+A\+L\+R\+E\+A\+DY}}
+\index{E\+A\+L\+R\+E\+A\+DY@{E\+A\+L\+R\+E\+A\+DY}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+A\+L\+R\+E\+A\+DY}{EALREADY}}
+{\footnotesize\ttfamily \#define E\+A\+L\+R\+E\+A\+DY~37		/$\ast$ Operation already in progress $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a337712b7a18369302de561206ac9fe67}\label{errno_8h_a337712b7a18369302de561206ac9fe67}} 
+\index{errno.\+h@{errno.\+h}!E\+A\+U\+TH@{E\+A\+U\+TH}}
+\index{E\+A\+U\+TH@{E\+A\+U\+TH}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+A\+U\+TH}{EAUTH}}
+{\footnotesize\ttfamily \#define E\+A\+U\+TH~80		/$\ast$ Authentication error $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ac54507d66b43ad12f9356257323c0018}\label{errno_8h_ac54507d66b43ad12f9356257323c0018}} 
+\index{errno.\+h@{errno.\+h}!E\+B\+A\+DF@{E\+B\+A\+DF}}
+\index{E\+B\+A\+DF@{E\+B\+A\+DF}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+B\+A\+DF}{EBADF}}
+{\footnotesize\ttfamily \#define E\+B\+A\+DF~9		/$\ast$ Bad file descriptor $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a251e9b536ed96ccb16aa28ca2d5bd656}\label{errno_8h_a251e9b536ed96ccb16aa28ca2d5bd656}} 
+\index{errno.\+h@{errno.\+h}!E\+B\+A\+D\+M\+SG@{E\+B\+A\+D\+M\+SG}}
+\index{E\+B\+A\+D\+M\+SG@{E\+B\+A\+D\+M\+SG}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+B\+A\+D\+M\+SG}{EBADMSG}}
+{\footnotesize\ttfamily \#define E\+B\+A\+D\+M\+SG~88		/$\ast$ Bad or Corrupt message $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_accd95700f2ccb6e1b7209f333d097fbd}\label{errno_8h_accd95700f2ccb6e1b7209f333d097fbd}} 
+\index{errno.\+h@{errno.\+h}!E\+B\+A\+D\+R\+PC@{E\+B\+A\+D\+R\+PC}}
+\index{E\+B\+A\+D\+R\+PC@{E\+B\+A\+D\+R\+PC}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+B\+A\+D\+R\+PC}{EBADRPC}}
+{\footnotesize\ttfamily \#define E\+B\+A\+D\+R\+PC~72		/$\ast$ R\+PC struct is bad $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a8368025077a0385849d6817b2007c095}\label{errno_8h_a8368025077a0385849d6817b2007c095}} 
+\index{errno.\+h@{errno.\+h}!E\+B\+U\+SY@{E\+B\+U\+SY}}
+\index{E\+B\+U\+SY@{E\+B\+U\+SY}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+B\+U\+SY}{EBUSY}}
+{\footnotesize\ttfamily \#define E\+B\+U\+SY~16		/$\ast$ Device busy $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a9532d840ef91fd8e1ecc5d7ca7cbf212}\label{errno_8h_a9532d840ef91fd8e1ecc5d7ca7cbf212}} 
+\index{errno.\+h@{errno.\+h}!E\+C\+A\+N\+C\+E\+L\+ED@{E\+C\+A\+N\+C\+E\+L\+ED}}
+\index{E\+C\+A\+N\+C\+E\+L\+ED@{E\+C\+A\+N\+C\+E\+L\+ED}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+C\+A\+N\+C\+E\+L\+ED}{ECANCELED}}
+{\footnotesize\ttfamily \#define E\+C\+A\+N\+C\+E\+L\+ED~87		/$\ast$ Operation canceled $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a47b42c351e0e011a048058d224205c0f}\label{errno_8h_a47b42c351e0e011a048058d224205c0f}} 
+\index{errno.\+h@{errno.\+h}!E\+C\+H\+I\+LD@{E\+C\+H\+I\+LD}}
+\index{E\+C\+H\+I\+LD@{E\+C\+H\+I\+LD}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+C\+H\+I\+LD}{ECHILD}}
+{\footnotesize\ttfamily \#define E\+C\+H\+I\+LD~10		/$\ast$ No child processes $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a45342991e001e28bbf87916d92b7e09a}\label{errno_8h_a45342991e001e28bbf87916d92b7e09a}} 
+\index{errno.\+h@{errno.\+h}!E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+ED@{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+ED}}
+\index{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+ED@{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+ED}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+ED}{ECONNABORTED}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N\+N\+A\+B\+O\+R\+T\+ED~53		/$\ast$ Software caused connection \hyperlink{misc_8c_a8dec7c95227ff149687066cf04029191}{abort} $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aad88020b394ef1aa4af2f4ef9b4c8b39}\label{errno_8h_aad88020b394ef1aa4af2f4ef9b4c8b39}} 
+\index{errno.\+h@{errno.\+h}!E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+ED@{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+ED}}
+\index{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+ED@{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+ED}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+ED}{ECONNREFUSED}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N\+N\+R\+E\+F\+U\+S\+ED~61		/$\ast$ Connection refused $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_add4258b08af02fbe4590fbaae7260037}\label{errno_8h_add4258b08af02fbe4590fbaae7260037}} 
+\index{errno.\+h@{errno.\+h}!E\+C\+O\+N\+N\+R\+E\+S\+ET@{E\+C\+O\+N\+N\+R\+E\+S\+ET}}
+\index{E\+C\+O\+N\+N\+R\+E\+S\+ET@{E\+C\+O\+N\+N\+R\+E\+S\+ET}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+C\+O\+N\+N\+R\+E\+S\+ET}{ECONNRESET}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N\+N\+R\+E\+S\+ET~54		/$\ast$ Connection reset by peer $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a55cc70ce0ba661298f3c412095dfeeb6}\label{errno_8h_a55cc70ce0ba661298f3c412095dfeeb6}} 
+\index{errno.\+h@{errno.\+h}!E\+D\+E\+A\+D\+LK@{E\+D\+E\+A\+D\+LK}}
+\index{E\+D\+E\+A\+D\+LK@{E\+D\+E\+A\+D\+LK}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+D\+E\+A\+D\+LK}{EDEADLK}}
+{\footnotesize\ttfamily \#define E\+D\+E\+A\+D\+LK~11		/$\ast$ Resource deadlock avoided $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a0e416d3478cf030e37e90c55d68ad97a}\label{errno_8h_a0e416d3478cf030e37e90c55d68ad97a}} 
+\index{errno.\+h@{errno.\+h}!E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+EQ@{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+EQ}}
+\index{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+EQ@{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+EQ}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+EQ}{EDESTADDRREQ}}
+{\footnotesize\ttfamily \#define E\+D\+E\+S\+T\+A\+D\+D\+R\+R\+EQ~39		/$\ast$ Destination address required $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a5fe247e079b591a68e0fdbf7caec5b70}\label{errno_8h_a5fe247e079b591a68e0fdbf7caec5b70}} 
+\index{errno.\+h@{errno.\+h}!E\+D\+OM@{E\+D\+OM}}
+\index{E\+D\+OM@{E\+D\+OM}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+D\+OM}{EDOM}}
+{\footnotesize\ttfamily \#define E\+D\+OM~33		/$\ast$ Numerical argument out of domain $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aa5a48566b00cf9062d9deeeb0682cdaf}\label{errno_8h_aa5a48566b00cf9062d9deeeb0682cdaf}} 
+\index{errno.\+h@{errno.\+h}!E\+D\+Q\+U\+OT@{E\+D\+Q\+U\+OT}}
+\index{E\+D\+Q\+U\+OT@{E\+D\+Q\+U\+OT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+D\+Q\+U\+OT}{EDQUOT}}
+{\footnotesize\ttfamily \#define E\+D\+Q\+U\+OT~69		/$\ast$ Disc quota exceeded $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a0a3bef9e5c47e42917692b5dae3b5498}\label{errno_8h_a0a3bef9e5c47e42917692b5dae3b5498}} 
+\index{errno.\+h@{errno.\+h}!E\+E\+X\+I\+ST@{E\+E\+X\+I\+ST}}
+\index{E\+E\+X\+I\+ST@{E\+E\+X\+I\+ST}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+E\+X\+I\+ST}{EEXIST}}
+{\footnotesize\ttfamily \#define E\+E\+X\+I\+ST~17		/$\ast$ File exists $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a3f317946e043623f9d6b93dbf60e6316}\label{errno_8h_a3f317946e043623f9d6b93dbf60e6316}} 
+\index{errno.\+h@{errno.\+h}!E\+F\+A\+U\+LT@{E\+F\+A\+U\+LT}}
+\index{E\+F\+A\+U\+LT@{E\+F\+A\+U\+LT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+F\+A\+U\+LT}{EFAULT}}
+{\footnotesize\ttfamily \#define E\+F\+A\+U\+LT~14		/$\ast$ Bad address $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_af5401a500939ed1812c04ca200b95eef}\label{errno_8h_af5401a500939ed1812c04ca200b95eef}} 
+\index{errno.\+h@{errno.\+h}!E\+F\+B\+IG@{E\+F\+B\+IG}}
+\index{E\+F\+B\+IG@{E\+F\+B\+IG}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+F\+B\+IG}{EFBIG}}
+{\footnotesize\ttfamily \#define E\+F\+B\+IG~27		/$\ast$ File too large $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a940ffe53c91c0b90f8188122ea1bdbf0}\label{errno_8h_a940ffe53c91c0b90f8188122ea1bdbf0}} 
+\index{errno.\+h@{errno.\+h}!E\+F\+T\+Y\+PE@{E\+F\+T\+Y\+PE}}
+\index{E\+F\+T\+Y\+PE@{E\+F\+T\+Y\+PE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+F\+T\+Y\+PE}{EFTYPE}}
+{\footnotesize\ttfamily \#define E\+F\+T\+Y\+PE~79		/$\ast$ Inappropriate file type or format $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aa92bcaf70544db6998f4c503026359c5}\label{errno_8h_aa92bcaf70544db6998f4c503026359c5}} 
+\index{errno.\+h@{errno.\+h}!E\+H\+O\+S\+T\+D\+O\+WN@{E\+H\+O\+S\+T\+D\+O\+WN}}
+\index{E\+H\+O\+S\+T\+D\+O\+WN@{E\+H\+O\+S\+T\+D\+O\+WN}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+H\+O\+S\+T\+D\+O\+WN}{EHOSTDOWN}}
+{\footnotesize\ttfamily \#define E\+H\+O\+S\+T\+D\+O\+WN~64		/$\ast$ Host is down $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a53e186028fc992c3341ccb0d4d239b24}\label{errno_8h_a53e186028fc992c3341ccb0d4d239b24}} 
+\index{errno.\+h@{errno.\+h}!E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+CH@{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+CH}}
+\index{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+CH@{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+CH}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+CH}{EHOSTUNREACH}}
+{\footnotesize\ttfamily \#define E\+H\+O\+S\+T\+U\+N\+R\+E\+A\+CH~65		/$\ast$ No route to host $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ad9913290fef890d46a6b7e8b4bfb1c29}\label{errno_8h_ad9913290fef890d46a6b7e8b4bfb1c29}} 
+\index{errno.\+h@{errno.\+h}!E\+I\+D\+RM@{E\+I\+D\+RM}}
+\index{E\+I\+D\+RM@{E\+I\+D\+RM}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+I\+D\+RM}{EIDRM}}
+{\footnotesize\ttfamily \#define E\+I\+D\+RM~82		/$\ast$ Identifier removed $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ac6c071293826a4e66a717bb38db7794d}\label{errno_8h_ac6c071293826a4e66a717bb38db7794d}} 
+\index{errno.\+h@{errno.\+h}!E\+I\+L\+S\+EQ@{E\+I\+L\+S\+EQ}}
+\index{E\+I\+L\+S\+EQ@{E\+I\+L\+S\+EQ}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+I\+L\+S\+EQ}{EILSEQ}}
+{\footnotesize\ttfamily \#define E\+I\+L\+S\+EQ~85		/$\ast$ Illegal byte sequence $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a6c045d5be06e715cc335784a7320714e}\label{errno_8h_a6c045d5be06e715cc335784a7320714e}} 
+\index{errno.\+h@{errno.\+h}!E\+I\+N\+P\+R\+O\+G\+R\+E\+SS@{E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}}
+\index{E\+I\+N\+P\+R\+O\+G\+R\+E\+SS@{E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}{EINPROGRESS}}
+{\footnotesize\ttfamily \#define E\+I\+N\+P\+R\+O\+G\+R\+E\+SS~36		/$\ast$ Operation now in progress $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a46b83d9f6c23b1b65a8cecfd775ddaed}\label{errno_8h_a46b83d9f6c23b1b65a8cecfd775ddaed}} 
+\index{errno.\+h@{errno.\+h}!E\+I\+N\+TR@{E\+I\+N\+TR}}
+\index{E\+I\+N\+TR@{E\+I\+N\+TR}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+I\+N\+TR}{EINTR}}
+{\footnotesize\ttfamily \#define E\+I\+N\+TR~4		/$\ast$ Interrupted system call $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a2d1678d5a7cc8ce499643f3b8957def4}\label{errno_8h_a2d1678d5a7cc8ce499643f3b8957def4}} 
+\index{errno.\+h@{errno.\+h}!E\+I\+N\+V\+AL@{E\+I\+N\+V\+AL}}
+\index{E\+I\+N\+V\+AL@{E\+I\+N\+V\+AL}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+I\+N\+V\+AL}{EINVAL}}
+{\footnotesize\ttfamily \#define E\+I\+N\+V\+AL~22		/$\ast$ Invalid argument $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a70979f50f9c83e5aebab3d6a1bd4cf35}\label{errno_8h_a70979f50f9c83e5aebab3d6a1bd4cf35}} 
+\index{errno.\+h@{errno.\+h}!E\+IO@{E\+IO}}
+\index{E\+IO@{E\+IO}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+IO}{EIO}}
+{\footnotesize\ttfamily \#define E\+IO~5		/$\ast$ Input/output error $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a164ca8549da7a385e2fe1cba823b9eaf}\label{errno_8h_a164ca8549da7a385e2fe1cba823b9eaf}} 
+\index{errno.\+h@{errno.\+h}!E\+I\+S\+C\+O\+NN@{E\+I\+S\+C\+O\+NN}}
+\index{E\+I\+S\+C\+O\+NN@{E\+I\+S\+C\+O\+NN}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+I\+S\+C\+O\+NN}{EISCONN}}
+{\footnotesize\ttfamily \#define E\+I\+S\+C\+O\+NN~56		/$\ast$ Socket is already connected $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ae22c3a1e0a38f3896de238cc30d0e19b}\label{errno_8h_ae22c3a1e0a38f3896de238cc30d0e19b}} 
+\index{errno.\+h@{errno.\+h}!E\+I\+S\+D\+IR@{E\+I\+S\+D\+IR}}
+\index{E\+I\+S\+D\+IR@{E\+I\+S\+D\+IR}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+I\+S\+D\+IR}{EISDIR}}
+{\footnotesize\ttfamily \#define E\+I\+S\+D\+IR~21		/$\ast$ Is a directory $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aa17adaafb4877f1753128a30266ea0fd}\label{errno_8h_aa17adaafb4877f1753128a30266ea0fd}} 
+\index{errno.\+h@{errno.\+h}!E\+L\+A\+ST@{E\+L\+A\+ST}}
+\index{E\+L\+A\+ST@{E\+L\+A\+ST}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+L\+A\+ST}{ELAST}}
+{\footnotesize\ttfamily \#define E\+L\+A\+ST~96		/$\ast$ Must equal largest \hyperlink{libc_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno} $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a2f78c246352d2bf2f19dc5d43da2f0c9}\label{errno_8h_a2f78c246352d2bf2f19dc5d43da2f0c9}} 
+\index{errno.\+h@{errno.\+h}!E\+L\+O\+OP@{E\+L\+O\+OP}}
+\index{E\+L\+O\+OP@{E\+L\+O\+OP}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+L\+O\+OP}{ELOOP}}
+{\footnotesize\ttfamily \#define E\+L\+O\+OP~62		/$\ast$ Too many levels of symbolic links $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a64a75c174882ddbfa726c7fd040f87a1}\label{errno_8h_a64a75c174882ddbfa726c7fd040f87a1}} 
+\index{errno.\+h@{errno.\+h}!E\+M\+F\+I\+LE@{E\+M\+F\+I\+LE}}
+\index{E\+M\+F\+I\+LE@{E\+M\+F\+I\+LE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+M\+F\+I\+LE}{EMFILE}}
+{\footnotesize\ttfamily \#define E\+M\+F\+I\+LE~24		/$\ast$ Too many \hyperlink{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{open} files $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a97f59fa1a5a2f61b792c1b9dfc218072}\label{errno_8h_a97f59fa1a5a2f61b792c1b9dfc218072}} 
+\index{errno.\+h@{errno.\+h}!E\+M\+L\+I\+NK@{E\+M\+L\+I\+NK}}
+\index{E\+M\+L\+I\+NK@{E\+M\+L\+I\+NK}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+M\+L\+I\+NK}{EMLINK}}
+{\footnotesize\ttfamily \#define E\+M\+L\+I\+NK~31		/$\ast$ Too many links $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ae37becfaa095a9df5c5c788bce5aa06f}\label{errno_8h_ae37becfaa095a9df5c5c788bce5aa06f}} 
+\index{errno.\+h@{errno.\+h}!E\+M\+S\+G\+S\+I\+ZE@{E\+M\+S\+G\+S\+I\+ZE}}
+\index{E\+M\+S\+G\+S\+I\+ZE@{E\+M\+S\+G\+S\+I\+ZE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+M\+S\+G\+S\+I\+ZE}{EMSGSIZE}}
+{\footnotesize\ttfamily \#define E\+M\+S\+G\+S\+I\+ZE~40		/$\ast$ Message too long $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a4d7b69d7ce0dfa0a9b998403b4ffe226}\label{errno_8h_a4d7b69d7ce0dfa0a9b998403b4ffe226}} 
+\index{errno.\+h@{errno.\+h}!E\+M\+U\+L\+T\+I\+H\+OP@{E\+M\+U\+L\+T\+I\+H\+OP}}
+\index{E\+M\+U\+L\+T\+I\+H\+OP@{E\+M\+U\+L\+T\+I\+H\+OP}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+M\+U\+L\+T\+I\+H\+OP}{EMULTIHOP}}
+{\footnotesize\ttfamily \#define E\+M\+U\+L\+T\+I\+H\+OP~94		/$\ast$ Multihop attempted $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a41d5ab3a8a05f9c5eab536c9cfba305b}\label{errno_8h_a41d5ab3a8a05f9c5eab536c9cfba305b}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+NG@{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+NG}}
+\index{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+NG@{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+NG}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+NG}{ENAMETOOLONG}}
+{\footnotesize\ttfamily \#define E\+N\+A\+M\+E\+T\+O\+O\+L\+O\+NG~63		/$\ast$ File \hyperlink{f3m_8c_a77451fc60f7982c0496a7763c638a868}{name} too long $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a5ce75bab474b7024f241605d2ace2011}\label{errno_8h_a5ce75bab474b7024f241605d2ace2011}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+E\+E\+D\+A\+U\+TH@{E\+N\+E\+E\+D\+A\+U\+TH}}
+\index{E\+N\+E\+E\+D\+A\+U\+TH@{E\+N\+E\+E\+D\+A\+U\+TH}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+E\+E\+D\+A\+U\+TH}{ENEEDAUTH}}
+{\footnotesize\ttfamily \#define E\+N\+E\+E\+D\+A\+U\+TH~81		/$\ast$ Need authenticator $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aac51995026fa19cdd0ad84a272304af0}\label{errno_8h_aac51995026fa19cdd0ad84a272304af0}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+E\+T\+D\+O\+WN@{E\+N\+E\+T\+D\+O\+WN}}
+\index{E\+N\+E\+T\+D\+O\+WN@{E\+N\+E\+T\+D\+O\+WN}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+E\+T\+D\+O\+WN}{ENETDOWN}}
+{\footnotesize\ttfamily \#define E\+N\+E\+T\+D\+O\+WN~50		/$\ast$ Network is down $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a92750db73ff8e83591c977bbb3a5bea1}\label{errno_8h_a92750db73ff8e83591c977bbb3a5bea1}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+E\+T\+R\+E\+S\+ET@{E\+N\+E\+T\+R\+E\+S\+ET}}
+\index{E\+N\+E\+T\+R\+E\+S\+ET@{E\+N\+E\+T\+R\+E\+S\+ET}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+E\+T\+R\+E\+S\+ET}{ENETRESET}}
+{\footnotesize\ttfamily \#define E\+N\+E\+T\+R\+E\+S\+ET~52		/$\ast$ Network dropped connection on reset $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a3f91f1ad503432783c7a5d1481b45419}\label{errno_8h_a3f91f1ad503432783c7a5d1481b45419}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+E\+T\+U\+N\+R\+E\+A\+CH@{E\+N\+E\+T\+U\+N\+R\+E\+A\+CH}}
+\index{E\+N\+E\+T\+U\+N\+R\+E\+A\+CH@{E\+N\+E\+T\+U\+N\+R\+E\+A\+CH}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+E\+T\+U\+N\+R\+E\+A\+CH}{ENETUNREACH}}
+{\footnotesize\ttfamily \#define E\+N\+E\+T\+U\+N\+R\+E\+A\+CH~51		/$\ast$ Network is unreachable $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a5554094b3fb4bb6ebeb0157cb3f82a55}\label{errno_8h_a5554094b3fb4bb6ebeb0157cb3f82a55}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+F\+I\+LE@{E\+N\+F\+I\+LE}}
+\index{E\+N\+F\+I\+LE@{E\+N\+F\+I\+LE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+F\+I\+LE}{ENFILE}}
+{\footnotesize\ttfamily \#define E\+N\+F\+I\+LE~23		/$\ast$ Too many \hyperlink{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{open} files in system $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a55a8e5eff7a0d587756f49933483f876}\label{errno_8h_a55a8e5eff7a0d587756f49933483f876}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+A\+T\+TR@{E\+N\+O\+A\+T\+TR}}
+\index{E\+N\+O\+A\+T\+TR@{E\+N\+O\+A\+T\+TR}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+A\+T\+TR}{ENOATTR}}
+{\footnotesize\ttfamily \#define E\+N\+O\+A\+T\+TR~93		/$\ast$ Attribute not found $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a9e655f47bfd914a1174f281fc31cf63d}\label{errno_8h_a9e655f47bfd914a1174f281fc31cf63d}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+B\+U\+FS@{E\+N\+O\+B\+U\+FS}}
+\index{E\+N\+O\+B\+U\+FS@{E\+N\+O\+B\+U\+FS}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+B\+U\+FS}{ENOBUFS}}
+{\footnotesize\ttfamily \#define E\+N\+O\+B\+U\+FS~55		/$\ast$ No buffer space available $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a0030614bc864d1b24eaedd71585acc27}\label{errno_8h_a0030614bc864d1b24eaedd71585acc27}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+D\+A\+TA@{E\+N\+O\+D\+A\+TA}}
+\index{E\+N\+O\+D\+A\+TA@{E\+N\+O\+D\+A\+TA}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+D\+A\+TA}{ENODATA}}
+{\footnotesize\ttfamily \#define E\+N\+O\+D\+A\+TA~89		/$\ast$ No message available $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ab9b8cc17d1947160d13faaba7a18d6d1}\label{errno_8h_ab9b8cc17d1947160d13faaba7a18d6d1}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+D\+EV@{E\+N\+O\+D\+EV}}
+\index{E\+N\+O\+D\+EV@{E\+N\+O\+D\+EV}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+D\+EV}{ENODEV}}
+{\footnotesize\ttfamily \#define E\+N\+O\+D\+EV~19		/$\ast$ Operation not supported by device $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a03e689f378f643d16ea7537918528a48}\label{errno_8h_a03e689f378f643d16ea7537918528a48}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+E\+NT@{E\+N\+O\+E\+NT}}
+\index{E\+N\+O\+E\+NT@{E\+N\+O\+E\+NT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+E\+NT}{ENOENT}}
+{\footnotesize\ttfamily \#define E\+N\+O\+E\+NT~2		/$\ast$ No such file or directory $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a4d0b1b435ec441e7d50a430b83df5832}\label{errno_8h_a4d0b1b435ec441e7d50a430b83df5832}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+E\+X\+EC@{E\+N\+O\+E\+X\+EC}}
+\index{E\+N\+O\+E\+X\+EC@{E\+N\+O\+E\+X\+EC}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+E\+X\+EC}{ENOEXEC}}
+{\footnotesize\ttfamily \#define E\+N\+O\+E\+X\+EC~8		/$\ast$ Exec format error $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a65e1a7bda392be276a701988d0604e63}\label{errno_8h_a65e1a7bda392be276a701988d0604e63}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+L\+CK@{E\+N\+O\+L\+CK}}
+\index{E\+N\+O\+L\+CK@{E\+N\+O\+L\+CK}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+L\+CK}{ENOLCK}}
+{\footnotesize\ttfamily \#define E\+N\+O\+L\+CK~77		/$\ast$ No locks available $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_add4408349a756880be9d91efadb8aed0}\label{errno_8h_add4408349a756880be9d91efadb8aed0}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+L\+I\+NK@{E\+N\+O\+L\+I\+NK}}
+\index{E\+N\+O\+L\+I\+NK@{E\+N\+O\+L\+I\+NK}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+L\+I\+NK}{ENOLINK}}
+{\footnotesize\ttfamily \#define E\+N\+O\+L\+I\+NK~95		/$\ast$ Link has been severed $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a6a05c923dad0c1208043e9c20a58c8e5}\label{errno_8h_a6a05c923dad0c1208043e9c20a58c8e5}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+M\+EM@{E\+N\+O\+M\+EM}}
+\index{E\+N\+O\+M\+EM@{E\+N\+O\+M\+EM}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+M\+EM}{ENOMEM}}
+{\footnotesize\ttfamily \#define E\+N\+O\+M\+EM~12		/$\ast$ Cannot allocate memory $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ae40596feaa3f66f5440b485bf7c1c2d1}\label{errno_8h_ae40596feaa3f66f5440b485bf7c1c2d1}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+M\+SG@{E\+N\+O\+M\+SG}}
+\index{E\+N\+O\+M\+SG@{E\+N\+O\+M\+SG}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+M\+SG}{ENOMSG}}
+{\footnotesize\ttfamily \#define E\+N\+O\+M\+SG~83		/$\ast$ No message of desired type $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_acd570f8ab92198653b4459773dc3bca3}\label{errno_8h_acd570f8ab92198653b4459773dc3bca3}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+P\+R\+O\+T\+O\+O\+PT@{E\+N\+O\+P\+R\+O\+T\+O\+O\+PT}}
+\index{E\+N\+O\+P\+R\+O\+T\+O\+O\+PT@{E\+N\+O\+P\+R\+O\+T\+O\+O\+PT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+P\+R\+O\+T\+O\+O\+PT}{ENOPROTOOPT}}
+{\footnotesize\ttfamily \#define E\+N\+O\+P\+R\+O\+T\+O\+O\+PT~42		/$\ast$ Protocol option not available $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a088abe8bad2df798edad3053d719b937}\label{errno_8h_a088abe8bad2df798edad3053d719b937}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+S\+PC@{E\+N\+O\+S\+PC}}
+\index{E\+N\+O\+S\+PC@{E\+N\+O\+S\+PC}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+S\+PC}{ENOSPC}}
+{\footnotesize\ttfamily \#define E\+N\+O\+S\+PC~28		/$\ast$ No space left on device $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ad88bc6ea94ec1a5e91d3651677d85c00}\label{errno_8h_ad88bc6ea94ec1a5e91d3651677d85c00}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+SR@{E\+N\+O\+SR}}
+\index{E\+N\+O\+SR@{E\+N\+O\+SR}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+SR}{ENOSR}}
+{\footnotesize\ttfamily \#define E\+N\+O\+SR~90		/$\ast$ No S\+T\+R\+E\+AM resources $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a7cea86ddbdacae0b391674e680f17bdb}\label{errno_8h_a7cea86ddbdacae0b391674e680f17bdb}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+S\+TR@{E\+N\+O\+S\+TR}}
+\index{E\+N\+O\+S\+TR@{E\+N\+O\+S\+TR}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+S\+TR}{ENOSTR}}
+{\footnotesize\ttfamily \#define E\+N\+O\+S\+TR~91		/$\ast$ Not a S\+T\+R\+E\+AM $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a43785b9969e0bd1af532dbde06c5540b}\label{errno_8h_a43785b9969e0bd1af532dbde06c5540b}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+S\+YS@{E\+N\+O\+S\+YS}}
+\index{E\+N\+O\+S\+YS@{E\+N\+O\+S\+YS}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+S\+YS}{ENOSYS}}
+{\footnotesize\ttfamily \#define E\+N\+O\+S\+YS~78		/$\ast$ Function not implemented $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aa0a4b0e307e83f52be51099f01156936}\label{errno_8h_aa0a4b0e307e83f52be51099f01156936}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+B\+LK@{E\+N\+O\+T\+B\+LK}}
+\index{E\+N\+O\+T\+B\+LK@{E\+N\+O\+T\+B\+LK}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+T\+B\+LK}{ENOTBLK}}
+{\footnotesize\ttfamily \#define E\+N\+O\+T\+B\+LK~15		/$\ast$ Block device required $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_af23e48762a0676f49d480db91cfd5e4b}\label{errno_8h_af23e48762a0676f49d480db91cfd5e4b}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+C\+O\+NN@{E\+N\+O\+T\+C\+O\+NN}}
+\index{E\+N\+O\+T\+C\+O\+NN@{E\+N\+O\+T\+C\+O\+NN}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+T\+C\+O\+NN}{ENOTCONN}}
+{\footnotesize\ttfamily \#define E\+N\+O\+T\+C\+O\+NN~57		/$\ast$ Socket is not connected $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a9262fb92f7ef662d0bdd577912a5b101}\label{errno_8h_a9262fb92f7ef662d0bdd577912a5b101}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+D\+IR@{E\+N\+O\+T\+D\+IR}}
+\index{E\+N\+O\+T\+D\+IR@{E\+N\+O\+T\+D\+IR}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+T\+D\+IR}{ENOTDIR}}
+{\footnotesize\ttfamily \#define E\+N\+O\+T\+D\+IR~20		/$\ast$ Not a directory $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aa0f602f3fd369a6fede82190710b9c5c}\label{errno_8h_aa0f602f3fd369a6fede82190710b9c5c}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+E\+M\+P\+TY@{E\+N\+O\+T\+E\+M\+P\+TY}}
+\index{E\+N\+O\+T\+E\+M\+P\+TY@{E\+N\+O\+T\+E\+M\+P\+TY}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+T\+E\+M\+P\+TY}{ENOTEMPTY}}
+{\footnotesize\ttfamily \#define E\+N\+O\+T\+E\+M\+P\+TY~66		/$\ast$ Directory not empty $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ae34fa7a550ac1c415daa2e114a1c0f38}\label{errno_8h_ae34fa7a550ac1c415daa2e114a1c0f38}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+S\+O\+CK@{E\+N\+O\+T\+S\+O\+CK}}
+\index{E\+N\+O\+T\+S\+O\+CK@{E\+N\+O\+T\+S\+O\+CK}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+T\+S\+O\+CK}{ENOTSOCK}}
+{\footnotesize\ttfamily \#define E\+N\+O\+T\+S\+O\+CK~38		/$\ast$ Socket operation on non-\/socket $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a91457bbf35f0f1085619a99423bb1f33}\label{errno_8h_a91457bbf35f0f1085619a99423bb1f33}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+S\+UP@{E\+N\+O\+T\+S\+UP}}
+\index{E\+N\+O\+T\+S\+UP@{E\+N\+O\+T\+S\+UP}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+T\+S\+UP}{ENOTSUP}}
+{\footnotesize\ttfamily \#define E\+N\+O\+T\+S\+UP~86		/$\ast$ Not supported $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ac3daf409082bb528032f4452a81e1034}\label{errno_8h_ac3daf409082bb528032f4452a81e1034}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+O\+T\+TY@{E\+N\+O\+T\+TY}}
+\index{E\+N\+O\+T\+TY@{E\+N\+O\+T\+TY}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+O\+T\+TY}{ENOTTY}}
+{\footnotesize\ttfamily \#define E\+N\+O\+T\+TY~25		/$\ast$ Inappropriate ioctl for device $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a2b3884b11e4932bd372bb6d899d6fbfe}\label{errno_8h_a2b3884b11e4932bd372bb6d899d6fbfe}} 
+\index{errno.\+h@{errno.\+h}!E\+N\+X\+IO@{E\+N\+X\+IO}}
+\index{E\+N\+X\+IO@{E\+N\+X\+IO}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+X\+IO}{ENXIO}}
+{\footnotesize\ttfamily \#define E\+N\+X\+IO~6		/$\ast$ Device not configured $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a4b807895c74cea4d0302bf27725d4b9d}\label{errno_8h_a4b807895c74cea4d0302bf27725d4b9d}} 
+\index{errno.\+h@{errno.\+h}!E\+O\+P\+N\+O\+T\+S\+U\+PP@{E\+O\+P\+N\+O\+T\+S\+U\+PP}}
+\index{E\+O\+P\+N\+O\+T\+S\+U\+PP@{E\+O\+P\+N\+O\+T\+S\+U\+PP}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+O\+P\+N\+O\+T\+S\+U\+PP}{EOPNOTSUPP}}
+{\footnotesize\ttfamily \#define E\+O\+P\+N\+O\+T\+S\+U\+PP~45		/$\ast$ Operation not supported $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a888552a5e3c78b5883904cf5d55244ab}\label{errno_8h_a888552a5e3c78b5883904cf5d55244ab}} 
+\index{errno.\+h@{errno.\+h}!E\+O\+V\+E\+R\+F\+L\+OW@{E\+O\+V\+E\+R\+F\+L\+OW}}
+\index{E\+O\+V\+E\+R\+F\+L\+OW@{E\+O\+V\+E\+R\+F\+L\+OW}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+O\+V\+E\+R\+F\+L\+OW}{EOVERFLOW}}
+{\footnotesize\ttfamily \#define E\+O\+V\+E\+R\+F\+L\+OW~84		/$\ast$ Value too large to be stored in data type $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_add669d31505a077f769cff8e66c780b3}\label{errno_8h_add669d31505a077f769cff8e66c780b3}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+E\+RM@{E\+P\+E\+RM}}
+\index{E\+P\+E\+RM@{E\+P\+E\+RM}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+E\+RM}{EPERM}}
+{\footnotesize\ttfamily \#define E\+P\+E\+RM~1		/$\ast$ Operation not permitted $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a871b9fabb281dbc2d3b81cb79c163c20}\label{errno_8h_a871b9fabb281dbc2d3b81cb79c163c20}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+RT@{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+RT}}
+\index{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+RT@{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+RT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+RT}{EPFNOSUPPORT}}
+{\footnotesize\ttfamily \#define E\+P\+F\+N\+O\+S\+U\+P\+P\+O\+RT~46		/$\ast$ Protocol family not supported $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a5f8d33deb08fa27c04897b278ac7f965}\label{errno_8h_a5f8d33deb08fa27c04897b278ac7f965}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+I\+PE@{E\+P\+I\+PE}}
+\index{E\+P\+I\+PE@{E\+P\+I\+PE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+I\+PE}{EPIPE}}
+{\footnotesize\ttfamily \#define E\+P\+I\+PE~32		/$\ast$ Broken pipe $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a801513ca187af849409e07fda8554a83}\label{errno_8h_a801513ca187af849409e07fda8554a83}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+C\+L\+IM@{E\+P\+R\+O\+C\+L\+IM}}
+\index{E\+P\+R\+O\+C\+L\+IM@{E\+P\+R\+O\+C\+L\+IM}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+R\+O\+C\+L\+IM}{EPROCLIM}}
+{\footnotesize\ttfamily \#define E\+P\+R\+O\+C\+L\+IM~67		/$\ast$ Too many processes $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_acf125cc6a4f2ebea3cd54c56026dd019}\label{errno_8h_acf125cc6a4f2ebea3cd54c56026dd019}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+IL@{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+IL}}
+\index{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+IL@{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+IL}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+IL}{EPROCUNAVAIL}}
+{\footnotesize\ttfamily \#define E\+P\+R\+O\+C\+U\+N\+A\+V\+A\+IL~76		/$\ast$ Bad procedure for program $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ab8b339b25f51a8258322489cd156297d}\label{errno_8h_ab8b339b25f51a8258322489cd156297d}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+CH@{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+CH}}
+\index{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+CH@{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+CH}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+CH}{EPROGMISMATCH}}
+{\footnotesize\ttfamily \#define E\+P\+R\+O\+G\+M\+I\+S\+M\+A\+T\+CH~75		/$\ast$ Program version wrong $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a90f3aa66e6674d20ee8865cf13ceef96}\label{errno_8h_a90f3aa66e6674d20ee8865cf13ceef96}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+IL@{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+IL}}
+\index{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+IL@{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+IL}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+IL}{EPROGUNAVAIL}}
+{\footnotesize\ttfamily \#define E\+P\+R\+O\+G\+U\+N\+A\+V\+A\+IL~74		/$\ast$ R\+PC prog. not avail $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a5a92de56e8ebe19cbd8a2ce8c80ad03e}\label{errno_8h_a5a92de56e8ebe19cbd8a2ce8c80ad03e}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+TO@{E\+P\+R\+O\+TO}}
+\index{E\+P\+R\+O\+TO@{E\+P\+R\+O\+TO}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+R\+O\+TO}{EPROTO}}
+{\footnotesize\ttfamily \#define E\+P\+R\+O\+TO~96		/$\ast$ Protocol error $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ad581c46fdd4dee9419f60eaff40415e7}\label{errno_8h_ad581c46fdd4dee9419f60eaff40415e7}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+RT@{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+RT}}
+\index{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+RT@{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+RT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+RT}{EPROTONOSUPPORT}}
+{\footnotesize\ttfamily \#define E\+P\+R\+O\+T\+O\+N\+O\+S\+U\+P\+P\+O\+RT~43		/$\ast$ Protocol not supported $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ae6014faa948366b8321d755204acf755}\label{errno_8h_ae6014faa948366b8321d755204acf755}} 
+\index{errno.\+h@{errno.\+h}!E\+P\+R\+O\+T\+O\+T\+Y\+PE@{E\+P\+R\+O\+T\+O\+T\+Y\+PE}}
+\index{E\+P\+R\+O\+T\+O\+T\+Y\+PE@{E\+P\+R\+O\+T\+O\+T\+Y\+PE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+P\+R\+O\+T\+O\+T\+Y\+PE}{EPROTOTYPE}}
+{\footnotesize\ttfamily \#define E\+P\+R\+O\+T\+O\+T\+Y\+PE~41		/$\ast$ Protocol wrong type for socket $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aa1591a4f3a86360108de5b9ba34980ca}\label{errno_8h_aa1591a4f3a86360108de5b9ba34980ca}} 
+\index{errno.\+h@{errno.\+h}!E\+R\+A\+N\+GE@{E\+R\+A\+N\+GE}}
+\index{E\+R\+A\+N\+GE@{E\+R\+A\+N\+GE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+R\+A\+N\+GE}{ERANGE}}
+{\footnotesize\ttfamily \#define E\+R\+A\+N\+GE~34		/$\ast$ Result too large or too small $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a5e1edba49c18fc631dbf54ff53702d4a}\label{errno_8h_a5e1edba49c18fc631dbf54ff53702d4a}} 
+\index{errno.\+h@{errno.\+h}!E\+R\+E\+M\+O\+TE@{E\+R\+E\+M\+O\+TE}}
+\index{E\+R\+E\+M\+O\+TE@{E\+R\+E\+M\+O\+TE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+R\+E\+M\+O\+TE}{EREMOTE}}
+{\footnotesize\ttfamily \#define E\+R\+E\+M\+O\+TE~71		/$\ast$ Too many levels of remote in path $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_acb02bb67dddd7ca8cf82634a0781d58d}\label{errno_8h_acb02bb67dddd7ca8cf82634a0781d58d}} 
+\index{errno.\+h@{errno.\+h}!E\+R\+O\+FS@{E\+R\+O\+FS}}
+\index{E\+R\+O\+FS@{E\+R\+O\+FS}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+R\+O\+FS}{EROFS}}
+{\footnotesize\ttfamily \#define E\+R\+O\+FS~30		/$\ast$ Read-\/only file system $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a04d0929518f1e98cf4bc19e369e1c22e}\label{errno_8h_a04d0929518f1e98cf4bc19e369e1c22e}} 
+\index{errno.\+h@{errno.\+h}!E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+CH@{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+CH}}
+\index{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+CH@{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+CH}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+CH}{ERPCMISMATCH}}
+{\footnotesize\ttfamily \#define E\+R\+P\+C\+M\+I\+S\+M\+A\+T\+CH~73		/$\ast$ R\+PC version wrong $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a2a55c5dd8b54ff5aace6c274c6726d68}\label{errno_8h_a2a55c5dd8b54ff5aace6c274c6726d68}} 
+\index{errno.\+h@{errno.\+h}!E\+S\+H\+U\+T\+D\+O\+WN@{E\+S\+H\+U\+T\+D\+O\+WN}}
+\index{E\+S\+H\+U\+T\+D\+O\+WN@{E\+S\+H\+U\+T\+D\+O\+WN}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+S\+H\+U\+T\+D\+O\+WN}{ESHUTDOWN}}
+{\footnotesize\ttfamily \#define E\+S\+H\+U\+T\+D\+O\+WN~58		/$\ast$ Can\textquotesingle{}t send after socket shutdown $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a891103a0628442461b41d4d85fb6d945}\label{errno_8h_a891103a0628442461b41d4d85fb6d945}} 
+\index{errno.\+h@{errno.\+h}!E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+RT@{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+RT}}
+\index{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+RT@{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+RT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+RT}{ESOCKTNOSUPPORT}}
+{\footnotesize\ttfamily \#define E\+S\+O\+C\+K\+T\+N\+O\+S\+U\+P\+P\+O\+RT~44		/$\ast$ Socket type not supported $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a0e42d4f9fecdcf5fcca2b333252173c3}\label{errno_8h_a0e42d4f9fecdcf5fcca2b333252173c3}} 
+\index{errno.\+h@{errno.\+h}!E\+S\+P\+I\+PE@{E\+S\+P\+I\+PE}}
+\index{E\+S\+P\+I\+PE@{E\+S\+P\+I\+PE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+S\+P\+I\+PE}{ESPIPE}}
+{\footnotesize\ttfamily \#define E\+S\+P\+I\+PE~29		/$\ast$ Illegal seek $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a462e47a8af6288232a5df548221ada4c}\label{errno_8h_a462e47a8af6288232a5df548221ada4c}} 
+\index{errno.\+h@{errno.\+h}!E\+S\+R\+CH@{E\+S\+R\+CH}}
+\index{E\+S\+R\+CH@{E\+S\+R\+CH}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+S\+R\+CH}{ESRCH}}
+{\footnotesize\ttfamily \#define E\+S\+R\+CH~3		/$\ast$ No such process $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a09e189d2214d9fe2847d27bf270ca1d7}\label{errno_8h_a09e189d2214d9fe2847d27bf270ca1d7}} 
+\index{errno.\+h@{errno.\+h}!E\+S\+T\+A\+LE@{E\+S\+T\+A\+LE}}
+\index{E\+S\+T\+A\+LE@{E\+S\+T\+A\+LE}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+S\+T\+A\+LE}{ESTALE}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+LE~70		/$\ast$ Stale N\+FS file handle $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_ab59cf3c65eaf836d5c647fa2a24ca649}\label{errno_8h_ab59cf3c65eaf836d5c647fa2a24ca649}} 
+\index{errno.\+h@{errno.\+h}!E\+T\+I\+ME@{E\+T\+I\+ME}}
+\index{E\+T\+I\+ME@{E\+T\+I\+ME}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+T\+I\+ME}{ETIME}}
+{\footnotesize\ttfamily \#define E\+T\+I\+ME~92		/$\ast$ S\+T\+R\+E\+AM ioctl timeout $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a597718e59a8fc9c4d4ab63f5a34e28b1}\label{errno_8h_a597718e59a8fc9c4d4ab63f5a34e28b1}} 
+\index{errno.\+h@{errno.\+h}!E\+T\+I\+M\+E\+D\+O\+UT@{E\+T\+I\+M\+E\+D\+O\+UT}}
+\index{E\+T\+I\+M\+E\+D\+O\+UT@{E\+T\+I\+M\+E\+D\+O\+UT}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+T\+I\+M\+E\+D\+O\+UT}{ETIMEDOUT}}
+{\footnotesize\ttfamily \#define E\+T\+I\+M\+E\+D\+O\+UT~60		/$\ast$ Operation timed out $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a10426080250efba47f4aaf254036ff00}\label{errno_8h_a10426080250efba47f4aaf254036ff00}} 
+\index{errno.\+h@{errno.\+h}!E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+FS@{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+FS}}
+\index{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+FS@{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+FS}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+FS}{ETOOMANYREFS}}
+{\footnotesize\ttfamily \#define E\+T\+O\+O\+M\+A\+N\+Y\+R\+E\+FS~59		/$\ast$ Too many references\+: can\textquotesingle{}t splice $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_aaed12e82224923d599b6f1939c8e0971}\label{errno_8h_aaed12e82224923d599b6f1939c8e0971}} 
+\index{errno.\+h@{errno.\+h}!E\+T\+X\+T\+B\+SY@{E\+T\+X\+T\+B\+SY}}
+\index{E\+T\+X\+T\+B\+SY@{E\+T\+X\+T\+B\+SY}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+T\+X\+T\+B\+SY}{ETXTBSY}}
+{\footnotesize\ttfamily \#define E\+T\+X\+T\+B\+SY~26		/$\ast$ Text file busy $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a9b153104ed38c8579f009f81bc7b2dc9}\label{errno_8h_a9b153104ed38c8579f009f81bc7b2dc9}} 
+\index{errno.\+h@{errno.\+h}!E\+U\+S\+E\+RS@{E\+U\+S\+E\+RS}}
+\index{E\+U\+S\+E\+RS@{E\+U\+S\+E\+RS}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+U\+S\+E\+RS}{EUSERS}}
+{\footnotesize\ttfamily \#define E\+U\+S\+E\+RS~68		/$\ast$ Too many users $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a4a3a0b3605fd3b2336455062ee8e25f0}\label{errno_8h_a4a3a0b3605fd3b2336455062ee8e25f0}} 
+\index{errno.\+h@{errno.\+h}!E\+W\+O\+U\+L\+D\+B\+L\+O\+CK@{E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}}
+\index{E\+W\+O\+U\+L\+D\+B\+L\+O\+CK@{E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}{EWOULDBLOCK}}
+{\footnotesize\ttfamily \#define E\+W\+O\+U\+L\+D\+B\+L\+O\+CK~\hyperlink{errno_8h_af0fac1cea1165b4debec7f686edf3313}{E\+A\+G\+A\+IN}		/$\ast$ Operation would block $\ast$/}
+
+\mbox{\Hypertarget{errno_8h_a3396cf9fb0ff5af3a18dd2a2bbdb21e1}\label{errno_8h_a3396cf9fb0ff5af3a18dd2a2bbdb21e1}} 
+\index{errno.\+h@{errno.\+h}!E\+X\+D\+EV@{E\+X\+D\+EV}}
+\index{E\+X\+D\+EV@{E\+X\+D\+EV}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{E\+X\+D\+EV}{EXDEV}}
+{\footnotesize\ttfamily \#define E\+X\+D\+EV~18		/$\ast$ Cross-\/device link $\ast$/}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{errno_8h_ad65a8842cc674e3ddf69355898c0ecbf}\label{errno_8h_ad65a8842cc674e3ddf69355898c0ecbf}} 
+\index{errno.\+h@{errno.\+h}!errno@{errno}}
+\index{errno@{errno}!errno.\+h@{errno.\+h}}
+\subsubsection{\texorpdfstring{errno}{errno}}
+{\footnotesize\ttfamily int errno}
+

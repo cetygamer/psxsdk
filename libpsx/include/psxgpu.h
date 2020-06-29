@@ -1,6 +1,18 @@
 #ifndef _PSXGPU_H
 #define _PSXGPU_H
 
+#define GPU_DATA_PORT_ADDR			0x1f801810
+#define GPU_CONTROL_PORT_ADDR			0x1f801814
+#define GPU_DATA_PORT					*((volatile unsigned int*)GPU_DATA_PORT_ADDR)
+#define GPU_CONTROL_PORT				*((volatile unsigned int*)GPU_CONTROL_PORT_ADDR) 
+
+#define DPCR							*((volatile unsigned int*)0x1f8010f0)
+#define D2_MADR						*((volatile unsigned int*)0x1f8010a0)
+#define D2_BCR						*((volatile unsigned int*)0x1f8010a4)
+#define D2_CHCR						*((volatile unsigned int*)0x1f8010a8)
+
+#define get_clutid(cx, cy)			(((cx&0x3ff)>>4)|((cy&0x1ff)<<6))
+
 /**
  * Initializes the GPU. Same as GsInitEx(0)
  *

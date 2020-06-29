@@ -7,8 +7,14 @@ __psxsdk_exception_manager:
 # Save registers on stack
 
 .set noat
-	addiu $sp, $sp, -112
+	addi $sp, -120
+.set noat
 	sw $at, 0($sp)
+	mfhi $at
+	sw $at, 112($sp)
+	mflo $at
+	sw $at, 116($sp)
+.set at
 	sw $v0, 4($sp)
 	sw $v1, 8($sp)
 	sw $a0, 12($sp)
@@ -35,8 +41,7 @@ __psxsdk_exception_manager:
 	sw $t9, 96($sp)
 	sw $gp, 100($sp)
 	sw $fp, 104($sp)
-	sw $ra, 108($sp)
-.set at	
+	sw $ra, 108($sp)	
 	
 # Execute real exception handler
 	jal __psxsdk_real_exception_handler
@@ -45,7 +50,14 @@ __psxsdk_exception_manager:
 # Load registers from stack
 
 .set noat
+	lw $at, 112($sp)
+	nop
+	mthi $at
+	lw $at, 116($sp)
+	nop
+	mtlo $at
 	lw $at, 0($sp)
+.set at
 	lw $v0, 4($sp)
 	lw $v1, 8($sp)
 	lw $a0, 12($sp)
@@ -73,8 +85,7 @@ __psxsdk_exception_manager:
 	lw $gp, 100($sp)
 	lw $fp, 104($sp)
 	lw $ra, 108($sp)
-	addiu $sp, $sp, 112
-.set at		
+	addiu $sp, 120		
 	
 # Get exception return address..
 	mfc0 $k0, $14

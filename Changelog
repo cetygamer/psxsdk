@@ -1,3 +1,27 @@
+2019-04-10 (0.6.2):
+- Included GTE library by LameGuy64/Meido-Tek as 'libmeidogte'
+- New example: gtecube. Demonstrates libmeidogte
+- The 'rottest' and 'puzzle' examples always set a PAL video mode regardless of the setting in Makefile.cfg
+  Fixed.
+- Removed unused macro code from spasm
+
+2018-01-15 (0.6.1) :
+- Fixed bug where LO and HI registers were not saved and restored by the NoBIOS exception handler
+- Some definitions (like the ones for the interrupt controller and the GPU) moved out of
+library source code to public headers, so they are available to all applications that may need them
+- Fixes in pad.c so that compiler optimizations do not generate code with bad behavior
+- Fixed crash when using a GCC 7.x+ compiler when calling static constructors during initialization.
+- Static constructors are now called in backwards order. (as they are on most systems)
+- Fixed bug where the __ctor_list symbol wouldn't have the address of the constructor list,
+but would have its address offset unpredictably (leading to the crash mentioned above).
+- Integrated upstream changes from F3M in libf3m
+- Removed all references to Composer 669 music format in the sources and 
+  documentation of libmodplay, as support for the format was never 
+  implemented.
+- Added psxs3m example. Mostly the same as psxmod but using libf3m 
+instead of libmodplay
+- Fixed some issues in the psxmod example.
+
 2016-06-03 (0.6):
 - size_t and ssize_t definitions moved from stdio.h to types.h, and types.h is included automatically by stdio.h
 - Added strcoll() - as a wrapper to strcmp()

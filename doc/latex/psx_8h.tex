@@ -1,0 +1,784 @@
+\hypertarget{psx_8h}{}\section{libpsx/include/psx.h File Reference}
+\label{psx_8h}\index{libpsx/include/psx.\+h@{libpsx/include/psx.\+h}}
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$psxbios.\+h$>$}\newline
+{\ttfamily \#include $<$psxgpu.\+h$>$}\newline
+{\ttfamily \#include $<$memcard.\+h$>$}\newline
+{\ttfamily \#include $<$psxpad.\+h$>$}\newline
+{\ttfamily \#include $<$psxspu.\+h$>$}\newline
+{\ttfamily \#include $<$psxcdrom.\+h$>$}\newline
+{\ttfamily \#include $<$psxsio.\+h$>$}\newline
+{\ttfamily \#include $<$psxgte.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpsx__info}{psx\+\_\+info}
+\item 
+struct \hyperlink{structpsx__info_1_1kernel}{psx\+\_\+info\+::kernel}
+\item 
+struct \hyperlink{structpsx__info_1_1system}{psx\+\_\+info\+::system}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{psx_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}{true}~1
+\item 
+\#define \hyperlink{psx_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+UE}~1
+\item 
+\#define \hyperlink{psx_8h_a65e9886d74aaee76545e83dd09011727}{false}~0
+\item 
+\#define \hyperlink{psx_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}~0
+\item 
+\#define \hyperlink{psx_8h_a401ad04edf32b6a8db7b704b63fd8643}{I\+P\+E\+N\+D\+I\+NG}~$\ast$((volatile unsigned int$\ast$)0x1f801070)
+\item 
+\#define \hyperlink{psx_8h_a836b6805a266d890bcfe30a459b077fa}{I\+M\+A\+SK}~$\ast$((volatile unsigned int$\ast$)0x1f801074)
+\item 
+\#define \hyperlink{psx_8h_ad2eeed1bdd633142d2fbf9f1eea64da8}{R\+C\+N\+T\+\_\+\+C\+O\+U\+NT}(x)~$\ast$((volatile unsigned int$\ast$)(0x1f801100 + (x$<$$<$4)))
+\item 
+\#define \hyperlink{psx_8h_a296bf3ab71fa32a34287cb3f10fce691}{R\+C\+N\+T\+\_\+\+M\+O\+DE}(x)~$\ast$((volatile unsigned int$\ast$)(0x1f801104 + (x$<$$<$4)))
+\item 
+\#define \hyperlink{psx_8h_a0a7eb16941bbf14b3ad43f13c23b724f}{R\+C\+N\+T\+\_\+\+T\+A\+R\+G\+ET}(x)~$\ast$((volatile unsigned int$\ast$)(0x1f801108 + (x$<$$<$4)))
+\item 
+\#define \hyperlink{psx_8h_a4492b716a3fc4df081eef610ea0fc7db}{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+ON}~0x0602
+\begin{DoxyCompactList}\small\item\em P\+S\+X\+S\+DK version information in hexadecimal format. \end{DoxyCompactList}\item 
+\#define \hyperlink{psx_8h_a1fb2ffc7ec0375f2708db9e023c64365}{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+S\+T\+R\+I\+NG}~\char`\"{}0.\+6.\+2\char`\"{}
+\begin{DoxyCompactList}\small\item\em P\+S\+X\+S\+DK version information in string format. \end{DoxyCompactList}\item 
+\#define \hyperlink{psx_8h_a1972e3c94e5909aaf2a7b99c15b4e304}{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+D\+A\+TE}~0x20190410
+\begin{DoxyCompactList}\small\item\em P\+S\+X\+S\+DK version date (B\+CD Y\+Y\+Y\+Y-\/\+M\+M-\/\+DD) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{psx_8h_ac6da49a7dcc38be2e26da5b705738992}{cop0\+\_\+register\+\_\+numbers} \{ \newline
+\hyperlink{psx_8h_ac6da49a7dcc38be2e26da5b705738992ad945edc8de38c499a526e5ac57ef496a}{C\+O\+P0\+\_\+\+B\+A\+D\+V\+A\+D\+DR} = 8, 
+\hyperlink{psx_8h_ac6da49a7dcc38be2e26da5b705738992a8bacdd9c9c8a9dd288b2c06c42b25d94}{C\+O\+P0\+\_\+\+SR} = 12, 
+\hyperlink{psx_8h_ac6da49a7dcc38be2e26da5b705738992ad08b7488991c516683d5d823dce69aea}{C\+O\+P0\+\_\+\+C\+A\+U\+SE} = 13, 
+\hyperlink{psx_8h_ac6da49a7dcc38be2e26da5b705738992a4875c882b63fc0c8343a55eaec8b70fb}{C\+O\+P0\+\_\+\+E\+PC} = 14, 
+\newline
+\hyperlink{psx_8h_ac6da49a7dcc38be2e26da5b705738992acb05dc00364cc4a42e819493efffe0ab}{C\+O\+P0\+\_\+\+P\+R\+ID} = 15
+ \}\begin{DoxyCompactList}\small\item\em Coprocessor 0 register numbers. \end{DoxyCompactList}
+\item 
+enum \hyperlink{psx_8h_a083c6ab246abb99f318ebf5824fc4784}{psx\+\_\+rcnt\+\_\+specs} \{ \hyperlink{psx_8h_a083c6ab246abb99f318ebf5824fc4784a5df42a10ea350a7f0ad295bf928c32aa}{R\+Cnt\+C\+N\+T0} = 0xf2000000, 
+\hyperlink{psx_8h_a083c6ab246abb99f318ebf5824fc4784a1340fffb18620b3b5bfb49bb6c64281c}{R\+Cnt\+C\+N\+T1} = 0xf2000001, 
+\hyperlink{psx_8h_a083c6ab246abb99f318ebf5824fc4784a2507bfa4578a9de6bba88d91a44f4bd9}{R\+Cnt\+C\+N\+T2} = 0xf2000002, 
+\hyperlink{psx_8h_a083c6ab246abb99f318ebf5824fc4784ab32195d8d9de5bd8215d5d0cf40ceceb}{R\+Cnt\+C\+N\+T3} = 0xf2000003
+ \}\begin{DoxyCompactList}\small\item\em Root counter specifications. \end{DoxyCompactList}
+\item 
+enum \hyperlink{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95a}{psx\+\_\+rcnt\+\_\+modes} \{ \hyperlink{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aa29bf28b25d630f34522f8dbfe7ef3823}{R\+Cnt\+Intr} = 0x1000, 
+\hyperlink{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aafa2755713f719541b22ca4e3960b08dc}{R\+Cnt\+Notar} = 0x0100, 
+\hyperlink{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aad61c029e3d0037c3e09a96e610c58d1e}{R\+Cnt\+Stop} = 0x0010, 
+\hyperlink{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aa34c33b2bae5e8b7dbf10fb30e51f2c81}{R\+Cnt\+SC} = 0x0001
+ \}\begin{DoxyCompactList}\small\item\em Root counter modes. \end{DoxyCompactList}
+\item 
+enum \hyperlink{psx_8h_aceceebe3bc2828ed839a040f4debd907}{psx\+\_\+init\+\_\+flags} \{ \hyperlink{psx_8h_aceceebe3bc2828ed839a040f4debd907a3c967a884af006ea53a63e572e7cb04e}{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+CD} = 1, 
+\hyperlink{psx_8h_aceceebe3bc2828ed839a040f4debd907ab77f5357445a8b55c1fd1d900bf4f899}{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE} = 2, 
+\hyperlink{psx_8h_aceceebe3bc2828ed839a040f4debd907abb1365983bb7116923dddeb71c068d9e}{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+N\+O\+B\+I\+OS} = 4
+ \}\begin{DoxyCompactList}\small\item\em Flags for P\+S\+X\+\_\+\+Init. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{psx_8h_a6a9a92ed43a8fe8f50dc6703e272198d}{P\+S\+X\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initialize library. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_aeba966863f7930d902657ba6b92cf9fa}{P\+S\+X\+\_\+\+De\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Deinitialize library. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_acc66999a52e8ff15615aecc27c2d60ae}{P\+S\+X\+\_\+\+Init\+Ex} (unsigned int \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags})
+\begin{DoxyCompactList}\small\item\em Initialize library (extended version) \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_a6261361d0fcac6e836faa1f31042ef75}{P\+S\+X\+\_\+\+Read\+Pad} (unsigned short $\ast$padbuf, unsigned short $\ast$padbuf2)
+\begin{DoxyCompactList}\small\item\em Reads the status of the buttons of the two joypads. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_a3375af2214d2bb2d8694e65c586d3fa4}{P\+S\+X\+\_\+\+Poll\+Pad} (int pad\+\_\+num, \hyperlink{structpsx__pad__state}{psx\+\_\+pad\+\_\+state} $\ast$pad\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Polls a joypad for information. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_a51a81cee2ec22138e8924064d74cb875}{P\+S\+X\+\_\+\+Get\+Sys\+Info} (struct \hyperlink{structpsx__info}{psx\+\_\+info} $\ast$info)
+\begin{DoxyCompactList}\small\item\em Takes a pointer to a struct \hyperlink{structpsx__info}{psx\+\_\+info} structure, and fills it with information about the Play\+Station on which the program is running. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{psx_8h_acde74279fb294a1f13973fbb416c9142}{get\+\_\+cop0\+\_\+status} (void)
+\begin{DoxyCompactList}\small\item\em Gets Coprocessor 0 status register. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{psx_8h_a12dd82bcf37ad493891b7a13077c3d4b}{set\+\_\+cop0\+\_\+status} (unsigned int sreg)
+\begin{DoxyCompactList}\small\item\em Sets Coprocessor 0 status register. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{psx_8h_ac9a4eba4e8dd1a9edb955dadfe3451f6}{get\+\_\+cop0\+\_\+epc} (void)
+\begin{DoxyCompactList}\small\item\em Gets the contents of the program counter when the last exception happened. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{psx_8h_a5455a9956c2d3cf06012fb2bcbd583d4}{get\+\_\+cop0\+\_\+register} (unsigned char register\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Get value of specified Coprocessor 0 register. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_a6643fc52118e2c67d86c12ea9b290efa}{set\+\_\+cop0\+\_\+register} (unsigned char register\+\_\+num, unsigned int value)
+\begin{DoxyCompactList}\small\item\em Set value of specified Coprocessor 0 register. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{psx_8h_a67aa33f728b0d1dcf4fe60f0c41f8d1d}{get\+\_\+cop\+\_\+register} (unsigned char cop\+\_\+num, unsigned char register\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Get value of the specified (data) register of a specified coprocessor. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{psx_8h_ae65c78121ba804daf71a1a2834fcefc0}{get\+\_\+cop\+\_\+ctrl\+\_\+register} (unsigned char cop\+\_\+num, unsigned char register\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Get value of the specified control register of a specified coprocessor. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_add74ef7e99a69fc1929d8bca7327fcdd}{set\+\_\+cop\+\_\+register} (unsigned char cop\+\_\+num, unsigned char register\+\_\+num, unsigned int value)
+\begin{DoxyCompactList}\small\item\em Set value of the specified (data) register of a specified coprocessor. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_a3286887da1213e832e6a17e8c54ed28e}{set\+\_\+cop\+\_\+ctrl\+\_\+register} (unsigned char cop\+\_\+num, unsigned char register\+\_\+num, unsigned int value)
+\begin{DoxyCompactList}\small\item\em Set value of the specified control register of a specified coprocessor. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_ae97afc8d28f1ee1e45b4c1ff6f83015b}{run\+\_\+cop\+\_\+instruction} (unsigned char cop\+\_\+num, unsigned int operation)
+\begin{DoxyCompactList}\small\item\em Make the specified coprocessor run the specified instruction. \end{DoxyCompactList}\item 
+int \hyperlink{psx_8h_a139037467f26cff63d046facd67e97c1}{Set\+R\+Cnt} (int spec, unsigned short target, unsigned int mode)
+\begin{DoxyCompactList}\small\item\em Set root counter (documentation TO DO) \end{DoxyCompactList}\item 
+int \hyperlink{psx_8h_a90686aef8e749db1f3adea9afce39af9}{Get\+R\+Cnt} (int spec)
+\begin{DoxyCompactList}\small\item\em Get root counter (documentation TO DO) \end{DoxyCompactList}\item 
+int \hyperlink{psx_8h_a525540d937fabc0ef91462bc20fd858f}{Start\+R\+Cnt} (int spec)
+\begin{DoxyCompactList}\small\item\em Start root counter (documentation TO DO) \end{DoxyCompactList}\item 
+int \hyperlink{psx_8h_a3a2cdf010f1fa11e282b0cf11334d6c6}{Stop\+R\+Cnt} (int spec)
+\begin{DoxyCompactList}\small\item\em Stop root counter (documentation TO DO) \end{DoxyCompactList}\item 
+int \hyperlink{psx_8h_a5a43cf006a96e164d78cdad04ef1f57e}{P\+S\+X\+\_\+\+Restore\+Bios\+State} (void)
+\begin{DoxyCompactList}\small\item\em Restores B\+I\+OS state to the one prior the initialization of the library. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{psx_8h_ab66a1aca4cc96841de66faa34b6e7c94}{P\+S\+X\+\_\+\+Get\+Init\+Flags} (void)
+\begin{DoxyCompactList}\small\item\em Gets the bitmask for the flags passed to \hyperlink{psx_8h_acc66999a52e8ff15615aecc27c2d60ae}{P\+S\+X\+\_\+\+Init\+Ex()} \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_a7cf4482e764f30f668878a45351d0c71}{Set\+V\+Blank\+Handler} (void($\ast$h)())
+\begin{DoxyCompactList}\small\item\em Sets an handler function for the V\+Blank interrupt. \end{DoxyCompactList}\item 
+void \hyperlink{psx_8h_ae8a2a9a91d0b16550c6b83663c04ca9b}{Remove\+V\+Blank\+Handler} (void)
+\begin{DoxyCompactList}\small\item\em Removes a previously set V\+Blank handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{psx_8h_ad2f62e6e5dab0814d5677d15950f4afd}{\+\_\+\+\_\+scratchpad} \mbox{[}1024\mbox{]}
+\begin{DoxyCompactList}\small\item\em Scratch pad -\/ unused data cache, that can be used as \char`\"{}fast R\+A\+M\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{psx_8h_a65e9886d74aaee76545e83dd09011727}\label{psx_8h_a65e9886d74aaee76545e83dd09011727}} 
+\index{psx.\+h@{psx.\+h}!false@{false}}
+\index{false@{false}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{false}{false}}
+{\footnotesize\ttfamily \#define false~0}
+
+\mbox{\Hypertarget{psx_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{psx_8h_aa93f0eb578d23995850d61f7d61c55c1}} 
+\index{psx.\+h@{psx.\+h}!F\+A\+L\+SE@{F\+A\+L\+SE}}
+\index{F\+A\+L\+SE@{F\+A\+L\+SE}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{F\+A\+L\+SE}{FALSE}}
+{\footnotesize\ttfamily \#define F\+A\+L\+SE~0}
+
+\mbox{\Hypertarget{psx_8h_a836b6805a266d890bcfe30a459b077fa}\label{psx_8h_a836b6805a266d890bcfe30a459b077fa}} 
+\index{psx.\+h@{psx.\+h}!I\+M\+A\+SK@{I\+M\+A\+SK}}
+\index{I\+M\+A\+SK@{I\+M\+A\+SK}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{I\+M\+A\+SK}{IMASK}}
+{\footnotesize\ttfamily \#define I\+M\+A\+SK~$\ast$((volatile unsigned int$\ast$)0x1f801074)}
+
+\mbox{\Hypertarget{psx_8h_a401ad04edf32b6a8db7b704b63fd8643}\label{psx_8h_a401ad04edf32b6a8db7b704b63fd8643}} 
+\index{psx.\+h@{psx.\+h}!I\+P\+E\+N\+D\+I\+NG@{I\+P\+E\+N\+D\+I\+NG}}
+\index{I\+P\+E\+N\+D\+I\+NG@{I\+P\+E\+N\+D\+I\+NG}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{I\+P\+E\+N\+D\+I\+NG}{IPENDING}}
+{\footnotesize\ttfamily \#define I\+P\+E\+N\+D\+I\+NG~$\ast$((volatile unsigned int$\ast$)0x1f801070)}
+
+\mbox{\Hypertarget{psx_8h_a4492b716a3fc4df081eef610ea0fc7db}\label{psx_8h_a4492b716a3fc4df081eef610ea0fc7db}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+ON@{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+ON@{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+ON}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+ON}{PSXSDK\_VERSION}}
+{\footnotesize\ttfamily \#define P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+ON~0x0602}
+
+
+
+P\+S\+X\+S\+DK version information in hexadecimal format. 
+
+An explanation of version numbers and how they relate to releases\+:
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+ON undefined
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+DK 0.\+1
+\end{DoxyItemize}
+\item 0.\+1.\+99 (0x0199)
+\begin{DoxyItemize}
+\item From P\+S\+X\+S\+DK releases 2012-\/03-\/03 up to 2013-\/01-\/14.
+\end{DoxyItemize}
+\item 0.\+2.\+99 (0x0299)
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+DK 2013-\/05-\/14
+\end{DoxyItemize}
+\item 0.\+3.\+99 (0x0399)
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+DK 2013-\/11-\/09
+\end{DoxyItemize}
+\item 0.\+4.\+99 (0x0499)
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+DK 2014-\/04-\/22
+\end{DoxyItemize}
+\item 0.\+5.\+99 (0x0599)
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+DK 2015-\/07-\/29
+\end{DoxyItemize}
+\item 0.\+6.\+00 (0x0600)
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+DK 2016-\/06-\/03
+\end{DoxyItemize}
+\item 0.\+6.\+1 (0x0601)
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+DK 2018-\/01-\/10
+\end{DoxyItemize}
+\item 0.\+6.\+2 (0x0602)
+\begin{DoxyItemize}
+\item P\+S\+X\+S\+DK 2019-\/04-\/10 
+\end{DoxyItemize}
+\end{DoxyItemize}\mbox{\Hypertarget{psx_8h_a1972e3c94e5909aaf2a7b99c15b4e304}\label{psx_8h_a1972e3c94e5909aaf2a7b99c15b4e304}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+D\+A\+TE@{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+D\+A\+TE}}
+\index{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+D\+A\+TE@{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+D\+A\+TE}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+D\+A\+TE}{PSXSDK\_VERSION\_DATE}}
+{\footnotesize\ttfamily \#define P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+D\+A\+TE~0x20190410}
+
+
+
+P\+S\+X\+S\+DK version date (B\+CD Y\+Y\+Y\+Y-\/\+M\+M-\/\+DD) 
+
+\mbox{\Hypertarget{psx_8h_a1fb2ffc7ec0375f2708db9e023c64365}\label{psx_8h_a1fb2ffc7ec0375f2708db9e023c64365}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+S\+T\+R\+I\+NG@{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+S\+T\+R\+I\+NG}}
+\index{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+S\+T\+R\+I\+NG@{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+S\+T\+R\+I\+NG}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+S\+T\+R\+I\+NG}{PSXSDK\_VERSION\_STRING}}
+{\footnotesize\ttfamily \#define P\+S\+X\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+S\+T\+R\+I\+NG~\char`\"{}0.\+6.\+2\char`\"{}}
+
+
+
+P\+S\+X\+S\+DK version information in string format. 
+
+\mbox{\Hypertarget{psx_8h_ad2eeed1bdd633142d2fbf9f1eea64da8}\label{psx_8h_ad2eeed1bdd633142d2fbf9f1eea64da8}} 
+\index{psx.\+h@{psx.\+h}!R\+C\+N\+T\+\_\+\+C\+O\+U\+NT@{R\+C\+N\+T\+\_\+\+C\+O\+U\+NT}}
+\index{R\+C\+N\+T\+\_\+\+C\+O\+U\+NT@{R\+C\+N\+T\+\_\+\+C\+O\+U\+NT}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{R\+C\+N\+T\+\_\+\+C\+O\+U\+NT}{RCNT\_COUNT}}
+{\footnotesize\ttfamily \#define R\+C\+N\+T\+\_\+\+C\+O\+U\+NT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~$\ast$((volatile unsigned int$\ast$)(0x1f801100 + (x$<$$<$4)))}
+
+\mbox{\Hypertarget{psx_8h_a296bf3ab71fa32a34287cb3f10fce691}\label{psx_8h_a296bf3ab71fa32a34287cb3f10fce691}} 
+\index{psx.\+h@{psx.\+h}!R\+C\+N\+T\+\_\+\+M\+O\+DE@{R\+C\+N\+T\+\_\+\+M\+O\+DE}}
+\index{R\+C\+N\+T\+\_\+\+M\+O\+DE@{R\+C\+N\+T\+\_\+\+M\+O\+DE}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{R\+C\+N\+T\+\_\+\+M\+O\+DE}{RCNT\_MODE}}
+{\footnotesize\ttfamily \#define R\+C\+N\+T\+\_\+\+M\+O\+DE(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~$\ast$((volatile unsigned int$\ast$)(0x1f801104 + (x$<$$<$4)))}
+
+\mbox{\Hypertarget{psx_8h_a0a7eb16941bbf14b3ad43f13c23b724f}\label{psx_8h_a0a7eb16941bbf14b3ad43f13c23b724f}} 
+\index{psx.\+h@{psx.\+h}!R\+C\+N\+T\+\_\+\+T\+A\+R\+G\+ET@{R\+C\+N\+T\+\_\+\+T\+A\+R\+G\+ET}}
+\index{R\+C\+N\+T\+\_\+\+T\+A\+R\+G\+ET@{R\+C\+N\+T\+\_\+\+T\+A\+R\+G\+ET}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{R\+C\+N\+T\+\_\+\+T\+A\+R\+G\+ET}{RCNT\_TARGET}}
+{\footnotesize\ttfamily \#define R\+C\+N\+T\+\_\+\+T\+A\+R\+G\+ET(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~$\ast$((volatile unsigned int$\ast$)(0x1f801108 + (x$<$$<$4)))}
+
+\mbox{\Hypertarget{psx_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}\label{psx_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}} 
+\index{psx.\+h@{psx.\+h}!true@{true}}
+\index{true@{true}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{true}{true}}
+{\footnotesize\ttfamily \#define true~1}
+
+\mbox{\Hypertarget{psx_8h_aa8cecfc5c5c054d2875c03e77b7be15d}\label{psx_8h_aa8cecfc5c5c054d2875c03e77b7be15d}} 
+\index{psx.\+h@{psx.\+h}!T\+R\+UE@{T\+R\+UE}}
+\index{T\+R\+UE@{T\+R\+UE}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{T\+R\+UE}{TRUE}}
+{\footnotesize\ttfamily \#define T\+R\+UE~1}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{psx_8h_ac6da49a7dcc38be2e26da5b705738992}\label{psx_8h_ac6da49a7dcc38be2e26da5b705738992}} 
+\index{psx.\+h@{psx.\+h}!cop0\+\_\+register\+\_\+numbers@{cop0\+\_\+register\+\_\+numbers}}
+\index{cop0\+\_\+register\+\_\+numbers@{cop0\+\_\+register\+\_\+numbers}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{cop0\+\_\+register\+\_\+numbers}{cop0\_register\_numbers}}
+{\footnotesize\ttfamily enum \hyperlink{psx_8h_ac6da49a7dcc38be2e26da5b705738992}{cop0\+\_\+register\+\_\+numbers}}
+
+
+
+Coprocessor 0 register numbers. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+P0\+\_\+\+B\+A\+D\+V\+A\+D\+DR@{C\+O\+P0\+\_\+\+B\+A\+D\+V\+A\+D\+DR}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!C\+O\+P0\+\_\+\+B\+A\+D\+V\+A\+D\+DR@{C\+O\+P0\+\_\+\+B\+A\+D\+V\+A\+D\+DR}}}\mbox{\Hypertarget{psx_8h_ac6da49a7dcc38be2e26da5b705738992ad945edc8de38c499a526e5ac57ef496a}\label{psx_8h_ac6da49a7dcc38be2e26da5b705738992ad945edc8de38c499a526e5ac57ef496a}} 
+C\+O\+P0\+\_\+\+B\+A\+D\+V\+A\+D\+DR&Contains the last invalid program address which caused a trap. It is set by address errors of all kinds. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+P0\+\_\+\+SR@{C\+O\+P0\+\_\+\+SR}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!C\+O\+P0\+\_\+\+SR@{C\+O\+P0\+\_\+\+SR}}}\mbox{\Hypertarget{psx_8h_ac6da49a7dcc38be2e26da5b705738992a8bacdd9c9c8a9dd288b2c06c42b25d94}\label{psx_8h_ac6da49a7dcc38be2e26da5b705738992a8bacdd9c9c8a9dd288b2c06c42b25d94}} 
+C\+O\+P0\+\_\+\+SR&C\+PU mode flags (status register) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+P0\+\_\+\+C\+A\+U\+SE@{C\+O\+P0\+\_\+\+C\+A\+U\+SE}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!C\+O\+P0\+\_\+\+C\+A\+U\+SE@{C\+O\+P0\+\_\+\+C\+A\+U\+SE}}}\mbox{\Hypertarget{psx_8h_ac6da49a7dcc38be2e26da5b705738992ad08b7488991c516683d5d823dce69aea}\label{psx_8h_ac6da49a7dcc38be2e26da5b705738992ad08b7488991c516683d5d823dce69aea}} 
+C\+O\+P0\+\_\+\+C\+A\+U\+SE&Describes the most recently recognized exception. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+P0\+\_\+\+E\+PC@{C\+O\+P0\+\_\+\+E\+PC}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!C\+O\+P0\+\_\+\+E\+PC@{C\+O\+P0\+\_\+\+E\+PC}}}\mbox{\Hypertarget{psx_8h_ac6da49a7dcc38be2e26da5b705738992a4875c882b63fc0c8343a55eaec8b70fb}\label{psx_8h_ac6da49a7dcc38be2e26da5b705738992a4875c882b63fc0c8343a55eaec8b70fb}} 
+C\+O\+P0\+\_\+\+E\+PC&Return address from trap. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+P0\+\_\+\+P\+R\+ID@{C\+O\+P0\+\_\+\+P\+R\+ID}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!C\+O\+P0\+\_\+\+P\+R\+ID@{C\+O\+P0\+\_\+\+P\+R\+ID}}}\mbox{\Hypertarget{psx_8h_ac6da49a7dcc38be2e26da5b705738992acb05dc00364cc4a42e819493efffe0ab}\label{psx_8h_ac6da49a7dcc38be2e26da5b705738992acb05dc00364cc4a42e819493efffe0ab}} 
+C\+O\+P0\+\_\+\+P\+R\+ID&C\+O\+P0 type and revision level. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{psx_8h_aceceebe3bc2828ed839a040f4debd907}\label{psx_8h_aceceebe3bc2828ed839a040f4debd907}} 
+\index{psx.\+h@{psx.\+h}!psx\+\_\+init\+\_\+flags@{psx\+\_\+init\+\_\+flags}}
+\index{psx\+\_\+init\+\_\+flags@{psx\+\_\+init\+\_\+flags}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{psx\+\_\+init\+\_\+flags}{psx\_init\_flags}}
+{\footnotesize\ttfamily enum \hyperlink{psx_8h_aceceebe3bc2828ed839a040f4debd907}{psx\+\_\+init\+\_\+flags}}
+
+
+
+Flags for P\+S\+X\+\_\+\+Init. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+CD@{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+CD}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+CD@{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+CD}}}\mbox{\Hypertarget{psx_8h_aceceebe3bc2828ed839a040f4debd907a3c967a884af006ea53a63e572e7cb04e}\label{psx_8h_aceceebe3bc2828ed839a040f4debd907a3c967a884af006ea53a63e572e7cb04e}} 
+P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+CD&P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+CD -\/ Initialize C\+D\+R\+OM filesystem. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE@{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE@{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE}}}\mbox{\Hypertarget{psx_8h_aceceebe3bc2828ed839a040f4debd907ab77f5357445a8b55c1fd1d900bf4f899}\label{psx_8h_aceceebe3bc2828ed839a040f4debd907ab77f5357445a8b55c1fd1d900bf4f899}} 
+P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE&P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE -\/ Save B\+I\+OS state before initializing the library. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+N\+O\+B\+I\+OS@{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+N\+O\+B\+I\+OS}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+N\+O\+B\+I\+OS@{P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+N\+O\+B\+I\+OS}}}\mbox{\Hypertarget{psx_8h_aceceebe3bc2828ed839a040f4debd907abb1365983bb7116923dddeb71c068d9e}\label{psx_8h_aceceebe3bc2828ed839a040f4debd907abb1365983bb7116923dddeb71c068d9e}} 
+P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+N\+O\+B\+I\+OS&P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+N\+O\+B\+I\+OS -\/ Remove control from the B\+I\+OS and let P\+S\+X\+S\+DK be in complete control. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95a}\label{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95a}} 
+\index{psx.\+h@{psx.\+h}!psx\+\_\+rcnt\+\_\+modes@{psx\+\_\+rcnt\+\_\+modes}}
+\index{psx\+\_\+rcnt\+\_\+modes@{psx\+\_\+rcnt\+\_\+modes}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{psx\+\_\+rcnt\+\_\+modes}{psx\_rcnt\_modes}}
+{\footnotesize\ttfamily enum \hyperlink{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95a}{psx\+\_\+rcnt\+\_\+modes}}
+
+
+
+Root counter modes. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+Cnt\+Intr@{R\+Cnt\+Intr}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!R\+Cnt\+Intr@{R\+Cnt\+Intr}}}\mbox{\Hypertarget{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aa29bf28b25d630f34522f8dbfe7ef3823}\label{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aa29bf28b25d630f34522f8dbfe7ef3823}} 
+R\+Cnt\+Intr&Interrupt mode. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+Cnt\+Notar@{R\+Cnt\+Notar}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!R\+Cnt\+Notar@{R\+Cnt\+Notar}}}\mbox{\Hypertarget{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aafa2755713f719541b22ca4e3960b08dc}\label{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aafa2755713f719541b22ca4e3960b08dc}} 
+R\+Cnt\+Notar&Ignore target and count to 65535 (hex\+: 0x\+F\+F\+FF) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+Cnt\+Stop@{R\+Cnt\+Stop}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!R\+Cnt\+Stop@{R\+Cnt\+Stop}}}\mbox{\Hypertarget{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aad61c029e3d0037c3e09a96e610c58d1e}\label{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aad61c029e3d0037c3e09a96e610c58d1e}} 
+R\+Cnt\+Stop&Timer stop mode. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+Cnt\+SC@{R\+Cnt\+SC}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!R\+Cnt\+SC@{R\+Cnt\+SC}}}\mbox{\Hypertarget{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aa34c33b2bae5e8b7dbf10fb30e51f2c81}\label{psx_8h_a00ff0bdc8f5c416a853c0b62bb75b95aa34c33b2bae5e8b7dbf10fb30e51f2c81}} 
+R\+Cnt\+SC&System Clock mode. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{psx_8h_a083c6ab246abb99f318ebf5824fc4784}\label{psx_8h_a083c6ab246abb99f318ebf5824fc4784}} 
+\index{psx.\+h@{psx.\+h}!psx\+\_\+rcnt\+\_\+specs@{psx\+\_\+rcnt\+\_\+specs}}
+\index{psx\+\_\+rcnt\+\_\+specs@{psx\+\_\+rcnt\+\_\+specs}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{psx\+\_\+rcnt\+\_\+specs}{psx\_rcnt\_specs}}
+{\footnotesize\ttfamily enum \hyperlink{psx_8h_a083c6ab246abb99f318ebf5824fc4784}{psx\+\_\+rcnt\+\_\+specs}}
+
+
+
+Root counter specifications. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+Cnt\+C\+N\+T0@{R\+Cnt\+C\+N\+T0}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!R\+Cnt\+C\+N\+T0@{R\+Cnt\+C\+N\+T0}}}\mbox{\Hypertarget{psx_8h_a083c6ab246abb99f318ebf5824fc4784a5df42a10ea350a7f0ad295bf928c32aa}\label{psx_8h_a083c6ab246abb99f318ebf5824fc4784a5df42a10ea350a7f0ad295bf928c32aa}} 
+R\+Cnt\+C\+N\+T0&Pixel clock. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+Cnt\+C\+N\+T1@{R\+Cnt\+C\+N\+T1}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!R\+Cnt\+C\+N\+T1@{R\+Cnt\+C\+N\+T1}}}\mbox{\Hypertarget{psx_8h_a083c6ab246abb99f318ebf5824fc4784a1340fffb18620b3b5bfb49bb6c64281c}\label{psx_8h_a083c6ab246abb99f318ebf5824fc4784a1340fffb18620b3b5bfb49bb6c64281c}} 
+R\+Cnt\+C\+N\+T1&Horizontal sync. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+Cnt\+C\+N\+T2@{R\+Cnt\+C\+N\+T2}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!R\+Cnt\+C\+N\+T2@{R\+Cnt\+C\+N\+T2}}}\mbox{\Hypertarget{psx_8h_a083c6ab246abb99f318ebf5824fc4784a2507bfa4578a9de6bba88d91a44f4bd9}\label{psx_8h_a083c6ab246abb99f318ebf5824fc4784a2507bfa4578a9de6bba88d91a44f4bd9}} 
+R\+Cnt\+C\+N\+T2&System clock / 8. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+Cnt\+C\+N\+T3@{R\+Cnt\+C\+N\+T3}!psx.\+h@{psx.\+h}}\index{psx.\+h@{psx.\+h}!R\+Cnt\+C\+N\+T3@{R\+Cnt\+C\+N\+T3}}}\mbox{\Hypertarget{psx_8h_a083c6ab246abb99f318ebf5824fc4784ab32195d8d9de5bd8215d5d0cf40ceceb}\label{psx_8h_a083c6ab246abb99f318ebf5824fc4784ab32195d8d9de5bd8215d5d0cf40ceceb}} 
+R\+Cnt\+C\+N\+T3&V\+Sync (V\+Blank) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{psx_8h_ac9a4eba4e8dd1a9edb955dadfe3451f6}\label{psx_8h_ac9a4eba4e8dd1a9edb955dadfe3451f6}} 
+\index{psx.\+h@{psx.\+h}!get\+\_\+cop0\+\_\+epc@{get\+\_\+cop0\+\_\+epc}}
+\index{get\+\_\+cop0\+\_\+epc@{get\+\_\+cop0\+\_\+epc}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+cop0\+\_\+epc()}{get\_cop0\_epc()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+cop0\+\_\+epc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the contents of the program counter when the last exception happened. 
+
+\begin{DoxyReturn}{Returns}
+Value of the program counter at the time of the last exception 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_a5455a9956c2d3cf06012fb2bcbd583d4}\label{psx_8h_a5455a9956c2d3cf06012fb2bcbd583d4}} 
+\index{psx.\+h@{psx.\+h}!get\+\_\+cop0\+\_\+register@{get\+\_\+cop0\+\_\+register}}
+\index{get\+\_\+cop0\+\_\+register@{get\+\_\+cop0\+\_\+register}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+cop0\+\_\+register()}{get\_cop0\_register()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+cop0\+\_\+register (\begin{DoxyParamCaption}\item[{unsigned char}]{register\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Get value of specified Coprocessor 0 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em register\+\_\+num} & Number of Coprocessor 0 register whose value must be retrieved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of specified Coprocessor 0 register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_acde74279fb294a1f13973fbb416c9142}\label{psx_8h_acde74279fb294a1f13973fbb416c9142}} 
+\index{psx.\+h@{psx.\+h}!get\+\_\+cop0\+\_\+status@{get\+\_\+cop0\+\_\+status}}
+\index{get\+\_\+cop0\+\_\+status@{get\+\_\+cop0\+\_\+status}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+cop0\+\_\+status()}{get\_cop0\_status()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+cop0\+\_\+status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets Coprocessor 0 status register. 
+
+\begin{DoxyReturn}{Returns}
+Value of Coprocessor 0 status register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_ae65c78121ba804daf71a1a2834fcefc0}\label{psx_8h_ae65c78121ba804daf71a1a2834fcefc0}} 
+\index{psx.\+h@{psx.\+h}!get\+\_\+cop\+\_\+ctrl\+\_\+register@{get\+\_\+cop\+\_\+ctrl\+\_\+register}}
+\index{get\+\_\+cop\+\_\+ctrl\+\_\+register@{get\+\_\+cop\+\_\+ctrl\+\_\+register}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+cop\+\_\+ctrl\+\_\+register()}{get\_cop\_ctrl\_register()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+cop\+\_\+ctrl\+\_\+register (\begin{DoxyParamCaption}\item[{unsigned char}]{cop\+\_\+num,  }\item[{unsigned char}]{register\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Get value of the specified control register of a specified coprocessor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cop\+\_\+num} & Coprocessor number \\
+\hline
+{\em register\+\_\+num} & Number of coprocessor register whose value must be retrieved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of specified coprocessor register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_a67aa33f728b0d1dcf4fe60f0c41f8d1d}\label{psx_8h_a67aa33f728b0d1dcf4fe60f0c41f8d1d}} 
+\index{psx.\+h@{psx.\+h}!get\+\_\+cop\+\_\+register@{get\+\_\+cop\+\_\+register}}
+\index{get\+\_\+cop\+\_\+register@{get\+\_\+cop\+\_\+register}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+cop\+\_\+register()}{get\_cop\_register()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+cop\+\_\+register (\begin{DoxyParamCaption}\item[{unsigned char}]{cop\+\_\+num,  }\item[{unsigned char}]{register\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Get value of the specified (data) register of a specified coprocessor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cop\+\_\+num} & Coprocessor number \\
+\hline
+{\em register\+\_\+num} & Number of coprocessor register whose value must be retrieved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of specified coprocessor register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_a90686aef8e749db1f3adea9afce39af9}\label{psx_8h_a90686aef8e749db1f3adea9afce39af9}} 
+\index{psx.\+h@{psx.\+h}!Get\+R\+Cnt@{Get\+R\+Cnt}}
+\index{Get\+R\+Cnt@{Get\+R\+Cnt}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{Get\+R\+Cnt()}{GetRCnt()}}
+{\footnotesize\ttfamily int Get\+R\+Cnt (\begin{DoxyParamCaption}\item[{int}]{spec }\end{DoxyParamCaption})}
+
+
+
+Get root counter (documentation TO DO) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spec} & Spec \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TO DO 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_aeba966863f7930d902657ba6b92cf9fa}\label{psx_8h_aeba966863f7930d902657ba6b92cf9fa}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+De\+Init@{P\+S\+X\+\_\+\+De\+Init}}
+\index{P\+S\+X\+\_\+\+De\+Init@{P\+S\+X\+\_\+\+De\+Init}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+\_\+\+De\+Init()}{PSX\_DeInit()}}
+{\footnotesize\ttfamily void P\+S\+X\+\_\+\+De\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Deinitialize library. 
+
+\mbox{\Hypertarget{psx_8h_ab66a1aca4cc96841de66faa34b6e7c94}\label{psx_8h_ab66a1aca4cc96841de66faa34b6e7c94}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+Get\+Init\+Flags@{P\+S\+X\+\_\+\+Get\+Init\+Flags}}
+\index{P\+S\+X\+\_\+\+Get\+Init\+Flags@{P\+S\+X\+\_\+\+Get\+Init\+Flags}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+\_\+\+Get\+Init\+Flags()}{PSX\_GetInitFlags()}}
+{\footnotesize\ttfamily unsigned int P\+S\+X\+\_\+\+Get\+Init\+Flags (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the bitmask for the flags passed to \hyperlink{psx_8h_acc66999a52e8ff15615aecc27c2d60ae}{P\+S\+X\+\_\+\+Init\+Ex()} 
+
+\begin{DoxyReturn}{Returns}
+Flag bitmask 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_a51a81cee2ec22138e8924064d74cb875}\label{psx_8h_a51a81cee2ec22138e8924064d74cb875}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+Get\+Sys\+Info@{P\+S\+X\+\_\+\+Get\+Sys\+Info}}
+\index{P\+S\+X\+\_\+\+Get\+Sys\+Info@{P\+S\+X\+\_\+\+Get\+Sys\+Info}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+\_\+\+Get\+Sys\+Info()}{PSX\_GetSysInfo()}}
+{\footnotesize\ttfamily void P\+S\+X\+\_\+\+Get\+Sys\+Info (\begin{DoxyParamCaption}\item[{struct \hyperlink{structpsx__info}{psx\+\_\+info} $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+Takes a pointer to a struct \hyperlink{structpsx__info}{psx\+\_\+info} structure, and fills it with information about the Play\+Station on which the program is running. 
+
+P\+S-\/\+OS kernel build date and version are reported among other things. 
+\begin{DoxyParams}{Parameters}
+{\em info} & Pointer to struct \hyperlink{structpsx__info}{psx\+\_\+info} structure which will be filled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a6a9a92ed43a8fe8f50dc6703e272198d}\label{psx_8h_a6a9a92ed43a8fe8f50dc6703e272198d}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+Init@{P\+S\+X\+\_\+\+Init}}
+\index{P\+S\+X\+\_\+\+Init@{P\+S\+X\+\_\+\+Init}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+\_\+\+Init()}{PSX\_Init()}}
+{\footnotesize\ttfamily void P\+S\+X\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialize library. 
+
+\mbox{\Hypertarget{psx_8h_acc66999a52e8ff15615aecc27c2d60ae}\label{psx_8h_acc66999a52e8ff15615aecc27c2d60ae}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+Init\+Ex@{P\+S\+X\+\_\+\+Init\+Ex}}
+\index{P\+S\+X\+\_\+\+Init\+Ex@{P\+S\+X\+\_\+\+Init\+Ex}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+\_\+\+Init\+Ex()}{PSX\_InitEx()}}
+{\footnotesize\ttfamily void P\+S\+X\+\_\+\+Init\+Ex (\begin{DoxyParamCaption}\item[{unsigned int}]{flags }\end{DoxyParamCaption})}
+
+
+
+Initialize library (extended version) 
+
+flags contains a bitmask specifying which flags are enabled
+
+\hyperlink{psx_8h_a6a9a92ed43a8fe8f50dc6703e272198d}{P\+S\+X\+\_\+\+Init()} is the same as P\+S\+X\+\_\+\+Init\+Ex(\+P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+C\+D) 
+\begin{DoxyParams}{Parameters}
+{\em flags} & Flag bitmask (flags are to be OR\textquotesingle{}d) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a3375af2214d2bb2d8694e65c586d3fa4}\label{psx_8h_a3375af2214d2bb2d8694e65c586d3fa4}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+Poll\+Pad@{P\+S\+X\+\_\+\+Poll\+Pad}}
+\index{P\+S\+X\+\_\+\+Poll\+Pad@{P\+S\+X\+\_\+\+Poll\+Pad}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+\_\+\+Poll\+Pad()}{PSX\_PollPad()}}
+{\footnotesize\ttfamily void P\+S\+X\+\_\+\+Poll\+Pad (\begin{DoxyParamCaption}\item[{int}]{pad\+\_\+num,  }\item[{\hyperlink{structpsx__pad__state}{psx\+\_\+pad\+\_\+state} $\ast$}]{pad\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Polls a joypad for information. 
+
+\begin{DoxyAttention}{Attention}
+Note that some joypads, like the official ones from Sony, do not like to be polled more than once every 1/60th of a second and if this limitation is not considered the data they return is undefined. Other joypads do not have this limitation but in any case err on the safe side. 
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em pad\+\_\+num} & Number of the pad to poll (0 = pad \#1, 1 = pad \#2, etc.) \\
+\hline
+{\em pad\+\_\+state} & Pointer to a \hyperlink{structpsx__pad__state}{psx\+\_\+pad\+\_\+state} structure in which to store information for the pad. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a6261361d0fcac6e836faa1f31042ef75}\label{psx_8h_a6261361d0fcac6e836faa1f31042ef75}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+Read\+Pad@{P\+S\+X\+\_\+\+Read\+Pad}}
+\index{P\+S\+X\+\_\+\+Read\+Pad@{P\+S\+X\+\_\+\+Read\+Pad}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+\_\+\+Read\+Pad()}{PSX\_ReadPad()}}
+{\footnotesize\ttfamily void P\+S\+X\+\_\+\+Read\+Pad (\begin{DoxyParamCaption}\item[{unsigned short $\ast$}]{padbuf,  }\item[{unsigned short $\ast$}]{padbuf2 }\end{DoxyParamCaption})}
+
+
+
+Reads the status of the buttons of the two joypads. 
+
+Takes two pointers for 16-\/bit bitmasks, one for the first player\textquotesingle{}s joypad, and one for the second one. Their bits are updated to show which buttons were pressed.
+
+This function only supplies basic functionality, adequate for a normal digital pad.
+
+If more advanced functionality is desired, use \hyperlink{psx_8h_a3375af2214d2bb2d8694e65c586d3fa4}{P\+S\+X\+\_\+\+Poll\+Pad()} instead of this function. \begin{DoxyAttention}{Attention}
+Note that some joypads, like the official ones from Sony, do not like to be polled more than once every 1/60th of a second and if this limitation is not considered the data they return is undefined. Other joypads do not have this limitation but in any case err on the safe side. 
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em padbuf} & Pointer to 16-\/bit variable where bitmask for pad \#1 will be stored. If N\+U\+LL is passed, this argument is ignored. \\
+\hline
+{\em padbuf2} & Pointer to 16-\/bit variable where bitmask for pad \#2 will be stored If N\+U\+LL is passed, this argument is ignored. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a5a43cf006a96e164d78cdad04ef1f57e}\label{psx_8h_a5a43cf006a96e164d78cdad04ef1f57e}} 
+\index{psx.\+h@{psx.\+h}!P\+S\+X\+\_\+\+Restore\+Bios\+State@{P\+S\+X\+\_\+\+Restore\+Bios\+State}}
+\index{P\+S\+X\+\_\+\+Restore\+Bios\+State@{P\+S\+X\+\_\+\+Restore\+Bios\+State}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{P\+S\+X\+\_\+\+Restore\+Bios\+State()}{PSX\_RestoreBiosState()}}
+{\footnotesize\ttfamily int P\+S\+X\+\_\+\+Restore\+Bios\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Restores B\+I\+OS state to the one prior the initialization of the library. 
+
+This function can only be used if \hyperlink{psx_8h_acc66999a52e8ff15615aecc27c2d60ae}{P\+S\+X\+\_\+\+Init\+Ex()} was called with the P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE flag. It is usually called by \hyperlink{psx_8h_aeba966863f7930d902657ba6b92cf9fa}{P\+S\+X\+\_\+\+De\+Init()} automatically, so unless you know what you are doing, you do not need to call it yourself. \begin{DoxyReturn}{Returns}
+1 on success, 0 on failure, such as the fact that \hyperlink{psx_8h_acc66999a52e8ff15615aecc27c2d60ae}{P\+S\+X\+\_\+\+Init\+Ex()} wasn\textquotesingle{}t called with the P\+S\+X\+\_\+\+I\+N\+I\+T\+\_\+\+S\+A\+V\+E\+S\+T\+A\+TE flag. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_ae8a2a9a91d0b16550c6b83663c04ca9b}\label{psx_8h_ae8a2a9a91d0b16550c6b83663c04ca9b}} 
+\index{psx.\+h@{psx.\+h}!Remove\+V\+Blank\+Handler@{Remove\+V\+Blank\+Handler}}
+\index{Remove\+V\+Blank\+Handler@{Remove\+V\+Blank\+Handler}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{Remove\+V\+Blank\+Handler()}{RemoveVBlankHandler()}}
+{\footnotesize\ttfamily void Remove\+V\+Blank\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Removes a previously set V\+Blank handler. 
+
+If \hyperlink{psx_8h_a7cf4482e764f30f668878a45351d0c71}{Set\+V\+Blank\+Handler()} was not called before, calling this function has no effect. \mbox{\Hypertarget{psx_8h_ae97afc8d28f1ee1e45b4c1ff6f83015b}\label{psx_8h_ae97afc8d28f1ee1e45b4c1ff6f83015b}} 
+\index{psx.\+h@{psx.\+h}!run\+\_\+cop\+\_\+instruction@{run\+\_\+cop\+\_\+instruction}}
+\index{run\+\_\+cop\+\_\+instruction@{run\+\_\+cop\+\_\+instruction}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{run\+\_\+cop\+\_\+instruction()}{run\_cop\_instruction()}}
+{\footnotesize\ttfamily void run\+\_\+cop\+\_\+instruction (\begin{DoxyParamCaption}\item[{unsigned char}]{cop\+\_\+num,  }\item[{unsigned int}]{operation }\end{DoxyParamCaption})}
+
+
+
+Make the specified coprocessor run the specified instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operation} & Operation number for the instruction \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a6643fc52118e2c67d86c12ea9b290efa}\label{psx_8h_a6643fc52118e2c67d86c12ea9b290efa}} 
+\index{psx.\+h@{psx.\+h}!set\+\_\+cop0\+\_\+register@{set\+\_\+cop0\+\_\+register}}
+\index{set\+\_\+cop0\+\_\+register@{set\+\_\+cop0\+\_\+register}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+cop0\+\_\+register()}{set\_cop0\_register()}}
+{\footnotesize\ttfamily void set\+\_\+cop0\+\_\+register (\begin{DoxyParamCaption}\item[{unsigned char}]{register\+\_\+num,  }\item[{unsigned int}]{value }\end{DoxyParamCaption})}
+
+
+
+Set value of specified Coprocessor 0 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em register\+\_\+num} & Number of Coprocessor 0 register whose value must be set \\
+\hline
+{\em value} & New value of specified Coprocessor 0 register \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a12dd82bcf37ad493891b7a13077c3d4b}\label{psx_8h_a12dd82bcf37ad493891b7a13077c3d4b}} 
+\index{psx.\+h@{psx.\+h}!set\+\_\+cop0\+\_\+status@{set\+\_\+cop0\+\_\+status}}
+\index{set\+\_\+cop0\+\_\+status@{set\+\_\+cop0\+\_\+status}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+cop0\+\_\+status()}{set\_cop0\_status()}}
+{\footnotesize\ttfamily unsigned int set\+\_\+cop0\+\_\+status (\begin{DoxyParamCaption}\item[{unsigned int}]{sreg }\end{DoxyParamCaption})}
+
+
+
+Sets Coprocessor 0 status register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sreg} & New value of Coprocessor 0 status register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}\mbox{[} check\+: maybe this is a void function \mbox{]}\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_a3286887da1213e832e6a17e8c54ed28e}\label{psx_8h_a3286887da1213e832e6a17e8c54ed28e}} 
+\index{psx.\+h@{psx.\+h}!set\+\_\+cop\+\_\+ctrl\+\_\+register@{set\+\_\+cop\+\_\+ctrl\+\_\+register}}
+\index{set\+\_\+cop\+\_\+ctrl\+\_\+register@{set\+\_\+cop\+\_\+ctrl\+\_\+register}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+cop\+\_\+ctrl\+\_\+register()}{set\_cop\_ctrl\_register()}}
+{\footnotesize\ttfamily void set\+\_\+cop\+\_\+ctrl\+\_\+register (\begin{DoxyParamCaption}\item[{unsigned char}]{cop\+\_\+num,  }\item[{unsigned char}]{register\+\_\+num,  }\item[{unsigned int}]{value }\end{DoxyParamCaption})}
+
+
+
+Set value of the specified control register of a specified coprocessor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cop\+\_\+num} & Coprocessor number \\
+\hline
+{\em register\+\_\+num} & Number of Coprocessor 0 register whose value must be set \\
+\hline
+{\em value} & New value of specified Coprocessor 0 register \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_add74ef7e99a69fc1929d8bca7327fcdd}\label{psx_8h_add74ef7e99a69fc1929d8bca7327fcdd}} 
+\index{psx.\+h@{psx.\+h}!set\+\_\+cop\+\_\+register@{set\+\_\+cop\+\_\+register}}
+\index{set\+\_\+cop\+\_\+register@{set\+\_\+cop\+\_\+register}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+cop\+\_\+register()}{set\_cop\_register()}}
+{\footnotesize\ttfamily void set\+\_\+cop\+\_\+register (\begin{DoxyParamCaption}\item[{unsigned char}]{cop\+\_\+num,  }\item[{unsigned char}]{register\+\_\+num,  }\item[{unsigned int}]{value }\end{DoxyParamCaption})}
+
+
+
+Set value of the specified (data) register of a specified coprocessor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cop\+\_\+num} & Coprocessor number \\
+\hline
+{\em register\+\_\+num} & Number of Coprocessor 0 register whose value must be set \\
+\hline
+{\em value} & New value of specified Coprocessor 0 register \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a139037467f26cff63d046facd67e97c1}\label{psx_8h_a139037467f26cff63d046facd67e97c1}} 
+\index{psx.\+h@{psx.\+h}!Set\+R\+Cnt@{Set\+R\+Cnt}}
+\index{Set\+R\+Cnt@{Set\+R\+Cnt}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{Set\+R\+Cnt()}{SetRCnt()}}
+{\footnotesize\ttfamily int Set\+R\+Cnt (\begin{DoxyParamCaption}\item[{int}]{spec,  }\item[{unsigned short}]{target,  }\item[{unsigned int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Set root counter (documentation TO DO) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spec} & Spec \\
+\hline
+{\em target} & Target \\
+\hline
+{\em mode} & mode \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a7cf4482e764f30f668878a45351d0c71}\label{psx_8h_a7cf4482e764f30f668878a45351d0c71}} 
+\index{psx.\+h@{psx.\+h}!Set\+V\+Blank\+Handler@{Set\+V\+Blank\+Handler}}
+\index{Set\+V\+Blank\+Handler@{Set\+V\+Blank\+Handler}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{Set\+V\+Blank\+Handler()}{SetVBlankHandler()}}
+{\footnotesize\ttfamily void Set\+V\+Blank\+Handler (\begin{DoxyParamCaption}\item[{void($\ast$)()}]{h }\end{DoxyParamCaption})}
+
+
+
+Sets an handler function for the V\+Blank interrupt. 
+
+Used for simple, inaccurate timing -\/ the handler function gets called 60 times a second in N\+T\+SC video mode and 50 times a second in P\+AL video mode.
+
+While most games use the V\+Blank interrupt for timing as they don\textquotesingle{}t require high precision and have mechanisms to keep up with the different speed in P\+AL or N\+T\+SC video mode, for precise timing V\+Blank is inadequate. It is better to look at root counters if you desire precision.
+
+If there is already a V\+Blank handler set, this function replaces the current handler with the specified one. 
+\begin{DoxyParams}{Parameters}
+{\em h} & Pointer to (new) V\+Blank handler function \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psx_8h_a525540d937fabc0ef91462bc20fd858f}\label{psx_8h_a525540d937fabc0ef91462bc20fd858f}} 
+\index{psx.\+h@{psx.\+h}!Start\+R\+Cnt@{Start\+R\+Cnt}}
+\index{Start\+R\+Cnt@{Start\+R\+Cnt}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{Start\+R\+Cnt()}{StartRCnt()}}
+{\footnotesize\ttfamily int Start\+R\+Cnt (\begin{DoxyParamCaption}\item[{int}]{spec }\end{DoxyParamCaption})}
+
+
+
+Start root counter (documentation TO DO) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spec} & Spec \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TO DO 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psx_8h_a3a2cdf010f1fa11e282b0cf11334d6c6}\label{psx_8h_a3a2cdf010f1fa11e282b0cf11334d6c6}} 
+\index{psx.\+h@{psx.\+h}!Stop\+R\+Cnt@{Stop\+R\+Cnt}}
+\index{Stop\+R\+Cnt@{Stop\+R\+Cnt}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{Stop\+R\+Cnt()}{StopRCnt()}}
+{\footnotesize\ttfamily int Stop\+R\+Cnt (\begin{DoxyParamCaption}\item[{int}]{spec }\end{DoxyParamCaption})}
+
+
+
+Stop root counter (documentation TO DO) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spec} & Spec \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TO DO 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{psx_8h_ad2f62e6e5dab0814d5677d15950f4afd}\label{psx_8h_ad2f62e6e5dab0814d5677d15950f4afd}} 
+\index{psx.\+h@{psx.\+h}!\+\_\+\+\_\+scratchpad@{\+\_\+\+\_\+scratchpad}}
+\index{\+\_\+\+\_\+scratchpad@{\+\_\+\+\_\+scratchpad}!psx.\+h@{psx.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+scratchpad}{\_\_scratchpad}}
+{\footnotesize\ttfamily unsigned char \+\_\+\+\_\+scratchpad\mbox{[}1024\mbox{]}}
+
+
+
+Scratch pad -\/ unused data cache, that can be used as \char`\"{}fast R\+A\+M\char`\"{}. 
+

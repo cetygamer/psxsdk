@@ -1,16 +1,6 @@
 #include "spasm.h"
 
 int atoiT[64];
-int inMacro, macroArgc;
-char macroName[128];
-char macroArgv[16][256];
-int macroActualStartI, macroStartI, macroEndI, macroActualEndI;
-
-/*
- * There is preliminary macro support, but it is not finished yet,
- * and so it is disabled.
- * Have fun hacking.
- */
 
 static char *reg_names[] =
 {
@@ -27,16 +17,6 @@ static char *reg_names[] =
 	"ra",
 	NULL
 };
-
-//static void *THIS_IS_A_MACRO = (void*)1;
-
-
-/*static void addCharToText(growingText *gt, char c)
-{
-	char s[2] = {c, '\0'};
-	addText(gt, s);
-}*/
-
 
 static int regtoi(char *arg)
 {
@@ -110,27 +90,6 @@ enum
 	INITIAL, ARG_ENTER, COMMENT
 };
 
-/*static unsigned int is_spasm_sep_char(char c)
-{
-	return (c == '-' ||
-		c == '+' ||
-		c == '&' ||
-		c == '|' ||
-		c == '!' ||
-		c == '*' ||
-		c == '(' ||
-		c == ')' ||
-		c == '>' ||
-		c == '<' ||
-		c == '\n' ||
-		c == '\r' ||
-		c == '\t' ||
-		c == ',' ||
-		c == ';' ||
-		c == ' ' ||
-		c == '\0');
-}*/
-
 char *spasm_parser(char *text, int pass)
 {
 	int i, j, l, m;
@@ -145,12 +104,8 @@ char *spasm_parser(char *text, int pass)
 	curText = text;
 	unsigned int v;
 
-	for(i = 0; i < 16; i++)
-		macroArgv[i][255] = 0;
-	
 theBeginning:
 	i = 0;
-	inMacro = 0;
 	curPass = pass;
 	org_found = 0;
 	first_instruction = 1;
@@ -490,13 +445,7 @@ noMoreArgs:
 					find_label_reset();
 
 					for(l = 0; l < rawArgc; l++, insArgc++)
-					{						
-						if(!inMacro)
-						{
-						//	printf("rawArgv[%d] = %s\n", l, rawArgv[l]);
-							insArgv[l] = spasm_eval(rawArgv[l]);	
-						}
-					}
+						insArgv[l] = spasm_eval(rawArgv[l]);
 					
 					if(curPass == 1 && !find_label_ok())
 						instruction_error("Can't resolve expression");
@@ -516,17 +465,12 @@ noMoreArgs:
 theNextLine:
 		if(INSFUNC)
 		{
-			if(!inMacro)
-			{
-				if(curPass>=0)INSFUNC();
+			if(curPass>=0)INSFUNC();
 					
-				if(strcasecmp(curIns, "include") == 0 && curPass == 0)
-				{
-					goto theBeginning;
-				}
+			if(strcasecmp(curIns, "include") == 0 && curPass == 0)
+				goto theBeginning;
 			
-				first_instruction = 0;
-			}
+			first_instruction = 0;
 		}
 	}
 	

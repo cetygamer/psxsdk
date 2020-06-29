@@ -24,6 +24,11 @@ for exefixup it is GPL version 2 or newer
 Some of the libraries have a different license:
 
 libfixmath is licensed under the MIT license
+libmeidogte is licensed under version 2 of the Mozilla Public License
+
+Some of the examples have a different license:
+
+gtecube is licensed under version 2 of the Mozilla Public License
 
 some of the other tools are derived from public sources with no clear licensing, but it
 is assumed that they were public domain. In all cases, they are attributed

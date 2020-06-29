@@ -23,6 +23,12 @@
 #define FALSE 0
 #endif
 
+#define IPENDING				*((volatile unsigned int*)0x1f801070)
+#define IMASK					*((volatile unsigned int*)0x1f801074)
+#define RCNT_COUNT(x)			*((volatile unsigned int*)(0x1f801100 + (x<<4)))
+#define RCNT_MODE(x)			*((volatile unsigned int*)(0x1f801104 + (x<<4)))
+#define RCNT_TARGET(x)			*((volatile unsigned int*)(0x1f801108 + (x<<4)))
+
 /**
  * PSXSDK version information in hexadecimal format.
  *
@@ -42,21 +48,25 @@
  *   - PSXSDK 2015-07-29
  * + 0.6.00 (0x0600)
  *   - PSXSDK 2016-06-03 
+ * + 0.6.1 (0x0601)
+ *   - PSXSDK 2018-01-10
+ * + 0.6.2 (0x0602)
+ *   - PSXSDK 2019-04-10
  */
 
-#define PSXSDK_VERSION			0x0600
+#define PSXSDK_VERSION			0x0602
 
 /**
  * PSXSDK version information in string format
  */
- 
-#define PSXSDK_VERSION_STRING		"0.6.00"
+
+#define PSXSDK_VERSION_STRING		"0.6.2"
 
 /**
  * PSXSDK version date (BCD YYYY-MM-DD)
  */
 
-#define PSXSDK_VERSION_DATE		0x20160603
+#define PSXSDK_VERSION_DATE		0x20190410
 
 
 /*

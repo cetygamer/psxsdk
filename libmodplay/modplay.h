@@ -172,7 +172,6 @@ int MODUploadSamples(ModMusic *m, int base_addr);
  *
  * Usually the base voice is 0; a MOD file can have up to eight channels, so take care of that.
  *
- * A 669 file can always have 8 channels.
  * @param base_voice Desired base voice (0-23)
  */
 

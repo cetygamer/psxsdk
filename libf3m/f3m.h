@@ -41,10 +41,13 @@ typedef struct
 	uint16_t suboffs;
 	int16_t priority;
 
-	int8_t vol;
+	int8_t insvol; // assigned on note start
+	int8_t midvol; // changed on slides
+	int8_t outvol; // actual output	
 	uint8_t pan;
 
 	uint8_t vib_offs;
+	uint8_t tre_offs;
 	uint8_t rtg_count;
 
 	uint8_t eft, efp, lefp, last_note;
@@ -61,9 +64,12 @@ typedef struct
 	const uint8_t *ord_list;
 
 	int32_t speed, tempo;
+	int32_t gvol;
 	int32_t ctick, tempo_samples, tempo_wait;
 	int32_t cord, cpat, crow;
 	const uint8_t *patptr;
+	const uint8_t *patptr_next;
+	int32_t repeat_row, repeat_count;	
 
 	int sfxoffs;
 	int ccount;

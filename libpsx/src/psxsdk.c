@@ -10,15 +10,7 @@
 #include <string.h>
 #include "exception.h"
 
-#define IPENDING				*((unsigned int*)0x1f801070)
-#define IMASK					*((unsigned int*)0x1f801074)
-#define RCNT_COUNT(x)			*((unsigned int*)(0x1f801100 + (x<<4)))
-#define RCNT_MODE(x)			*((unsigned int*)(0x1f801104 + (x<<4)))
-#define RCNT_TARGET(x)		*((unsigned int*)(0x1f801108 + (x<<4)))
-
-const char *sysromver_unavail = "System ROM Version Unavailable";
-
-unsigned char padread_buf[2][8];
+static const char *sysromver_unavail = "System ROM Version Unavailable";
 
 void (*vblank_handler_callback)();
 

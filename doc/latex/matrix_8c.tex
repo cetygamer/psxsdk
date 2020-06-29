@@ -1,0 +1,53 @@
+\hypertarget{matrix_8c}{}\section{libmeidogte/matrix.c File Reference}
+\label{matrix_8c}\index{libmeidogte/matrix.\+c@{libmeidogte/matrix.\+c}}
+{\ttfamily \#include $<$meidogte.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{matrix_8c_abf0e8850281eeea2811c46d7f5a6a6b8}{Rot\+Matrix} (\hyperlink{structSVECTOR}{S\+V\+E\+C\+T\+OR} $\ast$r, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Find rotation matrix from a rotation angle. \end{DoxyCompactList}\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{matrix_8c_a76718ca67c443dff89b654bb68b4659e}{Trans\+Matrix} (\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m, \hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$r)
+\begin{DoxyCompactList}\small\item\em Give an amount of parallel transfer expressed by v to the matrix m. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{matrix_8c_abf0e8850281eeea2811c46d7f5a6a6b8}\label{matrix_8c_abf0e8850281eeea2811c46d7f5a6a6b8}} 
+\index{matrix.\+c@{matrix.\+c}!Rot\+Matrix@{Rot\+Matrix}}
+\index{Rot\+Matrix@{Rot\+Matrix}!matrix.\+c@{matrix.\+c}}
+\subsubsection{\texorpdfstring{Rot\+Matrix()}{RotMatrix()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Rot\+Matrix (\begin{DoxyParamCaption}\item[{\hyperlink{structSVECTOR}{S\+V\+E\+C\+T\+OR} $\ast$}]{r,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Find rotation matrix from a rotation angle. 
+
+(4096 = 360 degrees) 
+\begin{DoxyParams}{Parameters}
+{\em r} & Rotation angle (input) \\
+\hline
+{\em m} & Rotation matrix (output) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8c_a76718ca67c443dff89b654bb68b4659e}\label{matrix_8c_a76718ca67c443dff89b654bb68b4659e}} 
+\index{matrix.\+c@{matrix.\+c}!Trans\+Matrix@{Trans\+Matrix}}
+\index{Trans\+Matrix@{Trans\+Matrix}!matrix.\+c@{matrix.\+c}}
+\subsubsection{\texorpdfstring{Trans\+Matrix()}{TransMatrix()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Trans\+Matrix (\begin{DoxyParamCaption}\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m,  }\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{r }\end{DoxyParamCaption})}
+
+
+
+Give an amount of parallel transfer expressed by v to the matrix m. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Pointer to matrix (output) \\
+\hline
+{\em v} & Pointer to transfer vector (input) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m 
+\end{DoxyReturn}

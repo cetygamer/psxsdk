@@ -1,0 +1,285 @@
+\hypertarget{psxcdrom_8h}{}\section{libpsx/include/psxcdrom.h File Reference}
+\label{psxcdrom_8h}\index{libpsx/include/psxcdrom.\+h@{libpsx/include/psxcdrom.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{psxcdrom_8h_a5493cae4ac8dd5b9cff5a8e31937b8f2}{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+P\+L\+AY}~0x80
+\item 
+\#define \hyperlink{psxcdrom_8h_a570b8a17875864794855916450ead2a3}{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+EK}~0x40
+\item 
+\#define \hyperlink{psxcdrom_8h_a3c071ce28bb505b75993c4cc3a4947aa}{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+E\+L\+L\+O\+P\+EN}~0x10
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba3ea3c1d1d47d1cfc0461d54f1b0a394f}{Cdl\+Sync} = 0, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba542820fcf883c7e3b8544882b296f57d}{Cdl\+Nop} = 1, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba5760784a47219eafae715da0c28effbf}{Cdl\+Getstat} = 1, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba831203ad77b519ddeb05c00aa481604c}{Cdl\+Setloc} = 2, 
+\newline
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba19aaac7a37c7b773b6caa6e40f88623c}{Cdl\+Play} = 3, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba311f4e7c2c24835ad7836b6cd73b8c6f}{Cdl\+Forward} = 4, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baacbadc820004a8f47d363d0d1256f955}{Cdl\+Backward} = 5, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba6c5b06de30ec18d0e6a6696ca32d1a1a}{Cdl\+ReadN} = 6, 
+\newline
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa1225621a5004df3e8dc7b124b188dd6}{Cdl\+Standby} = 7, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bae264661598603f2bd985c5b84d7ba7f2}{Cdl\+Stop} = 8, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba998d4c8a961350091b6f85a478fb0cd7}{Cdl\+Pause} = 9, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bac7b30853945654d6afd8c10469c5f75f}{Cdl\+Init} = 10, 
+\newline
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba23de4af57321af81bd2d1f2f11cbed5d}{Cdl\+Mute} = 11, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bab5d00594b874a5a9b1789cd0cc1857fc}{Cdl\+Demute} = 12, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bac8f595a03ad80c553358ef9391b81303}{Cdl\+Setfilter} = 13, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bace8465fd91bd90539b1f47a375cc681f}{Cdl\+Setmode} = 14, 
+\newline
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bad248819e0cc11137230811eff7164da8}{Cdl\+Setparam} = 15, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bad4c4406fa16a9e17319d8521b30465f7}{Cdl\+GetlocL} = 16, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba2bf750ded8ceb3c8bc4b0ffdd97e5893}{Cdl\+GetlocP} = 17, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bafff9b1664e8c13c3f906ee1b663f5816}{Cdl\+Cmd18} = 18, 
+\newline
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba101626cad5de0c6c58b3ef4bc163dc0a}{Cdl\+Get\+TN} = 19, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55badded1fbcde940c2d3e46c92465ab349f}{Cdl\+Get\+TD} = 20, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55badf9b02643caf621b50e84959fa5fe6b6}{Cdl\+SeekL} = 21, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba6c388bcafa52eec101bef3cc6afe5402}{Cdl\+SeekP} = 22, 
+\newline
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba68bfdc0e2f1a99ce025f360619b80065}{Cdl\+Cmd23} = 23, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba3b05a20154e0a3a060cf868bf844e489}{Cdl\+Cmd24} = 24, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba62878dafd6b21ed7c05f8401282fbe79}{Cdl\+Test} = 25, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa6440182534a8e1db57e0504f0580cb1}{Cdl\+ID} = 26, 
+\newline
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba32d5c87c4c350bcf5bff9e7c548e161b}{Cdl\+ReadS} = 27, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa6500c04df95f4471748dc6fe66d19b0}{Cdl\+Reset} = 28, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba4e13cfa9a00ec2601ff793abb5d080e4}{Cdl\+Cmd29} = 29, 
+\hyperlink{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba1fafd9862d3fa5a3f885031d28fcb723}{Cdl\+Read\+T\+OC} = 30
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{psxcdrom_8h_ad8440e39efb4a0a95665bd521527ec1e}{Cd\+Send\+Command} (int cmd, int num,...)
+\item 
+int \hyperlink{psxcdrom_8h_aa81e8e59b6bc843b9c7db86790611408}{Cd\+Read\+Results} (unsigned char $\ast$out, int max)
+\begin{DoxyCompactList}\small\item\em Reads the results of a low-\/level C\+D\+R\+OM command. \end{DoxyCompactList}\item 
+int \hyperlink{psxcdrom_8h_a009c3fd4d8167b26c696a7fd93f5414d}{Cd\+Get\+Status} (void)
+\begin{DoxyCompactList}\small\item\em Gets C\+D\+R\+OM drive status. \end{DoxyCompactList}\item 
+int \hyperlink{psxcdrom_8h_ab715277846f7fc6f733d445c1ae0a85d}{Cd\+Play\+Track} (unsigned int track)
+\begin{DoxyCompactList}\small\item\em Play an Audio CD track. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{psxcdrom_8h_ab5cdb7b1cc14d146f221fe5631bf213c}{Cd\+Ram\+Read} (unsigned short addr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{psxcdrom_8h_a5493cae4ac8dd5b9cff5a8e31937b8f2}\label{psxcdrom_8h_a5493cae4ac8dd5b9cff5a8e31937b8f2}} 
+\index{psxcdrom.\+h@{psxcdrom.\+h}!C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+P\+L\+AY@{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+P\+L\+AY}}
+\index{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+P\+L\+AY@{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+P\+L\+AY}!psxcdrom.\+h@{psxcdrom.\+h}}
+\subsubsection{\texorpdfstring{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+P\+L\+AY}{CDSTATUS\_PLAY}}
+{\footnotesize\ttfamily \#define C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+P\+L\+AY~0x80}
+
+\mbox{\Hypertarget{psxcdrom_8h_a570b8a17875864794855916450ead2a3}\label{psxcdrom_8h_a570b8a17875864794855916450ead2a3}} 
+\index{psxcdrom.\+h@{psxcdrom.\+h}!C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+EK@{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+EK}}
+\index{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+EK@{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+EK}!psxcdrom.\+h@{psxcdrom.\+h}}
+\subsubsection{\texorpdfstring{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+EK}{CDSTATUS\_SEEK}}
+{\footnotesize\ttfamily \#define C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+EK~0x40}
+
+\mbox{\Hypertarget{psxcdrom_8h_a3c071ce28bb505b75993c4cc3a4947aa}\label{psxcdrom_8h_a3c071ce28bb505b75993c4cc3a4947aa}} 
+\index{psxcdrom.\+h@{psxcdrom.\+h}!C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+E\+L\+L\+O\+P\+EN@{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+E\+L\+L\+O\+P\+EN}}
+\index{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+E\+L\+L\+O\+P\+EN@{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+E\+L\+L\+O\+P\+EN}!psxcdrom.\+h@{psxcdrom.\+h}}
+\subsubsection{\texorpdfstring{C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+E\+L\+L\+O\+P\+EN}{CDSTATUS\_SHELLOPEN}}
+{\footnotesize\ttfamily \#define C\+D\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+E\+L\+L\+O\+P\+EN~0x10}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55b}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55b}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Sync@{Cdl\+Sync}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Sync@{Cdl\+Sync}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba3ea3c1d1d47d1cfc0461d54f1b0a394f}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba3ea3c1d1d47d1cfc0461d54f1b0a394f}} 
+Cdl\+Sync&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Nop@{Cdl\+Nop}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Nop@{Cdl\+Nop}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba542820fcf883c7e3b8544882b296f57d}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba542820fcf883c7e3b8544882b296f57d}} 
+Cdl\+Nop&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Getstat@{Cdl\+Getstat}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Getstat@{Cdl\+Getstat}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba5760784a47219eafae715da0c28effbf}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba5760784a47219eafae715da0c28effbf}} 
+Cdl\+Getstat&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Setloc@{Cdl\+Setloc}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Setloc@{Cdl\+Setloc}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba831203ad77b519ddeb05c00aa481604c}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba831203ad77b519ddeb05c00aa481604c}} 
+Cdl\+Setloc&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Play@{Cdl\+Play}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Play@{Cdl\+Play}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba19aaac7a37c7b773b6caa6e40f88623c}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba19aaac7a37c7b773b6caa6e40f88623c}} 
+Cdl\+Play&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Forward@{Cdl\+Forward}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Forward@{Cdl\+Forward}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba311f4e7c2c24835ad7836b6cd73b8c6f}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba311f4e7c2c24835ad7836b6cd73b8c6f}} 
+Cdl\+Forward&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Backward@{Cdl\+Backward}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Backward@{Cdl\+Backward}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baacbadc820004a8f47d363d0d1256f955}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baacbadc820004a8f47d363d0d1256f955}} 
+Cdl\+Backward&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+ReadN@{Cdl\+ReadN}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+ReadN@{Cdl\+ReadN}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba6c5b06de30ec18d0e6a6696ca32d1a1a}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba6c5b06de30ec18d0e6a6696ca32d1a1a}} 
+Cdl\+ReadN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Standby@{Cdl\+Standby}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Standby@{Cdl\+Standby}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa1225621a5004df3e8dc7b124b188dd6}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa1225621a5004df3e8dc7b124b188dd6}} 
+Cdl\+Standby&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Stop@{Cdl\+Stop}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Stop@{Cdl\+Stop}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bae264661598603f2bd985c5b84d7ba7f2}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bae264661598603f2bd985c5b84d7ba7f2}} 
+Cdl\+Stop&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Pause@{Cdl\+Pause}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Pause@{Cdl\+Pause}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba998d4c8a961350091b6f85a478fb0cd7}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba998d4c8a961350091b6f85a478fb0cd7}} 
+Cdl\+Pause&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Init@{Cdl\+Init}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Init@{Cdl\+Init}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bac7b30853945654d6afd8c10469c5f75f}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bac7b30853945654d6afd8c10469c5f75f}} 
+Cdl\+Init&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Mute@{Cdl\+Mute}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Mute@{Cdl\+Mute}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba23de4af57321af81bd2d1f2f11cbed5d}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba23de4af57321af81bd2d1f2f11cbed5d}} 
+Cdl\+Mute&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Demute@{Cdl\+Demute}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Demute@{Cdl\+Demute}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bab5d00594b874a5a9b1789cd0cc1857fc}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bab5d00594b874a5a9b1789cd0cc1857fc}} 
+Cdl\+Demute&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Setfilter@{Cdl\+Setfilter}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Setfilter@{Cdl\+Setfilter}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bac8f595a03ad80c553358ef9391b81303}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bac8f595a03ad80c553358ef9391b81303}} 
+Cdl\+Setfilter&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Setmode@{Cdl\+Setmode}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Setmode@{Cdl\+Setmode}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bace8465fd91bd90539b1f47a375cc681f}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bace8465fd91bd90539b1f47a375cc681f}} 
+Cdl\+Setmode&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Setparam@{Cdl\+Setparam}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Setparam@{Cdl\+Setparam}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bad248819e0cc11137230811eff7164da8}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bad248819e0cc11137230811eff7164da8}} 
+Cdl\+Setparam&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+GetlocL@{Cdl\+GetlocL}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+GetlocL@{Cdl\+GetlocL}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bad4c4406fa16a9e17319d8521b30465f7}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bad4c4406fa16a9e17319d8521b30465f7}} 
+Cdl\+GetlocL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+GetlocP@{Cdl\+GetlocP}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+GetlocP@{Cdl\+GetlocP}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba2bf750ded8ceb3c8bc4b0ffdd97e5893}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba2bf750ded8ceb3c8bc4b0ffdd97e5893}} 
+Cdl\+GetlocP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Cmd18@{Cdl\+Cmd18}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Cmd18@{Cdl\+Cmd18}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bafff9b1664e8c13c3f906ee1b663f5816}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55bafff9b1664e8c13c3f906ee1b663f5816}} 
+Cdl\+Cmd18&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Get\+TN@{Cdl\+Get\+TN}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Get\+TN@{Cdl\+Get\+TN}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba101626cad5de0c6c58b3ef4bc163dc0a}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba101626cad5de0c6c58b3ef4bc163dc0a}} 
+Cdl\+Get\+TN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Get\+TD@{Cdl\+Get\+TD}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Get\+TD@{Cdl\+Get\+TD}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55badded1fbcde940c2d3e46c92465ab349f}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55badded1fbcde940c2d3e46c92465ab349f}} 
+Cdl\+Get\+TD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+SeekL@{Cdl\+SeekL}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+SeekL@{Cdl\+SeekL}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55badf9b02643caf621b50e84959fa5fe6b6}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55badf9b02643caf621b50e84959fa5fe6b6}} 
+Cdl\+SeekL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+SeekP@{Cdl\+SeekP}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+SeekP@{Cdl\+SeekP}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba6c388bcafa52eec101bef3cc6afe5402}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba6c388bcafa52eec101bef3cc6afe5402}} 
+Cdl\+SeekP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Cmd23@{Cdl\+Cmd23}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Cmd23@{Cdl\+Cmd23}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba68bfdc0e2f1a99ce025f360619b80065}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba68bfdc0e2f1a99ce025f360619b80065}} 
+Cdl\+Cmd23&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Cmd24@{Cdl\+Cmd24}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Cmd24@{Cdl\+Cmd24}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba3b05a20154e0a3a060cf868bf844e489}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba3b05a20154e0a3a060cf868bf844e489}} 
+Cdl\+Cmd24&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Test@{Cdl\+Test}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Test@{Cdl\+Test}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba62878dafd6b21ed7c05f8401282fbe79}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba62878dafd6b21ed7c05f8401282fbe79}} 
+Cdl\+Test&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+ID@{Cdl\+ID}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+ID@{Cdl\+ID}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa6440182534a8e1db57e0504f0580cb1}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa6440182534a8e1db57e0504f0580cb1}} 
+Cdl\+ID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+ReadS@{Cdl\+ReadS}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+ReadS@{Cdl\+ReadS}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba32d5c87c4c350bcf5bff9e7c548e161b}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba32d5c87c4c350bcf5bff9e7c548e161b}} 
+Cdl\+ReadS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Reset@{Cdl\+Reset}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Reset@{Cdl\+Reset}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa6500c04df95f4471748dc6fe66d19b0}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55baa6500c04df95f4471748dc6fe66d19b0}} 
+Cdl\+Reset&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Cmd29@{Cdl\+Cmd29}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Cmd29@{Cdl\+Cmd29}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba4e13cfa9a00ec2601ff793abb5d080e4}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba4e13cfa9a00ec2601ff793abb5d080e4}} 
+Cdl\+Cmd29&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cdl\+Read\+T\+OC@{Cdl\+Read\+T\+OC}!psxcdrom.\+h@{psxcdrom.\+h}}\index{psxcdrom.\+h@{psxcdrom.\+h}!Cdl\+Read\+T\+OC@{Cdl\+Read\+T\+OC}}}\mbox{\Hypertarget{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba1fafd9862d3fa5a3f885031d28fcb723}\label{psxcdrom_8h_a06fc87d81c62e9abb8790b6e5713c55ba1fafd9862d3fa5a3f885031d28fcb723}} 
+Cdl\+Read\+T\+OC&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{psxcdrom_8h_a009c3fd4d8167b26c696a7fd93f5414d}\label{psxcdrom_8h_a009c3fd4d8167b26c696a7fd93f5414d}} 
+\index{psxcdrom.\+h@{psxcdrom.\+h}!Cd\+Get\+Status@{Cd\+Get\+Status}}
+\index{Cd\+Get\+Status@{Cd\+Get\+Status}!psxcdrom.\+h@{psxcdrom.\+h}}
+\subsubsection{\texorpdfstring{Cd\+Get\+Status()}{CdGetStatus()}}
+{\footnotesize\ttfamily int Cd\+Get\+Status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets C\+D\+R\+OM drive status. 
+
+\begin{DoxyReturn}{Returns}
+C\+D\+R\+OM drive status bitmask 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psxcdrom_8h_ab715277846f7fc6f733d445c1ae0a85d}\label{psxcdrom_8h_ab715277846f7fc6f733d445c1ae0a85d}} 
+\index{psxcdrom.\+h@{psxcdrom.\+h}!Cd\+Play\+Track@{Cd\+Play\+Track}}
+\index{Cd\+Play\+Track@{Cd\+Play\+Track}!psxcdrom.\+h@{psxcdrom.\+h}}
+\subsubsection{\texorpdfstring{Cd\+Play\+Track()}{CdPlayTrack()}}
+{\footnotesize\ttfamily int Cd\+Play\+Track (\begin{DoxyParamCaption}\item[{unsigned int}]{track }\end{DoxyParamCaption})}
+
+
+
+Play an Audio CD track. 
+
+\begin{DoxyReturn}{Returns}
+1 on success, 0 on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psxcdrom_8h_ab5cdb7b1cc14d146f221fe5631bf213c}\label{psxcdrom_8h_ab5cdb7b1cc14d146f221fe5631bf213c}} 
+\index{psxcdrom.\+h@{psxcdrom.\+h}!Cd\+Ram\+Read@{Cd\+Ram\+Read}}
+\index{Cd\+Ram\+Read@{Cd\+Ram\+Read}!psxcdrom.\+h@{psxcdrom.\+h}}
+\subsubsection{\texorpdfstring{Cd\+Ram\+Read()}{CdRamRead()}}
+{\footnotesize\ttfamily unsigned char Cd\+Ram\+Read (\begin{DoxyParamCaption}\item[{unsigned short}]{addr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psxcdrom_8h_aa81e8e59b6bc843b9c7db86790611408}\label{psxcdrom_8h_aa81e8e59b6bc843b9c7db86790611408}} 
+\index{psxcdrom.\+h@{psxcdrom.\+h}!Cd\+Read\+Results@{Cd\+Read\+Results}}
+\index{Cd\+Read\+Results@{Cd\+Read\+Results}!psxcdrom.\+h@{psxcdrom.\+h}}
+\subsubsection{\texorpdfstring{Cd\+Read\+Results()}{CdReadResults()}}
+{\footnotesize\ttfamily int Cd\+Read\+Results (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{out,  }\item[{int}]{max }\end{DoxyParamCaption})}
+
+
+
+Reads the results of a low-\/level C\+D\+R\+OM command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Pointer to array of chars where the output will be stored \\
+\hline
+{\em max} & Maximum number of bytes to store\\
+\hline
+\end{DoxyParams}
+Return value\+: number of results. \mbox{\Hypertarget{psxcdrom_8h_ad8440e39efb4a0a95665bd521527ec1e}\label{psxcdrom_8h_ad8440e39efb4a0a95665bd521527ec1e}} 
+\index{psxcdrom.\+h@{psxcdrom.\+h}!Cd\+Send\+Command@{Cd\+Send\+Command}}
+\index{Cd\+Send\+Command@{Cd\+Send\+Command}!psxcdrom.\+h@{psxcdrom.\+h}}
+\subsubsection{\texorpdfstring{Cd\+Send\+Command()}{CdSendCommand()}}
+{\footnotesize\ttfamily void Cd\+Send\+Command (\begin{DoxyParamCaption}\item[{int}]{cmd,  }\item[{int}]{num,  }\item[{}]{... }\end{DoxyParamCaption})}
+

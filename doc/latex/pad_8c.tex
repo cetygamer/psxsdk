@@ -1,0 +1,256 @@
+\hypertarget{pad_8c}{}\section{libpsx/src/pad.c File Reference}
+\label{pad_8c}\index{libpsx/src/pad.\+c@{libpsx/src/pad.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$strings.\+h$>$}\newline
+{\ttfamily \#include $<$psx.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{pad_8c_a64b27e3ffa4b26e046d9943e452612e7}{T\+X\+\_\+\+R\+DY}~0x0001
+\item 
+\#define \hyperlink{pad_8c_a69ed0bfdeb794595dbca1d5182bece1f}{R\+X\+\_\+\+R\+DY}~0x0002
+\item 
+\#define \hyperlink{pad_8c_ae4034d6a21b6646c8710d09e43bd9383}{T\+X\+\_\+\+E\+M\+P\+TY}~0x0004
+\item 
+\#define \hyperlink{pad_8c_ac8a34f3fae782b1f62195c0d8f1d5d38}{P\+A\+R\+I\+T\+Y\+\_\+\+E\+RR}~0x0008
+\item 
+\#define \hyperlink{pad_8c_adc9b31ed1923734b4148e4fb14cba383}{R\+X\+\_\+\+O\+V\+E\+R\+R\+UN}~0x0010
+\item 
+\#define \hyperlink{pad_8c_a19cf3fb3576b5fa62d2a0d781e2a724b}{F\+R\+A\+M\+I\+N\+G\+\_\+\+E\+RR}~0x0020
+\item 
+\#define \hyperlink{pad_8c_aec3e8b1612895d8f22fa24fb82326db1}{S\+Y\+N\+C\+\_\+\+D\+E\+T\+E\+CT}~0x0040
+\item 
+\#define \hyperlink{pad_8c_aa94aa7be4f567346163b45d1c18ec0a5}{D\+SR}~0x0080
+\item 
+\#define \hyperlink{pad_8c_a9d9ce8cebc572a42e7b4ab9e92c3a350}{C\+TS}~0x0100
+\item 
+\#define \hyperlink{pad_8c_a46fc8a17c0936cda0556a966cc2f62fb}{I\+RQ}~0x0200
+\item 
+\#define \hyperlink{pad_8c_a1fb085d2f38743a108af457662d400f0}{T\+X\+\_\+\+P\+E\+RM}~0x0001
+\item 
+\#define \hyperlink{pad_8c_a67198df5376db153ccd642a81d2623ad}{D\+TR}~0x0002
+\item 
+\#define \hyperlink{pad_8c_a195d685157e18ec10d3e9152ffad56fa}{R\+X\+\_\+\+P\+E\+RM}~0x0004
+\item 
+\#define \hyperlink{pad_8c_abe022c8f09db1f0680a92293523f25dd}{B\+R\+E\+AK}~0x0008
+\item 
+\#define \hyperlink{pad_8c_a6c2a7ddaedc9760e1b37b5bfb044f273}{R\+E\+S\+E\+T\+\_\+\+E\+RR}~0x0010
+\item 
+\#define \hyperlink{pad_8c_a5da46cdb9a2133d1b4f0db71a332ba2e}{R\+TS}~0x0020
+\item 
+\#define \hyperlink{pad_8c_a6f2835473b0e22122ab772673a544160}{P\+A\+D\+S\+I\+O\+\_\+\+R\+E\+S\+ET}~0x0040
+\item 
+\#define \hyperlink{pad_8c_a5e3f08c0f56d084619e1402af14811fb}{P\+A\+D\+S\+I\+O\+\_\+\+D\+A\+TA}(x)~$\ast$((volatile unsigned char$\ast$)(0x1f801040 + (x$<$$<$4)))
+\item 
+\#define \hyperlink{pad_8c_a35e6d274a5e1820a5f66b8bedf386f31}{P\+A\+D\+S\+I\+O\+\_\+\+S\+T\+A\+T\+US}(x)~$\ast$((volatile unsigned short$\ast$)(0x1f801044 + (x$<$$<$4)))
+\item 
+\#define \hyperlink{pad_8c_abcd34b53de1d0f7961d6a76f9ab7ae6f}{P\+A\+D\+S\+I\+O\+\_\+\+M\+O\+DE}(x)~$\ast$((volatile unsigned short$\ast$)(0x1f801048 + (x$<$$<$4)))
+\item 
+\#define \hyperlink{pad_8c_aeed8d4b2a6a4adc9fcecd1ebe7d7f9a1}{P\+A\+D\+S\+I\+O\+\_\+\+C\+T\+RL}(x)~$\ast$((volatile unsigned short$\ast$)(0x1f80104a + (x$<$$<$4)))
+\item 
+\#define \hyperlink{pad_8c_acdc9a4ef5ec30a444c9349b201b1ea80}{P\+A\+D\+S\+I\+O\+\_\+\+B\+A\+UD}(x)~$\ast$((volatile unsigned short$\ast$)(0x1f80104e + (x$<$$<$4)))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{pad_8c_a4b30613b671fc797b84d3f58850028c3}{Query\+P\+AD} (int pad\+\_\+n, unsigned char $\ast$in, unsigned char $\ast$out, int \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+void \hyperlink{pad_8c_a1a7913860aca3e046be1f9ab78c3bd35}{pad\+\_\+read\+\_\+raw} (int pad\+\_\+n, unsigned char $\ast$arr)
+\item 
+void \hyperlink{pad_8c_a6b4672ce2a7733dd1951e4cd55fad05e}{pad\+\_\+escape\+\_\+mode} (int pad\+\_\+n, int enable)
+\item 
+void \hyperlink{pad_8c_aacb281f3d0695da7848867afb2638280}{pad\+\_\+enable\+\_\+vibration} (int pad\+\_\+n)
+\item 
+void \hyperlink{pad_8c_ac517bbac0d262ee7ee516afaebecc589}{pad\+\_\+set\+\_\+vibration} (int pad\+\_\+n, unsigned char small, unsigned char big)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{pad_8c_a06c7ed09323a189e67ac3bef90852523}{readpad\+\_\+vibrations} \mbox{[}4\mbox{]}\mbox{[}2\mbox{]}
+\item 
+int \hyperlink{pad_8c_a9e6bc5909665256bf9829e3b23fb5d09}{querypad\+\_\+rxrdy} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pad_8c_abe022c8f09db1f0680a92293523f25dd}\label{pad_8c_abe022c8f09db1f0680a92293523f25dd}} 
+\index{pad.\+c@{pad.\+c}!B\+R\+E\+AK@{B\+R\+E\+AK}}
+\index{B\+R\+E\+AK@{B\+R\+E\+AK}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{B\+R\+E\+AK}{BREAK}}
+{\footnotesize\ttfamily \#define B\+R\+E\+AK~0x0008}
+
+\mbox{\Hypertarget{pad_8c_a9d9ce8cebc572a42e7b4ab9e92c3a350}\label{pad_8c_a9d9ce8cebc572a42e7b4ab9e92c3a350}} 
+\index{pad.\+c@{pad.\+c}!C\+TS@{C\+TS}}
+\index{C\+TS@{C\+TS}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{C\+TS}{CTS}}
+{\footnotesize\ttfamily \#define C\+TS~0x0100}
+
+\mbox{\Hypertarget{pad_8c_aa94aa7be4f567346163b45d1c18ec0a5}\label{pad_8c_aa94aa7be4f567346163b45d1c18ec0a5}} 
+\index{pad.\+c@{pad.\+c}!D\+SR@{D\+SR}}
+\index{D\+SR@{D\+SR}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{D\+SR}{DSR}}
+{\footnotesize\ttfamily \#define D\+SR~0x0080}
+
+\mbox{\Hypertarget{pad_8c_a67198df5376db153ccd642a81d2623ad}\label{pad_8c_a67198df5376db153ccd642a81d2623ad}} 
+\index{pad.\+c@{pad.\+c}!D\+TR@{D\+TR}}
+\index{D\+TR@{D\+TR}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{D\+TR}{DTR}}
+{\footnotesize\ttfamily \#define D\+TR~0x0002}
+
+\mbox{\Hypertarget{pad_8c_a19cf3fb3576b5fa62d2a0d781e2a724b}\label{pad_8c_a19cf3fb3576b5fa62d2a0d781e2a724b}} 
+\index{pad.\+c@{pad.\+c}!F\+R\+A\+M\+I\+N\+G\+\_\+\+E\+RR@{F\+R\+A\+M\+I\+N\+G\+\_\+\+E\+RR}}
+\index{F\+R\+A\+M\+I\+N\+G\+\_\+\+E\+RR@{F\+R\+A\+M\+I\+N\+G\+\_\+\+E\+RR}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{F\+R\+A\+M\+I\+N\+G\+\_\+\+E\+RR}{FRAMING\_ERR}}
+{\footnotesize\ttfamily \#define F\+R\+A\+M\+I\+N\+G\+\_\+\+E\+RR~0x0020}
+
+\mbox{\Hypertarget{pad_8c_a46fc8a17c0936cda0556a966cc2f62fb}\label{pad_8c_a46fc8a17c0936cda0556a966cc2f62fb}} 
+\index{pad.\+c@{pad.\+c}!I\+RQ@{I\+RQ}}
+\index{I\+RQ@{I\+RQ}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{I\+RQ}{IRQ}}
+{\footnotesize\ttfamily \#define I\+RQ~0x0200}
+
+\mbox{\Hypertarget{pad_8c_acdc9a4ef5ec30a444c9349b201b1ea80}\label{pad_8c_acdc9a4ef5ec30a444c9349b201b1ea80}} 
+\index{pad.\+c@{pad.\+c}!P\+A\+D\+S\+I\+O\+\_\+\+B\+A\+UD@{P\+A\+D\+S\+I\+O\+\_\+\+B\+A\+UD}}
+\index{P\+A\+D\+S\+I\+O\+\_\+\+B\+A\+UD@{P\+A\+D\+S\+I\+O\+\_\+\+B\+A\+UD}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+D\+S\+I\+O\+\_\+\+B\+A\+UD}{PADSIO\_BAUD}}
+{\footnotesize\ttfamily \#define P\+A\+D\+S\+I\+O\+\_\+\+B\+A\+UD(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~$\ast$((volatile unsigned short$\ast$)(0x1f80104e + (x$<$$<$4)))}
+
+\mbox{\Hypertarget{pad_8c_aeed8d4b2a6a4adc9fcecd1ebe7d7f9a1}\label{pad_8c_aeed8d4b2a6a4adc9fcecd1ebe7d7f9a1}} 
+\index{pad.\+c@{pad.\+c}!P\+A\+D\+S\+I\+O\+\_\+\+C\+T\+RL@{P\+A\+D\+S\+I\+O\+\_\+\+C\+T\+RL}}
+\index{P\+A\+D\+S\+I\+O\+\_\+\+C\+T\+RL@{P\+A\+D\+S\+I\+O\+\_\+\+C\+T\+RL}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+D\+S\+I\+O\+\_\+\+C\+T\+RL}{PADSIO\_CTRL}}
+{\footnotesize\ttfamily \#define P\+A\+D\+S\+I\+O\+\_\+\+C\+T\+RL(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~$\ast$((volatile unsigned short$\ast$)(0x1f80104a + (x$<$$<$4)))}
+
+\mbox{\Hypertarget{pad_8c_a5e3f08c0f56d084619e1402af14811fb}\label{pad_8c_a5e3f08c0f56d084619e1402af14811fb}} 
+\index{pad.\+c@{pad.\+c}!P\+A\+D\+S\+I\+O\+\_\+\+D\+A\+TA@{P\+A\+D\+S\+I\+O\+\_\+\+D\+A\+TA}}
+\index{P\+A\+D\+S\+I\+O\+\_\+\+D\+A\+TA@{P\+A\+D\+S\+I\+O\+\_\+\+D\+A\+TA}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+D\+S\+I\+O\+\_\+\+D\+A\+TA}{PADSIO\_DATA}}
+{\footnotesize\ttfamily \#define P\+A\+D\+S\+I\+O\+\_\+\+D\+A\+TA(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~$\ast$((volatile unsigned char$\ast$)(0x1f801040 + (x$<$$<$4)))}
+
+\mbox{\Hypertarget{pad_8c_abcd34b53de1d0f7961d6a76f9ab7ae6f}\label{pad_8c_abcd34b53de1d0f7961d6a76f9ab7ae6f}} 
+\index{pad.\+c@{pad.\+c}!P\+A\+D\+S\+I\+O\+\_\+\+M\+O\+DE@{P\+A\+D\+S\+I\+O\+\_\+\+M\+O\+DE}}
+\index{P\+A\+D\+S\+I\+O\+\_\+\+M\+O\+DE@{P\+A\+D\+S\+I\+O\+\_\+\+M\+O\+DE}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+D\+S\+I\+O\+\_\+\+M\+O\+DE}{PADSIO\_MODE}}
+{\footnotesize\ttfamily \#define P\+A\+D\+S\+I\+O\+\_\+\+M\+O\+DE(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~$\ast$((volatile unsigned short$\ast$)(0x1f801048 + (x$<$$<$4)))}
+
+\mbox{\Hypertarget{pad_8c_a6f2835473b0e22122ab772673a544160}\label{pad_8c_a6f2835473b0e22122ab772673a544160}} 
+\index{pad.\+c@{pad.\+c}!P\+A\+D\+S\+I\+O\+\_\+\+R\+E\+S\+ET@{P\+A\+D\+S\+I\+O\+\_\+\+R\+E\+S\+ET}}
+\index{P\+A\+D\+S\+I\+O\+\_\+\+R\+E\+S\+ET@{P\+A\+D\+S\+I\+O\+\_\+\+R\+E\+S\+ET}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+D\+S\+I\+O\+\_\+\+R\+E\+S\+ET}{PADSIO\_RESET}}
+{\footnotesize\ttfamily \#define P\+A\+D\+S\+I\+O\+\_\+\+R\+E\+S\+ET~0x0040}
+
+\mbox{\Hypertarget{pad_8c_a35e6d274a5e1820a5f66b8bedf386f31}\label{pad_8c_a35e6d274a5e1820a5f66b8bedf386f31}} 
+\index{pad.\+c@{pad.\+c}!P\+A\+D\+S\+I\+O\+\_\+\+S\+T\+A\+T\+US@{P\+A\+D\+S\+I\+O\+\_\+\+S\+T\+A\+T\+US}}
+\index{P\+A\+D\+S\+I\+O\+\_\+\+S\+T\+A\+T\+US@{P\+A\+D\+S\+I\+O\+\_\+\+S\+T\+A\+T\+US}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+D\+S\+I\+O\+\_\+\+S\+T\+A\+T\+US}{PADSIO\_STATUS}}
+{\footnotesize\ttfamily \#define P\+A\+D\+S\+I\+O\+\_\+\+S\+T\+A\+T\+US(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~$\ast$((volatile unsigned short$\ast$)(0x1f801044 + (x$<$$<$4)))}
+
+\mbox{\Hypertarget{pad_8c_ac8a34f3fae782b1f62195c0d8f1d5d38}\label{pad_8c_ac8a34f3fae782b1f62195c0d8f1d5d38}} 
+\index{pad.\+c@{pad.\+c}!P\+A\+R\+I\+T\+Y\+\_\+\+E\+RR@{P\+A\+R\+I\+T\+Y\+\_\+\+E\+RR}}
+\index{P\+A\+R\+I\+T\+Y\+\_\+\+E\+RR@{P\+A\+R\+I\+T\+Y\+\_\+\+E\+RR}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+R\+I\+T\+Y\+\_\+\+E\+RR}{PARITY\_ERR}}
+{\footnotesize\ttfamily \#define P\+A\+R\+I\+T\+Y\+\_\+\+E\+RR~0x0008}
+
+\mbox{\Hypertarget{pad_8c_a6c2a7ddaedc9760e1b37b5bfb044f273}\label{pad_8c_a6c2a7ddaedc9760e1b37b5bfb044f273}} 
+\index{pad.\+c@{pad.\+c}!R\+E\+S\+E\+T\+\_\+\+E\+RR@{R\+E\+S\+E\+T\+\_\+\+E\+RR}}
+\index{R\+E\+S\+E\+T\+\_\+\+E\+RR@{R\+E\+S\+E\+T\+\_\+\+E\+RR}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+S\+E\+T\+\_\+\+E\+RR}{RESET\_ERR}}
+{\footnotesize\ttfamily \#define R\+E\+S\+E\+T\+\_\+\+E\+RR~0x0010}
+
+\mbox{\Hypertarget{pad_8c_a5da46cdb9a2133d1b4f0db71a332ba2e}\label{pad_8c_a5da46cdb9a2133d1b4f0db71a332ba2e}} 
+\index{pad.\+c@{pad.\+c}!R\+TS@{R\+TS}}
+\index{R\+TS@{R\+TS}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{R\+TS}{RTS}}
+{\footnotesize\ttfamily \#define R\+TS~0x0020}
+
+\mbox{\Hypertarget{pad_8c_adc9b31ed1923734b4148e4fb14cba383}\label{pad_8c_adc9b31ed1923734b4148e4fb14cba383}} 
+\index{pad.\+c@{pad.\+c}!R\+X\+\_\+\+O\+V\+E\+R\+R\+UN@{R\+X\+\_\+\+O\+V\+E\+R\+R\+UN}}
+\index{R\+X\+\_\+\+O\+V\+E\+R\+R\+UN@{R\+X\+\_\+\+O\+V\+E\+R\+R\+UN}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+O\+V\+E\+R\+R\+UN}{RX\_OVERRUN}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+O\+V\+E\+R\+R\+UN~0x0010}
+
+\mbox{\Hypertarget{pad_8c_a195d685157e18ec10d3e9152ffad56fa}\label{pad_8c_a195d685157e18ec10d3e9152ffad56fa}} 
+\index{pad.\+c@{pad.\+c}!R\+X\+\_\+\+P\+E\+RM@{R\+X\+\_\+\+P\+E\+RM}}
+\index{R\+X\+\_\+\+P\+E\+RM@{R\+X\+\_\+\+P\+E\+RM}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+P\+E\+RM}{RX\_PERM}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+P\+E\+RM~0x0004}
+
+\mbox{\Hypertarget{pad_8c_a69ed0bfdeb794595dbca1d5182bece1f}\label{pad_8c_a69ed0bfdeb794595dbca1d5182bece1f}} 
+\index{pad.\+c@{pad.\+c}!R\+X\+\_\+\+R\+DY@{R\+X\+\_\+\+R\+DY}}
+\index{R\+X\+\_\+\+R\+DY@{R\+X\+\_\+\+R\+DY}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+R\+DY}{RX\_RDY}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+R\+DY~0x0002}
+
+\mbox{\Hypertarget{pad_8c_aec3e8b1612895d8f22fa24fb82326db1}\label{pad_8c_aec3e8b1612895d8f22fa24fb82326db1}} 
+\index{pad.\+c@{pad.\+c}!S\+Y\+N\+C\+\_\+\+D\+E\+T\+E\+CT@{S\+Y\+N\+C\+\_\+\+D\+E\+T\+E\+CT}}
+\index{S\+Y\+N\+C\+\_\+\+D\+E\+T\+E\+CT@{S\+Y\+N\+C\+\_\+\+D\+E\+T\+E\+CT}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{S\+Y\+N\+C\+\_\+\+D\+E\+T\+E\+CT}{SYNC\_DETECT}}
+{\footnotesize\ttfamily \#define S\+Y\+N\+C\+\_\+\+D\+E\+T\+E\+CT~0x0040}
+
+\mbox{\Hypertarget{pad_8c_ae4034d6a21b6646c8710d09e43bd9383}\label{pad_8c_ae4034d6a21b6646c8710d09e43bd9383}} 
+\index{pad.\+c@{pad.\+c}!T\+X\+\_\+\+E\+M\+P\+TY@{T\+X\+\_\+\+E\+M\+P\+TY}}
+\index{T\+X\+\_\+\+E\+M\+P\+TY@{T\+X\+\_\+\+E\+M\+P\+TY}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+E\+M\+P\+TY}{TX\_EMPTY}}
+{\footnotesize\ttfamily \#define T\+X\+\_\+\+E\+M\+P\+TY~0x0004}
+
+\mbox{\Hypertarget{pad_8c_a1fb085d2f38743a108af457662d400f0}\label{pad_8c_a1fb085d2f38743a108af457662d400f0}} 
+\index{pad.\+c@{pad.\+c}!T\+X\+\_\+\+P\+E\+RM@{T\+X\+\_\+\+P\+E\+RM}}
+\index{T\+X\+\_\+\+P\+E\+RM@{T\+X\+\_\+\+P\+E\+RM}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+P\+E\+RM}{TX\_PERM}}
+{\footnotesize\ttfamily \#define T\+X\+\_\+\+P\+E\+RM~0x0001}
+
+\mbox{\Hypertarget{pad_8c_a64b27e3ffa4b26e046d9943e452612e7}\label{pad_8c_a64b27e3ffa4b26e046d9943e452612e7}} 
+\index{pad.\+c@{pad.\+c}!T\+X\+\_\+\+R\+DY@{T\+X\+\_\+\+R\+DY}}
+\index{T\+X\+\_\+\+R\+DY@{T\+X\+\_\+\+R\+DY}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+R\+DY}{TX\_RDY}}
+{\footnotesize\ttfamily \#define T\+X\+\_\+\+R\+DY~0x0001}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pad_8c_aacb281f3d0695da7848867afb2638280}\label{pad_8c_aacb281f3d0695da7848867afb2638280}} 
+\index{pad.\+c@{pad.\+c}!pad\+\_\+enable\+\_\+vibration@{pad\+\_\+enable\+\_\+vibration}}
+\index{pad\+\_\+enable\+\_\+vibration@{pad\+\_\+enable\+\_\+vibration}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{pad\+\_\+enable\+\_\+vibration()}{pad\_enable\_vibration()}}
+{\footnotesize\ttfamily void pad\+\_\+enable\+\_\+vibration (\begin{DoxyParamCaption}\item[{int}]{pad\+\_\+n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pad_8c_a6b4672ce2a7733dd1951e4cd55fad05e}\label{pad_8c_a6b4672ce2a7733dd1951e4cd55fad05e}} 
+\index{pad.\+c@{pad.\+c}!pad\+\_\+escape\+\_\+mode@{pad\+\_\+escape\+\_\+mode}}
+\index{pad\+\_\+escape\+\_\+mode@{pad\+\_\+escape\+\_\+mode}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{pad\+\_\+escape\+\_\+mode()}{pad\_escape\_mode()}}
+{\footnotesize\ttfamily void pad\+\_\+escape\+\_\+mode (\begin{DoxyParamCaption}\item[{int}]{pad\+\_\+n,  }\item[{int}]{enable }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pad_8c_a1a7913860aca3e046be1f9ab78c3bd35}\label{pad_8c_a1a7913860aca3e046be1f9ab78c3bd35}} 
+\index{pad.\+c@{pad.\+c}!pad\+\_\+read\+\_\+raw@{pad\+\_\+read\+\_\+raw}}
+\index{pad\+\_\+read\+\_\+raw@{pad\+\_\+read\+\_\+raw}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{pad\+\_\+read\+\_\+raw()}{pad\_read\_raw()}}
+{\footnotesize\ttfamily void pad\+\_\+read\+\_\+raw (\begin{DoxyParamCaption}\item[{int}]{pad\+\_\+n,  }\item[{unsigned char $\ast$}]{arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pad_8c_ac517bbac0d262ee7ee516afaebecc589}\label{pad_8c_ac517bbac0d262ee7ee516afaebecc589}} 
+\index{pad.\+c@{pad.\+c}!pad\+\_\+set\+\_\+vibration@{pad\+\_\+set\+\_\+vibration}}
+\index{pad\+\_\+set\+\_\+vibration@{pad\+\_\+set\+\_\+vibration}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{pad\+\_\+set\+\_\+vibration()}{pad\_set\_vibration()}}
+{\footnotesize\ttfamily void pad\+\_\+set\+\_\+vibration (\begin{DoxyParamCaption}\item[{int}]{pad\+\_\+n,  }\item[{unsigned char}]{small,  }\item[{unsigned char}]{big }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pad_8c_a4b30613b671fc797b84d3f58850028c3}\label{pad_8c_a4b30613b671fc797b84d3f58850028c3}} 
+\index{pad.\+c@{pad.\+c}!Query\+P\+AD@{Query\+P\+AD}}
+\index{Query\+P\+AD@{Query\+P\+AD}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{Query\+P\+A\+D()}{QueryPAD()}}
+{\footnotesize\ttfamily void Query\+P\+AD (\begin{DoxyParamCaption}\item[{int}]{pad\+\_\+n,  }\item[{unsigned char $\ast$}]{in,  }\item[{unsigned char $\ast$}]{out,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{pad_8c_a9e6bc5909665256bf9829e3b23fb5d09}\label{pad_8c_a9e6bc5909665256bf9829e3b23fb5d09}} 
+\index{pad.\+c@{pad.\+c}!querypad\+\_\+rxrdy@{querypad\+\_\+rxrdy}}
+\index{querypad\+\_\+rxrdy@{querypad\+\_\+rxrdy}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{querypad\+\_\+rxrdy}{querypad\_rxrdy}}
+{\footnotesize\ttfamily int querypad\+\_\+rxrdy = 1}
+
+\mbox{\Hypertarget{pad_8c_a06c7ed09323a189e67ac3bef90852523}\label{pad_8c_a06c7ed09323a189e67ac3bef90852523}} 
+\index{pad.\+c@{pad.\+c}!readpad\+\_\+vibrations@{readpad\+\_\+vibrations}}
+\index{readpad\+\_\+vibrations@{readpad\+\_\+vibrations}!pad.\+c@{pad.\+c}}
+\subsubsection{\texorpdfstring{readpad\+\_\+vibrations}{readpad\_vibrations}}
+{\footnotesize\ttfamily unsigned char readpad\+\_\+vibrations\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}}
+

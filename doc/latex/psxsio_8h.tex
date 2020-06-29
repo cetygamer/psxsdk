@@ -1,0 +1,322 @@
+\hypertarget{psxsio_8h}{}\section{libpsx/include/psxsio.h File Reference}
+\label{psxsio_8h}\index{libpsx/include/psxsio.\+h@{libpsx/include/psxsio.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{psxsio_8h_ab63389b4cf416afbf9778225c44ccc64}{S\+I\+O\+\_\+\+T\+X\+\_\+\+RX}~$\ast$((volatile unsigned char$\ast$)0x1\+F801050)
+\begin{DoxyCompactList}\small\item\em S\+IO F\+I\+FO Buffer (T\+X/\+RX) Register \mbox{[}Read/\+Write\mbox{]}. \end{DoxyCompactList}\item 
+\#define \hyperlink{psxsio_8h_a8a17a79caefd82864738c8f46dd18f21}{S\+I\+O\+\_\+\+S\+T\+AT}~$\ast$((volatile unsigned short$\ast$)0x1\+F801054)
+\begin{DoxyCompactList}\small\item\em S\+IO Status Register \mbox{[}Read Only\mbox{]}. \end{DoxyCompactList}\item 
+\#define \hyperlink{psxsio_8h_aeb825ba47f885597c3854a26de92f500}{S\+I\+O\+\_\+\+M\+O\+DE}~$\ast$((volatile unsigned short$\ast$)0x1\+F801058)
+\begin{DoxyCompactList}\small\item\em S\+IO Mode Register \mbox{[}Read/\+Write\mbox{]}. \end{DoxyCompactList}\item 
+\#define \hyperlink{psxsio_8h_a185d104fe6cc9f28b9772702de4e50e1}{S\+I\+O\+\_\+\+C\+T\+RL}~$\ast$((volatile unsigned short$\ast$)0x1\+F80105\+A)
+\begin{DoxyCompactList}\small\item\em S\+IO Control Register \mbox{[}Read/\+Write\mbox{]}. \end{DoxyCompactList}\item 
+\#define \hyperlink{psxsio_8h_aba3541824c194cb9b5b6493ab4a07fc6}{S\+I\+O\+\_\+\+B\+P\+SV}~$\ast$((volatile unsigned short$\ast$)0x1\+F80105\+E)
+\begin{DoxyCompactList}\small\item\em S\+IO Baud Rate Register \mbox{[}Read/\+Write\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{psxsio_8h_adcd0991d27bec399450467aa916fc8eb}{sio\+\_\+reload\+\_\+factors} \{ \hyperlink{psxsio_8h_adcd0991d27bec399450467aa916fc8eba19133e93eea78e2f9493d5c458287a40}{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+S\+T\+OP} = 0, 
+\hyperlink{psxsio_8h_adcd0991d27bec399450467aa916fc8eba769c0cf80c6626e3a818a1b14b9b661f}{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L1} = 1, 
+\hyperlink{psxsio_8h_adcd0991d27bec399450467aa916fc8eba84074159403daa042537c6a019ca1250}{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L16} = 2, 
+\hyperlink{psxsio_8h_adcd0991d27bec399450467aa916fc8eba0763d5a8bc39d1e3a061cfc590df27f4}{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L64} = 3
+ \}\begin{DoxyCompactList}\small\item\em Bitrate reload factors. \end{DoxyCompactList}
+\item 
+enum \hyperlink{psxsio_8h_ab9657344ee60e0f296aa508dcd140064}{sio\+\_\+data\+\_\+len} \{ \hyperlink{psxsio_8h_ab9657344ee60e0f296aa508dcd140064aad165cb663077cb150c7ea17c37b5d20}{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+5} = 0, 
+\hyperlink{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a811c7a9112c9aea32c8bcc945648717f}{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+6} = 1, 
+\hyperlink{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a6d6a490443f3cdedef291cd6be580db9}{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+7} = 2, 
+\hyperlink{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a6740099e7b70eef26c52bf94bbeb345e}{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+8} = 3
+ \}\begin{DoxyCompactList}\small\item\em Character (data) length settings. \end{DoxyCompactList}
+\item 
+enum \hyperlink{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42e}{sio\+\_\+stop\+\_\+bit} \{ \hyperlink{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea9bdf83fee250b06faf020039b362cbc9}{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1} = 1, 
+\hyperlink{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea46fc517c44041ea8624a3a2e9ba5073b}{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1\+\_\+5} = 2, 
+\hyperlink{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea2bcd4af78adb7843b45198f17ba1de8c}{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+2} = 3
+ \}\begin{DoxyCompactList}\small\item\em Stop bit length settings. \end{DoxyCompactList}
+\item 
+enum \hyperlink{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4}{sio\+\_\+parity} \{ \hyperlink{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4ac0b91ccc1be753b80754385cb23b2860}{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+N\+O\+NE} = 0, 
+\hyperlink{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4a47b51e73b9d580145895c58eea86004a}{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+O\+DD} = 1, 
+\hyperlink{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4a1c9716afc1826391faa0924222bd19a8}{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+E\+V\+EN} = 3
+ \}\begin{DoxyCompactList}\small\item\em Parity settings. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{psxsio_8h_aee2692a619763d1d6222a78cc40a0495}{S\+I\+O\+Start} (int bitrate)
+\begin{DoxyCompactList}\small\item\em Initialize S\+IO communication at the specified bitrate (baud rate). \end{DoxyCompactList}\item 
+void \hyperlink{psxsio_8h_af73e5dd8dee393ad8e2d943669a2bcd9}{S\+I\+O\+Start\+Ex} (int bitrate, int datalength, int parity, int stopbit)
+\begin{DoxyCompactList}\small\item\em Same as \hyperlink{psxsio_8h_aee2692a619763d1d6222a78cc40a0495}{S\+I\+O\+Start()} but with more control. \end{DoxyCompactList}\item 
+void \hyperlink{psxsio_8h_a543fe6e54aef73978ec9576e7eda33a2}{S\+I\+O\+Stop} (void)
+\begin{DoxyCompactList}\small\item\em Shuts down S\+IO communication. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{psxsio_8h_a38d36c7e352d01bb222e8784b01b8ce5}{S\+I\+O\+Read\+Byte} (void)
+\begin{DoxyCompactList}\small\item\em Read a single byte from the input buffer. \end{DoxyCompactList}\item 
+void \hyperlink{psxsio_8h_aad7bd20119ba74e225dcb93788ccfe8b}{S\+I\+O\+Send\+Byte} (unsigned char data)
+\begin{DoxyCompactList}\small\item\em Send a single byte to the output buffer. \end{DoxyCompactList}\item 
+int \hyperlink{psxsio_8h_a27e8b01e9907ee34ed63f08be59a36bf}{S\+I\+O\+Check\+In\+Buffer} (void)
+\begin{DoxyCompactList}\small\item\em Check if any data is waiting in the input buffer. \end{DoxyCompactList}\item 
+int \hyperlink{psxsio_8h_af2e84464ee933a3e9b72e2ac6d6160c4}{S\+I\+O\+Check\+Out\+Buffer} (void)
+\begin{DoxyCompactList}\small\item\em Check if port is ready to send data (previous operation finished). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{psxsio_8h_aba3541824c194cb9b5b6493ab4a07fc6}\label{psxsio_8h_aba3541824c194cb9b5b6493ab4a07fc6}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+B\+P\+SV@{S\+I\+O\+\_\+\+B\+P\+SV}}
+\index{S\+I\+O\+\_\+\+B\+P\+SV@{S\+I\+O\+\_\+\+B\+P\+SV}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+\_\+\+B\+P\+SV}{SIO\_BPSV}}
+{\footnotesize\ttfamily \#define S\+I\+O\+\_\+\+B\+P\+SV~$\ast$((volatile unsigned short$\ast$)0x1\+F80105\+E)}
+
+
+
+S\+IO Baud Rate Register \mbox{[}Read/\+Write\mbox{]}. 
+
+\mbox{\Hypertarget{psxsio_8h_a185d104fe6cc9f28b9772702de4e50e1}\label{psxsio_8h_a185d104fe6cc9f28b9772702de4e50e1}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+C\+T\+RL@{S\+I\+O\+\_\+\+C\+T\+RL}}
+\index{S\+I\+O\+\_\+\+C\+T\+RL@{S\+I\+O\+\_\+\+C\+T\+RL}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+\_\+\+C\+T\+RL}{SIO\_CTRL}}
+{\footnotesize\ttfamily \#define S\+I\+O\+\_\+\+C\+T\+RL~$\ast$((volatile unsigned short$\ast$)0x1\+F80105\+A)}
+
+
+
+S\+IO Control Register \mbox{[}Read/\+Write\mbox{]}. 
+
+\mbox{\Hypertarget{psxsio_8h_aeb825ba47f885597c3854a26de92f500}\label{psxsio_8h_aeb825ba47f885597c3854a26de92f500}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+M\+O\+DE@{S\+I\+O\+\_\+\+M\+O\+DE}}
+\index{S\+I\+O\+\_\+\+M\+O\+DE@{S\+I\+O\+\_\+\+M\+O\+DE}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+\_\+\+M\+O\+DE}{SIO\_MODE}}
+{\footnotesize\ttfamily \#define S\+I\+O\+\_\+\+M\+O\+DE~$\ast$((volatile unsigned short$\ast$)0x1\+F801058)}
+
+
+
+S\+IO Mode Register \mbox{[}Read/\+Write\mbox{]}. 
+
+\mbox{\Hypertarget{psxsio_8h_a8a17a79caefd82864738c8f46dd18f21}\label{psxsio_8h_a8a17a79caefd82864738c8f46dd18f21}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+S\+T\+AT@{S\+I\+O\+\_\+\+S\+T\+AT}}
+\index{S\+I\+O\+\_\+\+S\+T\+AT@{S\+I\+O\+\_\+\+S\+T\+AT}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+\_\+\+S\+T\+AT}{SIO\_STAT}}
+{\footnotesize\ttfamily \#define S\+I\+O\+\_\+\+S\+T\+AT~$\ast$((volatile unsigned short$\ast$)0x1\+F801054)}
+
+
+
+S\+IO Status Register \mbox{[}Read Only\mbox{]}. 
+
+\mbox{\Hypertarget{psxsio_8h_ab63389b4cf416afbf9778225c44ccc64}\label{psxsio_8h_ab63389b4cf416afbf9778225c44ccc64}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+T\+X\+\_\+\+RX@{S\+I\+O\+\_\+\+T\+X\+\_\+\+RX}}
+\index{S\+I\+O\+\_\+\+T\+X\+\_\+\+RX@{S\+I\+O\+\_\+\+T\+X\+\_\+\+RX}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+\_\+\+T\+X\+\_\+\+RX}{SIO\_TX\_RX}}
+{\footnotesize\ttfamily \#define S\+I\+O\+\_\+\+T\+X\+\_\+\+RX~$\ast$((volatile unsigned char$\ast$)0x1\+F801050)}
+
+
+
+S\+IO F\+I\+FO Buffer (T\+X/\+RX) Register \mbox{[}Read/\+Write\mbox{]}. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{psxsio_8h_ab9657344ee60e0f296aa508dcd140064}\label{psxsio_8h_ab9657344ee60e0f296aa508dcd140064}} 
+\index{psxsio.\+h@{psxsio.\+h}!sio\+\_\+data\+\_\+len@{sio\+\_\+data\+\_\+len}}
+\index{sio\+\_\+data\+\_\+len@{sio\+\_\+data\+\_\+len}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{sio\+\_\+data\+\_\+len}{sio\_data\_len}}
+{\footnotesize\ttfamily enum \hyperlink{psxsio_8h_ab9657344ee60e0f296aa508dcd140064}{sio\+\_\+data\+\_\+len}}
+
+
+
+Character (data) length settings. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+5@{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+5}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+5@{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+5}}}\mbox{\Hypertarget{psxsio_8h_ab9657344ee60e0f296aa508dcd140064aad165cb663077cb150c7ea17c37b5d20}\label{psxsio_8h_ab9657344ee60e0f296aa508dcd140064aad165cb663077cb150c7ea17c37b5d20}} 
+S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+5&Data Length = 5 bits. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+6@{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+6}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+6@{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+6}}}\mbox{\Hypertarget{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a811c7a9112c9aea32c8bcc945648717f}\label{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a811c7a9112c9aea32c8bcc945648717f}} 
+S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+6&Data Length = 6 bits. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+7@{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+7}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+7@{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+7}}}\mbox{\Hypertarget{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a6d6a490443f3cdedef291cd6be580db9}\label{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a6d6a490443f3cdedef291cd6be580db9}} 
+S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+7&Data Length = 7 bits. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+8@{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+8}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+8@{S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+8}}}\mbox{\Hypertarget{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a6740099e7b70eef26c52bf94bbeb345e}\label{psxsio_8h_ab9657344ee60e0f296aa508dcd140064a6740099e7b70eef26c52bf94bbeb345e}} 
+S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+8&Data Length = 8 bits. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4}\label{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4}} 
+\index{psxsio.\+h@{psxsio.\+h}!sio\+\_\+parity@{sio\+\_\+parity}}
+\index{sio\+\_\+parity@{sio\+\_\+parity}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{sio\+\_\+parity}{sio\_parity}}
+{\footnotesize\ttfamily enum \hyperlink{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4}{sio\+\_\+parity}}
+
+
+
+Parity settings. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+N\+O\+NE@{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+N\+O\+NE}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+N\+O\+NE@{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+N\+O\+NE}}}\mbox{\Hypertarget{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4ac0b91ccc1be753b80754385cb23b2860}\label{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4ac0b91ccc1be753b80754385cb23b2860}} 
+S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+N\+O\+NE&No parity. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+O\+DD@{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+O\+DD}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+O\+DD@{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+O\+DD}}}\mbox{\Hypertarget{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4a47b51e73b9d580145895c58eea86004a}\label{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4a47b51e73b9d580145895c58eea86004a}} 
+S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+O\+DD&Odd parity. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+E\+V\+EN@{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+E\+V\+EN}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+E\+V\+EN@{S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+E\+V\+EN}}}\mbox{\Hypertarget{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4a1c9716afc1826391faa0924222bd19a8}\label{psxsio_8h_aa6341cbee01e55c85df59b80b486b5a4a1c9716afc1826391faa0924222bd19a8}} 
+S\+I\+O\+\_\+\+P\+A\+R\+I\+T\+Y\+\_\+\+E\+V\+EN&Even parity. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{psxsio_8h_adcd0991d27bec399450467aa916fc8eb}\label{psxsio_8h_adcd0991d27bec399450467aa916fc8eb}} 
+\index{psxsio.\+h@{psxsio.\+h}!sio\+\_\+reload\+\_\+factors@{sio\+\_\+reload\+\_\+factors}}
+\index{sio\+\_\+reload\+\_\+factors@{sio\+\_\+reload\+\_\+factors}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{sio\+\_\+reload\+\_\+factors}{sio\_reload\_factors}}
+{\footnotesize\ttfamily enum \hyperlink{psxsio_8h_adcd0991d27bec399450467aa916fc8eb}{sio\+\_\+reload\+\_\+factors}}
+
+
+
+Bitrate reload factors. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+S\+T\+OP@{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+S\+T\+OP}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+S\+T\+OP@{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+S\+T\+OP}}}\mbox{\Hypertarget{psxsio_8h_adcd0991d27bec399450467aa916fc8eba19133e93eea78e2f9493d5c458287a40}\label{psxsio_8h_adcd0991d27bec399450467aa916fc8eba19133e93eea78e2f9493d5c458287a40}} 
+S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+S\+T\+OP&S\+T\+OP. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L1@{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L1}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L1@{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L1}}}\mbox{\Hypertarget{psxsio_8h_adcd0991d27bec399450467aa916fc8eba769c0cf80c6626e3a818a1b14b9b661f}\label{psxsio_8h_adcd0991d27bec399450467aa916fc8eba769c0cf80c6626e3a818a1b14b9b661f}} 
+S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L1&M\+U\+L1. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L16@{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L16}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L16@{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L16}}}\mbox{\Hypertarget{psxsio_8h_adcd0991d27bec399450467aa916fc8eba84074159403daa042537c6a019ca1250}\label{psxsio_8h_adcd0991d27bec399450467aa916fc8eba84074159403daa042537c6a019ca1250}} 
+S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L16&M\+U\+L16. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L64@{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L64}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L64@{S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L64}}}\mbox{\Hypertarget{psxsio_8h_adcd0991d27bec399450467aa916fc8eba0763d5a8bc39d1e3a061cfc590df27f4}\label{psxsio_8h_adcd0991d27bec399450467aa916fc8eba0763d5a8bc39d1e3a061cfc590df27f4}} 
+S\+I\+O\+\_\+\+R\+E\+L\+\_\+\+M\+U\+L64&M\+U\+L64. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42e}\label{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42e}} 
+\index{psxsio.\+h@{psxsio.\+h}!sio\+\_\+stop\+\_\+bit@{sio\+\_\+stop\+\_\+bit}}
+\index{sio\+\_\+stop\+\_\+bit@{sio\+\_\+stop\+\_\+bit}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{sio\+\_\+stop\+\_\+bit}{sio\_stop\_bit}}
+{\footnotesize\ttfamily enum \hyperlink{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42e}{sio\+\_\+stop\+\_\+bit}}
+
+
+
+Stop bit length settings. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1@{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1@{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1}}}\mbox{\Hypertarget{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea9bdf83fee250b06faf020039b362cbc9}\label{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea9bdf83fee250b06faf020039b362cbc9}} 
+S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1&Length = 1 bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1\+\_\+5@{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1\+\_\+5}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1\+\_\+5@{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1\+\_\+5}}}\mbox{\Hypertarget{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea46fc517c44041ea8624a3a2e9ba5073b}\label{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea46fc517c44041ea8624a3a2e9ba5073b}} 
+S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1\+\_\+5&Length = 1.\+5 bits. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+2@{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+2}!psxsio.\+h@{psxsio.\+h}}\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+2@{S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+2}}}\mbox{\Hypertarget{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea2bcd4af78adb7843b45198f17ba1de8c}\label{psxsio_8h_a1fb5ce3c1f741f2dd54ae875e49db42ea2bcd4af78adb7843b45198f17ba1de8c}} 
+S\+I\+O\+\_\+\+S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+2&Length = 2 bits. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{psxsio_8h_a27e8b01e9907ee34ed63f08be59a36bf}\label{psxsio_8h_a27e8b01e9907ee34ed63f08be59a36bf}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+Check\+In\+Buffer@{S\+I\+O\+Check\+In\+Buffer}}
+\index{S\+I\+O\+Check\+In\+Buffer@{S\+I\+O\+Check\+In\+Buffer}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Check\+In\+Buffer()}{SIOCheckInBuffer()}}
+{\footnotesize\ttfamily int S\+I\+O\+Check\+In\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Check if any data is waiting in the input buffer. 
+
+Must be used when fetching data otherwise incorrect data could be read (usually 0x00). \begin{DoxyReturn}{Returns}
+Non-\/zero if there is data waiting in the input buffer, zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psxsio_8h_af2e84464ee933a3e9b72e2ac6d6160c4}\label{psxsio_8h_af2e84464ee933a3e9b72e2ac6d6160c4}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+Check\+Out\+Buffer@{S\+I\+O\+Check\+Out\+Buffer}}
+\index{S\+I\+O\+Check\+Out\+Buffer@{S\+I\+O\+Check\+Out\+Buffer}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Check\+Out\+Buffer()}{SIOCheckOutBuffer()}}
+{\footnotesize\ttfamily int S\+I\+O\+Check\+Out\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Check if port is ready to send data (previous operation finished). 
+
+Must be used when sending data as the output buffer is only 2 bytes long. \begin{DoxyReturn}{Returns}
+Non-\/zero if port is ready to send data, zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psxsio_8h_a38d36c7e352d01bb222e8784b01b8ce5}\label{psxsio_8h_a38d36c7e352d01bb222e8784b01b8ce5}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+Read\+Byte@{S\+I\+O\+Read\+Byte}}
+\index{S\+I\+O\+Read\+Byte@{S\+I\+O\+Read\+Byte}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Read\+Byte()}{SIOReadByte()}}
+{\footnotesize\ttfamily unsigned char S\+I\+O\+Read\+Byte (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read a single byte from the input buffer. 
+
+\begin{DoxyReturn}{Returns}
+Data byte from input buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psxsio_8h_aad7bd20119ba74e225dcb93788ccfe8b}\label{psxsio_8h_aad7bd20119ba74e225dcb93788ccfe8b}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+Send\+Byte@{S\+I\+O\+Send\+Byte}}
+\index{S\+I\+O\+Send\+Byte@{S\+I\+O\+Send\+Byte}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Send\+Byte()}{SIOSendByte()}}
+{\footnotesize\ttfamily void S\+I\+O\+Send\+Byte (\begin{DoxyParamCaption}\item[{unsigned char}]{data }\end{DoxyParamCaption})}
+
+
+
+Send a single byte to the output buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Byte to send \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psxsio_8h_aee2692a619763d1d6222a78cc40a0495}\label{psxsio_8h_aee2692a619763d1d6222a78cc40a0495}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+Start@{S\+I\+O\+Start}}
+\index{S\+I\+O\+Start@{S\+I\+O\+Start}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Start()}{SIOStart()}}
+{\footnotesize\ttfamily void S\+I\+O\+Start (\begin{DoxyParamCaption}\item[{int}]{bitrate }\end{DoxyParamCaption})}
+
+
+
+Initialize S\+IO communication at the specified bitrate (baud rate). 
+
+Mode is 8\+N1. (Data Length = 8 bit, No parity, Stop bit Length = 1 bit) 
+\begin{DoxyParams}{Parameters}
+{\em bitrate} & Bitrate (baud rate) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psxsio_8h_af73e5dd8dee393ad8e2d943669a2bcd9}\label{psxsio_8h_af73e5dd8dee393ad8e2d943669a2bcd9}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+Start\+Ex@{S\+I\+O\+Start\+Ex}}
+\index{S\+I\+O\+Start\+Ex@{S\+I\+O\+Start\+Ex}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Start\+Ex()}{SIOStartEx()}}
+{\footnotesize\ttfamily void S\+I\+O\+Start\+Ex (\begin{DoxyParamCaption}\item[{int}]{bitrate,  }\item[{int}]{datalength,  }\item[{int}]{parity,  }\item[{int}]{stopbit }\end{DoxyParamCaption})}
+
+
+
+Same as \hyperlink{psxsio_8h_aee2692a619763d1d6222a78cc40a0495}{S\+I\+O\+Start()} but with more control. 
+
+I\+M\+P\+O\+R\+T\+A\+NT\+: Must use defined macros. For example setting datalength to 5 should be done with \char`\"{}\+S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+5\char`\"{} and not by simply passing 5 as an argument.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitrate} & Bit rate (baud rate) \\
+\hline
+{\em datalength} & Character (data) length \\
+\hline
+{\em parity} & Parity \\
+\hline
+{\em stopbit} & Stop bit length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{psxsio_8h_a543fe6e54aef73978ec9576e7eda33a2}\label{psxsio_8h_a543fe6e54aef73978ec9576e7eda33a2}} 
+\index{psxsio.\+h@{psxsio.\+h}!S\+I\+O\+Stop@{S\+I\+O\+Stop}}
+\index{S\+I\+O\+Stop@{S\+I\+O\+Stop}!psxsio.\+h@{psxsio.\+h}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Stop()}{SIOStop()}}
+{\footnotesize\ttfamily void S\+I\+O\+Stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shuts down S\+IO communication. 
+

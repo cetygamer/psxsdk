@@ -39,7 +39,7 @@ int main()
 	GsInit();
 	GsClearMem();
 	GsSetList(prim_list);
-	GsSetVideoMode(320, 240, VMODE_PAL);
+	GsSetVideoMode(320, 240, EXAMPLES_VMODE);
 
 	f = fopen("cdrom:\\PUZZLE.TIM;1", "rb");
 	fseek(f, 0, SEEK_END);
@@ -64,8 +64,6 @@ int main()
 	tile_sprite.r = tile_sprite.g = tile_sprite.b = NORMAL_LUMINOSITY;
 
 	SetVBlankHandler(prog_vblank_handler);
-
-//puzzle_pieces[y][x] = (y*7)+x;
 
 	for(x=0;x<sizeof(piece_taken);x++)
 		piece_taken[x] = 0;
@@ -202,18 +200,7 @@ int main()
 				}
 			}
 
-		/*	z = 1;
-			
-			for(y=0;y<7;y++)
-				for(x=0;x<7;x++)
-					if(puzzle_pieces[y][x] != ((y*7)+x+1))
-						z=0;
-		*/
-
-/*			if(z==1)
-				GsPrintFont(232, 16, "Puzzle\nResolved!");
-			else*/
-				GsPrintFont(232, 16, "Resolve\nPuzzle\n\n"
+			GsPrintFont(232, 16, "Resolve\nPuzzle\n\n"
 								 "Exchange:\n"
                                                                  "\nX\nHorizontal\n"
 								 "\nO\nVertical");
@@ -224,4 +211,6 @@ int main()
 			display_is_old = 0;
 		}
 	}
+	
+	return 0;
 }

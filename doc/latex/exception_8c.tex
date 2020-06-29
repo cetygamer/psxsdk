@@ -1,0 +1,155 @@
+\hypertarget{exception_8c}{}\section{libpsx/src/exception.c File Reference}
+\label{exception_8c}\index{libpsx/src/exception.\+c@{libpsx/src/exception.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$psx.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{exception_8c_a6d7f006d58abfd7f9ebddb706db9fb1e}{D\+I\+CR}~$\ast$((unsigned int$\ast$)0x1f8010f4)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exception_8c}{exception.\+c} \end{DoxyCompactList}\item 
+\#define \hyperlink{exception_8c_a401ad04edf32b6a8db7b704b63fd8643}{I\+P\+E\+N\+D\+I\+NG}~$\ast$((volatile unsigned int$\ast$)0x1f801070)
+\item 
+\#define \hyperlink{exception_8c_a836b6805a266d890bcfe30a459b077fa}{I\+M\+A\+SK}~$\ast$((volatile unsigned int$\ast$)0x1f801074)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{exception_8c_a35c172866ed0d8f2c50e2396c457b377}{\+\_\+\+\_\+psxsdk\+\_\+exception\+\_\+manager} ()
+\item 
+void \hyperlink{exception_8c_a87f088a192730260f52cf49bf4ec8c80}{\+\_\+\+\_\+psxsdk\+\_\+real\+\_\+exception\+\_\+handler} ()
+\item 
+void \hyperlink{exception_8c_a7d9396fc194d3a362df5443db6a178d0}{\+\_\+internal\+\_\+cdromlib\+\_\+callback} ()
+\item 
+void \hyperlink{exception_8c_aea6bdd285e380fe7cfa80eeb93ef76b3}{\+\_\+\+\_\+\+P\+S\+X\+\_\+\+Init\+\_\+\+No\+Bios} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+void($\ast$ \hyperlink{exception_8c_acf2133eaaf0d328f03559f59ee203d9e}{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler} )()
+\item 
+void($\ast$ \hyperlink{exception_8c_a320a5b940fa62b4894446f77be9ae806}{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler} )()
+\item 
+void($\ast$ \hyperlink{exception_8c_adceb47e3d673836c086756fded4ea5df}{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler} )(unsigned char $\ast$data)
+\item 
+void($\ast$ \hyperlink{exception_8c_a96658b945dd37811abc40a27c8f7f3c5}{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler} )()
+\item 
+unsigned int \hyperlink{exception_8c_a610f8c02524a514d0afa354153e0445c}{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler\+\_\+set}
+\item 
+unsigned int \hyperlink{exception_8c_a7827005bc26ab800b36e62fd816ed015}{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler\+\_\+set}
+\item 
+unsigned int \hyperlink{exception_8c_a8e1452363ce20565d1743a1c2b618575}{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler\+\_\+set}
+\item 
+unsigned int \hyperlink{exception_8c_a02cbde2c900c3961244a39358d7797c5}{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler\+\_\+set}
+\item 
+volatile int \hyperlink{exception_8c_a4f16b4827f8f005c458f0e6f2446c46d}{\+\_\+\+\_\+psxsdk\+\_\+gpu\+\_\+dma\+\_\+finished}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{exception_8c_a6d7f006d58abfd7f9ebddb706db9fb1e}\label{exception_8c_a6d7f006d58abfd7f9ebddb706db9fb1e}} 
+\index{exception.\+c@{exception.\+c}!D\+I\+CR@{D\+I\+CR}}
+\index{D\+I\+CR@{D\+I\+CR}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+CR}{DICR}}
+{\footnotesize\ttfamily \#define D\+I\+CR~$\ast$((unsigned int$\ast$)0x1f8010f4)}
+
+
+
+\hyperlink{exception_8c}{exception.\+c} 
+
+Exception handling code (part 2) \mbox{\Hypertarget{exception_8c_a836b6805a266d890bcfe30a459b077fa}\label{exception_8c_a836b6805a266d890bcfe30a459b077fa}} 
+\index{exception.\+c@{exception.\+c}!I\+M\+A\+SK@{I\+M\+A\+SK}}
+\index{I\+M\+A\+SK@{I\+M\+A\+SK}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{I\+M\+A\+SK}{IMASK}}
+{\footnotesize\ttfamily \#define I\+M\+A\+SK~$\ast$((volatile unsigned int$\ast$)0x1f801074)}
+
+\mbox{\Hypertarget{exception_8c_a401ad04edf32b6a8db7b704b63fd8643}\label{exception_8c_a401ad04edf32b6a8db7b704b63fd8643}} 
+\index{exception.\+c@{exception.\+c}!I\+P\+E\+N\+D\+I\+NG@{I\+P\+E\+N\+D\+I\+NG}}
+\index{I\+P\+E\+N\+D\+I\+NG@{I\+P\+E\+N\+D\+I\+NG}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{I\+P\+E\+N\+D\+I\+NG}{IPENDING}}
+{\footnotesize\ttfamily \#define I\+P\+E\+N\+D\+I\+NG~$\ast$((volatile unsigned int$\ast$)0x1f801070)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{exception_8c_aea6bdd285e380fe7cfa80eeb93ef76b3}\label{exception_8c_aea6bdd285e380fe7cfa80eeb93ef76b3}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+\_\+\+P\+S\+X\+\_\+\+Init\+\_\+\+No\+Bios@{\+\_\+\+\_\+\+P\+S\+X\+\_\+\+Init\+\_\+\+No\+Bios}}
+\index{\+\_\+\+\_\+\+P\+S\+X\+\_\+\+Init\+\_\+\+No\+Bios@{\+\_\+\+\_\+\+P\+S\+X\+\_\+\+Init\+\_\+\+No\+Bios}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+P\+S\+X\+\_\+\+Init\+\_\+\+No\+Bios()}{\_\_PSX\_Init\_NoBios()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+\+P\+S\+X\+\_\+\+Init\+\_\+\+No\+Bios (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{exception_8c_a35c172866ed0d8f2c50e2396c457b377}\label{exception_8c_a35c172866ed0d8f2c50e2396c457b377}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+\_\+psxsdk\+\_\+exception\+\_\+manager@{\+\_\+\+\_\+psxsdk\+\_\+exception\+\_\+manager}}
+\index{\+\_\+\+\_\+psxsdk\+\_\+exception\+\_\+manager@{\+\_\+\+\_\+psxsdk\+\_\+exception\+\_\+manager}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+psxsdk\+\_\+exception\+\_\+manager()}{\_\_psxsdk\_exception\_manager()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+psxsdk\+\_\+exception\+\_\+manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{exception_8c_a87f088a192730260f52cf49bf4ec8c80}\label{exception_8c_a87f088a192730260f52cf49bf4ec8c80}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+\_\+psxsdk\+\_\+real\+\_\+exception\+\_\+handler@{\+\_\+\+\_\+psxsdk\+\_\+real\+\_\+exception\+\_\+handler}}
+\index{\+\_\+\+\_\+psxsdk\+\_\+real\+\_\+exception\+\_\+handler@{\+\_\+\+\_\+psxsdk\+\_\+real\+\_\+exception\+\_\+handler}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+psxsdk\+\_\+real\+\_\+exception\+\_\+handler()}{\_\_psxsdk\_real\_exception\_handler()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+psxsdk\+\_\+real\+\_\+exception\+\_\+handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{exception_8c_a7d9396fc194d3a362df5443db6a178d0}\label{exception_8c_a7d9396fc194d3a362df5443db6a178d0}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+internal\+\_\+cdromlib\+\_\+callback@{\+\_\+internal\+\_\+cdromlib\+\_\+callback}}
+\index{\+\_\+internal\+\_\+cdromlib\+\_\+callback@{\+\_\+internal\+\_\+cdromlib\+\_\+callback}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+internal\+\_\+cdromlib\+\_\+callback()}{\_internal\_cdromlib\_callback()}}
+{\footnotesize\ttfamily void \+\_\+internal\+\_\+cdromlib\+\_\+callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{exception_8c_a4f16b4827f8f005c458f0e6f2446c46d}\label{exception_8c_a4f16b4827f8f005c458f0e6f2446c46d}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+\_\+psxsdk\+\_\+gpu\+\_\+dma\+\_\+finished@{\+\_\+\+\_\+psxsdk\+\_\+gpu\+\_\+dma\+\_\+finished}}
+\index{\+\_\+\+\_\+psxsdk\+\_\+gpu\+\_\+dma\+\_\+finished@{\+\_\+\+\_\+psxsdk\+\_\+gpu\+\_\+dma\+\_\+finished}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+psxsdk\+\_\+gpu\+\_\+dma\+\_\+finished}{\_\_psxsdk\_gpu\_dma\_finished}}
+{\footnotesize\ttfamily volatile int \+\_\+\+\_\+psxsdk\+\_\+gpu\+\_\+dma\+\_\+finished}
+
+\mbox{\Hypertarget{exception_8c_a320a5b940fa62b4894446f77be9ae806}\label{exception_8c_a320a5b940fa62b4894446f77be9ae806}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler@{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler}}
+\index{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler@{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler}{\_EXC\_cdrom\_handler}}
+{\footnotesize\ttfamily void($\ast$ \+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler) ()}
+
+\mbox{\Hypertarget{exception_8c_a7827005bc26ab800b36e62fd816ed015}\label{exception_8c_a7827005bc26ab800b36e62fd816ed015}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler\+\_\+set@{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler\+\_\+set}}
+\index{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler\+\_\+set@{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler\+\_\+set}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler\+\_\+set}{\_EXC\_cdrom\_handler\_set}}
+{\footnotesize\ttfamily unsigned int \+\_\+\+E\+X\+C\+\_\+cdrom\+\_\+handler\+\_\+set}
+
+\mbox{\Hypertarget{exception_8c_a96658b945dd37811abc40a27c8f7f3c5}\label{exception_8c_a96658b945dd37811abc40a27c8f7f3c5}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler@{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler}}
+\index{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler@{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler}{\_EXC\_dma\_handler}}
+{\footnotesize\ttfamily void($\ast$ \+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler) ()}
+
+\mbox{\Hypertarget{exception_8c_a02cbde2c900c3961244a39358d7797c5}\label{exception_8c_a02cbde2c900c3961244a39358d7797c5}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler\+\_\+set@{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler\+\_\+set}}
+\index{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler\+\_\+set@{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler\+\_\+set}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler\+\_\+set}{\_EXC\_dma\_handler\_set}}
+{\footnotesize\ttfamily unsigned int \+\_\+\+E\+X\+C\+\_\+dma\+\_\+handler\+\_\+set}
+
+\mbox{\Hypertarget{exception_8c_adceb47e3d673836c086756fded4ea5df}\label{exception_8c_adceb47e3d673836c086756fded4ea5df}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler@{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler}}
+\index{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler@{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler}{\_EXC\_sio\_handler}}
+{\footnotesize\ttfamily void($\ast$ \+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler) (unsigned char $\ast$data)}
+
+\mbox{\Hypertarget{exception_8c_a8e1452363ce20565d1743a1c2b618575}\label{exception_8c_a8e1452363ce20565d1743a1c2b618575}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler\+\_\+set@{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler\+\_\+set}}
+\index{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler\+\_\+set@{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler\+\_\+set}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler\+\_\+set}{\_EXC\_sio\_handler\_set}}
+{\footnotesize\ttfamily unsigned int \+\_\+\+E\+X\+C\+\_\+sio\+\_\+handler\+\_\+set}
+
+\mbox{\Hypertarget{exception_8c_acf2133eaaf0d328f03559f59ee203d9e}\label{exception_8c_acf2133eaaf0d328f03559f59ee203d9e}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler@{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler}}
+\index{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler@{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler}{\_EXC\_vblank\_handler}}
+{\footnotesize\ttfamily void($\ast$ \+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler) ()}
+
+\mbox{\Hypertarget{exception_8c_a610f8c02524a514d0afa354153e0445c}\label{exception_8c_a610f8c02524a514d0afa354153e0445c}} 
+\index{exception.\+c@{exception.\+c}!\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler\+\_\+set@{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler\+\_\+set}}
+\index{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler\+\_\+set@{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler\+\_\+set}!exception.\+c@{exception.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler\+\_\+set}{\_EXC\_vblank\_handler\_set}}
+{\footnotesize\ttfamily unsigned int \+\_\+\+E\+X\+C\+\_\+vblank\+\_\+handler\+\_\+set}
+

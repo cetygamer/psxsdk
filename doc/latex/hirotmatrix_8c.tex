@@ -1,0 +1,31 @@
+\hypertarget{hirotmatrix_8c}{}\section{libmeidogte/hirotmatrix.c File Reference}
+\label{hirotmatrix_8c}\index{libmeidogte/hirotmatrix.\+c@{libmeidogte/hirotmatrix.\+c}}
+{\ttfamily \#include $<$meidogte.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$ \hyperlink{hirotmatrix_8c_ad47fbed32556bd699e0f2de8a35f745c}{Hi\+Rot\+Matrix} (\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$r, \hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Find rotation matrix from a rotation angle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{hirotmatrix_8c_ad47fbed32556bd699e0f2de8a35f745c}\label{hirotmatrix_8c_ad47fbed32556bd699e0f2de8a35f745c}} 
+\index{hirotmatrix.\+c@{hirotmatrix.\+c}!Hi\+Rot\+Matrix@{Hi\+Rot\+Matrix}}
+\index{Hi\+Rot\+Matrix@{Hi\+Rot\+Matrix}!hirotmatrix.\+c@{hirotmatrix.\+c}}
+\subsubsection{\texorpdfstring{Hi\+Rot\+Matrix()}{HiRotMatrix()}}
+{\footnotesize\ttfamily \hyperlink{structMATRIX}{M\+A\+T\+R\+IX}$\ast$ Hi\+Rot\+Matrix (\begin{DoxyParamCaption}\item[{\hyperlink{structVECTOR}{V\+E\+C\+T\+OR} $\ast$}]{r,  }\item[{\hyperlink{structMATRIX}{M\+A\+T\+R\+IX} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Find rotation matrix from a rotation angle. 
+
+(high-\/precision) (131072 = 360 degrees) 
+\begin{DoxyParams}{Parameters}
+{\em r} & Rotation angle (input) \\
+\hline
+{\em m} & Rotation matrix (output) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to m 
+\end{DoxyReturn}

@@ -1,0 +1,220 @@
+\hypertarget{fcntl_8h}{}\section{libpsx/include/fcntl.h File Reference}
+\label{fcntl_8h}\index{libpsx/include/fcntl.\+h@{libpsx/include/fcntl.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\+\_\+\+R\+D\+O\+N\+LY}~1
+\item 
+\#define \hyperlink{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\+\_\+\+W\+R\+O\+N\+LY}~2
+\item 
+\#define \hyperlink{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}{O\+\_\+\+N\+O\+N\+B\+L\+O\+CK}~4
+\item 
+\#define \hyperlink{fcntl_8h_a8df2f5a1dbc3680f7ae10a70c0256dd8}{O\+\_\+\+R\+D\+L\+O\+CK}~16
+\begin{DoxyCompactList}\small\item\em Read locked, not shared. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_a48558e3b7225e41de2c0e0962a3b1bd2}{O\+\_\+\+W\+R\+L\+O\+CK}~32
+\begin{DoxyCompactList}\small\item\em Write locked, not shared. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_abb0586253488ee61072b73557eeb873b}{O\+\_\+\+R\+D\+WR}~(\hyperlink{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\+\_\+\+R\+D\+O\+N\+LY} $\vert$ \hyperlink{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\+\_\+\+W\+R\+O\+N\+LY})
+\item 
+\#define \hyperlink{fcntl_8h_ae036f789407d21f07b211552d67b3214}{O\+\_\+\+A\+P\+P\+E\+ND}~256
+\item 
+\#define \hyperlink{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}{O\+\_\+\+C\+R\+E\+AT}~512
+\item 
+\#define \hyperlink{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}{O\+\_\+\+T\+R\+U\+NC}~1024
+\item 
+\#define \hyperlink{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}{O\+\_\+\+E\+X\+CL}~0
+\begin{DoxyCompactList}\small\item\em Obviously, O\+\_\+\+E\+X\+CL has no effect in the P\+S\+X\+S\+DK. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_ac10dac3951425075a1adcc9ca1ebb271}{O\+\_\+\+S\+C\+AN}~4096
+\begin{DoxyCompactList}\small\item\em The following are Play\+Station B\+I\+OS extensions. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_a41bbb4920d5f5e5956650ecc12de4bb1}{O\+\_\+\+R\+C\+OM}~8192
+\begin{DoxyCompactList}\small\item\em Setup for remote command entry. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_ad34d06f6efba113ed0e00933c82e0688}{O\+\_\+\+N\+O\+B\+UF}~16384
+\begin{DoxyCompactList}\small\item\em No buffering and console interrupt. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}{O\+\_\+\+N\+O\+W\+A\+IT}~32768
+\begin{DoxyCompactList}\small\item\em Asynchronous I/O mode. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_ac5d0c9848f853f8b026b1211b93f78b1}{O\+\_\+\+A\+S\+Y\+NC}~\hyperlink{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}{O\+\_\+\+N\+O\+W\+A\+IT}
+\begin{DoxyCompactList}\small\item\em Asynchronous I/O mode, alias. \end{DoxyCompactList}\item 
+\#define \hyperlink{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}{open}(filename,  \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags}, ...)~open(filename, \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags})
+\begin{DoxyCompactList}\small\item\em These are standard C library file I/O functions provided by the P\+SX B\+I\+OS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}{open} (const char $\ast$filename, int \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags})
+\begin{DoxyCompactList}\small\item\em In previous versions, the second argument for \hyperlink{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}{open()} was named `mode\textquotesingle{}. \end{DoxyCompactList}\item 
+int \hyperlink{fcntl_8h_a766f8143056e83ea199010473a93ca2e}{read} (int d, void $\ast$buf, int nbytes)
+\item 
+int \hyperlink{fcntl_8h_aeeff2698944daacf14e8bde82fd04222}{close} (int d)
+\item 
+int \hyperlink{fcntl_8h_a1d9b5be1e8e3b5a6153fd22d800dc4d7}{lseek} (int fildes, int offset, int whence)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{fcntl_8h_ae036f789407d21f07b211552d67b3214}\label{fcntl_8h_ae036f789407d21f07b211552d67b3214}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+A\+P\+P\+E\+ND@{O\+\_\+\+A\+P\+P\+E\+ND}}
+\index{O\+\_\+\+A\+P\+P\+E\+ND@{O\+\_\+\+A\+P\+P\+E\+ND}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+A\+P\+P\+E\+ND}{O\_APPEND}}
+{\footnotesize\ttfamily \#define O\+\_\+\+A\+P\+P\+E\+ND~256}
+
+\mbox{\Hypertarget{fcntl_8h_ac5d0c9848f853f8b026b1211b93f78b1}\label{fcntl_8h_ac5d0c9848f853f8b026b1211b93f78b1}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+A\+S\+Y\+NC@{O\+\_\+\+A\+S\+Y\+NC}}
+\index{O\+\_\+\+A\+S\+Y\+NC@{O\+\_\+\+A\+S\+Y\+NC}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+A\+S\+Y\+NC}{O\_ASYNC}}
+{\footnotesize\ttfamily \#define O\+\_\+\+A\+S\+Y\+NC~\hyperlink{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}{O\+\_\+\+N\+O\+W\+A\+IT}}
+
+
+
+Asynchronous I/O mode, alias. 
+
+\mbox{\Hypertarget{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}\label{fcntl_8h_a1cf6b1de1fffedaa1d26b189e9a8d2cc}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+C\+R\+E\+AT@{O\+\_\+\+C\+R\+E\+AT}}
+\index{O\+\_\+\+C\+R\+E\+AT@{O\+\_\+\+C\+R\+E\+AT}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+C\+R\+E\+AT}{O\_CREAT}}
+{\footnotesize\ttfamily \#define O\+\_\+\+C\+R\+E\+AT~512}
+
+\mbox{\Hypertarget{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}\label{fcntl_8h_a9f5acfe79fafe14b6694447bd0e9f10b}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+E\+X\+CL@{O\+\_\+\+E\+X\+CL}}
+\index{O\+\_\+\+E\+X\+CL@{O\+\_\+\+E\+X\+CL}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+E\+X\+CL}{O\_EXCL}}
+{\footnotesize\ttfamily \#define O\+\_\+\+E\+X\+CL~0}
+
+
+
+Obviously, O\+\_\+\+E\+X\+CL has no effect in the P\+S\+X\+S\+DK. 
+
+\mbox{\Hypertarget{fcntl_8h_ad34d06f6efba113ed0e00933c82e0688}\label{fcntl_8h_ad34d06f6efba113ed0e00933c82e0688}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+N\+O\+B\+UF@{O\+\_\+\+N\+O\+B\+UF}}
+\index{O\+\_\+\+N\+O\+B\+UF@{O\+\_\+\+N\+O\+B\+UF}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+N\+O\+B\+UF}{O\_NOBUF}}
+{\footnotesize\ttfamily \#define O\+\_\+\+N\+O\+B\+UF~16384}
+
+
+
+No buffering and console interrupt. 
+
+\mbox{\Hypertarget{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}\label{fcntl_8h_a39d33ce33804efd4d52606d59071c6d8}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+N\+O\+N\+B\+L\+O\+CK@{O\+\_\+\+N\+O\+N\+B\+L\+O\+CK}}
+\index{O\+\_\+\+N\+O\+N\+B\+L\+O\+CK@{O\+\_\+\+N\+O\+N\+B\+L\+O\+CK}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+N\+O\+N\+B\+L\+O\+CK}{O\_NONBLOCK}}
+{\footnotesize\ttfamily \#define O\+\_\+\+N\+O\+N\+B\+L\+O\+CK~4}
+
+\mbox{\Hypertarget{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}\label{fcntl_8h_a936720ad8884b8f6e029bd6ea1145661}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+N\+O\+W\+A\+IT@{O\+\_\+\+N\+O\+W\+A\+IT}}
+\index{O\+\_\+\+N\+O\+W\+A\+IT@{O\+\_\+\+N\+O\+W\+A\+IT}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+N\+O\+W\+A\+IT}{O\_NOWAIT}}
+{\footnotesize\ttfamily \#define O\+\_\+\+N\+O\+W\+A\+IT~32768}
+
+
+
+Asynchronous I/O mode. 
+
+\mbox{\Hypertarget{fcntl_8h_a41bbb4920d5f5e5956650ecc12de4bb1}\label{fcntl_8h_a41bbb4920d5f5e5956650ecc12de4bb1}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+C\+OM@{O\+\_\+\+R\+C\+OM}}
+\index{O\+\_\+\+R\+C\+OM@{O\+\_\+\+R\+C\+OM}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+R\+C\+OM}{O\_RCOM}}
+{\footnotesize\ttfamily \#define O\+\_\+\+R\+C\+OM~8192}
+
+
+
+Setup for remote command entry. 
+
+Real purpose unknown. \mbox{\Hypertarget{fcntl_8h_a8df2f5a1dbc3680f7ae10a70c0256dd8}\label{fcntl_8h_a8df2f5a1dbc3680f7ae10a70c0256dd8}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+D\+L\+O\+CK@{O\+\_\+\+R\+D\+L\+O\+CK}}
+\index{O\+\_\+\+R\+D\+L\+O\+CK@{O\+\_\+\+R\+D\+L\+O\+CK}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+R\+D\+L\+O\+CK}{O\_RDLOCK}}
+{\footnotesize\ttfamily \#define O\+\_\+\+R\+D\+L\+O\+CK~16}
+
+
+
+Read locked, not shared. 
+
+\mbox{\Hypertarget{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}\label{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+D\+O\+N\+LY@{O\+\_\+\+R\+D\+O\+N\+LY}}
+\index{O\+\_\+\+R\+D\+O\+N\+LY@{O\+\_\+\+R\+D\+O\+N\+LY}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+R\+D\+O\+N\+LY}{O\_RDONLY}}
+{\footnotesize\ttfamily \#define O\+\_\+\+R\+D\+O\+N\+LY~1}
+
+\mbox{\Hypertarget{fcntl_8h_abb0586253488ee61072b73557eeb873b}\label{fcntl_8h_abb0586253488ee61072b73557eeb873b}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+R\+D\+WR@{O\+\_\+\+R\+D\+WR}}
+\index{O\+\_\+\+R\+D\+WR@{O\+\_\+\+R\+D\+WR}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+R\+D\+WR}{O\_RDWR}}
+{\footnotesize\ttfamily \#define O\+\_\+\+R\+D\+WR~(\hyperlink{fcntl_8h_a7a68c9ffaac7dbcd652225dd7c06a54b}{O\+\_\+\+R\+D\+O\+N\+LY} $\vert$ \hyperlink{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}{O\+\_\+\+W\+R\+O\+N\+LY})}
+
+\mbox{\Hypertarget{fcntl_8h_ac10dac3951425075a1adcc9ca1ebb271}\label{fcntl_8h_ac10dac3951425075a1adcc9ca1ebb271}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+S\+C\+AN@{O\+\_\+\+S\+C\+AN}}
+\index{O\+\_\+\+S\+C\+AN@{O\+\_\+\+S\+C\+AN}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+S\+C\+AN}{O\_SCAN}}
+{\footnotesize\ttfamily \#define O\+\_\+\+S\+C\+AN~4096}
+
+
+
+The following are Play\+Station B\+I\+OS extensions. 
+
+Set to scanning type. Real purpose unknown. \mbox{\Hypertarget{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}\label{fcntl_8h_ad1d67e453fb3031f40f8cd3403773813}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+T\+R\+U\+NC@{O\+\_\+\+T\+R\+U\+NC}}
+\index{O\+\_\+\+T\+R\+U\+NC@{O\+\_\+\+T\+R\+U\+NC}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+T\+R\+U\+NC}{O\_TRUNC}}
+{\footnotesize\ttfamily \#define O\+\_\+\+T\+R\+U\+NC~1024}
+
+\mbox{\Hypertarget{fcntl_8h_a48558e3b7225e41de2c0e0962a3b1bd2}\label{fcntl_8h_a48558e3b7225e41de2c0e0962a3b1bd2}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+W\+R\+L\+O\+CK@{O\+\_\+\+W\+R\+L\+O\+CK}}
+\index{O\+\_\+\+W\+R\+L\+O\+CK@{O\+\_\+\+W\+R\+L\+O\+CK}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+W\+R\+L\+O\+CK}{O\_WRLOCK}}
+{\footnotesize\ttfamily \#define O\+\_\+\+W\+R\+L\+O\+CK~32}
+
+
+
+Write locked, not shared. 
+
+\mbox{\Hypertarget{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}\label{fcntl_8h_a11b644a8526139c4cc1850dac1271ced}} 
+\index{fcntl.\+h@{fcntl.\+h}!O\+\_\+\+W\+R\+O\+N\+LY@{O\+\_\+\+W\+R\+O\+N\+LY}}
+\index{O\+\_\+\+W\+R\+O\+N\+LY@{O\+\_\+\+W\+R\+O\+N\+LY}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{O\+\_\+\+W\+R\+O\+N\+LY}{O\_WRONLY}}
+{\footnotesize\ttfamily \#define O\+\_\+\+W\+R\+O\+N\+LY~2}
+
+\mbox{\Hypertarget{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}\label{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}} 
+\index{fcntl.\+h@{fcntl.\+h}!open@{open}}
+\index{open@{open}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{open}{open}}
+{\footnotesize\ttfamily \#define open(\begin{DoxyParamCaption}\item[{}]{filename,  }\item[{}]{\hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags},  }\item[{}]{... }\end{DoxyParamCaption})~open(filename, \hyperlink{f3m_8c_aa2585d779da0ab21273a8d92de9a0ebe}{flags})}
+
+
+
+These are standard C library file I/O functions provided by the P\+SX B\+I\+OS. 
+
+Filenames have to be specified in this way\+:
+
+Where device specifies the device the file is on\+: \char`\"{}tty\+:\char`\"{} Console \char`\"{}cdrom\+:\char`\"{} C\+D-\/\+R\+OM \char`\"{}bu\+X\+X\+:\char`\"{} Memory cards
+
+When using cdrom\+: as device, append file version (;1) to filename Example\+: cdrom\+:R\+E\+A\+D\+M\+E.\+T\+XT;1
+
+Subdirectory paths have to be specified with backslashes (), like M\+S-\/\+D\+OS. Read and write operations can be carried only in blocks. Blocks are 2048 bytes for the C\+D-\/\+R\+OM device, and 128 bytes for memory cards. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fcntl_8h_aeeff2698944daacf14e8bde82fd04222}\label{fcntl_8h_aeeff2698944daacf14e8bde82fd04222}} 
+\index{fcntl.\+h@{fcntl.\+h}!close@{close}}
+\index{close@{close}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily int close (\begin{DoxyParamCaption}\item[{int}]{d }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fcntl_8h_a1d9b5be1e8e3b5a6153fd22d800dc4d7}\label{fcntl_8h_a1d9b5be1e8e3b5a6153fd22d800dc4d7}} 
+\index{fcntl.\+h@{fcntl.\+h}!lseek@{lseek}}
+\index{lseek@{lseek}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{lseek()}{lseek()}}
+{\footnotesize\ttfamily int lseek (\begin{DoxyParamCaption}\item[{int}]{fildes,  }\item[{int}]{offset,  }\item[{int}]{whence }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}\label{fcntl_8h_a4e6b27eba6a2c51d20ab915b58625e99}} 
+\index{fcntl.\+h@{fcntl.\+h}!open@{open}}
+\index{open@{open}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily int open (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{int}]{flags }\end{DoxyParamCaption})}
+
+
+
+In previous versions, the second argument for \hyperlink{fcntl_8h_a3ad75e4ab5b8343998fbdb4b40c0973b}{open()} was named `mode\textquotesingle{}. 
+
+That was incorrect; now it is correctly named `flags\textquotesingle{}. \mbox{\Hypertarget{fcntl_8h_a766f8143056e83ea199010473a93ca2e}\label{fcntl_8h_a766f8143056e83ea199010473a93ca2e}} 
+\index{fcntl.\+h@{fcntl.\+h}!read@{read}}
+\index{read@{read}!fcntl.\+h@{fcntl.\+h}}
+\subsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily int read (\begin{DoxyParamCaption}\item[{int}]{d,  }\item[{void $\ast$}]{buf,  }\item[{int}]{nbytes }\end{DoxyParamCaption})}
+

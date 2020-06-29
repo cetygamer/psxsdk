@@ -1,0 +1,127 @@
+\hypertarget{sio_8c}{}\section{libpsx/src/sio.c File Reference}
+\label{sio_8c}\index{libpsx/src/sio.\+c@{libpsx/src/sio.\+c}}
+{\ttfamily \#include $<$psx.\+h$>$}\newline
+{\ttfamily \#include $<$psxsio.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sio_8c_aee2692a619763d1d6222a78cc40a0495}{S\+I\+O\+Start} (int bitrate)
+\begin{DoxyCompactList}\small\item\em Initialize S\+IO communication at the specified bitrate (baud rate). \end{DoxyCompactList}\item 
+void \hyperlink{sio_8c_af73e5dd8dee393ad8e2d943669a2bcd9}{S\+I\+O\+Start\+Ex} (int bitrate, int datalength, int parity, int stopbit)
+\begin{DoxyCompactList}\small\item\em Same as \hyperlink{psxsio_8h_aee2692a619763d1d6222a78cc40a0495}{S\+I\+O\+Start()} but with more control. \end{DoxyCompactList}\item 
+void \hyperlink{sio_8c_aae786e8e7a1c4ac6cca1e3a0d054396c}{S\+I\+O\+Stop} ()
+\begin{DoxyCompactList}\small\item\em Shuts down S\+IO communication. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{sio_8c_ac790474a6104b05c773ec9cf4a78c963}{S\+I\+O\+Read\+Byte} ()
+\begin{DoxyCompactList}\small\item\em Read a single byte from the input buffer. \end{DoxyCompactList}\item 
+void \hyperlink{sio_8c_aad7bd20119ba74e225dcb93788ccfe8b}{S\+I\+O\+Send\+Byte} (unsigned char data)
+\begin{DoxyCompactList}\small\item\em Send a single byte to the output buffer. \end{DoxyCompactList}\item 
+int \hyperlink{sio_8c_a6d66152f883084f7191e36f712c7f36f}{S\+I\+O\+Check\+In\+Buffer} ()
+\begin{DoxyCompactList}\small\item\em Check if any data is waiting in the input buffer. \end{DoxyCompactList}\item 
+int \hyperlink{sio_8c_a95ccf6da1d7fb601b86ee6fde0db6429}{S\+I\+O\+Check\+Out\+Buffer} ()
+\begin{DoxyCompactList}\small\item\em Check if port is ready to send data (previous operation finished). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sio_8c_a6d66152f883084f7191e36f712c7f36f}\label{sio_8c_a6d66152f883084f7191e36f712c7f36f}} 
+\index{sio.\+c@{sio.\+c}!S\+I\+O\+Check\+In\+Buffer@{S\+I\+O\+Check\+In\+Buffer}}
+\index{S\+I\+O\+Check\+In\+Buffer@{S\+I\+O\+Check\+In\+Buffer}!sio.\+c@{sio.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Check\+In\+Buffer()}{SIOCheckInBuffer()}}
+{\footnotesize\ttfamily int S\+I\+O\+Check\+In\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Check if any data is waiting in the input buffer. 
+
+Must be used when fetching data otherwise incorrect data could be read (usually 0x00). \begin{DoxyReturn}{Returns}
+Non-\/zero if there is data waiting in the input buffer, zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sio_8c_a95ccf6da1d7fb601b86ee6fde0db6429}\label{sio_8c_a95ccf6da1d7fb601b86ee6fde0db6429}} 
+\index{sio.\+c@{sio.\+c}!S\+I\+O\+Check\+Out\+Buffer@{S\+I\+O\+Check\+Out\+Buffer}}
+\index{S\+I\+O\+Check\+Out\+Buffer@{S\+I\+O\+Check\+Out\+Buffer}!sio.\+c@{sio.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Check\+Out\+Buffer()}{SIOCheckOutBuffer()}}
+{\footnotesize\ttfamily int S\+I\+O\+Check\+Out\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Check if port is ready to send data (previous operation finished). 
+
+Must be used when sending data as the output buffer is only 2 bytes long. \begin{DoxyReturn}{Returns}
+Non-\/zero if port is ready to send data, zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sio_8c_ac790474a6104b05c773ec9cf4a78c963}\label{sio_8c_ac790474a6104b05c773ec9cf4a78c963}} 
+\index{sio.\+c@{sio.\+c}!S\+I\+O\+Read\+Byte@{S\+I\+O\+Read\+Byte}}
+\index{S\+I\+O\+Read\+Byte@{S\+I\+O\+Read\+Byte}!sio.\+c@{sio.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Read\+Byte()}{SIOReadByte()}}
+{\footnotesize\ttfamily unsigned char S\+I\+O\+Read\+Byte (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read a single byte from the input buffer. 
+
+\begin{DoxyReturn}{Returns}
+Data byte from input buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sio_8c_aad7bd20119ba74e225dcb93788ccfe8b}\label{sio_8c_aad7bd20119ba74e225dcb93788ccfe8b}} 
+\index{sio.\+c@{sio.\+c}!S\+I\+O\+Send\+Byte@{S\+I\+O\+Send\+Byte}}
+\index{S\+I\+O\+Send\+Byte@{S\+I\+O\+Send\+Byte}!sio.\+c@{sio.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Send\+Byte()}{SIOSendByte()}}
+{\footnotesize\ttfamily void S\+I\+O\+Send\+Byte (\begin{DoxyParamCaption}\item[{unsigned char}]{data }\end{DoxyParamCaption})}
+
+
+
+Send a single byte to the output buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Byte to send \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sio_8c_aee2692a619763d1d6222a78cc40a0495}\label{sio_8c_aee2692a619763d1d6222a78cc40a0495}} 
+\index{sio.\+c@{sio.\+c}!S\+I\+O\+Start@{S\+I\+O\+Start}}
+\index{S\+I\+O\+Start@{S\+I\+O\+Start}!sio.\+c@{sio.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Start()}{SIOStart()}}
+{\footnotesize\ttfamily void S\+I\+O\+Start (\begin{DoxyParamCaption}\item[{int}]{bitrate }\end{DoxyParamCaption})}
+
+
+
+Initialize S\+IO communication at the specified bitrate (baud rate). 
+
+Mode is 8\+N1. (Data Length = 8 bit, No parity, Stop bit Length = 1 bit) 
+\begin{DoxyParams}{Parameters}
+{\em bitrate} & Bitrate (baud rate) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sio_8c_af73e5dd8dee393ad8e2d943669a2bcd9}\label{sio_8c_af73e5dd8dee393ad8e2d943669a2bcd9}} 
+\index{sio.\+c@{sio.\+c}!S\+I\+O\+Start\+Ex@{S\+I\+O\+Start\+Ex}}
+\index{S\+I\+O\+Start\+Ex@{S\+I\+O\+Start\+Ex}!sio.\+c@{sio.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Start\+Ex()}{SIOStartEx()}}
+{\footnotesize\ttfamily void S\+I\+O\+Start\+Ex (\begin{DoxyParamCaption}\item[{int}]{bitrate,  }\item[{int}]{datalength,  }\item[{int}]{parity,  }\item[{int}]{stopbit }\end{DoxyParamCaption})}
+
+
+
+Same as \hyperlink{psxsio_8h_aee2692a619763d1d6222a78cc40a0495}{S\+I\+O\+Start()} but with more control. 
+
+I\+M\+P\+O\+R\+T\+A\+NT\+: Must use defined macros. For example setting datalength to 5 should be done with \char`\"{}\+S\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+\_\+5\char`\"{} and not by simply passing 5 as an argument.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitrate} & Bit rate (baud rate) \\
+\hline
+{\em datalength} & Character (data) length \\
+\hline
+{\em parity} & Parity \\
+\hline
+{\em stopbit} & Stop bit length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sio_8c_aae786e8e7a1c4ac6cca1e3a0d054396c}\label{sio_8c_aae786e8e7a1c4ac6cca1e3a0d054396c}} 
+\index{sio.\+c@{sio.\+c}!S\+I\+O\+Stop@{S\+I\+O\+Stop}}
+\index{S\+I\+O\+Stop@{S\+I\+O\+Stop}!sio.\+c@{sio.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+O\+Stop()}{SIOStop()}}
+{\footnotesize\ttfamily void S\+I\+O\+Stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shuts down S\+IO communication. 
+

@@ -1,0 +1,373 @@
+\hypertarget{string_8c}{}\section{libpsx/src/libc/string.c File Reference}
+\label{string_8c}\index{libpsx/src/libc/string.\+c@{libpsx/src/libc/string.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{string_8c_a1fa12f5aa1afdecdfe8b0f8af0e1b024}{memcpy} (void $\ast$dst, const void $\ast$src, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+void $\ast$ \hyperlink{string_8c_a57fd186cab9c9f7a6b7f4d9a89b5ef5c}{memccpy} (void $\ast$dst, const void $\ast$src, int c, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+void $\ast$ \hyperlink{string_8c_aeb2b8ac78e3820a4e5049ed5ac06bdc4}{memset} (void $\ast$dst, char c, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} n)
+\item 
+int \hyperlink{string_8c_a895f825792e65472848083abd481dd8e}{memcmp} (const void $\ast$b1, const void $\ast$b2, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} n)
+\item 
+void $\ast$ \hyperlink{string_8c_ab1dfe8337890b29fd09ecb9a6406fa72}{memmove} (void $\ast$dst, const void $\ast$src, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+void $\ast$ \hyperlink{string_8c_a63033f129a0417daaa922bf6d2c163ef}{memchr} (void $\ast$s, int c, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} n)
+\item 
+char $\ast$ \hyperlink{string_8c_a43109c626297c55857610b72997dac26}{strncpy} (char $\ast$dst, const char $\ast$src, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+char $\ast$ \hyperlink{string_8c_a1a8e0d046aa6ccaf2c9947e3142e4786}{strcpy} (char $\ast$dst, const char $\ast$src)
+\item 
+int \hyperlink{string_8c_ae6c8de953239811a34eeeab09458e55e}{strlen} (const char $\ast$str)
+\item 
+char $\ast$ \hyperlink{string_8c_a12871ed234858ef0e363d2b8aa572fc1}{strchr} (const char $\ast$s, int c)
+\item 
+char $\ast$ \hyperlink{string_8c_a0c05a458deff028ef4d4e64059098db4}{strrchr} (const char $\ast$s, int c)
+\item 
+char $\ast$ \hyperlink{string_8c_aa7be5f169b3183cab84703e18a06b242}{strpbrk} (const char $\ast$s, const char $\ast$charset)
+\item 
+char $\ast$ \hyperlink{string_8c_a3a7ca48fcf39bf1a6185b496775b8984}{strstr} (const char $\ast$big, const char $\ast$little)
+\item 
+int \hyperlink{string_8c_a11bd144d7d44914099a3aeddf1c8567d}{strcmp} (const char $\ast$s1, const char $\ast$s2)
+\item 
+int \hyperlink{string_8c_adf4098e6feee89a3a2207ce85d046783}{strncmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+int \hyperlink{string_8c_aa4718e50ed45c2275c5d85a121d68097}{strcoll} (const char $\ast$s1, const char $\ast$s2)
+\item 
+char $\ast$ \hyperlink{string_8c_a2c4f14c424a31db9c57fd046c3b9f0df}{strdup} (const char $\ast$str)
+\item 
+char $\ast$ \hyperlink{string_8c_a8a7a881480d9cd26c2b0612bc597224c}{strndup} (const char $\ast$str, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+long long \hyperlink{string_8c_afb901aa665b7e2e3e27025ca77fecd1b}{strtoll} (const char $\ast$nptr, char $\ast$$\ast$endptr, int base)
+\item 
+long \hyperlink{string_8c_a311071298c2fe3e5d7057f396a6acfdc}{strtol} (const char $\ast$nptr, char $\ast$$\ast$endptr, int base)
+\item 
+double \hyperlink{string_8c_a0c17a0b44f572941d9f73518f99ea7ed}{strtod} (const char $\ast$nptr, char $\ast$$\ast$endptr)
+\item 
+long double \hyperlink{string_8c_ad2ed05594fb04a126627c0fd5c7e2232}{strtold} (const char $\ast$nptr, char $\ast$$\ast$endptr)
+\item 
+float \hyperlink{string_8c_a2370632318c3797a314f8eb62d37947c}{strtof} (const char $\ast$nptr, char $\ast$$\ast$endptr)
+\item 
+char $\ast$ \hyperlink{string_8c_a8dfa7abdb7b9f23927ecbe991187a850}{strcat} (char $\ast$s, const char $\ast$append)
+\item 
+char $\ast$ \hyperlink{string_8c_afea2280f01dc493f3f8b21b0ff75f491}{strncat} (char $\ast$s, const char $\ast$append, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} count)
+\item 
+int \hyperlink{string_8c_a706b36f3a672f84685576723c3928baa}{strcasecmp} (const char $\ast$s1, const char $\ast$s2)
+\item 
+int \hyperlink{string_8c_af4913b45cb0c03415fe25bd778a2b8ea}{strncasecmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+int \hyperlink{string_8c_a7f886f6fb9d16724acb21dca4110ec29}{stricmp} (const char $\ast$s1, const char $\ast$s2)
+\item 
+int \hyperlink{string_8c_ae69b30ce6aad0aa49b57e4d78ef866dc}{strnicmp} (const char $\ast$s1, const char $\ast$s2, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+char $\ast$ \hyperlink{string_8c_a93c766c6e86f4f79e7507c21f1794e15}{strsep} (char $\ast$$\ast$stringp, const char $\ast$delim)
+\item 
+char $\ast$ \hyperlink{string_8c_a9af7251f0c1b875e0e34b8e2b94dda39}{strtok} (char $\ast$str, const char $\ast$sep)
+\item 
+int \hyperlink{string_8c_a471eb74b37a0e9120b06eca97e693b01}{strspn} (const char $\ast$s, const char $\ast$charset)
+\item 
+int \hyperlink{string_8c_a843ed56d3f5b2b56709ba7d2651112c3}{strcspn} (const char $\ast$s, const char $\ast$charset)
+\item 
+char $\ast$ \hyperlink{string_8c_a8405a432a671b51cc350ba62d5525c5a}{strlwr} (char $\ast$string)
+\item 
+char $\ast$ \hyperlink{string_8c_a3b3a432051b3200971d320bae89dbf2d}{strupr} (char $\ast$string)
+\item 
+int \hyperlink{string_8c_ac5aa18897f547ff20f10c777c6a58f0a}{atoi} (const char $\ast$string)
+\item 
+long \hyperlink{string_8c_a41345248d4ac38a48238dbd288332180}{atol} (const char $\ast$string)
+\item 
+int \hyperlink{string_8c_af205aaa99d271dd00a2bdf7060ad5443}{strnlen} (const char $\ast$s, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} maxlen)
+\item 
+void $\ast$ \hyperlink{string_8c_a6364e799ebd9b12fb82a76af0f5fcbab}{memrchr} (void $\ast$b, int c, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+char $\ast$ \hyperlink{string_8c_ac0be77e4443919d2a25b0be1e1effdec}{stpcpy} (char $\ast$dst, const char $\ast$src)
+\item 
+char $\ast$ \hyperlink{string_8c_ac3d5aa9dbdcc8027a8985d0e48180a70}{stpncpy} (char $\ast$dst, const char $\ast$src, int \hyperlink{f3m_8c_a96bbf959016e4411c9e6b9812a8be60a}{len})
+\item 
+char $\ast$ \hyperlink{string_8c_a1dd1a3759f2483d1c792113c2df36e65}{strcasestr} (const char $\ast$big, const char $\ast$little)
+\item 
+int \hyperlink{string_8c_a15aeca171749a574a16b9985d64392e3}{strlcpy} (char $\ast$dst, const char $\ast$src, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} size)
+\item 
+int \hyperlink{string_8c_a2cb9109a23fb9d29e8d79b5b35f71f3f}{strlcat} (char $\ast$dst, const char $\ast$src, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} size)
+\item 
+void $\ast$ \hyperlink{string_8c_adf161d1912ad01553bff28a9f4ab4a3f}{memmem} (const void $\ast$big, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} big\+\_\+len, const void $\ast$little, \hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t} little\+\_\+len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{string_8c_ac5aa18897f547ff20f10c777c6a58f0a}\label{string_8c_ac5aa18897f547ff20f10c777c6a58f0a}} 
+\index{string.\+c@{string.\+c}!atoi@{atoi}}
+\index{atoi@{atoi}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{atoi()}{atoi()}}
+{\footnotesize\ttfamily int atoi (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a41345248d4ac38a48238dbd288332180}\label{string_8c_a41345248d4ac38a48238dbd288332180}} 
+\index{string.\+c@{string.\+c}!atol@{atol}}
+\index{atol@{atol}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{atol()}{atol()}}
+{\footnotesize\ttfamily long atol (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a57fd186cab9c9f7a6b7f4d9a89b5ef5c}\label{string_8c_a57fd186cab9c9f7a6b7f4d9a89b5ef5c}} 
+\index{string.\+c@{string.\+c}!memccpy@{memccpy}}
+\index{memccpy@{memccpy}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{memccpy()}{memccpy()}}
+{\footnotesize\ttfamily void$\ast$ memccpy (\begin{DoxyParamCaption}\item[{void $\ast$}]{dst,  }\item[{const void $\ast$}]{src,  }\item[{int}]{c,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a63033f129a0417daaa922bf6d2c163ef}\label{string_8c_a63033f129a0417daaa922bf6d2c163ef}} 
+\index{string.\+c@{string.\+c}!memchr@{memchr}}
+\index{memchr@{memchr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{memchr()}{memchr()}}
+{\footnotesize\ttfamily void$\ast$ memchr (\begin{DoxyParamCaption}\item[{void $\ast$}]{s,  }\item[{int}]{c,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a895f825792e65472848083abd481dd8e}\label{string_8c_a895f825792e65472848083abd481dd8e}} 
+\index{string.\+c@{string.\+c}!memcmp@{memcmp}}
+\index{memcmp@{memcmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{memcmp()}{memcmp()}}
+{\footnotesize\ttfamily int memcmp (\begin{DoxyParamCaption}\item[{const void $\ast$}]{b1,  }\item[{const void $\ast$}]{b2,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a1fa12f5aa1afdecdfe8b0f8af0e1b024}\label{string_8c_a1fa12f5aa1afdecdfe8b0f8af0e1b024}} 
+\index{string.\+c@{string.\+c}!memcpy@{memcpy}}
+\index{memcpy@{memcpy}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{memcpy()}{memcpy()}}
+{\footnotesize\ttfamily void$\ast$ memcpy (\begin{DoxyParamCaption}\item[{void $\ast$}]{dst,  }\item[{const void $\ast$}]{src,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_adf161d1912ad01553bff28a9f4ab4a3f}\label{string_8c_adf161d1912ad01553bff28a9f4ab4a3f}} 
+\index{string.\+c@{string.\+c}!memmem@{memmem}}
+\index{memmem@{memmem}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{memmem()}{memmem()}}
+{\footnotesize\ttfamily void$\ast$ memmem (\begin{DoxyParamCaption}\item[{const void $\ast$}]{big,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{big\+\_\+len,  }\item[{const void $\ast$}]{little,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{little\+\_\+len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_ab1dfe8337890b29fd09ecb9a6406fa72}\label{string_8c_ab1dfe8337890b29fd09ecb9a6406fa72}} 
+\index{string.\+c@{string.\+c}!memmove@{memmove}}
+\index{memmove@{memmove}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{memmove()}{memmove()}}
+{\footnotesize\ttfamily void$\ast$ memmove (\begin{DoxyParamCaption}\item[{void $\ast$}]{dst,  }\item[{const void $\ast$}]{src,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a6364e799ebd9b12fb82a76af0f5fcbab}\label{string_8c_a6364e799ebd9b12fb82a76af0f5fcbab}} 
+\index{string.\+c@{string.\+c}!memrchr@{memrchr}}
+\index{memrchr@{memrchr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{memrchr()}{memrchr()}}
+{\footnotesize\ttfamily void$\ast$ memrchr (\begin{DoxyParamCaption}\item[{void $\ast$}]{b,  }\item[{int}]{c,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_aeb2b8ac78e3820a4e5049ed5ac06bdc4}\label{string_8c_aeb2b8ac78e3820a4e5049ed5ac06bdc4}} 
+\index{string.\+c@{string.\+c}!memset@{memset}}
+\index{memset@{memset}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{memset()}{memset()}}
+{\footnotesize\ttfamily void$\ast$ memset (\begin{DoxyParamCaption}\item[{void $\ast$}]{dst,  }\item[{char}]{c,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_ac0be77e4443919d2a25b0be1e1effdec}\label{string_8c_ac0be77e4443919d2a25b0be1e1effdec}} 
+\index{string.\+c@{string.\+c}!stpcpy@{stpcpy}}
+\index{stpcpy@{stpcpy}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{stpcpy()}{stpcpy()}}
+{\footnotesize\ttfamily char$\ast$ stpcpy (\begin{DoxyParamCaption}\item[{char $\ast$}]{dst,  }\item[{const char $\ast$}]{src }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_ac3d5aa9dbdcc8027a8985d0e48180a70}\label{string_8c_ac3d5aa9dbdcc8027a8985d0e48180a70}} 
+\index{string.\+c@{string.\+c}!stpncpy@{stpncpy}}
+\index{stpncpy@{stpncpy}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{stpncpy()}{stpncpy()}}
+{\footnotesize\ttfamily char$\ast$ stpncpy (\begin{DoxyParamCaption}\item[{char $\ast$}]{dst,  }\item[{const char $\ast$}]{src,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a706b36f3a672f84685576723c3928baa}\label{string_8c_a706b36f3a672f84685576723c3928baa}} 
+\index{string.\+c@{string.\+c}!strcasecmp@{strcasecmp}}
+\index{strcasecmp@{strcasecmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strcasecmp()}{strcasecmp()}}
+{\footnotesize\ttfamily int strcasecmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a1dd1a3759f2483d1c792113c2df36e65}\label{string_8c_a1dd1a3759f2483d1c792113c2df36e65}} 
+\index{string.\+c@{string.\+c}!strcasestr@{strcasestr}}
+\index{strcasestr@{strcasestr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strcasestr()}{strcasestr()}}
+{\footnotesize\ttfamily char$\ast$ strcasestr (\begin{DoxyParamCaption}\item[{const char $\ast$}]{big,  }\item[{const char $\ast$}]{little }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a8dfa7abdb7b9f23927ecbe991187a850}\label{string_8c_a8dfa7abdb7b9f23927ecbe991187a850}} 
+\index{string.\+c@{string.\+c}!strcat@{strcat}}
+\index{strcat@{strcat}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strcat()}{strcat()}}
+{\footnotesize\ttfamily char$\ast$ strcat (\begin{DoxyParamCaption}\item[{char $\ast$}]{s,  }\item[{const char $\ast$}]{append }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a12871ed234858ef0e363d2b8aa572fc1}\label{string_8c_a12871ed234858ef0e363d2b8aa572fc1}} 
+\index{string.\+c@{string.\+c}!strchr@{strchr}}
+\index{strchr@{strchr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strchr()}{strchr()}}
+{\footnotesize\ttfamily char$\ast$ strchr (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a11bd144d7d44914099a3aeddf1c8567d}\label{string_8c_a11bd144d7d44914099a3aeddf1c8567d}} 
+\index{string.\+c@{string.\+c}!strcmp@{strcmp}}
+\index{strcmp@{strcmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strcmp()}{strcmp()}}
+{\footnotesize\ttfamily int strcmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_aa4718e50ed45c2275c5d85a121d68097}\label{string_8c_aa4718e50ed45c2275c5d85a121d68097}} 
+\index{string.\+c@{string.\+c}!strcoll@{strcoll}}
+\index{strcoll@{strcoll}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strcoll()}{strcoll()}}
+{\footnotesize\ttfamily int strcoll (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a1a8e0d046aa6ccaf2c9947e3142e4786}\label{string_8c_a1a8e0d046aa6ccaf2c9947e3142e4786}} 
+\index{string.\+c@{string.\+c}!strcpy@{strcpy}}
+\index{strcpy@{strcpy}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strcpy()}{strcpy()}}
+{\footnotesize\ttfamily char$\ast$ strcpy (\begin{DoxyParamCaption}\item[{char $\ast$}]{dst,  }\item[{const char $\ast$}]{src }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a843ed56d3f5b2b56709ba7d2651112c3}\label{string_8c_a843ed56d3f5b2b56709ba7d2651112c3}} 
+\index{string.\+c@{string.\+c}!strcspn@{strcspn}}
+\index{strcspn@{strcspn}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strcspn()}{strcspn()}}
+{\footnotesize\ttfamily int strcspn (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{const char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a2c4f14c424a31db9c57fd046c3b9f0df}\label{string_8c_a2c4f14c424a31db9c57fd046c3b9f0df}} 
+\index{string.\+c@{string.\+c}!strdup@{strdup}}
+\index{strdup@{strdup}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strdup()}{strdup()}}
+{\footnotesize\ttfamily char$\ast$ strdup (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a7f886f6fb9d16724acb21dca4110ec29}\label{string_8c_a7f886f6fb9d16724acb21dca4110ec29}} 
+\index{string.\+c@{string.\+c}!stricmp@{stricmp}}
+\index{stricmp@{stricmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{stricmp()}{stricmp()}}
+{\footnotesize\ttfamily int stricmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a2cb9109a23fb9d29e8d79b5b35f71f3f}\label{string_8c_a2cb9109a23fb9d29e8d79b5b35f71f3f}} 
+\index{string.\+c@{string.\+c}!strlcat@{strlcat}}
+\index{strlcat@{strlcat}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strlcat()}{strlcat()}}
+{\footnotesize\ttfamily int strlcat (\begin{DoxyParamCaption}\item[{char $\ast$}]{dst,  }\item[{const char $\ast$}]{src,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a15aeca171749a574a16b9985d64392e3}\label{string_8c_a15aeca171749a574a16b9985d64392e3}} 
+\index{string.\+c@{string.\+c}!strlcpy@{strlcpy}}
+\index{strlcpy@{strlcpy}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strlcpy()}{strlcpy()}}
+{\footnotesize\ttfamily int strlcpy (\begin{DoxyParamCaption}\item[{char $\ast$}]{dst,  }\item[{const char $\ast$}]{src,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_ae6c8de953239811a34eeeab09458e55e}\label{string_8c_ae6c8de953239811a34eeeab09458e55e}} 
+\index{string.\+c@{string.\+c}!strlen@{strlen}}
+\index{strlen@{strlen}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strlen()}{strlen()}}
+{\footnotesize\ttfamily int strlen (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a8405a432a671b51cc350ba62d5525c5a}\label{string_8c_a8405a432a671b51cc350ba62d5525c5a}} 
+\index{string.\+c@{string.\+c}!strlwr@{strlwr}}
+\index{strlwr@{strlwr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strlwr()}{strlwr()}}
+{\footnotesize\ttfamily char$\ast$ strlwr (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_af4913b45cb0c03415fe25bd778a2b8ea}\label{string_8c_af4913b45cb0c03415fe25bd778a2b8ea}} 
+\index{string.\+c@{string.\+c}!strncasecmp@{strncasecmp}}
+\index{strncasecmp@{strncasecmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strncasecmp()}{strncasecmp()}}
+{\footnotesize\ttfamily int strncasecmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_afea2280f01dc493f3f8b21b0ff75f491}\label{string_8c_afea2280f01dc493f3f8b21b0ff75f491}} 
+\index{string.\+c@{string.\+c}!strncat@{strncat}}
+\index{strncat@{strncat}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strncat()}{strncat()}}
+{\footnotesize\ttfamily char$\ast$ strncat (\begin{DoxyParamCaption}\item[{char $\ast$}]{s,  }\item[{const char $\ast$}]{append,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{count }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_adf4098e6feee89a3a2207ce85d046783}\label{string_8c_adf4098e6feee89a3a2207ce85d046783}} 
+\index{string.\+c@{string.\+c}!strncmp@{strncmp}}
+\index{strncmp@{strncmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strncmp()}{strncmp()}}
+{\footnotesize\ttfamily int strncmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a43109c626297c55857610b72997dac26}\label{string_8c_a43109c626297c55857610b72997dac26}} 
+\index{string.\+c@{string.\+c}!strncpy@{strncpy}}
+\index{strncpy@{strncpy}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strncpy()}{strncpy()}}
+{\footnotesize\ttfamily char$\ast$ strncpy (\begin{DoxyParamCaption}\item[{char $\ast$}]{dst,  }\item[{const char $\ast$}]{src,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a8a7a881480d9cd26c2b0612bc597224c}\label{string_8c_a8a7a881480d9cd26c2b0612bc597224c}} 
+\index{string.\+c@{string.\+c}!strndup@{strndup}}
+\index{strndup@{strndup}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strndup()}{strndup()}}
+{\footnotesize\ttfamily char$\ast$ strndup (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_ae69b30ce6aad0aa49b57e4d78ef866dc}\label{string_8c_ae69b30ce6aad0aa49b57e4d78ef866dc}} 
+\index{string.\+c@{string.\+c}!strnicmp@{strnicmp}}
+\index{strnicmp@{strnicmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strnicmp()}{strnicmp()}}
+{\footnotesize\ttfamily int strnicmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_af205aaa99d271dd00a2bdf7060ad5443}\label{string_8c_af205aaa99d271dd00a2bdf7060ad5443}} 
+\index{string.\+c@{string.\+c}!strnlen@{strnlen}}
+\index{strnlen@{strnlen}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strnlen()}{strnlen()}}
+{\footnotesize\ttfamily int strnlen (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{\hyperlink{stdlib_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}]{maxlen }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_aa7be5f169b3183cab84703e18a06b242}\label{string_8c_aa7be5f169b3183cab84703e18a06b242}} 
+\index{string.\+c@{string.\+c}!strpbrk@{strpbrk}}
+\index{strpbrk@{strpbrk}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strpbrk()}{strpbrk()}}
+{\footnotesize\ttfamily char$\ast$ strpbrk (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{const char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a0c05a458deff028ef4d4e64059098db4}\label{string_8c_a0c05a458deff028ef4d4e64059098db4}} 
+\index{string.\+c@{string.\+c}!strrchr@{strrchr}}
+\index{strrchr@{strrchr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strrchr()}{strrchr()}}
+{\footnotesize\ttfamily char$\ast$ strrchr (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a93c766c6e86f4f79e7507c21f1794e15}\label{string_8c_a93c766c6e86f4f79e7507c21f1794e15}} 
+\index{string.\+c@{string.\+c}!strsep@{strsep}}
+\index{strsep@{strsep}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strsep()}{strsep()}}
+{\footnotesize\ttfamily char$\ast$ strsep (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{stringp,  }\item[{const char $\ast$}]{delim }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a471eb74b37a0e9120b06eca97e693b01}\label{string_8c_a471eb74b37a0e9120b06eca97e693b01}} 
+\index{string.\+c@{string.\+c}!strspn@{strspn}}
+\index{strspn@{strspn}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strspn()}{strspn()}}
+{\footnotesize\ttfamily int strspn (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{const char $\ast$}]{charset }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a3a7ca48fcf39bf1a6185b496775b8984}\label{string_8c_a3a7ca48fcf39bf1a6185b496775b8984}} 
+\index{string.\+c@{string.\+c}!strstr@{strstr}}
+\index{strstr@{strstr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strstr()}{strstr()}}
+{\footnotesize\ttfamily char$\ast$ strstr (\begin{DoxyParamCaption}\item[{const char $\ast$}]{big,  }\item[{const char $\ast$}]{little }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a0c17a0b44f572941d9f73518f99ea7ed}\label{string_8c_a0c17a0b44f572941d9f73518f99ea7ed}} 
+\index{string.\+c@{string.\+c}!strtod@{strtod}}
+\index{strtod@{strtod}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strtod()}{strtod()}}
+{\footnotesize\ttfamily double strtod (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nptr,  }\item[{char $\ast$$\ast$}]{endptr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a2370632318c3797a314f8eb62d37947c}\label{string_8c_a2370632318c3797a314f8eb62d37947c}} 
+\index{string.\+c@{string.\+c}!strtof@{strtof}}
+\index{strtof@{strtof}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strtof()}{strtof()}}
+{\footnotesize\ttfamily float strtof (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nptr,  }\item[{char $\ast$$\ast$}]{endptr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a9af7251f0c1b875e0e34b8e2b94dda39}\label{string_8c_a9af7251f0c1b875e0e34b8e2b94dda39}} 
+\index{string.\+c@{string.\+c}!strtok@{strtok}}
+\index{strtok@{strtok}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strtok()}{strtok()}}
+{\footnotesize\ttfamily char$\ast$ strtok (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{const char $\ast$}]{sep }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a311071298c2fe3e5d7057f396a6acfdc}\label{string_8c_a311071298c2fe3e5d7057f396a6acfdc}} 
+\index{string.\+c@{string.\+c}!strtol@{strtol}}
+\index{strtol@{strtol}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strtol()}{strtol()}}
+{\footnotesize\ttfamily long strtol (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nptr,  }\item[{char $\ast$$\ast$}]{endptr,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_ad2ed05594fb04a126627c0fd5c7e2232}\label{string_8c_ad2ed05594fb04a126627c0fd5c7e2232}} 
+\index{string.\+c@{string.\+c}!strtold@{strtold}}
+\index{strtold@{strtold}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strtold()}{strtold()}}
+{\footnotesize\ttfamily long double strtold (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nptr,  }\item[{char $\ast$$\ast$}]{endptr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_afb901aa665b7e2e3e27025ca77fecd1b}\label{string_8c_afb901aa665b7e2e3e27025ca77fecd1b}} 
+\index{string.\+c@{string.\+c}!strtoll@{strtoll}}
+\index{strtoll@{strtoll}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strtoll()}{strtoll()}}
+{\footnotesize\ttfamily long long strtoll (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nptr,  }\item[{char $\ast$$\ast$}]{endptr,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a3b3a432051b3200971d320bae89dbf2d}\label{string_8c_a3b3a432051b3200971d320bae89dbf2d}} 
+\index{string.\+c@{string.\+c}!strupr@{strupr}}
+\index{strupr@{strupr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strupr()}{strupr()}}
+{\footnotesize\ttfamily char$\ast$ strupr (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+

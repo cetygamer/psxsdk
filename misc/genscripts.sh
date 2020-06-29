@@ -22,30 +22,54 @@ SECTIONS
 {
 	. = 0x80010000;
 
-	__text_start = .;
-	.text ALIGN(4) : { *(.text*) }
-	__text_end = .;
+	.text ALIGN(4) :
+	{
+		*(.text*)
+	}
 
-	__rodata_start = .;
-	.rodata ALIGN(4) : { *(.rodata) }
-	__rodata_end = .;
+	.rodata ALIGN(4) :
+	{
+		*(.rodata)
+	}
 
-	__data_start = .;
-	.data ALIGN(4) : { *(.data) }
-	__data_end = .;
+	.data ALIGN(4) :
+	{
+		 *(.data)
+	}
+
+	.ctors ALIGN(4) :
+	{
+		*(.ctors)
+	}
+
+	.dtors ALIGN(4) :
+ 	{
+		*(.dtors)
+	}
+
+	.bss  ALIGN(4) :
+	{
+		*(.bss)
+	}
+
+	__text_start = ADDR(.text);
+	__text_end = ADDR(.text) + SIZEOF(.text);
+
+	__rodata_start = ADDR(.rodata);
+	__rodata_end = ADDR(.rodata) + SIZEOF(.rodata);
+
+	__data_start = ADDR(.data);
+	__data_end = ADDR(.data) + SIZEOF(.data);
+
+	__ctor_list = ADDR(.ctors);
+	__ctor_end = ADDR(.ctors) + SIZEOF(.ctors);
+
+	__dtor_list = ADDR(.dtors);
+	__dtor_end = ADDR(.dtors) + SIZEOF(.dtors);
 	
-	__ctor_list = .;
-	.ctors ALIGN(4) : { *(.ctors) }
-	__ctor_end = .;
+	__bss_start = ADDR(.bss);
+	__bss_end = ADDR(.bss) + SIZEOF(.bss);
 	
-	__dtor_list = .;
-	.dtors ALIGN(4) : { *(.dtors) }
-	__dtor_end = .;
-
-	__bss_start = .;
-	.bss  ALIGN(4) : { *(.bss) }
-	__bss_end = .;
-
 	__scratchpad = 0x1f800000;
 }
 " > playstation.x

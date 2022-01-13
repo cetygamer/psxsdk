@@ -14,18 +14,6 @@ static unsigned int linked_list_pos;
 
 int fb_font_x, fb_font_y, fb_font_cx, fb_font_cy;
 
-#define GPU_DATA_PORT_ADDR			0x1f801810
-#define GPU_CONTROL_PORT_ADDR			0x1f801814
-#define GPU_DATA_PORT				*((unsigned int*)GPU_DATA_PORT_ADDR)
-#define GPU_CONTROL_PORT			*((unsigned int*)GPU_CONTROL_PORT_ADDR) 
-
-#define DPCR					*((unsigned int*)0x1f8010f0)
-#define D2_MADR					*((unsigned int*)0x1f8010a0)
-#define D2_BCR					*((unsigned int*)0x1f8010a4)
-#define D2_CHCR					*((unsigned int*)0x1f8010a8)
-
-#define get_clutid(cx, cy)			(((cx&0x3ff)>>4)|((cy&0x1ff)<<6))
-
 static unsigned int prfont_flags = 0;
 static int prfont_scale_x = 0;
 static int prfont_scale_y = 0;

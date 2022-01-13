@@ -8,15 +8,9 @@
  #include <stdlib.h>
  #include <psx.h>
  
-#define DPCR			*((unsigned int*)0x1f8010f0)
 #define DICR			*((unsigned int*)0x1f8010f4)
 #define IPENDING		*((volatile unsigned int*)0x1f801070)
 #define IMASK			*((volatile unsigned int*)0x1f801074)
-
-#define GPU_DATA_PORT_ADDR			0x1f801810
-#define GPU_CONTROL_PORT_ADDR			0x1f801814
-#define GPU_DATA_PORT				*((unsigned int*)GPU_DATA_PORT_ADDR)
-#define GPU_CONTROL_PORT			*((unsigned int*)GPU_CONTROL_PORT_ADDR) 
 
 void __psxsdk_exception_manager();
 

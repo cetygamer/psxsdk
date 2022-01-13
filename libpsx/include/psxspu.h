@@ -1,6 +1,32 @@
 #ifndef _SPU_H
 #define _SPU_H
 
+#define SPU_ADDR						*((volatile unsigned short*)0x1f801da6)
+#define SPU_DATA						*((volatile unsigned short*)0x1f801da8)
+#define SPU_CONTROL 					*((volatile unsigned short*)0x1f801daa)
+#define SPU_STATUS					*((volatile unsigned short*)0x1f801dac)
+#define SPU_STATUS2					*((volatile unsigned short*)0x1f801dae)
+#define SPU_MVOL_L					*((volatile unsigned short*)0x1f801d80)
+#define SPU_MVOL_R					*((volatile unsigned short*)0x1f801d82)
+#define SPU_REVERB_L					*((volatile unsigned short*)0x1f801d84)
+#define SPU_REVERB_R					*((volatile unsigned short*)0x1f801d86)
+#define SPU_KEY_ON1           				*((volatile unsigned short*)0x1f801d88)
+#define SPU_KEY_ON2	            			*((volatile unsigned short*)0x1f801d8a)
+#define SPU_KEY_OFF1           				*((volatile unsigned short*)0x1f801d8c)
+#define SPU_KEY_OFF2            			*((volatile unsigned short*)0x1f801d8e)
+#define SPU_KEY_FM_MODE1				*((volatile unsigned short*)0x1f801d90)
+#define SPU_KEY_FM_MODE2				*((volatile unsigned short*)0x1f801d92)
+#define SPU_KEY_NOISE_MODE1			*((volatile unsigned short*)0x1f801d94)
+#define SPU_KEY_NOISE_MODE2			*((volatile unsigned short*)0x1f801d96)
+#define SPU_KEY_REVERB_MODE1			*((volatile unsigned short*)0x1f801d98)
+#define SPU_KEY_REVERB_MODE2			*((volatile unsigned short*)0x1f801d9a)
+#define SPU_CD_MVOL_L					*((volatile unsigned short*)0x1f801db0)
+#define SPU_CD_MVOL_R					*((volatile unsigned short*)0x1f801db2)
+#define SPU_EXT_VOL_L					*((volatile unsigned short*)0x1f801db4)
+#define SPU_EXT_VOL_R					*((volatile unsigned short*)0x1f801db6)
+#define SPU_REVERB_WORK_ADDR			*((volatile unsigned short*)0x1f801da2)
+#define SPU_VOICE_BASE_ADDR(x)			(0x1f801c00 + (x<<4))
+
 /** Start address of sound data in Sound RAM */
 #define SPU_DATA_BASE_ADDR		0x1010
 /** Maximum volume. */

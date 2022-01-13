@@ -23,18 +23,6 @@ modplay_nopsx.o: modplay.c
 mod_nopsx.o: mod.c
 	$(HOST_CC) $(HOST_CFLAGS) -DNO_PSX_LIB -c mod.c -o mod_nopsx.o
 
-c669_nopsx.o: c669.c
-	$(HOST_CC) $(HOST_CFLAGS) -DNO_PSX_LIB -c c669.c -o c669_nopsx.o
-
-mtm_nopsx.o: mtm.c
-	$(HOST_CC) $(HOST_CFLAGS) -DNO_PSX_LIB -c mtm.c -o mtm_nopsx.o
-	
-xm_nopsx.o: xm.c
-	$(HOST_CC) $(HOST_CFLAGS) -DNO_PSX_LIB -c xm.c -o xm_nopsx.o
-
-it_nopsx.o: it.c
-	$(HOST_CC) $(HOST_CFLAGS) -DNO_PSX_LIB -c it.c -o it_nopsx.o
-
 libmodplay_nopsx.a: modplay_nopsx.o mod_nopsx.o
 	rm -f libmodplay_nopsx.a
 	$(HOST_AR) r libmodplay_nopsx.a modplay_nopsx.o mod_nopsx.o

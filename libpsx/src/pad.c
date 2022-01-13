@@ -37,11 +37,11 @@
     0x1f80104e - unsigned short baud;
 */
 
-#define PADSIO_DATA(x)	*((unsigned char*)(0x1f801040 + (x<<4)))
-#define PADSIO_STATUS(x)	*((unsigned short*)(0x1f801044 + (x<<4)))
-#define PADSIO_MODE(x)	*((unsigned short*)(0x1f801048 + (x<<4)))
-#define PADSIO_CTRL(x)	*((unsigned short*)(0x1f80104a + (x<<4)))
-#define PADSIO_BAUD(x)	*((unsigned short*)(0x1f80104e + (x<<4)))
+#define PADSIO_DATA(x)			*((volatile unsigned char*)(0x1f801040 + (x<<4)))
+#define PADSIO_STATUS(x)		*((volatile unsigned short*)(0x1f801044 + (x<<4)))
+#define PADSIO_MODE(x)			*((volatile unsigned short*)(0x1f801048 + (x<<4)))
+#define PADSIO_CTRL(x)			*((volatile unsigned short*)(0x1f80104a + (x<<4)))
+#define PADSIO_BAUD(x)			*((volatile unsigned short*)(0x1f80104e + (x<<4)))
 
 unsigned char readpad_vibrations[4][2];
 int querypad_rxrdy = 1;
@@ -49,7 +49,7 @@ int querypad_rxrdy = 1;
 void QueryPAD(int pad_n, unsigned char *in, unsigned char *out, int len)
 {
 	int x;
-	int y;
+	volatile int y; // specified as volatile to not make busy loops get optimized out
 	int i;
 	unsigned char TempData;
 	int EmuFlag = 0;

@@ -141,7 +141,6 @@ int main(int argc, char *argv[])
 		
 // Manipulate the samples to do looping for Protracker MOD samples
 // The PCM to ADPCM conversion routines haven't been modified to do this yet.		
-// This won't be done for Composer 669 module files for now.
 		
 		/*if(mod->sample[x].repeat_len > 2 &&
 			mod->fmt == MOD_FMT_MOD)

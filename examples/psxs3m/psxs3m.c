@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <psx.h>
-#include <modplay.h>
+#include <f3m.h>
 
 #if defined(EXAMPLES_VMODE) == VMODE_PAL
 	#define TICKS_PER_SECOND		50
@@ -11,15 +11,14 @@
 	#define TICKS_PER_SECOND		60
 #endif
 
-unsigned char fileBuffer[0x80000]; // 512 kilobytes
-
 unsigned int primList[0x8000];
 int dbuf = 0;
 volatile int display_is_old = 1;
 char current_dir[256] = "cdrom:";
 char name_buf[24];
 char name_buf2[32];
-ModMusic *music = NULL;
+mod_s *music = NULL;
+player_s player;
 int music_loop;
 char *music_player_fname;
 int music_player_time;
@@ -96,10 +95,9 @@ void update_file_list()
 
 void file_browser(int redraw)
 {
-	int i, k, ok, allowed_ext;
+	int i, k, allowed_ext;
 	unsigned short padbuf;
 	char *cp;
-	FILE *f;
 	
 	PSX_ReadPad(&padbuf, NULL);
 			
@@ -141,7 +139,7 @@ void file_browser(int redraw)
 		
 		if((cp = strchr(file_list[file_list_pos].name, '.')))
 		{
-			if(strcmp(cp+1, "MOD") == 0)
+			if(strcmp(cp+1, "S3M") == 0)
 				allowed_ext = 1;
 		}
 		
@@ -151,78 +149,23 @@ void file_browser(int redraw)
 			{ 
 				if(music != NULL)
 				{
-					MODUnload(music);
+					f3m_mod_free(music);
 					music = NULL;
 				}
 					
 // It is a file, we will play it
-			
-// First check if there is a file which contains the
-// samples
-				strcpy(name_buf, file_list[file_list_pos].name);
-				
-				if((cp = strchr(name_buf, '.')))
-					*(cp+1) = '\0';
-				
-				strcat(name_buf, "SMP");
-			
-				ok = 0;
-			
-				if(!(padbuf & PAD_SELECT))
-				{
-					for(i = 0; file_list[i].size != -1; i++)
-					{
-						if(strcmp(name_buf, file_list[i].name) == 0)
-						{
-							ok = 1;
-							break;
-						}
-					}
-				}
-
-				if(ok) 
-				{
-// We found a sample file			
-					printf("Loading sample file for %s...\n", 
-						file_list[file_list_pos].name);
-				
-					sprintf(name_buf2, "cdrom:%s;1", name_buf);
-					printf("namebuf2=%s\n",name_buf2);
-					
-					f = fopen(name_buf2, "rb");
-										
-				//	printf("SZ = %d\n", file_list[i].size);
-					
-					fread(fileBuffer, sizeof(char), file_list[i].size, f);
-					fclose(f);
-					
-					memcpy(name_buf, fileBuffer, 8);
-					name_buf[8] = 0;
-
-					MOD4PSX_Upload(fileBuffer, SPU_DATA_BASE_ADDR);
-				}
-				else
-					printf("No sample file found for %s!\n",
-						file_list[file_list_pos].name);
-			
 				sprintf(name_buf2, "cdrom:%s;1", file_list[file_list_pos].name);
-				
-				f = fopen(name_buf2, "rb");
-				
-				fread(fileBuffer, sizeof(char), file_list[file_list_pos].size, f);
-				
-				fclose(f);
-			
-				music = MODLoadEx(fileBuffer, ok?MODLOAD_NOSAMPLES:0);
 
-				if(!ok)
-					MODUploadSamples(music, SPU_DATA_BASE_ADDR);
+				music = f3m_mod_load_filename(name_buf2);
+				f3m_player_init(&player, music);
 				
 				music_player_fname = file_list[file_list_pos].name;
 				music_player_time = 0;
 				music_player_vol = SPU_MAXVOL+1;
 				music_player_vol_pc = 100;
-				MODSetMaxVolume(music_player_vol-1);
+				
+				f3m_set_max_volume(&player, music_player_vol-1);
+				
 				music_loop = -1;
 			}
 			else
@@ -231,7 +174,7 @@ void file_browser(int redraw)
 				if(strcmp(file_list[file_list_pos].name, "..") == 0)
 				{
 					*(strrchr(current_dir, '\\')) = '\0';
-						
+
 					if(strcmp(current_dir, "cdrom:") == 0)
 						chdir("cdrom:\\");
 					else
@@ -267,7 +210,7 @@ void file_browser(int redraw)
 
 	
 	GsSortCls(0, 0, 0);
-	GsPrintFont(0, 0, "-= PsxMod =-");
+	GsPrintFont(0, 0, "-= PsxS3M =-");
 	GsPrintFont(0, 8, "Folder: <root>%s", current_dir + 6);
 	GsPrintFont(0, 16, "X to play, hold SELECT to convert SFX");
 	
@@ -314,20 +257,18 @@ void music_player_draw()
 	unsigned short padbuf;
 	static int old_song_pos = 10000;
 	int change_vol = 0;
-	
-	GsSortCls(0, 0, 0);
-	GsPrintFont(0, 0, "-= PsxMod =-");
-	GsPrintFont(0, 8, "File: %s", music_player_fname);
-	GsPrintFont(0, 16, "Title: %s", music->title);
-	GsPrintFont(0, 24, "pat:%03d/%03d pos:%02X spd:%d/%d", 
-		music->song_pos, music->song_pos_num - 1, music->pat_pos,
-		music->ticks_division, music->beats_minute);
-
-	GsPrintFont(0, 32, "vol: %03d%%/100%% time: %d:%02d chn: %d",
-		music_player_vol_pc, music_player_time /  (TICKS_PER_SECOND * 60), 
-			(music_player_time % (TICKS_PER_SECOND * 60) ) / TICKS_PER_SECOND,
-		music->channel_num);
 		
+	GsSortCls(0, 0, 0);
+	GsPrintFont(0, 0, "-= PsxS3M =-");
+	GsPrintFont(0, 8, "File: %s", music_player_fname);
+	GsPrintFont(0, 16, "Title: %s", music->name);
+	GsPrintFont(0, 24, "ord:%03d/%03d pat:%03d/%03d pos:%02X spd:%d/%d", 
+		player.cord, music->ord_num - 1, player.cpat, music->pat_num - 1, player.crow,
+		music->ispeed, music->itempo);
+	GsPrintFont(0, 32, "vol: %03d%%/100%% time: %d:%02d",
+		music_player_vol_pc, music_player_time /  (TICKS_PER_SECOND * 60), 
+			(music_player_time % (TICKS_PER_SECOND * 60) ) / TICKS_PER_SECOND);
+
 	GsPrintFont(0, 56, "Press X to change music.");
 	
 	dbuf = !dbuf;
@@ -335,7 +276,7 @@ void music_player_draw()
 	GsSetDrawEnvSimple(0, dbuf?0:256, 320, 240);
 	GsDrawList();
 	
-	if(old_song_pos > music->song_pos)
+	if(old_song_pos > player.cord)
 		music_player_time = 0;
 	
 	PSX_ReadPad(&padbuf, NULL);
@@ -356,10 +297,12 @@ void music_player_draw()
 	{
 		if(!wasLeft)
 		{
-			music->pat_pos = 0;
+			player.crow = 0;
+			player.cord--;
+			player.crow = 64;
 			
-			if(music->song_pos > 0)
-				music->song_pos--;
+			if(player.cord > -1)
+				player.cord--;
 		}
 			
 		wasLeft++;
@@ -369,12 +312,7 @@ void music_player_draw()
 	{
 		if(!wasRight)
 		{
-			music->pat_pos = 0;
-			
-			if(music->song_pos < (music->song_pos_num - 1))
-				music->song_pos++;
-			else
-				music->song_pos = 0;
+			player.crow = 64;
 		}
 		
 		wasRight++;
@@ -385,12 +323,13 @@ void music_player_draw()
 	
 	if(!(padbuf & PAD_RIGHT) || wasRight >= 15)
 		wasRight = 0;
-	
+
 	if((padbuf & PAD_CROSS) && !wasEnter)
 	{
-		MODStop(music);
-		MODUnload(music);
+		f3m_player_stop(&player);
+		f3m_mod_free(music);
 		music = NULL;
+		
 		wasEnter = 1;
 	}
 	
@@ -406,12 +345,12 @@ void music_player_draw()
 	if(change_vol)
 	{
 		music_player_vol_pc = (int)((float)100 * ((float)music_player_vol / (float)(SPU_MAXVOL+1)));
-		MODSetMaxVolume((music_player_vol == 0)?0:(music_player_vol-1));
+		f3m_set_max_volume(&player, (music_player_vol == 0)?0:(music_player_vol-1));
 	}
 	
 	music_player_time++;
 	
-	old_song_pos = music->song_pos;
+	old_song_pos = player.cord;
 }
 
 int main()
@@ -457,7 +396,8 @@ int main()
 			if(music)
 			{
 				redraw = 1;
-				MODPlay(music, &music_loop);
+				f3m_player_play(&player);
+			//	MODPlay(music, &music_loop);
 				music_player_draw();
 			}
 			else

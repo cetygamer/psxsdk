@@ -1,7 +1,8 @@
 libmodplay README
 -------------------------
 libmodplay is a library which plays music module files on your PlayStation.
-You can use it to play music in your productions. It (currently) supports the ProTracker .MOD and the Composer 669 .669 formats, and this means you can grab many module files from the internet and use them in your own productions very easily and (almost) transparently.
+You can use it to play music in your productions.
+This means you can grab many module files from the internet and use them very easily and (almost) transparently.
 Control is provided over Sound RAM addresses and base voices which allows playing a music and playing your own sound effects without resorting to guesses and ugly hacks.
 
 Little tutorial
@@ -31,7 +32,7 @@ After doing this, to play your music you have to call MODPlay(), giving the poin
 
 When you want to stop playing the music module, call MODStop() in the same way as you called MODPlay().
 
-Basically, this is what you have to do. It is not hard at all, just remember that the default base sound voice is 0, and that you don't need to play anything on voices 0-7 yourself, or things will not work well. Eight voices are used because this is the limit the Protracker MOD format and Composer 669 formats have.
+Basically, this is what you have to do. It is not hard at all, just remember that the default base sound voice is 0, and that you don't need to play anything on voices 0-7 yourself, or things will not work well. Eight voices are used because this is a limit of the Protracker MOD format.
 You can change the number of the base sound voice to another value by using the MODSetBaseVoice() function before using MODPlay().
 
 ISSUES
@@ -39,5 +40,3 @@ ISSUES
 - With ProTracker MODs, sample looping is not implemented yet when converting samples at runtime and many effects aren't implemented yet
   so some modules could sound differently to how they should sound.
   Always use MODs with few effects.
-- Tempo is wrong for Composer 669 music modules because the format is badly documented
-- Sampe looping for Composer 669 modules is not implemented yet

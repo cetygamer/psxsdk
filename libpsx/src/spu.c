@@ -41,13 +41,6 @@
 
 static unsigned int ss_vag_addr;
 
-/**
- * Set voice volume.
- * @param voice Voice number (0-23)
- * @param left Left channel volume
- * @param right Right channel volume
- */
-
 void SsVoiceVol(int voice, unsigned short left, unsigned short right)
 {
 	unsigned short *a = (unsigned short*)SPU_VOICE_BASE_ADDR(voice);
@@ -56,23 +49,12 @@ void SsVoiceVol(int voice, unsigned short left, unsigned short right)
 	a[1] = right;
 }
 
-/**
- * Set voice pitch.
- * @param pitch Pitch.
- */
-
 void SsVoicePitch(int voice, unsigned short pitch)
 {
 	unsigned short *a = (unsigned short*)SPU_VOICE_BASE_ADDR(voice);
 	
 	a[2] = pitch;
 }
-
-/**
- * Set start Sound RAM address for voice.
- * @param voice Voice
- * @param addr Start address in Sound RAM (multiplier of 8)
- */
 
 void SsVoiceStartAddr(int voice, unsigned int addr)
 {
@@ -84,13 +66,6 @@ void SsVoiceStartAddr(int voice, unsigned int addr)
 	a[3] = (addr >> 3);
 }
 
-/**
- * Set ADSR level for voice
- * @param voice Voice
- * @param level ADSR level
- * @param rate ADSR rate
- */
-
 void SsVoiceADSRRaw(int voice, unsigned short level, unsigned short rate)
 {
 	unsigned short *a = (unsigned short*)SPU_VOICE_BASE_ADDR(voice);
@@ -98,12 +73,6 @@ void SsVoiceADSRRaw(int voice, unsigned short level, unsigned short rate)
 	a[4] = level;
 	a[5] = rate;
 }
-
-/**
- * Set repeat address for voice
- * @param voice Voice
- * @param addr Address in Sound RAM (multiplier of 8)
- */
 
 void SsVoiceRepeatAddr(int voice, unsigned int addr)
 {
@@ -114,11 +83,6 @@ void SsVoiceRepeatAddr(int voice, unsigned int addr)
 	
 	a[7] = (addr >> 3);
 }
-
-/**
- * Set a voice to 'on'. This has the effect of playing the sound specified for the voice.
- * @param voice Voice
- */
 
 void SsKeyOn(int voice)
 {
@@ -132,11 +96,6 @@ void SsKeyOn(int voice)
 */
 }
 
-/**
- * Set a voice to 'off'. This stops the sound specified for the voice.
- * @param voice Voice
- */
-
 void SsKeyOff(int voice)
 {
 	unsigned int i = 1 << voice;
@@ -145,10 +104,7 @@ void SsKeyOff(int voice)
 	SPU_KEY_OFF2 = i >> 16;
 }
 
-/**
- * Set the voices specified by the bitmask to 'on'. Like SsKeyOn()
- * @param mask Bitmask
- */
+
 
 void SsKeyOnMask(int mask)
 {
@@ -156,29 +112,16 @@ void SsKeyOnMask(int mask)
 	SPU_KEY_ON2 = mask >> 16;
 }
 
-/**
- * Set the voices specified by the bitmask to 'off'. Like SsKeyOff()
- * @param mask Bitmask
- */
-
 void SsKeyOffMask(int mask)
 {
 	SPU_KEY_OFF1 = mask & 0xffff;
 	SPU_KEY_OFF2 = mask >> 16;
 }
 
-/**
- * Wait for the SPU to be ready.
- */
-
 void SsWait()
 {
 	while(SPU_STATUS2 & 0x7ff);
 }
-
-/**
- * Intialize the SPU.
- */
 
 void SsInit()
 {
@@ -240,16 +183,40 @@ void SsInit()
 	printf("SPU/SS Initialized.\n");
 }
 
-// SsUpload is originally based on code by bitmaster
-
-/**
- * Uploads sound data in PSX ADPCM format to Sound RAM.
- * @param addr Pointer to PSX ADPCM sound data in main RAM
- * @param size Sound data size
- * @param spu_addr Destination address in Sound RAM (multiplier of 8).
- */
 
 void SsUpload(void *addr, int size, int spu_addr)
+{
+	unsigned short *ptr = addr;
+	int i;
+	
+	while(size > 0)
+	{		
+		SPU_STATUS = 4; // Sound RAM Data Transfer Control
+		SPU_CONTROL = SPU_CONTROL & ~0x30; // SPUCNT.transfer_mode = 0 (STOP)
+	
+		while(((SPU_STATUS2 >> 4) & 3) != 0); // wait until SPUSTAT.transfer is 0 (STOP)
+	
+		SPU_ADDR = spu_addr >> 3;
+
+		for(i = 0; i < 32; i++)
+			SPU_DATA = ptr[i];
+		
+		SPU_CONTROL = (SPU_CONTROL & ~0x30) | 16; // SPUCNT.transfer_mode = 1 (MANUAL)
+	
+		while(((SPU_STATUS2 >> 4) & 3) != 1); // wait until SPUSTAT.transfer is 1 (MANUAL)
+		
+		while(SPU_STATUS2 & 0x400); // wait for transfer busy bit to be cleared
+		
+		spu_addr += 64;
+		ptr += 32;
+		size-=64;
+	}
+}
+
+/*
+// SsUpload is originally based on code by bitmaster
+
+void SsUploadOld(void *addr, int size, int spu_addr)
 {
 	short spu_status; 
 	int block_size;
@@ -273,7 +240,7 @@ void SsUpload(void *addr, int size, int spu_addr)
 			SPU_DATA = *ptr++;     
 
 		d = SPU_CONTROL;
-		d = ( d & 0xffcf ) | 0x10;
+		d = ( d & 0xffcf ) | 0x10; // SET MANUAL WRITE
 		SPU_CONTROL = d;	// write Block to SPU-Memory
 
 		for(i=0;i<100;i++) // Waste time
@@ -288,13 +255,7 @@ void SsUpload(void *addr, int size, int spu_addr)
 	SPU_CONTROL &= 0xffcf;
 
 	while( ( SPU_STATUS2 & 0x7ff ) != spu_status ); 
-}
-
-/**
- * Converts a sampling rate in hertz to PlayStation pitch rate used by the SPU.
- * @param hz Sampling rate in hertz.
- * @return PlayStation pitch rate
- */
+}*/
 
 unsigned short SsFreqToPitch(int hz)
 {
@@ -305,12 +266,6 @@ unsigned short SsFreqToPitch(int hz)
 	
 	return (hz << 12) / 44100;
 }
-
-/**
- * Reads information from a buffer containg a VAG file and stores it inside a SsVag structure.
- * @param vag Pointer to structure in which to store information.
- * @param data Pointer to VAG file data
- */
 
 int SsReadVag(SsVag *vag, void *data)
 {
@@ -328,13 +283,6 @@ int SsReadVag(SsVag *vag, void *data)
 	return 1;
 }
 
-/**
- * Uploads the sound data specified by a SsVag structure to the specified address in Sound RAM.
- * The SsVag structure can then be used for playing with SsPlayVag()
- * @param vag Pointer to SsVag structure
- * @param spu_addr Destination address in Sound RAM (multiplier of 8)
- */
-
 void SsUploadVagEx(SsVag *vag, int spu_addr)
 {
 	vag->spu_addr = spu_addr;
@@ -342,26 +290,12 @@ void SsUploadVagEx(SsVag *vag, int spu_addr)
 	//spu_addr += vag->data_size;
 }
 
-/**
- * Uploads the sound data specified by a SsVag structure to Sound RAM, beginning from the
- * base of usable Sound RAM and continuing from there, in an automatic fashion.
- * @param vag Pointer to SsVag structure
- */
-
 void SsUploadVag(SsVag *vag)
 {
 	vag->spu_addr = ss_vag_addr;
 	SsUploadVagEx(vag, ss_vag_addr);
 	ss_vag_addr += vag->data_size;
 }
-
-/**
- * Plays the sound specified by the SsVag structure at specified voice and volume.
- * @param vag Pointer to SsVag structure
- * @param voice Voice
- * @param vl Left channel volume
- * @param vr Right channel volume
- */
 
 void SsPlayVag(SsVag *vag, unsigned char voice, unsigned short vl, 
 	unsigned short vr)
@@ -374,29 +308,16 @@ void SsPlayVag(SsVag *vag, unsigned char voice, unsigned short vl,
 	vag->cur_voice = voice;
 }
 
-/**
- * Stops the sound specified by the SsVag structure
- * @param vag Pointer to SsVag structure
- */
-
 void SsStopVag(SsVag *vag)
 {
 	SsKeyOff(vag->cur_voice);
 	vag->cur_voice = -1;
 }
 
-/**
- * Tell SsUploadVag() to start uploading from the base of usable Sound RAM again.
- */
-
 void SsResetVagAddr()
 {
 	ss_vag_addr = SPU_DATA_BASE_ADDR;
 }
-
-/**
- * Enable CD Audio.
- */
 
 void SsEnableCd()
 {
@@ -404,20 +325,10 @@ void SsEnableCd()
 	CdSendCommand(CdlDemute, 0);
 }
 
-/**
- * Enable External audio. (???)
- */
-
 void SsEnableExt()
 {
 	SPU_CONTROL |= 2;
 }
-
-/**
- * Set CD Audio volume.
- * @param left Left channel volume
- * @param right Right channel volume
- */
 
 void SsCdVol(unsigned short left, unsigned short right)
 {

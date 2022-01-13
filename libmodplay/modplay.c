@@ -1,9 +1,8 @@
 // MODplay for the PS1
 // Music Module Player
-// Supports ProTracker (.mod) and Composer 669 (.669) music module formats
+// Supports ProTracker (.mod) module format
 
 // Requires libADPCM!
-// 669 timing is not very good and a bit wrong...
 
 // If NO_PSX_LIB is defined, no parts using PSXSDK functions are compiled
 // This is useful if you want to use the library to handle module files in tools
@@ -22,6 +21,7 @@
 #endif
 
 #include "modplay.h"
+#include "modplay_int.h"
 
 // Configuration defines
 
@@ -31,12 +31,7 @@
 
 #define	ADPCM_BUFFER_SIZE		0x4000
 
-// Almost all data from the MOD is copied into another location
-// in memory for the ModMusic structure when you use MODLoad()
-// This means your free memory should be roughly the double of 
-// the size of the MOD you're loading.
 
-// WRITE MODUNLOAD!!
 
 int modplay_base_voice = 0;
 int modplay_max_vol = 0x3fff;
@@ -47,38 +42,16 @@ int modplay_chan_mask = 0;
 int modplay_is_mono = 0;
 unsigned char modplay_adpcm_buffer[ADPCM_BUFFER_SIZE];
 
-ModMusic *MODLoad_MOD(void *d);
-void MODPlay_MOD(ModMusic *m, int *t);
-
-ModMusic *MODLoad_669(void *d);
-void MODPlay_669(ModMusic *m, int *t);
-
-ModMusic *MODLoad_MTM(void *d);
-
-ModMusic *MODLoad_XM(void *d);
-void MODPlay_XM(ModMusic *m, int *t);
+unsigned int modload_flags = 0;
 
 ModMusic *MODLoad(void *d)
 {
-	// Check if the module file we're loading is in Composer 669 format
-	unsigned char *c = (unsigned char*)d;
-	
-	ModMusic *r;
-	
-	if((r = MODLoad_XM(d)))
-		return r;
-	
-	if(c[0] == 'i' && c[1] == 'f')
-	{
-		printf("Loading 669...\n");
-		return MODLoad_669(d);
-	}
+	return MODLoadEx(d, 0);
+}
 
-	if(c[0] == 'M' && c[1] == 'T' && c[2] == 'M')
-	{
-		printf("Loading MTM...\n");
-		return MODLoad_MTM(d);
-	}
+ModMusic *MODLoadEx(void *d, unsigned int flags)
+{	
+	modload_flags = flags;
 	
 	// If the module file was in no other format, assume the module file is
 	// in ProTracker format. There's no real way to detect a ProTracker module
@@ -96,33 +69,20 @@ void MODUnload(ModMusic *m)
 	switch(m->fmt)
 	{
 		case MOD_FMT_MOD:
-		case MOD_FMT_669:
 			free(m->pattern_data);
-		break;
-		case MOD_FMT_MTM:
-			break;
-	}
-
-	for(x = 0; x < m->sample_num; x++)
-	{
-		if(m->sample[x].length)
-			free(m->sample[x].data);		
-	}
+		
+			for(x = 0; x < m->sample_num; x++)
+			{
+				if(m->sample[x].data != NULL)
+					free(m->sample[x].data);	
+			}
 	
-	free(m->sample);
-	
-	if(m->instrument_num)
-	{
-		for(x = 0; x < m->instrument_num; x++)
-		{
+			free(m->sample);
 			
-		
-		}
-		
-		free(m->instrument);
+			free(m);
+		break;
 	}
 		
-	free(m);
 }
 
 #ifdef NO_PSX_LIB
@@ -136,11 +96,12 @@ void MODPlay_func(ModMusic *m, int c, int s, int p, int vl, int vr)
 	int v = c + modplay_base_voice;
 //	static int mask = 0;
 	
-	if(s != -1)
-	{
+//	if(s != -1)
+//	{
 	//	SsKeyOff(v);
+	if(p != -1)
 		SsVoicePitch(v,  p);
-	}
+//	}
 	
 	if(modplay_max_vol != 0x3fff)
 	{
@@ -162,15 +123,11 @@ void MODPlay_func(ModMusic *m, int c, int s, int p, int vl, int vr)
 	
 	if(s != -1)
 	{
-		SsVoiceStartAddr(v, modplay_samples_off[s]);
-		modplay_chan_mask|=(1<<v);
-		
-		//if(c == (m->channel_num - 1))
-		//{
-			//SsKeyOnMask(mask);
-			//mask = 0;
-		//}
-		//SsKeyOn(v);
+		if(modplay_samples_off[s] != -1)
+		{
+			SsVoiceStartAddr(v, modplay_samples_off[s]);
+			modplay_chan_mask|=(1<<v);
+		}
 	}
 }
 #endif
@@ -183,12 +140,6 @@ void MODPlay(ModMusic *m, int *t)
 	{
 		case MOD_FMT_MOD:
 			MODPlay_MOD(m, t);
-		break;
-		case MOD_FMT_669:
-			MODPlay_669(m,t);
-		break;
-		case MOD_FMT_XM:
-			MODPlay_XM(m,t);
 		break;
 	}
 	
@@ -239,22 +190,24 @@ int MOD4PSX_Upload(void *d, int base_addr)
 	unsigned char *c = d;
 	int x;
 	int o;
-	int ro;
 	int sz;
 	int n;
+	int smpOff;
 	
 // Check magic string
 	
-	if(strncmp(c, "_mod4psx", 8) != 0)
+	if(strncmp((char*)c, "_mod4psx", 8) != 0)
 		return -1;
 	
 	o = 12;
 	n = *((int*)(c+8));
 	
 	if(base_addr == -1)
-		modplay_samples_off[0] = SPU_DATA_BASE_ADDR;
+		smpOff = SPU_DATA_BASE_ADDR;
 	else
-		modplay_samples_off[0] = base_addr;
+		smpOff = base_addr;
+	
+	//smpOff = modplay_samples_off[0];
 	
 	printf("Number of samples: %d\n", n);
 	
@@ -265,10 +218,17 @@ int MOD4PSX_Upload(void *d, int base_addr)
 		printf("Size: %d\n", sz);
 // Ignore eight reserved bytes (for future expension)
 		o+=12;
-		SsUpload(c+o, sz, modplay_samples_off[x]);
 		
-		if(x!=30)
-			modplay_samples_off[x+1] = modplay_samples_off[x]+sz;
+		if(sz > 0)
+		{
+			modplay_samples_off[x] = smpOff;
+			
+			SsUpload(c+o, sz, modplay_samples_off[x]);
+
+			smpOff+=sz;
+		}
+		else
+			modplay_samples_off[x] = -1;
 		
 		o += sz;
 	}

@@ -8,7 +8,7 @@
  * You can enable it with GsEnableDisplay() or more preferably with GsSetVideoMode()
  */
  
-void GsInit();
+void GsInit(void);
 
 /**
  * Initializes the GPU.
@@ -24,7 +24,7 @@ void GsInitEx(unsigned int flags);
  * Resets the GPU
  */
  
-void GsReset();
+void GsReset(void);
 
 /**
  * Enables the display if enable is TRUE (>=1) or disables it if it is FALSE (=0)
@@ -81,7 +81,7 @@ void GsSetList(unsigned int *listptr);
  * Draws the linked list
  */
  
-void GsDrawList();
+void GsDrawList(void);
 
 /**
  * Draws the linked list using port I/O access.
@@ -95,14 +95,14 @@ void GsDrawList();
  * This function due to its nature is blocking, and always waits for completion.
  */
  
-void GsDrawListPIO(); 
+void GsDrawListPIO(void); 
 
 /**
  * Makes non-blocking gpu functions like GsDrawList()
  * wait for completion. Removes the need to use GsIsDrawing()/GsIsWorking()
  */
 
-void GsSetAutoWait();
+void GsSetAutoWait(void);
 
 /** Monochrome 3 point polygon */
 
@@ -343,6 +343,29 @@ typedef struct
 	unsigned int attribute; /* Attribute */
 }GsRectangle;
 
+/** Map */
+
+//typedef struct
+//{
+//	short x, y; /* X, Y positions */
+//	unsigned char u, v; /* Offset into texture page of sprite image data */
+//	short w, h; /* Width and height of tilemap */
+//	short l; /* Length of tilemap line */
+//	short cx, cy; /* Color look up table (palette) X, Y positions */
+//	unsigned char r, g, b; /* Luminosity of color components - 128 is normal luminosity */
+//	unsigned char tpage; /* Texture page */
+//	unsigned int attribute; /* Attribute */
+//	
+//	unsigned short tmw, tmh; /* Map texture width and height */
+//	unsigned char tw, th; /* Map tile width and height */
+//	
+//	unsigned char tsize; /* Size of tile in map (1 = 8-bit, 2 = 16-bit, 4 = 32-bit) */
+//
+//	unsigned int tmask; /* Inverted mask for tile number */
+//	
+//	void *data; /* Pointer to beginning of map data */
+//}GsMap;
+
 /** Texture color modes. */
 
 enum psx_gpu_texmodes
@@ -476,15 +499,38 @@ typedef struct
 	short y;
 }GsDispEnv;
 
+/**
+ * Image 
+ * @brief This structure describes a TIM image
+ */
+
 typedef struct
 {
-	/* Structure which describes a TIM image */
+
 	
+	/** Pixel (color) mode. 0 = 4bpp, 1 = 8bpp, 2 = 16bpp, 3 = 24bpp */
 	int pmode;
+	/** Reports whether this image has a Color Look Up Table. 1 if there's a CLUT, 0 otherwise. */
 	int has_clut;
-	int clut_x, clut_y, clut_w, clut_h;
-	int x, y, w, h;
+	/** X coordinate of CLUT in framebuffer */
+	int clut_x;
+	/** Y coordinate of CLUT in framebuffer */
+	int clut_y;
+	/** Width of CLUT in framebuffer */
+	int clut_w;
+	/** Height of CLUT in framebuffer */
+	int clut_h;
+	/** X coordinate of image in framebuffer */
+	int x;
+	/** Y coordinate of image in framebuffer */
+	int y; 
+	/** Width of image in framebuffer */
+	int w;
+	/** Height of image in framebuffer */
+	int h;
+	/** Pointer to CLUT data */
 	void *clut_data;
+	/** Pointer to image data */
 	void *data;
 }GsImage;
 
@@ -650,7 +696,7 @@ void GsSetMasking(unsigned char flag);
  * @return Pointer position in linked list
  */
  
-unsigned int GsListPos();
+unsigned int GsListPos(void);
 
 /**
  * Three functions which send data to the control port and to the data port
@@ -685,20 +731,20 @@ int GsSpriteFromImage(GsSprite *sprite, GsImage *image, int do_upload);
  * @return 1 if GPU is drawing, 0 otherwise
  */
 
-int GsIsDrawing();
+int GsIsDrawing(void);
 
 /**
  * Checks if the GPU is working. Alias of GsIsDrawing()
  * @return 1 if GPU is working, 0 otherwise.
  */
 
-int GsIsWorking(); // Alias of GsIsDrawing()
+int GsIsWorking(void); // Alias of GsIsDrawing()
 
 /**
  * Clear Video RAM
  */
  
-void GsClearMem();
+void GsClearMem(void);
 
 /**
  * Loads the built-in 8x8 font in Video RAM at the specified coordinates
@@ -808,6 +854,7 @@ enum psx_gpu_vmodes
 #define PRFONT_CENTER			2
 #define PRFONT_RIGHT				4
 #define PRFONT_SCALE				8
+#define PRFONT_UNIXLF				16
 
 // These two below are not really attributes... but use them as if they were.
 
@@ -888,5 +935,23 @@ void GsSortCls(int r, int g, int b);
  */
 
 #define gs_rgba_to_psx(r, g, b, a)		((r>>3)|((g>>3)<<5)|((b>>3)<<10)|(a==0?0:1))
+
+/**
+ * This function can rotate a vector about the X, Y and Z axes
+ * If you don't want to rotate a vector about an axis, pass 0 as angle to that axis
+ *
+ * It is correct to pass the same argument to v and n, as calculations are first done in an internal buffer
+ * and then stored in the output array
+ *
+ * @param x_a Number of degrees (0-359) to which the vector should be rotated about the X axis
+ * @param y_a Number of degrees (0-359) to which the vector should be rotated about the Y axis
+ * @param z_a Number of degrees (0-359) to which the vector should be rotated about the Z axis
+ * @param v Pointer to an array of coordinates for the source vector
+ * @param n Pointer to destination array for the coordinates of the rotated vector
+ */
+
+void GsRotateVector(int x_a, int y_a, int z_a, double *v, double *n);
+
+//void GsSortSimpleMap(GsMap *map);
 
 #endif

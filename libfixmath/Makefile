@@ -7,13 +7,9 @@ SRC = .
 INC =
 
 #Compiler settings
-CPP = psx-gcc
-CC = psx-gcc
-AS = psx-gcc
-LD = psx-gcc
 AR = mipsel-unknown-elf-ar
-CPP_FLAGS = -O2 $(INC) -Wall -Wextra -c
-CC_FLAGS  = -O2 $(INC) -Wall -Wextra -c
+CPP_FLAGS = $(CFLAGS) -O2 $(INC) -c
+CC_FLAGS  = $(CFLAGS) -O2 $(INC) -c
 AS_FLAGS  = $(CC_FLAGS) -D_ASSEMBLER_
 LD_FLAGS = -Wall
 

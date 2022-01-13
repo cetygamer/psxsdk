@@ -1,32 +1,12 @@
-include ../../Makefile.cfg
+PROJNAME = psxsnake
 
-all: psxsnake.exe build_data make_image
+include ../project.mk
 
-psxsnake.exe: psxsnake.c
-	psx-gcc -DEXAMPLES_VMODE=$(EXAMPLES_VMODE) \
-	$(CFLAGS) -o psxsnake.elf psxsnake.c
-	elf2exe psxsnake.elf psxsnake.exe
-
-build_data:
+$(PROJNAME)_extra:
 	$(MAKE_COMMAND) -C data
-
-clean:
-	rm -fr psxsnake.elf psxsnake.exe cdimg
-	$(MAKE_COMMAND) -C data clean
-
-# This target first makes a CD root filesystem, then an ISO image
-# and then makes a licensed .bin/.cue image ready to be burned for a
-# modded PlayStation
-
-make_image:
 	mkdir -p cd_root
-	mkdir -p cdimg
-	systemcnf psxsnake.exe > cd_root/system.cnf
-	cp psxsnake.exe cd_root
 	cp data/*.tim cd_root
 	cp data/*.raw cd_root
-	$(MKISOFS_COMMAND) -o psxsnake.hsf -V PSXSNAKE -sysid PLAYSTATION cd_root
-	mkpsxiso psxsnake.hsf psxsnake.bin $(CDLIC_FILE)
-	mv psxsnake.bin psxsnake.cue cdimg
-	rm -f psxsnake.hsf
-	rm -fr cd_root
+
+$(PROJNAME)_clean_extra:
+	$(MAKE_COMMAND) -C data clean

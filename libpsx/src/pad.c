@@ -26,7 +26,7 @@
 #define BREAK		0x0008
 #define RESET_ERR	0x0010
 #define RTS			0x0020
-#define SIO_RESET	0x0040
+#define PADSIO_RESET	0x0040
 
 /*
     from BlackBag/Nagra PSX
@@ -37,56 +37,76 @@
     0x1f80104e - unsigned short baud;
 */
 
-#define SIO_DATA(x)	*((unsigned char*)(0x1f801040 + (x<<4)))
-#define SIO_STATUS(x)	*((unsigned short*)(0x1f801044 + (x<<4)))
-#define SIO_MODE(x)	*((unsigned short*)(0x1f801048 + (x<<4)))
-#define SIO_CTRL(x)	*((unsigned short*)(0x1f80104a + (x<<4)))
-#define SIO_BAUD(x)	*((unsigned short*)(0x1f80104e + (x<<4)))
+#define PADSIO_DATA(x)	*((unsigned char*)(0x1f801040 + (x<<4)))
+#define PADSIO_STATUS(x)	*((unsigned short*)(0x1f801044 + (x<<4)))
+#define PADSIO_MODE(x)	*((unsigned short*)(0x1f801048 + (x<<4)))
+#define PADSIO_CTRL(x)	*((unsigned short*)(0x1f80104a + (x<<4)))
+#define PADSIO_BAUD(x)	*((unsigned short*)(0x1f80104e + (x<<4)))
 
 unsigned char readpad_vibrations[4][2];
 int querypad_rxrdy = 1;
 
 void QueryPAD(int pad_n, unsigned char *in, unsigned char *out, int len)
 {
-	unsigned short sbuf;
 	int x;
 	int y;
+	int i;
+	unsigned char TempData;
+	int EmuFlag = 0;
 	
-	SIO_MODE(0) = 0xD;
-	SIO_BAUD(0) = 0x88;
+	PADSIO_MODE(0) = 0xD;
+	PADSIO_BAUD(0) = 0x88;
 	
-//	SIO_CTRL(0) = 0x2; // Send DTR to Control Register
+	if(pad_n == 1) PADSIO_CTRL(0) = 0x3003; else PADSIO_CTRL(0) = 0x1003;
+	
+	/*Get the initial command (usually 0x01 or 0x81)*/
+	TempData = *in;
 
-	if(pad_n == 1)
-		SIO_CTRL(0) = 0x2003; // Select PAD 1
-	else
-		SIO_CTRL(0) = 0x0003; // b1 = PAD 0, select PAD 0
+	for(y=0;y<400;y++);	/*Slight delay before first transmission*/
 
-	while(!(SIO_CTRL(0) & 1)); // Wait for TX_PERM ???
-	
 	for(x = 0; x < len; x++)
 	{
-		SIO_DATA(0) = *in;
-		in++;
-		
-		for(y=0;y<200;y++); // Delay..
-		
-		while((SIO_STATUS(0) & 128));
-					
-		sbuf = SIO_CTRL(0) | 0x10; // RESET_ERR ???
-		SIO_CTRL(0) = sbuf;
-		
-		// wait status ???
-		if(out == NULL)
-			y = SIO_DATA(0);
-		else
+		/*Must use timeouts or else program hangs on emulators*/
+		if(!EmuFlag)
 		{
-			*out = SIO_DATA(0);
-			out++;
+			for(y=0;y<1000;y++)
+			{
+				/*Wait for TX ready*/
+				if(PADSIO_STATUS(0) & 4)break;
+			}
 		}
+		
+		PADSIO_DATA(0) = *in;
+		in++;
+
+		if(!EmuFlag)
+		{
+			/*Check ACK only for Memory Cards*/
+			if(TempData == 0x81 || x == 0)
+			{
+				for(y=0;y<2000;y++)
+				{
+					/*Check for ACK signal*/
+					if(PADSIO_STATUS(0) & 128)break;
+				}
+			}
+			
+			for(i=0;i<100;i++)
+			{
+				/*Read RX status flag, required for Xebra*/
+				if(PADSIO_STATUS(0) & 2)break;
+			}
+		}
+		
+		*out = PADSIO_DATA(0);
+		
+		/*This is emulator, valid data was received without ACK, ePSXe and PCSX*/
+		if(x == 0 && y > 1900 && *out != 0xFF)EmuFlag = 1;
+		
+		out++;
 	}
 	
-	SIO_CTRL(0) = 0;
+	PADSIO_CTRL(0) = 0;
 }
 
 void pad_read_raw(int pad_n, unsigned char *arr)

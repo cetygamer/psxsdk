@@ -2,14 +2,13 @@
 
 include ../Makefile.cfg
 
-CC = psx-gcc -O0
-AR = mipsel-unknown-elf-ar
-RANLIB = mipsel-unknown-elf-ranlib
+#CC = mipsel-unknown-elf-gcc
+#CFLAGS = -I../libpsx/include/ -G0 -O0 -fno-builtin -mno-gpopt -nostdlib -msoft-float -g -Wall
 
 all: libhuff.a
 
 huff.o: huff.c
-	$(CC) -c huff.c
+	$(CC) $(CFLAGS) -c huff.c
 
 libhuff.a: huff.o
 	rm -f libhuff.a

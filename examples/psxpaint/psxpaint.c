@@ -113,7 +113,7 @@ int main()
 	unsigned int WasL2=0, WasR2=0, WasL1=0, WasR1=0, WasSelect = 0;
 	int x, y;
 
-	PSX_InitEx(0);
+	PSX_InitEx(PSX_INIT_NOBIOS);
 	GsInit();
 	GsClearMem();
 	SetVBlankHandler(my_vblank_handler);
@@ -186,7 +186,8 @@ int main()
 	
 			// Restore 32x32 area
 			MoveImage(992, 0, old_cursor_x, old_cursor_y, 32, 32);
-	
+			while(GsIsDrawing());
+			
 			PSX_ReadPad(&pad1, NULL);
 		
 			if(pad1 & PAD_LEFT)
@@ -346,7 +347,8 @@ int main()
 	
 			// Backup 32x32 area
 				MoveImage(cursor_x, cursor_y, 992, 0, 32, 32);
-	
+				while(GsIsDrawing());
+			
 		//	if(cursor_x != old_cursor_x || cursor_y != old_cursor_y)
 		//	{
 			//	printf("cx = %d, cy = %d, cursor_speed = %d, brush_type = %d\n",

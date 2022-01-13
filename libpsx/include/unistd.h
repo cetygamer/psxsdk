@@ -13,7 +13,6 @@ int write(int fd, void *buf, int nbytes);
 int close(int fd);
 int cd(char *dirname);
 
-#define chdir(x)	cd(x)
+#define chdir(dirname)	cd(dirname)
 
 #endif
-

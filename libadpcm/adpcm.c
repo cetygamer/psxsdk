@@ -30,7 +30,6 @@ int SsAdpcmPack(void *pcm_data, void *adpcm_data, int sample_len,
     unsigned char *pcm_data_c = pcm_data;
     short *pcm_data_s = pcm_data;
     unsigned char *adpcm_data_c = adpcm_data;
-    short *adpcm_data_s = adpcm_data;
     int d_samples[28];
     short four_bit[28];
     int predict_nr;
@@ -39,11 +38,6 @@ int SsAdpcmPack(void *pcm_data, void *adpcm_data, int sample_len,
     int size;
     int i, j, k;    
     unsigned char d;
-    char s[4];
-    int chunk_data;
-    short e;
-    short sample_size;
-    unsigned char c;
     int ap = 0;
     
 /*printf("pcm_data = %x, adpcm_data = %x, len = %x, fmt = %x, alen = %x,"
@@ -57,6 +51,8 @@ int SsAdpcmPack(void *pcm_data, void *adpcm_data, int sample_len,
 	else
 		flags = 0;  
 
+	//sample_len -= sample_len % 28;
+	
 while( sample_len > 0 ) {
         size = ( sample_len >= PCM_BUFFER_SIZE ) ? PCM_BUFFER_SIZE : sample_len; 
 	    
@@ -119,19 +115,26 @@ while( sample_len > 0 ) {
     adpcm_data_c[ap++] = ( predict_nr << 4 ) | shift_factor;
     if(ap>=adpcm_len) goto adpcm_too_big;
     
-    if(enable_looping)
+    if(enable_looping == 1)
 	//    fputc(3, vag);
 	adpcm_data_c[ap++] = 3;
+    else if(enable_looping == 2)
+	adpcm_data_c[ap++] = 0;
+    else if(enable_looping == 3)
+	adpcm_data_c[ap++] = 2;
     else
 //	fputc( 7, vag );            // end flag
 	adpcm_data_c[ap++] = 7;
     
     if(ap>=adpcm_len) goto adpcm_too_big;
     
-    for ( i = 0; i < 14; i++ )
+    if(enable_looping != 2)
+    {
+	for ( i = 0; i < 14; i++ )
       //  fputc( 0, vag );
-	adpcm_data_c[ap++] = 0;
-
+		adpcm_data_c[ap++] = 0;
+    }
+	    
     if(ap>=adpcm_len) goto adpcm_too_big;
 
     return ap;
@@ -142,9 +145,11 @@ adpcm_too_big:
 }
 
 
-
-                  
-
+static const int f[5][2] = { { 0, 0 },
+                            {  60, 0 },
+                            { 115, -52},
+                            { 98, -55},
+                            { 122, -60} };
 
 void SsAdpcm_find_predict( short *samples, int *d_samples, int *predict_nr, int *shift_factor )
 {
@@ -155,14 +160,10 @@ void SsAdpcm_find_predict( short *samples, int *d_samples, int *predict_nr, int 
     int ds;
     int min2;
     int shift_mask;
-    static int _s_1 = 0.0;                            // s[t-1]
-    static int _s_2 = 0.0;                            // s[t-2]
+    static int _s_1 = 0;                            // s[t-1]
+    static int _s_2 = 0;                            // s[t-2]
     int s_0, s_1, s_2;
-    int f[5][2] = { { 0.0, 0.0 },
-                            {  60.0, 0.0 },
-                            { 115.0, -52.0},
-                            { 98.0, -55.0},
-                            { 122.0, -60.0} };
+
 
     for ( i = 0; i < 5; i++ ) {
         max[i] = 0.0;
@@ -170,10 +171,10 @@ void SsAdpcm_find_predict( short *samples, int *d_samples, int *predict_nr, int 
         s_2 = _s_2;
         for ( j = 0; j < 28; j ++ ) {
             s_0 = (int) samples[j];                      // s[t-0]
-            if ( s_0 > 32767.0 )
-                s_0 = 32767.0;
-            if ( s_0 < - 32768.0 )
-                s_0 = -32768.0;
+            if ( s_0 > 32767 )
+                s_0 = 32767;
+            if ( s_0 < - 32768 )
+                s_0 = -32768;
             ds = s_0 + s_1 * f[i][0] + s_2 * f[i][1];
             buffer[j][i] = ds;
             if ( ds > max[i] )
@@ -222,16 +223,11 @@ void SsAdpcm_find_predict( short *samples, int *d_samples, int *predict_nr, int 
 
 void SsAdpcm_pack( int *d_samples, short *four_bit, int predict_nr, int shift_factor )
 {
-    static int f[5][2] = { { 0.0, 0.0 },
-                            {  60.0, 0.0 },
-                            { 115.0, -52.0 },
-                            {  98.0, -55.0 },
-                            { 122.0, -60.0 } };
     int ds;
     int di;
     int s_0;
-    static int s_1 = 0.0;
-    static int s_2 = 0.0;
+    static int s_1 = 0;
+    static int s_2 = 0;
     int i;
 
     for ( i = 0; i < 28; i++ ) {

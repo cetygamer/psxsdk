@@ -11,15 +11,22 @@
 
 /* Conversion functions */
 
-extern int atoi(char *s);
-extern long atol(char *s);
-extern char atob(char *s); // Is this right?
+int atoi(const char *s);
+long atol(const char *s);
+char *itoa(int value, char *str, int base);
+char *ltoa(long value, char *str, int base);
+char *lltoa(long long value, char *str, int base);
+char *utoa(unsigned int value, char *str, int base);
+char *ultoa(unsigned long value, char *str, int base);
+char *ulltoa(unsigned long long value, char *str, int base);
+//extern char atob(char *s); // Is this right?
+
 
 // Random number functions
 
 #define RAND_MAX		0x7fffffff
 
-int rand();
+int rand(void);
 void srand(unsigned int seed);
 
 // Quick sort

@@ -43,7 +43,7 @@ huff: huff.c
 	$(CC) $(CFLAGS) -o huff huff.c
 
 mod4psx: mod4psx.c adpcm.c
-	$(CC) $(CFLAGS) -o mod4psx mod4psx.c adpcm.c ../libmodplay/libmodplay_nopsx.a -lm
+	$(CC) $(CFLAGS) -o mod4psx mod4psx.c adpcm.c $(SRCROOT)/libmodplay/libmodplay_nopsx.a -lm -DNO_PSX_LIB
 
 tim2bmp: tim2bmp.c
 	$(CC) $(CFLAGS) -o tim2bmp tim2bmp.c -lz

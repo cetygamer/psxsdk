@@ -5,6 +5,7 @@
 #include <strings.h>
 #include <stdlib.h>
 #include "modplay.h"
+#include "modplay_int.h"
 #include "modtbl.h" // Period -> frequency table for ProTracker MODs
 
 ModMusic *MODLoad_MOD(void *d)
@@ -126,9 +127,7 @@ ModMusic *MODLoad_MOD(void *d)
 // Pattern row sizes are always 64
 	for(x = 0; x < m->pattern_num; x++)
 		m->pattern_row_num[x] = 64;
-	
-	printf("m->pattern_num = %d\n", m->pattern_num);
-	
+		
 // Allocate memory for patterns...
 	m->pattern_data = malloc(m->pattern_num * ((4*m->channel_num)*64));
 	
@@ -139,13 +138,18 @@ ModMusic *MODLoad_MOD(void *d)
 // Allocate & Get sample data
 	for(x = 0; x < m->sample_num; x++)
 	{
-		m->sample[x].data = malloc(m->sample[x].length);
-		memcpy(m->sample[x].data,  &c[mp], m->sample[x].length);
+		if(m->sample[x].length < 32 || (modload_flags & MODLOAD_NOSAMPLES))
+			m->sample[x].data = NULL;
+		else
+		{
+			m->sample[x].data = malloc(m->sample[x].length);
+			memcpy(m->sample[x].data,  &c[mp], m->sample[x].length);
 
-// Convert to unsigned 8-bit format
-// Most sound cards/programs nowadays want data in this format		
-		for(y = 0; y < m->sample[x].length; y++)
-			m->sample[x].data[y] ^= 0x80;
+			// Convert to unsigned 8-bit format
+			// Most sound cards/programs nowadays want data in this format		
+			for(y = 0; y < m->sample[x].length; y++)
+				m->sample[x].data[y] ^= 0x80;
+		}
 		
 		mp += m->sample[x].length;
 	}
@@ -175,39 +179,21 @@ void MODPlay_MOD(ModMusic *m,int *t)
 	int cur_pat = m->pattern_tbl[m->song_pos];
 	int cur_pat_pos = m->pat_pos;
 	unsigned char b[4];
-	int s, p, e,x,y, w;
+	int s, p, e,x,y;
 	int do_not_increase_pat = 0;
-	int v1, v2,v3,f;
-	
-	/*if(m->fmt == MOD_FMT_669)
-	{
-		MODPlay_669(m, t);
-		return;
-	}*/
+	int v1,f;
 	
 	if(*t == 0)
 		return;
 
 		
-	modplay_int_cnt++;
+	m->cur_tick++;
 
-	if(modplay_int_cnt == (50 / m->divisions_sec))
-	{
-		m->cur_tick = 0;
-	}
-
-	if((modplay_int_cnt % (50 / (m->divisions_sec*m->ticks_division))==0) &&
-		modplay_int_cnt>0)
-	{
-		m->cur_tick++;
-	}
-
-	if(modplay_int_cnt != (50 / m->divisions_sec))
+	if(m->cur_tick != (50 / m->divisions_sec))
 		return;
 	
 	for(x = 0; x < m->channel_num; x++)
 	{
-	//	printf("there!\n");
 		memcpy(b, &m->pattern_data[(cur_pat * ((4*m->channel_num)*64)) + (cur_pat_pos * (4*m->channel_num)) + (x*4)], 4);
 		
 	// Get sample
@@ -293,7 +279,7 @@ void MODPlay_MOD(ModMusic *m,int *t)
 				m->pat_pos = (((e&0xf0)>>4)*10)+(e&0xf);
 				// printf("Pattern break, newpatpos=%d\n", m->pat_pos);
 			
-				// this fixes some mods which jump over the mod itself
+				// this fixes some mods which jump over themselves
 			
 				if(m->song_pos >= m->song_pos_num)
 					m->song_pos = 0;
@@ -322,7 +308,7 @@ void MODPlay_MOD(ModMusic *m,int *t)
 		if(s) m->old_samples[x] = s;
 		if(p) m->old_periods[x] = p;
 
-		modplay_int_cnt = 0;
+		m->cur_tick = 0;
 	}
 	
 	if(!do_not_increase_pat)m->pat_pos++;

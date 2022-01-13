@@ -19,7 +19,7 @@
 /**
  * These are standard C library file I/O functions provided by the PSX BIOS.
  * Filenames have to be specified in this way:
- * <device>:<filename>
+ * [device]:[filename]
  *
  * Where device specifies the device the file is on:
  * "tty:"		Console

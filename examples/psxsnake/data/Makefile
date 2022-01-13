@@ -18,4 +18,4 @@ apple.raw: apple.wav
 	wav2vag apple.wav apple.raw -raw
 
 clean:
-	rm -f *.tim *.vag *.raw
+	rm -f *.tim *.raw

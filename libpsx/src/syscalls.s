@@ -4,20 +4,29 @@
 
 # Console functions
 
-.global putchar
-.global puts
+.global bios_putchar
+.global bios_puts
 .global printf
+.extern __stdio_direction
+.extern sio_printf
 
-putchar:
+bios_putchar:
 	li $9, 0x3c
 	j 0xa0
 	nop
 	
-puts:
+bios_puts:
 	li $9, 0x3e
 	j 0xa0
 	nop
+	
 printf:
+	la $9, __stdio_direction
+	lw $10, 0($9)
+	beq $10, $0, use_bios_printf
+	j sio_printf
+	nop
+use_bios_printf:
 	li $9, 0x3f
 	j 0xa0
 	nop

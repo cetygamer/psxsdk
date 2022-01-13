@@ -41,7 +41,7 @@ and then to install it: make install
 Now you just need to build the PSXSDK. Notice that the PSXSDK installs itself
 after building automatically and you will not need to execute a command to install it after building it.
 
-Before build the PSXSDK, edit Makefile.cfg. TOOLCHAIN_PREFIX is very important,
+Before building the PSXSDK, edit Makefile.cfg. TOOLCHAIN_PREFIX is very important,
 it specifies the directory where the PSXSDK toolchain is installed in. In our example it is /usr/local/psxsdk (the default)
 	
 There should be explanations for the other variables. 
@@ -51,4 +51,6 @@ export PATH=$PATH:/usr/local/psxsdk/bin
 
 and execute "make".
 
-Hopefully everything should go fine now, and you have the PSXSDK ready to go.
+If everything went well, execute "make install".
+
+PSXSDK should be ready to go!

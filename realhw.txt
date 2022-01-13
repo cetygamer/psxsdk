@@ -114,4 +114,23 @@ is also mirrored (contains the same contents) in the range 0x80200000-0x803FFFFF
 0x80600000-0x807FFFFF. Obviously the same is valid for 0x0.... (by removing the most significant bit), which is the same
 but accessing without using the cache. At least PCSX 1.5 emulates this behavior correctly.
 
+********************************************************************
+Not strictly a hardware problem, but Sony's implementation of firstfile() in the BIOS seems to have a serious bug.
+If you need to use the firstfile() call, then insert in your program the code shown below so that it runs before
+the first call to firstfile().
 
+--- CUT HERE ---
+
+// Open any existing file before calling firstfile() for the first time.
+// If before calling firstfile() for the first time, you have never called open() on an existing file before,
+// every subsequent read will fail but it will report that files are opened ok!
+// This bug happens at least with the SCPH1001 BIOS version.
+// We try to open PSX.EXE and SYSTEM.CNF, as one of them must exist in order to boot from CDROM.
+
+	f = fopen("cdrom:PSX.EXE;1", "rb");
+	fclose(f);
+	
+	f = fopen("cdrom:SYSTEM.CNF;1", "rb");
+	fclose(f);
+	
+--- CUT HERE ---

@@ -19,6 +19,11 @@ bin2c, bmp2tim, getpsxiso, systemcnf
 Some of the tools have a different license: 
 
 for exefixup it is GPL version 2 or newer
+hitsend is in the Public Domain
+
+Some of the libraries have a different license:
+
+libfixmath is licensed under the MIT license
 
 some of the other tools are derived from public sources with no clear licensing, but it
 is assumed that they were public domain. In all cases, they are attributed

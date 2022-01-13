@@ -100,3 +100,49 @@ This is list is still incomplete as 0.5 is still being worked on.
 - Changed joypad reading code, now it should work better.
 - Beginnings of XM music file support in libmodplay. Support doesn't really work yet, though.
 - Added Coprocessor 0 register manipulation functions get_cop0_register() and set_cop0_register()
+
+2013-11-09:
+- Added GsRotateVector(). It is a wrapper to internal libpsx functions.
+- Added prototype to nextfile() in psxbios.h, it was missing.
+- Added documentation for SetVBlankHandler(), it was missing.
+- Fixed bug in modplay where instruments with an empty sample were played
+  with the sample of the immediately next instrument; now they are not
+  played at all, which is the correct behaviour.
+- libmodplay and its tools now ignore "useless" samples (less than 32 bytes)
+  when loading MOD files.
+- Added Doxygen documentation for libmodplay.
+- Removed division by zero bug in the MOD playing code in libmodplay.
+  Fixes crashing on real hardware.
+- libmodplay now supports only MOD files, as the old saying goes
+  "do one thing and do it well".
+- Implemented ctype completely in the libc. The is*() family of functions was
+  notably missing.
+- Implemented atoi() and atol() in the libc.
+- Fixed the issue of strtol() returning 0 for strings beginning with whitespace.
+- Added PRFONT_UNIXLF attribute to built-in font rendering functions.
+  With PRFONT_UNIXLF, the writing goes to the new line and *also* to the beginning of the new line.
+  When not using PRFONT_UNIXLF, the '\r\n' sequence has the same effect as '\n' when using PRFONT_UNIXLF.
+- Carriage return was ignored by GsPrintFont(). This is now fixed.
+- Fixed bad code in libc/string.c
+- Added strcasestr(), stpcpy(), stpncpy(), strnlen(), memrchr() to libc
+- Added and adapted serial port library by Shendo.
+- Added and adapted new pad reading code and memory card code by Shendo.
+  The memory card filesystem is not yet implemented! You can only use raw sector reads and writes for now.
+- libadpcm is now at least eight times faster. There were some implicit floating point operations left which have been removed.
+- SsAdpcmPack() now supports non-ending and non-looping samples, useful to generate sound data at runtime.
+- Added experimental "NoBIOS" mode, where no BIOS calls and exception handlers are used.
+  It is accessed by passing the PSX_INIT_NOBIOS flag to PSX_InitEx(). Support for many things is missing or doesn't work as well
+  as the "BIOS" mode.
+- [REALLY IMPORTANT]
+  The compiling and installation phases are now separate; i.e. to build and install the new SDK libraries and tools,
+  use "make" then "make install", instead of just "make" like it used to be.
+- Added support for 'j', 't', 'z', 'q' length identifiers to vsnprintf()
+- vsnprintf() now honors the space flag.
+- [vsnprintf()]
+  The behavior when handling an unknown character in the format after '%' is now correct,
+  i.e. the character is added to the output string, and the format specification is escaped.
+  The previous, incorrect behavior was ignoring the character and staying in format
+  specification until the character for a known type was found.
+- Added missing prototypes for strdup() and strndup() to string.h
+- Now string functions use size_t instead of int for lengths and counts
+- Added memmem(), lltoa(), ltoa(), itoa(), ulltoa(), ultoa() and utoa() to libc

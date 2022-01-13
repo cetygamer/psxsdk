@@ -21,6 +21,8 @@
 
 char onesec_buf[2048];
 int errno;
+int __stdio_direction = STDIO_DIRECTION_BIOS;
+static unsigned int __sio_cr_mapped = 0;
 
 FILE file_structs[256];
 
@@ -466,3 +468,122 @@ int libc_get_transtbl_fname(char *tofind, char *outstr, int outl)
 	return filename_found;
 }
 
+int isupper(int c)
+{
+	return (c >= 'A' && c <= 'Z');
+}
+
+int islower(int c)
+{
+	return (c >= 'a' && c <= 'z');
+}
+
+int isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int isxdigit(int c)
+{
+	return ((c >= '0' && c <= '9') || (c >= 'A' && c<='F') || (c >= 'a' && c<='f'));
+}
+
+int isalpha(int c)
+{
+	return ((c>='a' && c<='z') || (c>='A' && c<='Z'));
+}
+
+int isalnum(int c)
+{
+	return ((c>='a' && c<='z') || (c>='A' && c<='Z') || (c>='0' && c<='9'));
+}
+
+int isspace(int c)
+{
+	return ((c == ' ') || (c == '\f') || (c == '\n') || (c == '\r') || (c == '\t') || (c == '\v'));
+}
+
+int isprint(int c)
+{
+	return (c >= 0x20) && (c <= 0x7E);
+}
+
+int isgraph(int c)
+{
+	return (c > 0x20) && (c <= 0x7E);
+}
+
+int iscntrl(int c)
+{
+	return (c < 0x20);
+}
+
+int isblank(c)
+{
+	return ((c == ' ') || (c == '\t'));
+}
+
+void redirect_stdio_to_sio(void)
+{
+	__stdio_direction = STDIO_DIRECTION_SIO;
+}
+
+void sio_stdio_mapcr(unsigned int setting)
+{
+	__sio_cr_mapped = setting;
+}
+
+int sio_putchar(int c)
+{
+	if(c == '\n' && __sio_cr_mapped)
+		sio_putchar('\r');
+	
+	while(!SIOCheckOutBuffer());
+	
+	SIOSendByte(c);
+	
+	return c;
+}
+
+int sio_puts(const char *str)
+{
+	while(*str)
+		sio_putchar(*(str++));
+	
+	sio_putchar('\n');
+	
+	return 1;
+}
+
+extern int bios_putchar(int c);
+extern int bios_puts(const char *str);
+
+int putchar(int c)
+{
+	switch(__stdio_direction)
+	{
+		case STDIO_DIRECTION_BIOS:
+			return bios_putchar(c);
+		break;
+		case STDIO_DIRECTION_SIO:
+			return sio_putchar(c);
+		break;
+	}
+	
+	return -1;
+}
+
+int puts(const char *str)
+{
+	switch(__stdio_direction)
+	{
+		case STDIO_DIRECTION_BIOS:
+			return bios_puts(str);
+		break;
+		case STDIO_DIRECTION_SIO:
+			return sio_puts(str);
+		break;
+	}
+	
+	return -1;
+}

@@ -3,21 +3,23 @@
 include Makefile.cfg
 
 build:
-	$(MAKE_COMMAND) -C misc
-	$(MAKE_COMMAND) -C misc install
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libpsx"
-	$(MAKE_COMMAND) -C libpsx install
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libhuff" 
-	$(MAKE_COMMAND) -C libhuff install
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libm" 
-	$(MAKE_COMMAND) -C libm install
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libadpcm"
-	$(MAKE_COMMAND) -C libadpcm install
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libmodplay"
-	$(MAKE_COMMAND) -C libmodplay install
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libfixmath"
-	$(MAKE_COMMAND) -C libfixmath install
+	$(MAKE_COMMAND) -C misc SRCROOT=$(PWD)
+	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libpsx SRCROOT=$(PWD)"
+	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libhuff SRCROOT=$(PWD)" 
+	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libm SRCROOT=$(PWD)" 
+	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libadpcm SRCROOT=$(PWD)"
+	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libmodplay SRCROOT=$(PWD)"
+	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libfixmath SRCROOT=$(PWD)"
 	$(MAKE_COMMAND) -C tools
+
+install: build
+	$(MAKE_COMMAND) -C misc install
+	$(MAKE_COMMAND) -C libpsx install
+	$(MAKE_COMMAND) -C libhuff install
+	$(MAKE_COMMAND) -C libm install
+	$(MAKE_COMMAND) -C libadpcm install
+	$(MAKE_COMMAND) -C libmodplay install
+	$(MAKE_COMMAND) -C libfixmath install
 	$(MAKE_COMMAND) -C tools install
 	$(MAKE_COMMAND) -C licenses install
 
@@ -40,3 +42,9 @@ distclean:
 	$(MAKE_COMMAND) -C libfixmath clean
 	$(MAKE_COMMAND) -C misc distclean
 	$(MAKE_COMMAND) -C tools distclean
+
+docs:
+	$(DOXYGEN) doxygen.conf
+
+docs_clean:
+	rm -fr doc/*

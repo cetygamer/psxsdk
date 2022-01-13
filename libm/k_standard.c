@@ -28,6 +28,7 @@
 
 int WRITE2(char *a, int b)
 {
+	return 0;
 }
 
 static double zero = 0.0;	/* used as const */

@@ -52,11 +52,7 @@ include ../Makefile.cfg
 #
 # Default IEEE libm
 #
-CFLAGS = -D_IEEE_LIBM -O0
-
-CC = psx-gcc
-AR = mipsel-unknown-elf-ar
-RANLIB = mipsel-unknown-elf-ranlib
+CFLAGS += -D_IEEE_LIBM
 
 INCFILES = fdlibm.h
 .INIT: $(INCFILES)

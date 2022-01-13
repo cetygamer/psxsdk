@@ -1,6 +1,6 @@
-PSXSDK 0.2.99
+PSXSDK 0.3.99
 ReadMe and FAQ
-Last updated: January 21st 2013
+Last updated: October 24th 2013
 -----------------------------
 
 What is PSXSDK?
@@ -58,7 +58,7 @@ This trick might also work on early Japanese consoles but I'm not sure of that.
 Q: How do I get started?
 
 A: In most cases, you will simply need one of the precompiled toolchains tarballs which you can find
-on the PSXSDK website (http://tails92.sepwich.com/psxsdk). Extract them so that the PSXSDK can
+on the PSXSDK website (http://unhaut.fav.cc/psxsdk). Extract them so that the PSXSDK can
 be found at /usr/local/psxsdk and you're ready.
 
 If you want to do it the hard way, there is no precompiled tarball for your operating system or
@@ -274,6 +274,14 @@ A: Almost nobody knows about the Japanese PSX from 2004, and on top of that, it 
 Q: Can I use UPX to pack an executable I made with PSXSDK?
 A: Sure, you can. Due to a technicality of elf2exe, you need to specify --force on the UPX command line.
     It seems to work well, but I did no extensive testing, so it is at your own risk.
+
+Q: Why do programs not work on the ePSXe/pSX/... emulators?
+A: Despite popular belief, ePSXe and pSX are not as accurate as it is thought.
+    It is recommended to use PCSX Reloaded for testing.
+    The rule of thumb is that when something works fine on real hardware, and the
+    emulator freezes or does something unexpected, it's the emulator's fault.
+    For instance ePSXe and pSX do not like the code to upload to Sound RAM,
+    despite the fact that it works fine on real hardware.
 
 Written by Giuseppe Gatta
 E-mail: tails92@gmail.com

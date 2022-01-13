@@ -6,82 +6,82 @@
  * Normal file functions can be used to do this, but it will be very tedious...
  */
  
- // This code is disabled for the moment
  
  #include <stdio.h>
  #include <stdlib.h>
  #include <fcntl.h>
  #include <memcard.h>
  #include <string.h>
+ #include <psx.h>
 
-char fname_buf[256];
-unsigned char slot_hdr[8192];
+static unsigned char card_cmd[140];
+static unsigned char arr[140];
 
-void McdDefToHeader(McdSlotDef *def, unsigned char *hdr)
-{
-	/*hdr[0] = 'S';
-	hdr[1] = 'C';
-	hdr[2] = 0x10 + def->num_of_icons;
-	hdr[3] = def->num_of_slots;
-	strncpy(&hdr[4], def->name, 64);
-	memcpy(&hdr[96], def->clut, 32);
-	memcpy(&hdr[128], def->icon[0], 128);
-	memcpy(&hdr[256], def->icon[1], 128);
-	memcpy(&hdr[384], def->icon[2], 128);*/
+unsigned char McReadSector(int card_slot, int sector, unsigned char *buffer)
+{	
+	memset(&card_cmd[0], 0, 140);
+	
+	card_cmd[0] = 0x81;		/*MC access*/
+	card_cmd[1] = 0x52;		/*Read command*/
+	
+	/*Copy frame number to command*/
+	card_cmd[4] = sector >> 8;			/*Frame MSB*/
+	card_cmd[5] = sector & 0xFF;			/*Frame LSB*/
+	
+	QueryPAD(card_slot, card_cmd, arr, sizeof(card_cmd));
+
+	/*Copy received frame data*/
+	memcpy(buffer, &arr[10], 128);
+	
+	/*Return RW status*/
+	return arr[139];
 }
-	
-int McdWriteData(McdSlotDef *def, int cardn, unsigned char *data)
+
+unsigned char McWriteSector(int card_slot, int sector, unsigned char *buffer)
 {
-	/*int fd,data_len,i;
+	int i;
 	
-	if(cardn > 1)
-		return 0;
+	memset(&card_cmd[0], 0, 140);
 	
-	if(def->num_of_icons > 3 || def->num_of_icons < 1)
-		return 0;
+	card_cmd[0] = 0x81;		/*MC access*/
+	card_cmd[1] = 0x57;		/*Write command*/
 	
-	if(def->product_code > 99999)
-		def->product_code = 99999;
+	/*Copy frame number to command*/
+	card_cmd[4] = sector >> 8;			/*Frame MSB*/
+	card_cmd[5] = sector & 0xFF;			/*Frame LSB*/
 	
-	// ugly hack... but works
+	memcpy(&card_cmd[6], buffer, 128);
+
+	/* Compute checksum */
+	for(i = 4, card_cmd[134] = 0; i < 134; i++)
+		card_cmd[134] ^= card_cmd[i];
 	
-	strncpy(slot_hdr, def->devel_name, 8);
-	slot_hdr[8] = 0;
+	QueryPAD(card_slot, card_cmd, arr, sizeof(card_cmd));
+
+	/*Return RW status*/
+	return arr[139];
+}
+
+unsigned int McGetStatus(int card_slot)
+{
+	unsigned int status = 0;
 	
-	sprintf(fname_buf, "bu%d0:BISCPS-%05d%-8s", cardn, 
-		def->product_code, slot_hdr);
+	memset(&card_cmd[0], 0, 140);
 	
-	printf("Opening memory card file: %s\n", fname_buf);
+	card_cmd[0] = 0x81;		/*MC access*/
+	card_cmd[1] = 0x52;		/*Read command*/
 	
-	McdDefToHeader(def, slot_hdr);
+	/*Copy frame number to command*/
+	card_cmd[4] = 0;//sector >> 8;			/*Frame MSB*/
+	card_cmd[5] = 0;//sector & 0xFF;			/*Frame LSB*/
 	
-	StartCARD();
+	QueryPAD(card_slot, card_cmd, arr, sizeof(card_cmd));
+
+	if(arr[2] == 0x5a && arr[3] == 0x5d)
+		status |= MEMCARD_CONNECTED;
 	
-	fd = open(fname_buf, O_CREAT | (def->num_of_slots << 16));
-	if(fd == -1)
-		return 0;
+	if(arr[6] == 'M' && arr[7] == 'C')
+		status |= MEMCARD_FORMATTED;
 	
-	close(fd);
-	
-	fd = open(fname_buf, O_WRONLY);
-	
-	memcpy(slot_hdr+512, data, 8192 - 512);
-	write(fd, slot_hdr, 8192);
-	
-	data += 8192 - 512;
-	i = def->num_of_slots - 1;
-	
-	while(i > 0)
-	{
-		write(fd, data, 8192);
-		data+=8192;
-		i--;
-	}
-	
-	close(fd);
-	
-	StopCARD();
-	
-	return 1;*/
-	return 1;
+	return status;
 }

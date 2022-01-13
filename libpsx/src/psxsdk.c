@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "exception.h"
 
 #define IPENDING				*((unsigned int*)0x1f801070)
 #define IMASK					*((unsigned int*)0x1f801074)
@@ -54,6 +55,14 @@ extern void _bu_init();
 				   
 void PSX_InitEx(unsigned int flags)
 {	
+	if(flags & PSX_INIT_NOBIOS)
+	{
+		printf("Entering No BIOS mode...\n");
+		
+		__PSX_Init_NoBios();
+		goto _initex_end;
+	}
+	
 	if(flags & PSX_INIT_SAVESTATE)
 	{
 // Save BIOS state
@@ -76,12 +85,19 @@ void PSX_InitEx(unsigned int flags)
 		_96_init();
 	}
 	
+	
+	/*This is needed, otherwise PSX will crash when VBlank handler is set*/
+	InitCARD(1);
+	StartCARD();
+        StopCARD();
+
 	if(flags & PSX_INIT_CD)
 		_internal_cdromlib_init();
 
 	printf("PSXSDK testing version !!!\n");
 	
 	vblank_handler_set = 0;
+_initex_end:
 	psxSdkFlags = flags;
 }
 
@@ -360,6 +376,14 @@ int StopRCnt(int spec)
 	
 void SetVBlankHandler(void (*callback)())
 {
+	if(psxSdkFlags & PSX_INIT_NOBIOS)
+	{
+		_EXC_vblank_handler_set = 0;
+		_EXC_vblank_handler = callback;
+		_EXC_vblank_handler_set = 1;
+		return;
+	}
+		
 	if(vblank_handler_set == 1)
 	{
 		EnterCriticalSection();
@@ -390,6 +414,13 @@ void SetVBlankHandler(void (*callback)())
 
 void RemoveVBlankHandler()
 {
+	if(psxSdkFlags & PSX_INIT_NOBIOS)
+	{
+		_EXC_vblank_handler_set = 0;
+		_EXC_vblank_handler = NULL;
+		return;
+	}
+		
 	if(vblank_handler_set)
 	{
 		EnterCriticalSection();

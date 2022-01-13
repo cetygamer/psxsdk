@@ -154,7 +154,7 @@ int main()
 
 	unsigned short padbuf;
 
-	PSX_Init();
+	PSX_InitEx(PSX_INIT_NOBIOS);
 
 	GsInit();
 	GsSetList(prim_list);

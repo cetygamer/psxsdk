@@ -7,6 +7,8 @@
 #include "font.h"
 #include "costbl.h"
 
+extern volatile int __psxsdk_gpu_dma_finished;
+
 unsigned int *linked_list;
 int linked_list_pos;
 
@@ -54,7 +56,7 @@ unsigned int PRFONT_SCALEY(int i)
 unsigned int draw_mode_packet;
 
 unsigned int setup_attribs(unsigned char tpage, unsigned int attribute, unsigned char *packet);
-void gs_internal_vector_rotate(int x_a, int y_a, int z_a, double *v, double *n);
+static void gs_internal_vector_rotate(int x_a, int y_a, int z_a, double *v, double *n);
 
 static char gpu_stringbuf[512];
 
@@ -80,6 +82,13 @@ void GsSetList(unsigned int *listptr)
 
 void GsDrawList()
 {
+	if(PSX_GetInitFlags() & PSX_INIT_NOBIOS)
+	{
+// DMA is unreliable right now, use PIO.
+		GsDrawListPIO();
+		return;
+	}
+	
 	//int x = 0;
 
 	/* Put a terminator, so the link listed ends. */
@@ -99,6 +108,9 @@ void GsDrawList()
 	D2_CHCR = (1<<0xa)|1|(1<<0x18);
 	
 	linked_list_pos = 0;
+	
+	//if(PSX_GetInitFlags() & PSX_INIT_NOBIOS)
+	//	__psxsdk_gpu_dma_finished = 0;
 
 	if(__gs_autowait)
 		while(GsIsDrawing());
@@ -133,6 +145,8 @@ void GsDrawListPIO()
 //	gpu_data_ctrl(2, ((b&0xff)<<16)|((g&0xff)<<8)|r);
 //	GPU_DATA_PORT = (y<<16)|x;
 //	GPU_DATA_PORT = (h<<16)|w;
+	if(__gs_autowait)
+		while(GsIsDrawing());
 }
 	
 void GsSortPoly3(GsPoly3 *poly3)
@@ -716,6 +730,9 @@ void GsInitEx(unsigned int flags)
 	
 	//gpu_ctrl(3, 1); // Disable display
 	GsEnableDisplay(0); // Disable display
+	
+	GPU_DATA_PORT = 0x01000000; // Reset data port
+	
 	/*gpu_ctrl(6, 0xc40240); // Horizontal start end
 	gpu_ctrl(7, 0x049025); // Vertical start end*/
 	//DrawFBRect(0, 0, 1023, 511, 0, 0, 0);
@@ -966,10 +983,18 @@ void GsSetMasking(unsigned char flag)
 
 int GsIsDrawing()
 {
-	if (!(GPU_CONTROL_PORT & (1<<0x1a)))
-		return 1;
-	else
-		return 0;
+	/*int x;
+	
+	if(PSX_GetInitFlags() & PSX_INIT_NOBIOS)
+	{
+		int r = (!(GPU_CONTROL_PORT & (1<<0x1a))) || (!__psxsdk_gpu_dma_finished);
+		
+		for(x = 0; x < 1000; x++);
+		
+		return r;
+	}*/
+	
+	return !(GPU_CONTROL_PORT & (1<<0x1a)) ;
 }
 
 
@@ -1086,9 +1111,12 @@ unsigned int GsPrintFont_Draw(int x, int y, int scalex, int scaley)
 			spr.x += fw;
 		}
 		
+		if(*string == '\r')
+			spr.x = 0;
+		
 		if(*string == '\n')
 		{
-			spr.x = x;
+			spr.x = (prfont_flags & PRFONT_UNIXLF)? 0 : x;
 			spr.y += fh;
 		}
 
@@ -1153,7 +1181,7 @@ void GsSetFontAttrib(unsigned int flags)
 	}
 }
 
-double gs_internal_cos(int a)
+static double gs_internal_cos(int a)
 {
 	int a_a = (a>>12)-(((a>>12)/360)*360);
 
@@ -1169,7 +1197,7 @@ double gs_internal_cos(int a)
 	return 0;
 }
 
-double gs_internal_sin(int a)
+static double gs_internal_sin(int a)
 {
 	int a_a = (a>>12)-(((a>>12)/360)*360);
 
@@ -1185,13 +1213,8 @@ double gs_internal_sin(int a)
 	return 0;
 }
 
-void gs_internal_vector_rotate(int x_a, int y_a, int z_a, double *v, double *n)
+static void gs_internal_vector_rotate(int x_a, int y_a, int z_a, double *v, double *n)
 {
-// This function can rotate a vector about the X, Y and Z axes
-// If you don't want to rotate a vector about an axis, pass 0 as angle to that axis
-// It is correct to pass the same argument to v and n, as calculations are first done in an internal buffer
-// and then stored in the output array
-
 	double axis_m[3][3];
 	double b[3];
 	double k[3], s[3];
@@ -1249,3 +1272,81 @@ void GsSetAutoWait()
 {
 	__gs_autowait = 1;
 }
+
+void GsRotateVector(int x_a, int y_a, int z_a, double *v, double *n)
+{
+	gs_internal_vector_rotate(x_a, y_a, z_a, v, n);	
+}
+
+/*void GsSortSimpleMap(GsMap *map)
+{
+	unsigned int orig_pos = linked_list_pos;
+	//unsigned int 
+	unsigned char pkt = 0x64;
+	unsigned int md;
+	unsigned char curCount = 0;
+	unsigned int remaining;
+	unsigned int tn;
+	unsigned short tu;
+	unsigned short tv;
+	int x, y;
+
+	md = setup_attribs(map->tpage, map->attribute, &pkt);
+
+	linked_list[linked_list_pos++] = 0x01000000;
+	linked_list[linked_list_pos++] = md;
+	linked_list[orig_pos] |= ((unsigned int)&linked_list[linked_list_pos]) & 0xffffff;
+
+	orig_pos = linked_list_pos;
+	linked_list[linked_list_pos++] = 0x00000000;
+	
+	remaining = map->w * map->h;
+	
+	for(y = 0; y < map->h; y++)
+	{
+		for(x = 0; x < map->w; x++)
+		{
+			switch(map->tsize)
+			{
+				case 1:
+					tn = ((unsigned char*)map->data)[(y * map->l) + x];
+				break;
+				case 2:
+					tn = ((unsigned short*)map->data)[(y * map->l) + x];
+				break;
+				case 4:
+					tn = ((unsigned int*)map->data)[(y * map->l) + x];
+				break;
+			}
+			
+			tn &= ~map->tmask;
+			
+			tu = (tn * map->tw) % map->tmw;
+			tv = ((tn * map->tw) / map->tmw) * map->th;
+			
+			linked_list[linked_list_pos++] = (pkt<<24)|(map->b<<16)|(map->g<<8)|map->r;
+			linked_list[linked_list_pos++] = (((map->y+(y*map->th))&0x7ff)<<16)|((map->x+(x*map->tw))&0x7ff);
+			linked_list[linked_list_pos++] = (get_clutid(map->cx,map->cy)<<16)|((tv+map->v)<<8)|
+				(tu+map->u);
+			linked_list[linked_list_pos++] = (map->th<<16)|map->tw;
+			
+			curCount++;
+			
+			if(curCount == 252)
+			{
+				linked_list[orig_pos] = (252 << 24) | (((unsigned int)&linked_list[linked_list_pos]) & 0xffffff);
+				orig_pos = linked_list_pos;
+				
+				remaining -= curCount;
+				
+				if(remaining > 0)
+					linked_list_pos++;
+				
+				curCount = 0;
+			}
+		}
+	}
+	
+	if(curCount > 0)
+		linked_list[orig_pos] = (curCount << 24) | (((unsigned int)&linked_list[linked_list_pos]) & 0xffffff);
+}*/

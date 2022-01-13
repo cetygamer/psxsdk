@@ -152,16 +152,6 @@ unsigned int get_arg_in_size(int size, unsigned long long *arg, unsigned int che
 	return s;
 }	
 
-int put_in_string(char *string, unsigned int sz, char c, int pos)
-{
-	if(pos>=sz)
-		return 0;
-	else
-		string[pos] = c;
-		
-	return 1;
-}
-
 int libc_ulltoa(unsigned long long i, char *dst, int n, int nopad)
 {
 	int x, y;
@@ -360,9 +350,9 @@ void libc_double_to_string(double fl, char *dst, int n, int prec)
 	}
 }
 
-char libc_sprintf_floatbuf[64];
+static char libc_sprintf_floatbuf[64];
 
-int vsnprintf(char *string, unsigned int size, char *fmt, va_list ap)
+static int __vsnprintf_internal(char *string, unsigned int size, char *fmt, va_list ap, int (put_in_string(char *string, unsigned int sz, char c, int pos)))
 {
 	int string_pos,fmt_pos;
 	int l;
@@ -446,6 +436,26 @@ int vsnprintf(char *string, unsigned int size, char *fmt, va_list ap)
 					if(argsize < 2) argsize = 2;
 					else if(argsize < SPRINTF_SIZE_LONG_LONG) argsize++;
 				break;
+				
+// 'j', 't', 'z', 'q' added 2013-10-26 by nextvolume				
+				
+				case 'j': // Maximum integer size
+					argsize = SPRINTF_SIZE_LONG_LONG;
+				break;
+				
+				case 't': // Size of ptrdiff_t (i.e. long on 32-bit, long long on 64-bit)
+					argsize = (sizeof(void*)==8)?
+								SPRINTF_SIZE_LONG_LONG:SPRINTF_SIZE_LONG;
+				break;
+				
+				case 'z': // Size of size_t (int)
+					argsize = SPRINTF_SIZE_INT;
+				break;
+				
+				case 'q': // Size of quad_t
+					argsize = SPRINTF_SIZE_LONG_LONG;
+				break;
+				
 				case 'd': // signed decimal
 				case 'i':
 					empty_digit = 1;
@@ -457,6 +467,9 @@ int vsnprintf(char *string, unsigned int size, char *fmt, va_list ap)
 					else
 						arg = va_arg(ap, unsigned long long);
 
+					if(flags & SPRINTF_SPACE_FLAG)
+						put_in_string(string, ssz, ' ', string_pos++);
+					
 					if(get_arg_in_size(argsize, &arg, 1))
 					{
 						put_in_string(string, ssz, '-', string_pos++);
@@ -763,7 +776,10 @@ int vsnprintf(char *string, unsigned int size, char *fmt, va_list ap)
 					
 					directive_coming = 0;
 				break;
-			//	default
+			
+				default:
+					put_in_string(string, ssz, fmt[fmt_pos], string_pos++);
+					directive_coming = 0;
 			}
 		}
 		else
@@ -784,12 +800,40 @@ int vsnprintf(char *string, unsigned int size, char *fmt, va_list ap)
 		}	
 	}
 
-	if(((size-1) < string_pos) && (size>0))
+	/*if(((size-1) < string_pos) && (size>0))
 		string[size - 1] = 0;
 	else
-		string[string_pos] = 0;
+		string[string_pos] = 0;*/
+	put_in_string(string, ssz, '\0', string_pos);
 
 	return string_pos;
+}
+
+static int vsnprintf_put_in_string(char *string, unsigned int sz, char c, int pos)
+{
+	if(pos>=sz)
+		return 0;
+	else
+		string[pos] = c;
+		
+	return 1;
+}
+
+int vsnprintf(char *string, unsigned int size, char *fmt, va_list ap)
+{
+	return __vsnprintf_internal(string, size, fmt, ap, vsnprintf_put_in_string);
+}
+
+static int sio_put_in_string(char *string, unsigned int sz, char c, int pos)
+{
+	sio_putchar(c);
+	
+	return 1;
+}
+
+int sio_vprintf(char *fmt, va_list ap)
+{
+	return __vsnprintf_internal(NULL, -1, fmt, ap, sio_put_in_string);
 }
 
 int vsprintf(char *string, char *fmt, va_list ap)
@@ -821,6 +865,21 @@ int snprintf(char *string, unsigned int size, char *fmt, ...)
 	va_start(ap, fmt);
 
 	r = vsnprintf(string, size, fmt, ap);
+	
+	va_end(ap);
+	
+	return r;
+}
+
+int sio_printf(char *fmt, ...)
+{
+	int r;
+
+	va_list ap;
+
+	va_start(ap, fmt);
+
+	r = sio_vprintf(fmt, ap);
 	
 	va_end(ap);
 	

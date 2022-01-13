@@ -8,7 +8,7 @@
 /* Joypad functions */
 
 extern void PAD_init(unsigned long mode, unsigned long *pad_buf);
-extern int PAD_dr();
+extern int PAD_dr(void);
 
 /* ROM information functions */
 
@@ -17,7 +17,7 @@ extern int PAD_dr();
  * @return Kernel date n 0xYYYYMMDD BCD format.
  */
  
-unsigned long GetKernelDate();
+unsigned long GetKernelDate(void);
 
 /**
  * Returns a pointer to a zero-terminated
@@ -25,7 +25,7 @@ unsigned long GetKernelDate();
  * @return Pointer to a zero-terminated string which contains the kernel ROM version.
  */
 
-const char *GetKernelRomVersion();
+const char *GetKernelRomVersion(void);
 
 /**
  * Returns a pointer to a zero-terminated
@@ -33,7 +33,7 @@ const char *GetKernelRomVersion();
  * @return Zero-terminated string which contains the system ROM version.
  */
 
-const char *GetSystemRomVersion();
+const char *GetSystemRomVersion(void);
 
 /**
  * GetRamSize() should return size of RAM in bytes.
@@ -43,7 +43,7 @@ const char *GetSystemRomVersion();
  * @return Size of RAM in bytes.
  */
 
-unsigned int GetRamSize();
+unsigned int GetRamSize(void);
 
 /* Interrupt/Exception functions */
 
@@ -53,28 +53,35 @@ unsigned int GetRamSize();
  * Enters a critical section.
  */
 
-void EnterCriticalSection();
+void EnterCriticalSection(void);
 
 /**
  * Exits a critical section.
  */
 
-void ExitCriticalSection();
+void ExitCriticalSection(void);
 
 void SysEnqIntRP(int index, unsigned int *buf);
 void SysDeqIntRP(int index, unsigned int *buf);
 
-void ResetEntryInt();
+void ResetEntryInt(void);
 
 
-
+/**
+ * Directory entry
+ */
 struct DIRENTRY
 {
-	char name[20]; // Filename
-	int attr; // Attributes
-	int size; // File size in bytes
-	struct DIRENTRY *next; // Pointer to next file entry
-	char system[8]; // System reserved
+	 /** Filename */
+	char name[20];
+	 /** Attributes */
+	unsigned int attr;
+	 /** File size in bytes */
+	int size;
+	 /** Pointer to next file entry */
+	struct DIRENTRY *next;
+	 /** System reserved */
+	unsigned char system[8];
 };
 
 /**
@@ -83,10 +90,21 @@ struct DIRENTRY
  * Characters after * are ignored.
  * @param name File name string
  * @param dirent Pointer to a struct DIRENTRY object.
- * @return Pointer to a struct DIRENTRY object. 
+ * @return dirent on success, NULL on failure. 
  */
 
 struct DIRENTRY *firstfile(char *name, struct DIRENTRY *dirent);
+
+/**
+ * Finds a file with the same conditions as the previous call to firstfile().
+ * If a corresponding file is found, file information is stored
+ * to the structure pointed to by dir.
+ *
+ * @param dir Pointer to a struct DIRENTRY object.
+ * @return dir on success, NULL on failure.
+ */
+
+struct DIRENTRY *nextfile(struct DIRENTRY *dir);
 
 /** 
  * Gets the file size of the file named "name".
@@ -108,10 +126,7 @@ int get_file_size(char *name);
 int get_real_file_size(char *name);
 
 void InitHeap(void *block , int size);
-void FlushCache();
-
-void SetVBlankHandler(void (*h)());
-void RemoveVBlankHandler();
+void FlushCache(void);
 
 void SetRCntHandler(void (*callback)(), int spec, unsigned short target);
 
@@ -119,7 +134,7 @@ void SetRCntHandler(void (*callback)(), int spec, unsigned short target);
  * Opens an event, and returns its identifier
  * Must be executed in a critical section
  * @param desc Numerical cause descriptor
- * @param type Numerical event type
+ * @param spec Numerical event type
  * @param mode Numerical mode
  * @param func Function pointer to callback function
  * @return Numerical identifier for the event opened
@@ -134,7 +149,7 @@ int OpenEvent(
 
 /**
  * Enables an event by its identifier returned by OpenEvent()
- * @param Numerical event identifier
+ * @param event Numerical event identifier
  * @return ???
  */
 
@@ -142,7 +157,7 @@ int EnableEvent(unsigned int event);
 
 /**
  * Closes an event by its identifier
- * @param Numerical event identifier
+ * @param event Numerical event identifier
  * @return ???
  */
 
@@ -150,7 +165,7 @@ int CloseEvent(unsigned int event);
 
 /**
  * Disables an event by its identifier
- * @param Numerical event identifier
+ * @param event Numerical event identifier
  * @return ???
  */
 
@@ -159,8 +174,8 @@ int DisableEvent(unsigned int event);
 /**
  * Generates an event. This must be executed in a critical section.
  * If the event to deliver is set to generate an interrupt, the handler function is called.
- * @param Numerical cause descriptor
- * @param Numerical event class
+ * @param ev1 Numerical cause descriptor
+ * @param ev2 Numerical event class
  * @return ???
  */
 
@@ -187,6 +202,8 @@ int WaitEvent(unsigned int event);
  * Replaces the executable image in memory with the one
  * contained in another executable file in PSX-EXE format.
  * WARNING: Does not work right now.
+ * 
+ * Most likely you want PSX_RunExe()
  * @param name Path name of PSX-EXE executable
  * @param argc Number of arguments
  * @param argv Pointer to an array of string pointers for each argument

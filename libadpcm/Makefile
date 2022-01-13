@@ -2,14 +2,14 @@
 
 include ../Makefile.cfg
 
-CC = psx-gcc -O0
 AR = mipsel-unknown-elf-ar
 RANLIB = mipsel-unknown-elf-ranlib
+CFLAGS += -O3 -I../libm
 
 all: libadpcm.a
 
 adpcm.o: adpcm.c
-	$(CC) -c adpcm.c
+	$(CC) $(CFLAGS) -c adpcm.c
 
 libadpcm.a: adpcm.o
 	rm -f libadpcm.a

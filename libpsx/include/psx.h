@@ -32,15 +32,17 @@
  *   -  From PSXSDK releases 2012-03-03 up to 2013-01-14.
  * + 0.2.99 (0x0299)
  *   - PSXSDK 2013-05-14
+ * + 0.3.99 (0x0399)
+ *   - PSXSDK 2013-11-09
  */
 
-#define PSXSDK_VERSION			0x0299
+#define PSXSDK_VERSION			0x0399
 
 /**
  * PSXSDK version information in string format
  */
  
-#define PSXSDK_VERSION_STRING		"0.2.99"
+#define PSXSDK_VERSION_STRING		"0.3.99"
 
 
 
@@ -60,7 +62,29 @@
 #include <psxpad.h>
 #include <psxspu.h>
 #include <psxcdrom.h>
+#include <psxsio.h>
 //#include <adpcm.h>
+
+/**
+ * Coprocessor 0 register numbers
+ */
+
+enum cop0_register_numbers
+{
+	/** Contains the last invalid program address which caused a trap. 
+	  
+	      It is set by address errors of all kinds. */
+	COP0_BADVADDR = 8,
+	/** CPU mode flags (status register) */
+	COP0_SR = 12,
+	/** Describes the most recently recognized exception. */
+	COP0_CAUSE = 13,
+	/** Return address from trap */
+	COP0_EPC = 14,
+	/** COP0 type and revision level */
+	COP0_PRID = 15,
+};
+
 
 /**
  * These values below are to be used for evalauting the type field of the
@@ -261,25 +285,27 @@ struct psx_info
  * Initialize library
  */
 
-void PSX_Init();
+void PSX_Init(void);
 
 /**
  * Flags for PSX_Init.
- * PSX_INIT_CD - Initialize CDROM filesystem
- * PSX_INIT_SAVESTATE - Save BIOS state before initializing the library
  */
 
 enum psx_init_flags
 {
+	/** PSX_INIT_CD - Initialize CDROM filesystem */
 	PSX_INIT_CD = 1,
+	/** PSX_INIT_SAVESTATE - Save BIOS state before initializing the library */
 	PSX_INIT_SAVESTATE = 2,
+	/** PSX_INIT_NOBIOS - Remove control from the BIOS and let PSXSDK be in complete control */
+	PSX_INIT_NOBIOS = 4,
 };
 
 /**
  * Deinitialize library
  */
 
-void PSX_DeInit();
+void PSX_DeInit(void);
 
 /**
  * Initialize library (extended version)
@@ -335,7 +361,7 @@ void PSX_GetSysInfo(struct psx_info *info);
  * @return Value of Coprocessor 0 status register
  */
  
-unsigned int get_cop0_status();
+unsigned int get_cop0_status(void);
 
 /**
  * Sets Coprocessor 0 status register
@@ -351,7 +377,7 @@ unsigned int set_cop0_status(unsigned int sreg);
  * @return Value of the program counter at the time of the last exception
  */
  
-unsigned int get_cop0_epc();
+unsigned int get_cop0_epc(void);
 
 /**
  * Get value of specified Coprocessor 0 register
@@ -414,13 +440,36 @@ int StopRCnt(int spec);
  * with the PSX_INIT_SAVESTATE flag.
  */
 
-int PSX_RestoreBiosState();
+int PSX_RestoreBiosState(void);
 
 /**
  * Gets the bitmask for the flags passed to PSX_InitEx()
  * @return Flag bitmask
  */
  
-unsigned int PSX_GetInitFlags();
+unsigned int PSX_GetInitFlags(void);
+
+/**
+ * Sets an handler function for the VBlank interrupt.
+ * Used for simple, inaccurate timing - the handler function gets called 60 times a second
+ * in NTSC video mode and 50 times a second in PAL video mode.
+ *
+ * While most games use the VBlank interrupt for timing as they don't require high precision and 
+ * have mechanisms to keep up with the different speed in PAL or NTSC video mode, for precise
+ * timing VBlank is inadequate. It is better to look at root counters if you desire precision.
+ *
+ * If there is already a VBlank handler set, this function replaces the current handler with the specified one.
+ * @param h Pointer to (new) VBlank handler function
+ */
+
+void SetVBlankHandler(void (*h)());
+
+/**
+ * Removes a previously set VBlank handler.
+ *
+ * If SetVBlankHandler() was not called before, calling this function has no effect.
+ */
+
+void RemoveVBlankHandler(void);
 
 #endif

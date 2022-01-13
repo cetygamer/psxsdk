@@ -84,15 +84,23 @@ int main(int argc, char *argv[])
 	for(x = 0; x < mod->sample_num; x++)
 	{
 		//printf("%d: %s\n", x, mod->sample[x].name);
+		printf("sample[%d].bits = %d, sample[%d].data_type = %d\n", x, mod->sample[x].bits, x, mod->sample[x].data_type);
+
 		
-		if(mod->sample[x].length != 0)
+		if(mod->sample[x].length >= 32)
 		{
-			if(mod->fmt == MOD_FMT_MOD &&
+			if((mod->sample[x].data_type & 1) && mod->sample[x].bits == 8)
+			{
+				for(y = 0; y < mod->sample[x].length; y++)
+					mod->sample[x].data[y]^=0x80;
+			}
+			
+			if(//mod->fmt == MOD_FMT_MOD &&
 			    mod->sample[x].repeat_len > 2)
 			{
 				
-			sz = SsAdpcmPack(mod->sample[x].data, adpcm_buffer,
-				mod->sample[x].length, (mod->sample[x].bits==16)?FMT_S16:FMT_U8, 
+			sz = SsAdpcmPack(mod->sample[x].data, adpcm_buffer, // FIX THIS!!!
+				mod->sample[x].length / (mod->sample[x].bits / 8), (mod->sample[x].bits==16)?FMT_S16:FMT_U8, 
 					sizeof(adpcm_buffer),
 				1, mod->sample[x].repeat_off);
 				
@@ -100,8 +108,9 @@ int main(int argc, char *argv[])
 			else
 			{
 				
+				
 			sz = SsAdpcmPack(mod->sample[x].data, adpcm_buffer,
-				mod->sample[x].length, (mod->sample[x].bits==16)?FMT_S16:FMT_U8, 
+				mod->sample[x].length / (mod->sample[x].bits / 8), (mod->sample[x].bits==16)?FMT_S16:FMT_U8, 
 				sizeof(adpcm_buffer), 0, 0);
 				
 			}

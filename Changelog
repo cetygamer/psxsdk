@@ -1,0 +1,102 @@
+0.5
+------------
+
+This is list is still incomplete as 0.5 is still being worked on.
+
+- Added several math constants (such as M_PI) to math.h
+- Added GsSetDispEnvSimple() and GsSetDrawEnvSimple() prototypes to psxgpu.h. The functions already existed in 0.1 but they were not prototyped and a warning was given by the compiler when they were used in a program.
+- Added sys/types.h
+- [SERIOUS] Fixed GsSpriteFromImage() - the v value when the pixel mode was 4-bit or 8-bit was incorrect
+- Added GetSystemRomVersion() function
+- [SERIOUS] As many functions provided by the BIOS which handled memory did not work correctly or at all,
+   memcmp(), memcpy(), memmove(), memcmp(), memchr(), bzero(), bcopy() and bcmp() have been implemented in 
+   PSXSDK's libc. This fixes a lot of problems.
+- Fixed GsPrintFont(), the x position was incremented before drawing a character.
+   Now it is incremented after drawing a character.
+- Now the joysticks/joypads are read using low-level routines instead of using BIOS routines.
+   This is more versatile and allows the implementation of things such as vibration.
+   On the other hand, this can cause conflicts with the BIOS' memory card handling routines.
+   If you don't do directly file manipulation calls on the memory card there should be no problem, however,
+   as the PSXSDK functions to read/write the memory card take care of that already.
+   The functions added are: QueryPAD(), pad_read_raw(), pad_escape_mode().
+- Implemented vibration for DualShock-compatible controllers.
+   The functions added are: pad_enable_vibration(), pad_set_vibration()
+- The PSXSnake example now vibrates your joystick when you die.
+- Fixed calculate_real_padding_hex() in libc.c. This should fix padding with hexadecimal
+  numbers in vsnprintf based functions (sprintf() / GsPrintFont() / etc.).
+- SetVBlankHandler() and SetRCntHandler() now change handler if they're called after an handler
+   has already been set. In 0.1, they did not change handler and kept the old handler.
+- bmp2tim now also supports setting magic pink as transparent (like Allegro).
+- scalex and scaley in the GsSprite structure now act like PsyQ or Blade Libs when they are
+   higher than eight. When they are lower than eight they act like in 0.1.
+- Added scaling, wrapping, and justifying support to GsPrintFont()
+   Attributes can be set by using GsSetFontAttrib()
+- In 0.1 bmp2tim crashed if it didn't find or couldn't read the source bitmap, this is fixed now.
+- Fixed endianness issue for wav2vag on big endian machines.
+- Added GsScreenW and GsScreenH global variables which report the size of the screen
+   in the current video mode so you don't have to keep track of that yourself
+- Added is_load_delay_ok(). This checks if the load delay slot behaves as it does on real hardware.
+  Many emulators do not emulate the load delay slot and show inaccurate behavior.
+  You really need to know this only if you are doing interesting things with opcodes yourself, otherwise the compiler and the assembler will take care of this for you.
+- After returning from main() the empty endless loop wasn't running. This is now fixed.
+- Added %f format to vsnprintf(). This adds floating point support to all functions using the *sprintf() family of functions, including GsPrintFont
+- Added '@' conversion to vsscanf and vsprintf(). It is a base-2 (binary) conversion and it is a psxsdk specific extension.
+- Added support for 64-bit integers in vsnprintf() for binary, decimal, octal and hexadecimal formats.
+- Added 2d rotation support to sprites.
+- Added long file name support (via TRANS.TBL) to fopen() using the cdromL: virtual device
+- Added gs_get_tpage_num, gs_get_tpage_u and gs_get_tpage_v macros to psxgpu.h, with which
+  you can obtain the tpage, u and v parameters for textures knowing the coordinate in the framebuffer
+- Added GsIsWorking() alias for GsIsDrawing()
+- Removed useless jr $ra, nop instruction sequence which was never executed in system calls, and fixed CriticalSection system calls
+- Added GsScreenM to store current video mode (NTSC or PAL)
+- Removed -O0 from the psx-gcc script, you can now specify optimizations on the compiler command line.
+  PSXSDK library code is still compiled without optimizations, though.
+- Fixed a really nasty bug when checking if (input image width + x origin) and (input image height + y origin) 
+  were out of boundary in bmp2tim
+- GsPrintFont() now recognizes TAB ('\t') and prints it accordingly (eight white characters)
+- Added the low-level CDROM library.
+- Added PSX_InitEx(). It allows to more strictly control what is initialized compared to PSX_Init()
+- Added -mpink option to tim2bmp. Transparency is rendered as "magic pink" in the output bitmap file.
+- GsSetFont() now keeps the old value for the item related to the argument if -1 is passed as the value of the argument.
+  i.e: GsSetFont(-1, -1, 30, 40) will just change the font clut x and y to 30 and 40, and will keep the font origin x and y unchanged.
+- Fixed some bugs in the huff program which were pointed out by Gemini ages ago, but were never fixed (really).
+- Fixed vsnprintf buffer overflow.
+- Fixed floating point printing bug in vsnprintf.
+- Fixed the bug with GsGPoly4 that happened because the arrays of the colors in the structure were three bytes long
+  instead of correctly being four bytes long. Thanks to Xavier Del Campo Romero for reporting this.
+- Implemented index(), rindex(), strspn(), strcspn(), strtok() and strsep() in the libc.
+- Implemented strlwr() and strupr() in the libc.
+- Implemented qsort() in the libc.
+- Implemented realloc() in the libc.
+- Implemented optional auto-waiting in GsDrawList(). If GsSetAutoWait() is called at any time in the program,
+  after that moment you will not need to wait for the GPU to finish working in your code, everything will be done
+  automatically. Auto-waiting needs to be enabled as it is disabled by default.
+- Removed a totally wrong comment in start.s which said "this might now work on PSOne".
+  It made its way through despite being about some strange things happening when PSXSDK was
+  began to be programmed??
+- Fixed stupid bug in SsUploadVag()
+- Readded abs() to libc.
+- Added PSX_INIT_SAVESTATE flag to PSX_Init() to save the state
+  of the BIOS before initializing the library
+- Added PSX_RestoreBiosState()
+- Added PSX_RunExe() to easily load another exe to run instead of the currently running one
+- Changed the prototype and return value for PSX_GetButtonName() to something sane.
+- GsUploadImage() now has a void return type. It was int before but it never returned anything.
+- Fixed a lot of warnings when compiling libpsx.
+- Fixed an array initialization out of bounds problem in libmodplay.
+
+2013-05-14:
+- Changed internal version to 0.2.99 (was 0.1.99)
+- Implemented PSX_PollPad() which is similar to PSX_ReadPad() but much more advanced.
+  Analog sticks and NeGCon are now supported.
+- Updated information about reading CD-RWs in the readme.
+- Added --showoffset option in cdcat
+- Added -removelogo option in lictool
+- Added runexe.h and prototype for PSX_RunEXE(), which was missing
+- Added GsDrawListPIO(), that uses GPU port I/O access instead of GPU DMA to transfer primitive data to the GPU.
+- Added GsInitEx(), which allows to specify flags for GPU initilization.
+  GsInit() is now a wrapper to GsInitEx(), and it is the same as calling GsInitEx(0)
+- srand() and rand() are now implemented in the C library and the BIOS versions are no longer used.
+- Changed joypad reading code, now it should work better.
+- Beginnings of XM music file support in libmodplay. Support doesn't really work yet, though.
+- Added Coprocessor 0 register manipulation functions get_cop0_register() and set_cop0_register()

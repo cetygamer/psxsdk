@@ -492,7 +492,16 @@ enum psx_gpu_texmodes
  COLORMODE_24BPP
 };
 
-#define NORMAL_LUMINOSITY	128
+/** 
+ * This is the luminance factor with which images
+ * are drawn as they are stored. (i.e. without applying lighting)
+ *
+ * NORMAL_LUMINOSITY (sic) is kept for backward compatibility,
+ * but "luminosity" is an incorrect term here.
+ */
+
+#define NORMAL_LUMINANCE	128
+#define NORMAL_LUMINOSITY	NORMAL_LUMINANCE
 
 /**
  * Macro to specify texture color mode, takes a value from psx_gpu_texmodes
@@ -891,10 +900,26 @@ void GsLoadFont(int fb_x, int fb_y, int cx, int cy);
 
 /**
  * Prints string using 8x8 font at screen coordinates x, y
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @param fmt format (like *printf())
  * @return Position identifier.
  */
 
 unsigned int GsPrintFont(int x, int y, const char *fmt, ...);
+
+/**
+ * Prints string using 8x8 font at screen coordinates x, y
+ * Apart from using a variable argument list, this function
+ * is identical to GsPrintFont()
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @param fmt format (like *printf())
+ * @param ap Variable argument list
+ * @return Position identifier.
+ */
+
+unsigned int GsVPrintFont(int x, int y, const char *fmt, va_list ap);
 
 /**
  * Change font coordinates without reloading it
@@ -931,6 +956,9 @@ void GsSetFont(int fb_x, int fb_y, int cx, int cy);
  *                                   This has the same meaning as a sprite's scaling factor
  * PRFONT_RIGHT - Justifies text to the right
  * PRFONT_CENTER - Justifies text at the center
+ * PRFONT_RL(f) - Luminance factor for the red component
+ * PRFONT_GL(f) - Luminance factor for the green component
+ * PRFONT_BL(f) - Luminance factor for the blue component
 */
 
 void GsSetFontAttrib(unsigned int flags);
@@ -980,11 +1008,15 @@ enum psx_gpu_vmodes
 #define PRFONT_RIGHT				4
 #define PRFONT_SCALE				8
 #define PRFONT_UNIXLF				16
+#define PRFONT_COLOR				32
 
-// These two below are not really attributes... but use them as if they were.
+// These below are not really attributes... but use them as if they were.
 
 unsigned int PRFONT_SCALEX(int i);
 unsigned int PRFONT_SCALEY(int i);
+unsigned int PRFONT_RL(unsigned char f);
+unsigned int PRFONT_GL(unsigned char f);
+unsigned int PRFONT_BL(unsigned char f);
 
 // Use this to get the final X and Y positions from the return value
 // of GsPrintFont(). Especially useful after wrapping.
@@ -1002,8 +1034,10 @@ extern unsigned short GsScreenH;
      You can use the values in the psx_gpu_vmodes enum to evaluate this. Do not modify. */
 extern unsigned char GsScreenM; // Current video mode
 
+/** This global variable reports the width of the current drawing environment. */
 extern unsigned short GsCurDrawEnvW;
-extern unsigned short GsCurDrawEnvY;
+/** This global variable reports the height of the current drawing environment. */
+extern unsigned short GsCurDrawEnvH;
 
 /**
  * Clear the entire drawing area with specified color

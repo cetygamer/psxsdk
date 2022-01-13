@@ -1,5 +1,5 @@
-nv-SPASM 0.34
-(c) 2014 Giuseppe Gatta, a.k.a. nextvolume <tails92@gmail.com>
+nv-SPASM 0.34.1
+(c) 2014-2015 Giuseppe Gatta, a.k.a. nextvolume <tails92@gmail.com>
 -------------------------
 
 1. What is this?
@@ -92,18 +92,23 @@ nv-SPASM does not currently support complex expressions, just very simple ones.
 nv-SPASM is really simple to use, and does not need any special explanation.
 Therefore, it will suffice to report its usage banner.
 
-nv-spASM version 0.34 (c) 2014 nextvolume
+nv-spASM version 0.34.1 (c) 2014-2015 nextvolume
 Assembler for the Sony PlayStation
 
-Usage: spasm [options] infile outfile
+Usage: ./spasm [options] infile outfile
 
 Options:   -b      create binary file instead of PS-X EXE
+           -N      do not pad executable
+           -S      be case sensitive on file paths
 
 4. License
 --------------------------
 
 It is permitted to do (almost) anything with the nv-SPASM code and documentation.
-The only restriction is that all existing copyright notices must remain intact.
+The only restriction is that all existing copyright notices must remain intact, and
+modifed versions must ship with the corresponding modified source code.
+
+fcaseopen.c is (C) 2009 Keith Bauer. Read fcaseopen.c for the license (BSD-style)
 
 5. Useful information
 --------------------------
@@ -112,10 +117,4 @@ Hitmen's official website <http://www.hitmen-console.org>
 - The README file for Hitmen's original SPASM assembler is a good read,
   as this assembler tries to closely follow it.
 - The GreenTro source code is another good resource, as it was developed with SPASM,
-  and an example to write nv-SPASM assembly source code.
-
-nv-SPASM official webpage <http://unhaut.fav.cc/spasm>
-
-nv-SPASM won't assemble It Might Be NES (imbNES) correctly yet; 
-the imbNES source code is dependent on bugs in the original spASM assembler.
-This issue might be fixed in a later nv-spASM release.
+  and thus it can be considered an example to write nv-SPASM assembly source code.

@@ -51,8 +51,8 @@ SECTIONS
 " > playstation.x
 
 echo "#!/bin/sh
-mipsel-unknown-elf-gcc -D__PSXSDK__ -fsigned-char -msoft-float -mno-gpopt -fno-builtin -G0 -I$1/include -T $1/mipsel-unknown-elf/lib/ldscripts/playstation.x \$*"> psx-gcc
+mipsel-unknown-elf-gcc -D__PSXSDK__ -fno-strict-overflow -fsigned-char -msoft-float -mno-gpopt -fno-builtin -G0 -I$1/include -T $1/mipsel-unknown-elf/lib/ldscripts/playstation.x \$*"> psx-gcc
 chmod +x psx-gcc
 echo "#!/bin/sh
-mipsel-unknown-elf-g++ -D__PSXSDK__ -fsigned-char -msoft-float -mno-gpopt -fno-builtin -G0 -I$1/include -T $1/mipsel-unknown-elf/lib/ldscripts/playstation.x -fno-rtti -fno-exceptions -fno-threadsafe-statics -fno-use-cxa-atexit \$*" > psx-g++
+mipsel-unknown-elf-g++ -D__PSXSDK__ -fno-strict-overflow -fsigned-char -msoft-float -mno-gpopt -fno-builtin -G0 -I$1/include -T $1/mipsel-unknown-elf/lib/ldscripts/playstation.x -fno-rtti -fno-exceptions -fno-threadsafe-statics -fno-use-cxa-atexit \$*" > psx-g++
 chmod +x psx-g++

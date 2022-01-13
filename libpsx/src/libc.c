@@ -518,7 +518,7 @@ int iscntrl(int c)
 	return (c < 0x20);
 }
 
-int isblank(c)
+int isblank(int c)
 {
 	return ((c == ' ') || (c == '\t'));
 }

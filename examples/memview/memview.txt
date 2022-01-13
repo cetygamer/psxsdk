@@ -10,26 +10,26 @@ the resolution will be 640x240 (low-res) and the Go-Address will be 0x80000000.
 
 Terms:
 Go-Address				The address that will be used for the
-						"jump-to address" operation
+					"jump-to address" operation
 
 Control:
-UP						Decrease current address by 0x10
+UP					Decrease current address by 0x10
 DOWN					Increase current address by 0x10
-LEFT						Decrease current address by 0x100
+LEFT					Decrease current address by 0x100
 RIGHT					Increase current address by 0x100
 
-L1						Move to previous location in Go-Address
-R1						Move to next location in Go-Address
-L2						Move to first location in Go-Address
+L1					Move to previous location in Go-Address
+R1					Move to next location in Go-Address
+L2					Move to first location in Go-Address
 CROSS					Increase nibble at current Go-Address location
 CIRCLE					Decrease nibble at current Go-Address location
 
 START					Jump to Go-Address, 
-						i.e. make the Go-Address the current address
+					i.e. make the Go-Address the current address
 
 SELECT					Switch between hi-res and low-res mode
-						Hi-res mode: 640x480
-						Low-res mode: 640x240 (default)
+					Hi-res mode: 640x480
+					Low-res mode: 640x240 (default)
 						
 Surefire areas:
 0x80000000-0x801fffff		PlayStation RAM (2 megabytes)

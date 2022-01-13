@@ -141,7 +141,7 @@ void OUTSEEK(unsigned int position)
 
 void OUTBYTE(unsigned char b)
 {
-	if(curPass)
+	if(curPass>0)
 		fputc(b, asmOut);
 	
 	curPc++;
@@ -149,7 +149,7 @@ void OUTBYTE(unsigned char b)
 
 void OUTHALF(unsigned short h)
 {
-	if(curPass)
+	if(curPass>0)
 	{
 		fputc(h&0xff, asmOut);
 		fputc(h>>8, asmOut);
@@ -160,7 +160,7 @@ void OUTHALF(unsigned short h)
 
 void OUTWORD(unsigned int w)
 {
-	if(curPass)
+	if(curPass>0)
 	{
 		fputc(w&0xff, asmOut);
 		fputc((w>>8)&0xff, asmOut);
@@ -280,7 +280,7 @@ unsigned short compute_branch(unsigned int imm)
 	unsigned int off = imm - (curPc + 4);
 	//off >>= 2;
 	
-	if(curPass == 0)
+	if(curPass <= 0)
 		return 0;
 	
 	if(off >= 0x20000 && off < -0x20000)
@@ -291,48 +291,81 @@ unsigned short compute_branch(unsigned int imm)
 
 unsigned int compute_jump(unsigned int imm)
 {	
-	if(curPass == 0)
+	if(curPass <= 0)
 		return 0;
 
 	return (imm >> 2);
 }
 
+struct
+{
+	int size;
+	int pos;
+	unsigned int *el;
+}cannotPredict = {0, 0, NULL};
+
 unsigned int compute_real_offset(unsigned int imm, unsigned int base,
 	unsigned int rt)
 {
-	unsigned short hipart = imm >> 16;
-	unsigned short lopart = imm & 0xFFFF;
+	int i, unpredictable=0;
+	unsigned short hipart;
+	unsigned short lopart;
+	
+	if(!find_label_ok())
+	{
+		if(cannotPredict.size == cannotPredict.pos)
+		{
+			cannotPredict.size += 128;
+			cannotPredict.el = realloc(cannotPredict.el, cannotPredict.size * sizeof(int));
+		}
+		
+		cannotPredict.el[cannotPredict.pos++] = curPc;
+	}
+	
+	for(i = 0; i < cannotPredict.pos; i++)
+	{
+		if(curPc == cannotPredict.el[i])
+		{
+			unpredictable = 1;
+			break;
+		}
+	}
+	
+	if(!unpredictable && ((imm <= 0xFFFF) || (imm >= 0xFFFF8000 && imm <= 0xFFFFFFFF)))
+		return I_TYPE(0, base, rt, imm);
 
+//compute_real_offset_output_wide:
+	// li at, offset
+	// add at, at, base
+	// lw rt, 0(at)
+	hipart = (imm >> 16);
+	lopart = imm & 0xFFFF;
+	int t=(*curIns == 'l') ? rt : 1;
+	
+	// lw at, $CAFEBABE(zero) -> lui at, $CAFE, ori at, at, $BABE, lw at, 0(at)
+	// lw at, $CAFEBABE(v0) -> lui at, $CAFE, ori at, at, $BABE, lw at, 0(v0)
+	// sw at, $CAFEBABE -> 
+	
+	if(base)
+	{
+		/*OUTINS( I_TYPE(15, 0, t, hipart)); // lui $t, (offset > 16)
+		
+		if(lopart || unpredictable)
+			OUTINS( I_TYPE (13, t, t, lopart)); // ori $t, $t, offset & 0xffff
+		
+		OUTINS( R_TYPE (0, t, base, t, 0, 33) ); // add $t, $t, base
+		return I_TYPE(0, t, rt, 0);*/
+		
+// SPASM is seriously broken regarding this..
+		return I_TYPE(0, base, rt, imm);
+	}
+	
 	if(lopart >= 0x8000)
 		hipart++;
-
-	//if(base || (tolower((unsigned int)*curIns) == 's'))
-	//{
-//		OUTINS((0x3c01<<16) | hipart); // lui at, hipart
-	
-//		if(base) // no need to output this instruction if base = zero register
-//			OUTINS( R_TYPE (0, 1, base, 1, 0, 33) ); // addu at, at, base
-
-//		return I_TYPE(0, 1, rt, lopart); // XX xx, lopart(at)
 		
-	/*	OUTINS(I_TYPE(15, 0, rt, hipart)); // lui rt, hipart
+	OUTINS( I_TYPE(15, 0, t, hipart)); // lui $t, (offset > 16)
 		
-		if(base) // no need to output this instruction if base = zero register
-			OUTINS( R_TYPE (0, rt, base, rt, 0, 33) ); // addu at, at, base
-		
-		return I_TYPE(0, rt, rt, lopart);
-	*/	
-	//}
-	
-	OUTINS((0x3c01<<16) | hipart); // lui at, hipart
-	
-	if(base) // no need to output this instruction if base = zero register
-		OUTINS( R_TYPE (0, 1, base, 1, 0, 33) ); // addu at, at, base
-
-	return I_TYPE(0, 1, rt, lopart); // XX xx, lopart(at)
-	
-	//OUTINS(I_TYPE(15, 0, rt, hipart)); // lui rt, hipart
-	//return I_TYPE(0, rt, rt, lopart); // XX rt, lopart(rt)
+	return I_TYPE(0, t, rt, lopart); // XX rt, lopart(rt)
 }
 
 void INS_ADD(void)
@@ -600,7 +633,7 @@ void INS_BLTZ(void)
 	rs = insArgv[0];
 	imm = insArgv[1];
 	
-	OUTINS( I_TYPE(6, rs, 0, compute_branch(imm)) );
+	OUTINS( I_TYPE(1, rs, 0, compute_branch(imm)) );
 }
 
 void INS_BLTZAL(void)
@@ -1673,7 +1706,7 @@ void INS_B(void)
 	OUTINS( I_TYPE(4, 0, 0, compute_branch(imm)) ); // <- beq zero, zero, imm
 }
 
-void INS_LI(void)
+/*void INS_LI(void)
 {
 	unsigned int rd, imm;
 	unsigned short lopart, hipart;
@@ -1697,12 +1730,118 @@ void INS_LI(void)
 		OUTINS( I_TYPE(15, 0, rd, hipart)); // lui $rd, (imm > 16)
 		OUTINS( I_TYPE (9, rd, rd, lopart)); // addiu $rd, $rd, imm & 0xffff
 	}
+}*/
+
+void INS_LI(void)
+{
+	int i;
+	unsigned int rd, imm;
+	unsigned short lopart, hipart;
+	int unpredictable=0;
+	
+	if(insArgc != 2)
+		instruction_error("Wrong number of arguments");
+	
+	rd = insArgv[0];
+	imm = insArgv[1];
+	
+	hipart = imm >> 16;
+	lopart = imm & 0xFFFF;
+
+	if(!find_label_ok())
+	{
+		if(cannotPredict.size == cannotPredict.pos)
+		{
+			cannotPredict.size += 128;
+			cannotPredict.el = realloc(cannotPredict.el, cannotPredict.size * sizeof(int));
+		}
+		
+		cannotPredict.el[cannotPredict.pos++] = curPc;
+	}
+	
+	for(i = 0; i < cannotPredict.pos; i++)
+	{
+		if(curPc == cannotPredict.el[i])
+		{
+			unpredictable = 1;
+			break;
+		}
+	}
+	
+	if(/*atoiT[1] == T_INTEGER &&*/ !unpredictable && imm >= 0 && imm <= 0xFFFF)
+		OUTINS(I_TYPE(13, 0, rd, lopart)); // ori $rd, $zero, imm
+	else if(!unpredictable && !lopart)
+		OUTINS(I_TYPE(15, 0, rd, hipart));
+	else
+	{		
+	//	if(lopart >= 0x8000)
+	//		hipart++;
+		
+		OUTINS( I_TYPE(15, 0, rd, hipart)); // lui $rd, (imm > 16)
+
+	//	OUTINS( I_TYPE(9, rd, rd, lopart)); // addiu $rd, $rd, imm & 0xffff
+		OUTINS( I_TYPE (13, rd, rd, lopart)); // ori $rd, $rd, imm & 0xffff
+	}
+	
 }
 
 void INS_LA(void)
 {
-	INS_LI(); // The LI and LA pseudo-instructions are the same thing in SPASM
+	int i;
+	unsigned int rd, imm;
+	unsigned short lopart, hipart;
+	int unpredictable=0;
+	
+	if(insArgc != 2)
+		instruction_error("Wrong number of arguments");
+	
+	rd = insArgv[0];
+	imm = insArgv[1];
+	
+	hipart = imm >> 16;
+	lopart = imm & 0xFFFF;
+
+	if(!find_label_ok())
+	{
+		if(cannotPredict.size == cannotPredict.pos)
+		{
+			cannotPredict.size += 128;
+			cannotPredict.el = realloc(cannotPredict.el, cannotPredict.size * sizeof(int));
+		}
+		
+		cannotPredict.el[cannotPredict.pos++] = curPc;
+	}
+	
+	for(i = 0; i < cannotPredict.pos; i++)
+	{
+		if(curPc == cannotPredict.el[i])
+		{
+			unpredictable = 1;
+			break;
+		}
+	}
+	
+	if(/*atoiT[1] == T_INTEGER &&*/ !unpredictable && imm >= 0 && imm <= 0xFFFF)
+		OUTINS(I_TYPE(13, 0, rd, lopart)); // ori $rd, $zero, imm
+	//else if(!unpredictable && !lopart)
+	//	OUTINS(I_TYPE(15, 0, rd, hipart));
+	else
+	{		
+		if(lopart >= 0x8000)
+			hipart++;
+		
+		OUTINS( I_TYPE(15, 0, rd, hipart)); // lui $rd, (imm > 16)
+
+		OUTINS( I_TYPE(9, rd, rd, lopart)); // addiu $rd, $rd, imm & 0xffff
+//		OUTINS( I_TYPE (13, rd, rd, lopart)); // ori $rd, $rd, imm & 0xffff
+	}
+	
 }
+
+/*void INS_LA(void)
+{
+	INS_LI(); // The LI and LA pseudo-instructions are the same thing in SPASM
+}*/
 
 void INS_NOP(void)
 {
@@ -1719,7 +1858,7 @@ void INS_MOVE(void)
 	rd = insArgv[0];
 	rs = insArgv[1];
 	
-	OUTINS( R_TYPE (0, 0, rs, rd, 0, 33) ); // addu $rd, $zero, $rs
+	OUTINS( R_TYPE (0, rs, 0, rd, 0, 33) );  // addu $rd, $rs, $zero
 }
 
 void INS_SUBI(void)
@@ -1792,6 +1931,8 @@ void INS_BEQZ(void)
 	imm = insArgv[1];
 	
 	OUTINS( I_TYPE(4, rt, 0, compute_branch(imm)) ); // <- beq zero, rt, imm
+//		OUTINS( I_TYPE(4, rs, rt, compute_branch(imm)) );
+
 }
 
 void INS_BNEZ(void)
@@ -1824,8 +1965,8 @@ void INS_ORG(void)
 	if(insArgc != 1)
 		instruction_error("Wrong number of arguments");
 
-	if(!first_instruction)
-		instruction_error("ORG is not the first instruction");
+	//if(!first_instruction)
+	//	instruction_error("ORG is not the first instruction");
 	
 	curPc = insArgv[0];
 	startAddress = insArgv[0];
@@ -1868,7 +2009,7 @@ void INS_INCBIN(void)
 	sz = ftell(f);
 	fseek(f, 0, SEEK_SET);
 	
-	if(curPass == 0)
+	if(curPass <= 0)
 		curPc += sz;
 	else
 	{
@@ -1896,7 +2037,7 @@ void INS_DCB(void)
 		return;
 	}
 	
-	if(curPass == 0)
+	if(curPass <= 0)
 		curPc += num;
 	else
 	{
@@ -1961,7 +2102,7 @@ void INS_ALIGN(void)
 	{
 		delta = (unit - (curPc % unit)) % unit;
 		
-		if(curPass == 0)
+		if(curPass <= 0)
 			curPc += delta;
 		else
 		{
@@ -1984,7 +2125,7 @@ void INS_INCLUDE(void)
 	if(insArgc != 1)
 		instruction_error("Wrong number of arguments");
 	
-	if(curPass == 0)
+	if(curPass <= 0)
 	{
 		
 		path = rawArgv[0];

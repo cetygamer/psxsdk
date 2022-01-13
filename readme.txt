@@ -1,6 +1,6 @@
-PSXSDK 0.3.99
+PSXSDK 0.5.99
 ReadMe and FAQ
-Last updated: October 24th 2013
+Last updated: July 29th 2015
 -----------------------------
 
 What is PSXSDK?

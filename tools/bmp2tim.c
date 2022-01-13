@@ -181,7 +181,7 @@ PS_BITMAP *ps_load_bitmap(char *filename, PS_RGB *palette)
 	boff = read_le_dword(bf);
 	
 //	boff=70+;
-	printf("BOFF = %d\n", boff);
+//	printf("BOFF = %d\n", boff);
 	
 // Read information header size, width and height	
 
@@ -203,7 +203,7 @@ PS_BITMAP *ps_load_bitmap(char *filename, PS_RGB *palette)
 // Check if there is compression, if there is, abort
 
 	bcompr = read_le_dword(bf);
-	printf("BCOMPR = %d\n", bcompr);
+//	printf("BCOMPR = %d\n", bcompr);
 
 	bm = ps_create_bitmap(bwidth, bheight, bbpp);
 		
@@ -227,7 +227,7 @@ PS_BITMAP *ps_load_bitmap(char *filename, PS_RGB *palette)
 // nextvolume FIX 2011-07-08: Now blw (line width with padding) and bwidth 
 // (line width without padding)	are calculated in a much cleaner and correct manner.
 	
-	printf("BPP = %d\n", bbpp);
+//	printf("BPP = %d\n", bbpp);
 	
 	bwidth = (bwidth * bbpp) >> 3;
 	blw = bwidth;
@@ -296,8 +296,8 @@ PS_BITMAP *ps_load_bitmap(char *filename, PS_RGB *palette)
 			bm->shift[i] = y;
 			bm->bits[i] = z;
 			
-			printf("shift[%d] = %d, bits[%d] = %d\n", i, bm->shift[i],
-				i, bm->bits[i]);
+			//printf("shift[%d] = %d, bits[%d] = %d\n", i, bm->shift[i],
+			//	i, bm->bits[i]);
 		}			
 	}
 
@@ -529,7 +529,7 @@ int main(int argc, char *argv[])
 		if(strcmp("-version", argv[x]) == 0)
 		{
 			printf("bmp2tim version "BMP2TIM_VERSION"\n");
-			return 0;
+			return EXIT_SUCCESS;
 		}
 	}
 
@@ -546,7 +546,7 @@ int main(int argc, char *argv[])
 		printf("  -raw            - Do not save header and CLUT       (default: OFF)\n");
 		printf("  -version        - Print program version on screen\n\n");
 		printf("Valid TIM depths are 4 (16-color), 8 (256-color), 16 (RGB555) and 24 (RGB888)\n");
-		return -1;
+		return EXIT_SUCCESS;
 	}
 	
 	tim_depth = atoi(argv[3]);
@@ -556,13 +556,13 @@ int main(int argc, char *argv[])
 	if(do_clut && tim_depth >= 16)
 	{
 		printf("Images with depths higher than 8-bit can't have a color look up table.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	if(clut_x & 0xf)
 	{
 		printf("The X position of the CLUT in the framebuffer must be a multiplier of 16.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	switch(tim_depth)
@@ -580,13 +580,13 @@ int main(int argc, char *argv[])
 	if(cx_out)
 	{
 		printf("X position specified for CLUT out of bounds.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	if(clut_y >= 512)
 	{
 		printf("Y position specified for CLUT out of bounds.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	if(do_clut)
@@ -595,7 +595,7 @@ int main(int argc, char *argv[])
 	if(tim_depth != 4 && tim_depth != 8 && tim_depth != 16 && tim_depth != 24)
 	{
 		printf("Invalid color depth specified!\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	in_bitmap = ps_load_bitmap(argv[1], in_palette);
@@ -603,19 +603,19 @@ int main(int argc, char *argv[])
 	if(in_bitmap == NULL)
 	{
 		printf("Unable to load bitmap. Unsupported format or file is unreadable or does not exist.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	if(tim_depth == 4 && in_bitmap->depth > 4)
 	{
 		printf("Error: Only a 4-bit bitmap or a bitmap of lower depth can be used to obtain a 4-bit TIM!\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	if(tim_depth == 8 && in_bitmap->depth > 8)
 	{
 		printf("Error: Only a 8-bit or a bitmap of lower depth can be used to obtain a 8-bit TIM!\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 		
 /*	allegro_init();
@@ -640,15 +640,27 @@ int main(int argc, char *argv[])
 	if(in_bitmap == NULL)
 	{
 		printf("Could not open bitmap. Aborting.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	switch(tim_depth)
 	{
 		case 4:
+			if(in_bitmap->w & 3)
+			{
+				printf("Error: A 4-bit bitmap must have a width divisible by four.\n");
+				return EXIT_FAILURE;
+			}
+		
 			z = in_bitmap->w/4;
 		break;
 		case 8:
+			if(in_bitmap->w & 1)
+			{
+				printf("Error: A 8-bit bitmap must have a width divisible by two.\n");
+				return EXIT_FAILURE;
+			}
+		
 			z = in_bitmap->w/2;
 		break;
 		case 16:
@@ -659,7 +671,7 @@ int main(int argc, char *argv[])
 	if((org_x+z) > 1024)
 	{
 		printf("X position specified for image data out of bounds.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	switch(tim_depth)
@@ -678,7 +690,7 @@ int main(int argc, char *argv[])
 	if((org_y+z) > 512)
 	{
 		printf("Y position specified for image data out of bounds.\n");
-		return -1;
+		return EXIT_FAILURE;
 	}	
 	
 	out_tim = fopen(argv[2], "wb");
@@ -686,7 +698,7 @@ int main(int argc, char *argv[])
 	if(out_tim == NULL)
 	{
 		printf("Couldn't open file at path %s for writing. Aborting.\n", argv[2]);
-		return -1;
+		return EXIT_FAILURE;
 	}
 	
 	if(!raw_flag)
@@ -878,6 +890,6 @@ int main(int argc, char *argv[])
 	}
 	
 	fclose(out_tim);
-	printf("Bitmap converted to TIM file successfully!\n");	
-	return 0;		
+	//printf("Bitmap converted to TIM file successfully!\n");	
+	return EXIT_SUCCESS;		
 }

@@ -40,6 +40,7 @@
 enum
 {
 	cdrom_mode_1,
+	cdrom_mode_1_raw,
 	cdrom_mode_2,
 };
 
@@ -106,7 +107,8 @@ void cdcat_print_usage()
 			      "\n"
 			      "Options:\n"
 			      "-help           -         This screen\n"
-			      "-mode2          -         The image has Mode 2 sectors (PlayStation dump)\n"
+			      "-mode1          -         The image is raw and has Mode 1 sectors\n"
+			      "-mode2          -         The image is raw and has Mode 2 sectors (like PlayStation dumps)\n"
 			      "-replace        -         If [path] is specified, the data of the file is\n"
 			      "                          replaced with input from standard input\n"
 			      "-showoffset     -         Show file offset in image\n"
@@ -127,6 +129,8 @@ int main(int argc, char **argv)
 
 		if(strcmp(argv[x], "-mode2") == 0 || strcmp(argv[x], "--mode2") == 0)
 			cdcat_cdrom_mode = cdrom_mode_2;
+		else if(strcmp(argv[x], "-mode1") == 0 || strcmp(argv[x], "--mode1") == 0)
+			cdcat_cdrom_mode = cdrom_mode_1_raw;
 		else if(strcmp(argv[x], "--help") == 0 || strcmp(argv[x], "-help") == 0)
 		{
 			cdcat_print_usage();
@@ -329,6 +333,9 @@ int readblk(void *buf, unsigned int blkno)
 		case cdrom_mode_1:
 			r = lseek(fd, blkno * SECSIZ, 0);
 		break;
+		case cdrom_mode_1_raw:
+			r = lseek(fd, (blkno * 2352) + 16, 0);
+		break;
 		case cdrom_mode_2:
 			r = lseek(fd, (blkno * 2352) + 24, 0);
 		break;
@@ -346,6 +353,9 @@ void writeblk(void *buf, unsigned int blkno)
 	{
 		case cdrom_mode_1:
 			lseek(fd, blkno * SECSIZ, 0);
+		break;
+		case cdrom_mode_1_raw:
+			lseek(fd, (blkno * 2352) + 16, 0);
 		break;
 		case cdrom_mode_2:
 			lseek(fd, (blkno * 2352) + 24, 0);

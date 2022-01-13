@@ -4,6 +4,8 @@
 
 #include <psx.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int vmode;
 volatile int speed_counter = 0;

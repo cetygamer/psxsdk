@@ -14,7 +14,7 @@ const char *psexe_marker_jpn = "Sony Computer Entertainment Inc. for Japan area"
 const char *psexe_marker_eur = "Sony Computer Entertainment Inc. for Europe area";
 char *psexe_marker;
 
-#define OBJCOPY_PATH		"mipsel-unknown-elf-objcopy"
+//#define OBJCOPY_PATH		"mipsel-unknown-elf-objcopy"
 
 int main(int argc, char *argv[])
 {

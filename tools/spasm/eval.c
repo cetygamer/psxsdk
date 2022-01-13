@@ -13,13 +13,16 @@
  */
 
 unsigned int spasm_eval(char *expr)
-{
-	char *cset = "+-><&|";
+{	
+	char *cset = "+-><&|*!";
 	char *csetp;
 	char *cp;
 	int ok;
 	int t = T_INTEGER;
 	char sbuf[128];
+	
+	if(strcmp(expr, "*") == 0) // Return current return address
+		return curPc;
 	
 	if(strcasecmp(curIns, "incbin") == 0)
 		return 0; // If current instruction is incbin, do not evaluate.
@@ -115,7 +118,11 @@ unsigned int spasm_eval(char *expr)
 			return one & two;
 		break;
 		case '|':
-			return one & two;
+		case '!':
+			return one | two;
+		break;
+		case '*':
+			return one * two;
 		break;
 	}
 	

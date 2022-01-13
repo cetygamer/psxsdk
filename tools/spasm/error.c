@@ -19,12 +19,12 @@ void instruction_error(char *format, ...)
 
 	va_end(ap);
 	
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 void instruction_warning(char *format, ...)
 {
-	if(curPass == 0)
+	if(curPass <= 0)
 		return;
 	
 	va_list ap;
@@ -43,12 +43,16 @@ void assembler_error(char *format, ...)
 {
 	va_list ap;
 	
+	va_start(ap, format);
+
 	printf("Line %d, assembler error: ", line_number);
 	vprintf(format, ap);
 	printf("\n");
 	show_line();
 	
 	va_end(ap);
+	
+	exit(EXIT_FAILURE);
 }
 
 	

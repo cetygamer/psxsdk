@@ -13,7 +13,7 @@ OBJS =	$(patsubst src/%.c, out/%.o, $(wildcard src/*.c)) \
 all: libpsx.a start.o
 
 libpsx.a: $(OBJS)
-	ar r libpsx.a $(OBJS)
+	$(AR) r libpsx.a $(OBJS)
 
 out/%.o: src/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<

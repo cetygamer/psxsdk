@@ -41,18 +41,19 @@ static int rcnt_handler_set = 0;
 static unsigned int rcnt_handler_event_id = 0;
 unsigned int rcnt_handler_evfield;
 
-void _internal_cdromlib_init();
+void _internal_cdromlib_init(void);
 
 static unsigned int psxSdkFlags = 0;
 
 static unsigned char *psxBiosState; 
 
-extern void _96_remove();
-extern void _96_init();
-extern void InitCARD();
-extern void StartCARD();
-extern void StopCARD();
-extern void _bu_init();
+extern void _96_remove(void);
+extern void _96_init(void);
+extern void InitCARD(void);
+extern void StartCARD(void);
+extern void StopCARD(void);
+extern void _bu_init(void);
+extern void BIOSWarmReboot(void);
 				   
 void PSX_InitEx(unsigned int flags)
 {	
@@ -102,12 +103,12 @@ _initex_end:
 	psxSdkFlags = flags;
 }
 
-void PSX_Init()
+void PSX_Init(void)
 {
 	PSX_InitEx(PSX_INIT_CD);
 }
 
-void PSX_DeInit()
+void PSX_DeInit(void)
 {
 	if(psxSdkFlags & PSX_INIT_CD)
 	{
@@ -413,7 +414,7 @@ void SetVBlankHandler(void (*callback)())
 	ExitCriticalSection();
 }
 
-void RemoveVBlankHandler()
+void RemoveVBlankHandler(void)
 {
 	if(psxSdkFlags & PSX_INIT_NOBIOS)
 	{
@@ -497,7 +498,7 @@ void RemoveRCntHandler(int spec)
 	}
 }
 
-const char *GetSystemRomVersion()
+const char *GetSystemRomVersion(void)
 {
 // Get pointer to zero-terminated string containing System ROM Version which is embedded in
 // most PlayStation BIOSes.
@@ -513,7 +514,7 @@ const char *GetSystemRomVersion()
 	return sysromver_unavail;
 }
 
-int PSX_RestoreBiosState()
+int PSX_RestoreBiosState(void)
 {
 	if(!(psxSdkFlags & PSX_INIT_SAVESTATE))
 		return 0; // can't restore BIOS state if it was not saved previously
@@ -525,7 +526,25 @@ int PSX_RestoreBiosState()
 	return 1;
 }
 
-unsigned int PSX_GetInitFlags()
+unsigned int PSX_GetInitFlags(void)
 {
 	return psxSdkFlags;
+}
+
+void PSX_WarmReboot(void)
+{
+	if(psxSdkFlags & PSX_INIT_NOBIOS)
+	{
+psx_warmreboot_nobios:
+		PSX_DeInit();
+		__asm__("j _start");
+		__asm__("nop");
+	}
+	else
+	{
+		if(!(psxSdkFlags & PSX_INIT_CD))
+			goto psx_warmreboot_nobios; 
+		
+		BIOSWarmReboot();
+	}
 }

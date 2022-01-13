@@ -196,3 +196,27 @@ This is list is still incomplete as 0.5 is still being worked on.
 - Added GsGTPoly3() and GsGTPoly4() to draw graduated (shaded) textured 3-point and 4-point polygons
 - Added nv-SPASM to PSXSDK, a free and open source implementation of the Hitmen's spASM assembler, written by nextvolume.
   It will be installed as `spasm'.
+
+2015-07-29:
+- Added PSX_WarmReboot()
+- Fixed extern directive for GsCurDrawEnvH: was wrongly specified for GsCurDrawEnvY
+- NORMAL_LUMINOSITY is now an alias for NORMAL_LUMINANCE: "luminosity" is an incorrect term for the meaning
+- Added PRFONT_RL(f), PRFONT_GL(f), RLFONT_BL(f) attributes to GsSetFontAttrib(). These allow to adjust the luminance factor for the color components used when drawing the font: in few words, when used correctly, the attributes can be used to change the color of the font on the fly, without using another color look-up table.
+- Added set_cop_register(), get_cop_register() and run_cop_instruction().
+  set_cop0_register() and get_cop0_register() are now aliases for set_cop_register() and
+  get_cop_register() respectively.
+- Added set_cop_ctrl_register() and get_cop_ctrl_register()
+- Fixed some bugs in the Makefiles, thanks to rsoft and Missingno_force for providing patches
+- Fixed a bug in bmp2tim where 4-bit images with a width not a multiply of 4, or 8-bit images with a width
+  not a multiply of 8 were erronously generated and thus contained invalid data.
+  It should not have been possible to generate such images in the first place.
+- Fixed a bug in bmp2tim where unnecessary debug messages were printed on screen when converting an image.
+- The path for objcopy hardcoded inside elf2exe is now taken from the OBJCOPY variable specified in Makefile.cfg,
+  and not from the OBJCOPY_PATH define in the source code itself
+- Added -fno-strict-overflow flag by default to Makefile.cfg and to the psx-gcc and psx-g++ scripts
+- Multiplication registers HI and LO are now saved and restored by the vblank and root counter handlers -
+  this could give problems if any division or multiplication instruction was used inside a handler.
+  Fortunately no such instructions are used inside handlers most times.
+- Greatly improved nv-SPASM - now it should be fully compatible (maybe save some quirks) 
+  with the Hitmen assembler
+- Added GsVPrintFont()

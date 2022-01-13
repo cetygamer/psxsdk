@@ -63,9 +63,13 @@ inf_loop:
 # VBlank handler
 
 vblank_handler:
-	addi $sp, -112
+	addi $sp, -120
 .set noat
 	sw $at, 0($sp)
+	mfhi $at
+	sw $at, 112($sp)
+	mflo $at
+	sw $at, 116($sp)
 .set at
 	sw $v0, 4($sp)
 	sw $v1, 8($sp)
@@ -116,6 +120,12 @@ vblank_acknowledge_irq:
 	
 vblank_handler_end:
 .set noat
+	lw $at, 112($sp)
+	nop
+	mthi $at
+	lw $at, 116($sp)
+	nop
+	mtlo $at
 	lw $at, 0($sp)
 .set at
 	lw $v0, 4($sp)
@@ -145,16 +155,20 @@ vblank_handler_end:
 	lw $gp, 100($sp)
 	lw $s8, 104($sp)
 	lw $ra, 108($sp)
-	addi $sp, 112
+	addi $sp, 120
 	jr $ra
 	nop
 
 # Root counter handler
 
 rcnt_handler:
-	addi $sp, -112
+	addi $sp, -120
 .set noat
 	sw $at, 0($sp)
+	mfhi $at
+	sw $at, 112($sp)
+	mflo $at
+	sw $at, 116($sp)
 .set at
 	sw $v0, 4($sp)
 	sw $v1, 8($sp)
@@ -205,6 +219,12 @@ rcnt_acknowledge_irq:
 	
 rcnt_handler_end:
 .set noat
+	lw $at, 112($sp)
+	nop
+	mthi $at
+	lw $at, 116($sp)
+	nop
+	mtlo $at
 	lw $at, 0($sp)
 .set at
 	lw $v0, 4($sp)
@@ -234,7 +254,7 @@ rcnt_handler_end:
 	lw $gp, 100($sp)
 	lw $s8, 104($sp)
 	lw $ra, 108($sp)
-	addi $sp, 112
+	addi $sp, 120
 	jr $ra
 	nop
 

@@ -12,10 +12,6 @@ extern unsigned int fileBufferSize;
 extern char *curText;
 extern char *curLine;
 
-/*char *label_pop(void);
-void label_push(char *label);
-char *label_top(void);*/
-
 unsigned int asm_atoi(char *arg);
 char *spasm_parser(char *text, int pass);
 
@@ -30,4 +26,6 @@ extern char rawArgv[64][128];
 extern FILE *asmOut;
 extern int line_number;
 extern int atoiT[64];
+extern int inMacro, macroArgc;
+extern char macroArgv[16][256];
 #endif

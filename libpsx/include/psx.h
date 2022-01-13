@@ -5,6 +5,8 @@
 #ifndef _PSX_H
 #define _PSX_H
 
+#include <stdarg.h>
+
 #ifndef true
 #define true 1
 #endif
@@ -36,21 +38,23 @@
  *   - PSXSDK 2013-11-09
  * + 0.4.99 (0x0499)
  *   - PSXSDK 2014-04-22
+ * + 0.5.99 (0x0599)
+ *   - PSXSDK 2015-07-29
  */
 
-#define PSXSDK_VERSION			0x0499
+#define PSXSDK_VERSION			0x0599
 
 /**
  * PSXSDK version information in string format
  */
  
-#define PSXSDK_VERSION_STRING		"0.4.99"
+#define PSXSDK_VERSION_STRING		"0.5.99"
 
 /**
  * PSXSDK version date (BCD YYYY-MM-DD)
  */
 
-#define PSXSDK_VERSION_DATE		0x20140422
+#define PSXSDK_VERSION_DATE		0x20150729
 
 
 /*
@@ -71,6 +75,7 @@
 #include <psxcdrom.h>
 #include <psxsio.h>
 //#include <adpcm.h>
+#include <psxgte.h>
 
 /**
  * Scratch pad - unused data cache, that can be used as "fast RAM"
@@ -260,6 +265,55 @@ unsigned int get_cop0_register(unsigned char register_num);
 
 void set_cop0_register(unsigned char register_num, unsigned int value);
 
+/**
+ * Get value of the specified (data) register of a specified coprocessor
+ * @param cop_num Coprocessor number 
+ * @param register_num Number of coprocessor register whose value must be retrieved
+ * @return Value of specified coprocessor register
+ */
+ 
+unsigned int get_cop_register(unsigned char cop_num,
+							unsigned char register_num);
+
+
+/**
+ * Get value of the specified control register of a specified coprocessor
+ * @param cop_num Coprocessor number 
+ * @param register_num Number of coprocessor register whose value must be retrieved
+ * @return Value of specified coprocessor register
+ */
+ 
+unsigned int get_cop_ctrl_register(unsigned char cop_num,
+							unsigned char register_num);
+
+/**
+ * Set value of the specified (data) register of a specified coprocessor
+ * @param cop_num Coprocessor number
+ * @param register_num Number of Coprocessor 0 register whose value must be set
+ * @param value New value of specified Coprocessor 0 register
+ */
+ 
+ void set_cop_register(unsigned char cop_num,
+				unsigned char register_num, unsigned int value);
+
+/**
+ * Set value of the specified control register of a specified coprocessor
+ * @param cop_num Coprocessor number
+ * @param register_num Number of Coprocessor 0 register whose value must be set
+ * @param value New value of specified Coprocessor 0 register
+ */
+ 
+ void set_cop_ctrl_register(unsigned char cop_num,
+				unsigned char register_num, unsigned int value);
+
+/**
+ * Make the specified coprocessor run the specified instruction
+ * @param operation Operation number for the instruction
+ */
+
+void run_cop_instruction(unsigned char cop_num,
+						unsigned int operation);
+ 
 // Root counter functions
 
 /**

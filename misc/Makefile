@@ -4,7 +4,7 @@ all:
 	sh genscripts.sh $(TOOLCHAIN_PREFIX)
 
 clean:
-	rm -f playstation.x psx-gcc
+	rm -f playstation.x psx-gcc psx-g++
 
 distclean: clean
 

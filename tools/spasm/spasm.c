@@ -15,7 +15,7 @@ int open_case_sensitive = 0;
 
 static void titlecard(void)
 {
-	printf("nv-spASM version 0.34 (c) 2014 nextvolume\n");
+	printf("nv-spASM version 0.34.1 (c) 2014-2015 nextvolume\n");
 }
 
 static void usage(char *prog_name)
@@ -29,7 +29,7 @@ static void usage(char *prog_name)
 	printf("           -N      do not pad executable\n");
 	printf("           -S      be case sensitive on file paths\n");
 	printf("\n");
-}	
+}
 
 FILE *spasm_fopen(const char *path, const char *mode)
 {
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 	
-	curPc = 0x80010000;
+	startAddress = 0x80010000;
 
 	titlecard();
 	
@@ -114,14 +114,16 @@ int main(int argc, char *argv[])
 	
 	printf("\nPass 1\n");
 	codegen_init();
+	fileBuffer = spasm_parser(fileBuffer, -1);
 	fileBuffer = spasm_parser(fileBuffer, 0);
-	if(!org_found)
+	
+	/*if(!org_found)
 	{
 		printf("Warning: no ORG directive found... defaulting to $80010000\n");
 		startAddress = 0x80010000;
-	}
+	}*/
 		
-	curPc = 0x80010000;
+	curPc = startAddress;
 	
 	printf("Pass 2\n");
 	printf("Writing output file %s ...\n", argv[farg+1]);

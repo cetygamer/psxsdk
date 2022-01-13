@@ -26,9 +26,12 @@ int fb_font_x, fb_font_y, fb_font_cx, fb_font_cy;
 
 #define get_clutid(cx, cy)			(((cx&0x3ff)>>4)|((cy&0x1ff)<<6))
 
-unsigned int prfont_flags = 0;
-int prfont_scale_x = 0;
-int prfont_scale_y = 0;
+static unsigned int prfont_flags = 0;
+static int prfont_scale_x = 0;
+static int prfont_scale_y = 0;
+static unsigned char prfont_rl = NORMAL_LUMINANCE;
+static unsigned char prfont_gl = NORMAL_LUMINANCE;
+static unsigned char prfont_bl = NORMAL_LUMINANCE;
 
 unsigned short GsScreenW;
 unsigned short GsScreenH;
@@ -51,6 +54,24 @@ unsigned int PRFONT_SCALEY(int i)
 {
 	prfont_scale_y = i;
 	return PRFONT_SCALE;
+}
+
+unsigned int PRFONT_RL(unsigned char f)
+{
+	prfont_rl = f;
+	return PRFONT_COLOR;
+}
+
+unsigned int PRFONT_GL(unsigned char f)
+{
+	prfont_gl = f;
+	return PRFONT_COLOR;
+}
+
+unsigned int PRFONT_BL(unsigned char f)
+{
+	prfont_bl = f;
+	return PRFONT_COLOR;
 }
 
 unsigned int draw_mode_packet;
@@ -975,7 +996,7 @@ int GsSpriteFromImage(GsSprite *sprite, GsImage *image, int do_upload)
 	
 	sprite->h = image->h;
 	sprite->attribute = COLORMODE(image->pmode);
-	sprite->r = sprite->g = sprite->b = NORMAL_LUMINOSITY;
+	sprite->r = sprite->g = sprite->b = NORMAL_LUMINANCE;
 	
 	return 1;
 }
@@ -1074,7 +1095,9 @@ unsigned int GsPrintFont_Draw(int x, int y, int scalex, int scaley)
 	
 	spr.x = x;
 	spr.y = y;
-	spr.r = spr.g = spr.b = NORMAL_LUMINOSITY;
+	spr.r = prfont_rl;
+	spr.g = prfont_gl;
+	spr.b = prfont_bl;
 	spr.attribute = 0;
 	spr.cx = fb_font_cx;
 	spr.cy = fb_font_cy;
@@ -1133,15 +1156,12 @@ unsigned int GsPrintFont_Draw(int x, int y, int scalex, int scaley)
 	return (spr.y << 16) | spr.x;
 }
 
-unsigned int GsPrintFont(int x, int y, const char *fmt, ...)
+unsigned int GsVPrintFont(int x, int y, const char *fmt, va_list ap)
 {
 	int r;
 	//GsSprite spr;
 	//char *string;
-	va_list ap;
 	int fw = gs_calculate_scaled_size(8, prfont_scale_x);
-
-	va_start(ap, fmt);
 
 	r = vsnprintf(gpu_stringbuf, 512, fmt, ap);
 	
@@ -1153,6 +1173,19 @@ unsigned int GsPrintFont(int x, int y, const char *fmt, ...)
 		r = GsPrintFont_Draw(x - (r * fw), y, prfont_scale_x, prfont_scale_y);
 	else
 		r = GsPrintFont_Draw(x, y, prfont_scale_x, prfont_scale_y);
+	
+	return r;
+}
+
+unsigned int GsPrintFont(int x, int y, const char *fmt, ...)
+{
+	int r;
+	
+	va_list ap;
+	
+	va_start(ap, fmt);
+
+	r = GsVPrintFont(x, y, fmt, ap);
 
 	va_end(ap);
 	
@@ -1182,6 +1215,10 @@ void GsSetFontAttrib(unsigned int flags)
 	{
 		PRFONT_SCALEX(0);
 		PRFONT_SCALEY(0);
+
+		PRFONT_RL(NORMAL_LUMINANCE);
+		PRFONT_GL(NORMAL_LUMINANCE);
+		PRFONT_BL(NORMAL_LUMINANCE);
 	}
 }
 

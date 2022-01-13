@@ -32,6 +32,8 @@ Configure GCC:
 --target=mipsel-unknown-elf --prefix=/usr/local/psxsdk --with-float=soft --enable-languages=c,c++
 
 Replace <gcc-directory> with the directory where the GCC sources are.
+If you are compiling a version of gcc 5 (or higher), you need to add something like CFLAGS="-std=c99"
+otherwise the compilation may fail.
 
 If you don't need C++ support, replace "--enable-languages=c,c++" with "--enable-languages=c" and remember
 to set CXX_SUPPORT in Makefile.cfg to `no'; that will avoid C++ support in PSXSDK from being compiled.

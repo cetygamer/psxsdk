@@ -28,7 +28,7 @@ cdcat$(EXE_SUFFIX): cdcat.c
 	$(HOST_CC) $(HOST_CFLAGS) -o $@ cdcat.c $(HOST_LDFLAGS)
 
 elf2exe$(EXE_SUFFIX): elf2exe.c
-	$(HOST_CC) $(HOST_CFLAGS) -o $@ elf2exe.c $(HOST_LDFLAGS)
+	$(HOST_CC) $(HOST_CFLAGS) -DOBJCOPY_PATH=\"$(OBJCOPY)\" -o $@ elf2exe.c $(HOST_LDFLAGS)
 
 getpsxiso$(EXE_SUFFIX): getpsxiso.c
 	$(HOST_CC) $(HOST_CFLAGS) -o $@ getpsxiso.c $(HOST_LDFLAGS)

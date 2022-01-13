@@ -52,7 +52,7 @@ include ../Makefile.cfg
 #
 # Default IEEE libm
 #
-CFLAGS += -D_IEEE_LIBM
+CFLAGS += -D_IEEE_LIBM -D_REENTRANT
 
 INCFILES = fdlibm.h
 .INIT: $(INCFILES)
@@ -76,7 +76,7 @@ src = 	k_standard.c k_rem_pio2.c \
 	s_frexp.c s_ilogb.c s_isnan.c s_ldexp.c s_lib_version.c \
 	s_log1p.c s_logb.c s_matherr.c s_modf.c s_nextafter.c \
 	s_rint.c s_scalbn.c s_signgam.c s_significand.c s_sin.c \
-	s_tan.c s_tanh.c
+	s_tan.c s_tanh.c wrappers.c
 
 obj = 	k_standard.o k_rem_pio2.o \
 	k_cos.o k_sin.o k_tan.o \
@@ -97,7 +97,7 @@ obj = 	k_standard.o k_rem_pio2.o \
 	s_frexp.o s_ilogb.o s_isnan.o s_ldexp.o s_lib_version.o \
 	s_log1p.o s_logb.o s_matherr.o s_modf.o s_nextafter.o \
 	s_rint.o s_scalbn.o s_signgam.o s_significand.o s_sin.o \
-	s_tan.o s_tanh.o
+	s_tan.o s_tanh.o wrappers.o
 
 all: libm.a 
 

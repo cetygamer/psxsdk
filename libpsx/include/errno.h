@@ -15,7 +15,7 @@
  * BSD license
  */
 
-#ifndef __IN_LIBC
+#ifndef __IN_LIBPSX
 extern int errno;
 #endif
 

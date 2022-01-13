@@ -196,6 +196,11 @@ int strncmp(const char *s1, const char *s2, size_t len)
 	return *s1-*s2;
 }
 
+int strcoll(const char *s1, const char *s2)
+{
+	return strcmp(s1, s2);
+}
+
 char *strdup(const char *str)
 {
 	char *ns = (void*)malloc(strlen(str) + 1);

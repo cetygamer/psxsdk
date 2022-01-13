@@ -9,8 +9,6 @@
  * with libc_ to not make confusion.
  */
 
-#define __IN_LIBC
-
 #include <psx.h>
 #include <stdio.h>
 #include <string.h>
@@ -18,24 +16,62 @@
 #include <strings.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <unistd.h>
 
 char onesec_buf[2048];
 int errno;
 int __stdio_direction = STDIO_DIRECTION_BIOS;
 static unsigned int __sio_cr_mapped = 0;
 
-FILE file_structs[256];
+#define NUM_OF_FILE_STRUCTS		259
 
-unsigned char file_state[256];
-
-int libc_get_transtbl_fname(char *tofind, char *outstr, int outl);
-
-enum
+FILE file_structs[NUM_OF_FILE_STRUCTS]  =
 {
-	FDEV_UNKNOWN,
-	FDEV_CDROM,
-	FDEV_MEMCARD
+		[0] = // stdin
+		{
+			.fildes = 0,
+			.pos = 0,
+			.mode = O_RDONLY,
+			.dev = FDEV_CONSOLE,
+			.size = 0,
+			.used = 1,
+			.eof = 0,
+			.error = 0
+		},
+		[1] = // stdout
+		{
+			.fildes = 1,
+			.pos = 0,
+			.mode = O_WRONLY,
+			.dev = FDEV_CONSOLE,
+			.size = 0,
+			.used = 1,
+			.eof = 0,
+			.error = 0
+		},
+		[2] = // stderr
+		{
+			.fildes = 2,
+			.pos = 0,
+			.mode = O_WRONLY,
+			.dev = FDEV_CONSOLE,
+			.size = 0,
+			.used = 1,
+			.eof = 0,
+			.error = 0
+		},		
 };
+
+FILE *stdin = &file_structs[0];
+FILE *stdout = &file_structs[1];
+FILE *stderr = &file_structs[2];
+
+#define IS_CONS_IN(f)	(f->fildes == 0)
+#define IS_CONS_OUT(f)	(f->fildes == 1 || f->fildes == 2)
+
+//unsigned char file_state[NUM_OF_FILE_STRUCTS];
+			
+int libc_get_transtbl_fname(const char *tofind, char *outstr, int outl);
 
 unsigned int fmode_to_desmode(const char *fmode)
 {
@@ -99,10 +135,11 @@ FILE *fdopen(int fildes, const char *mode)
 	int x;
 
 // Find a free file structure	
-	for(x = 0; x < 256; x++)
+	for(x = 0; x < NUM_OF_FILE_STRUCTS; x++)
 	{
 		if(file_structs[x].used == 0)
 		{
+			bzero(&file_structs[x], sizeof(FILE));
 			file_structs[x].used = 1;
 			break;
 		}
@@ -110,23 +147,21 @@ FILE *fdopen(int fildes, const char *mode)
 
 // If we found no free file structure, return NULL pointer
 	
-	if(x == 256)
+	if(x == NUM_OF_FILE_STRUCTS)
 		return NULL;
-		
 
 	file_structs[x].fildes = fildes;
 	file_structs[x].pos = lseek(fildes, 0, SEEK_CUR);
 	file_structs[x].mode = fmode_to_desmode(mode);
-
+	
 	return &file_structs[x];
 }
 
-FILE *fopen(char *path, const char *mode)
+static FILE *fopen_internal(const char *path, const char *mode, FILE *f)
 {
 	int fd;
-	FILE *f;
 	char *s = NULL;
-	
+		
 	if(strncmp(path, "cdromL:", 7) == 0)
 	{
 		//printf("strncmp=%d\n", strncmp(path, "cdromL:", 7) );
@@ -138,16 +173,23 @@ FILE *fopen(char *path, const char *mode)
 		fd = open(s, fmode_to_desmode(mode));
 	}
 	else
-		fd = open(path, fmode_to_desmode(mode));
-
+		fd = open(path, fmode_to_desmode(mode));	
+	
 	if(fd == -1)
 	{
 		if(s!=NULL)free(s);
 		return NULL;
 	}
-		
-	f = fdopen(fd, mode);
 	
+	if(f == NULL)
+		f = fdopen(fd, mode);
+	else
+	{
+		f->fildes = fd;
+		f->pos = lseek(fd, 0, SEEK_CUR);
+		f->mode = fmode_to_desmode(mode);
+	}
+		
 	if(f == NULL)
 	{
 		if(s!=NULL)free(s);
@@ -155,11 +197,14 @@ FILE *fopen(char *path, const char *mode)
 	}
 	
 	f->dev = FDEV_UNKNOWN;
-	
+		
 	if(strncmp(path, "cdrom", 5) == 0 || strncmp(path, "cdromL", 6) == 0)
 		f->dev = FDEV_CDROM;
 	else if(strncmp(path, "bu", 2) == 0)
 		f->dev = FDEV_MEMCARD;
+
+// nocash bios freezes at get_real_file_size(), due
+// to problems with firstfile()
 	
 	if(s!=NULL)
 	{
@@ -170,6 +215,11 @@ FILE *fopen(char *path, const char *mode)
 		f->size = get_real_file_size(path);
 		
 	return f;
+}
+
+FILE *fopen(const char *path, const char *mode)
+{
+	return fopen_internal(path, mode, NULL);
 }
 
 int fclose(FILE *stream)
@@ -248,9 +298,20 @@ int fread(void *ptr, int size, int nmemb, FILE *f)
 		
 			memcpy(ptr, onesec_buf, csize);
 		}
-	}	
+	}
+	else if(f->dev == FDEV_CONSOLE)
+		return 0;
 
-	f->pos+= rsize;	
+	
+	if(f->dev != FDEV_CONSOLE)
+	{
+		f->pos+= rsize;
+		f->eof = (f->pos > f->size);
+		
+		if(f->eof)
+			f->pos = f->size;
+	}
+
 	return rsize;
 }
 
@@ -308,7 +369,7 @@ int tolower(int c)
 	return c;
 }
 
-int libc_get_transtbl_fname(char *tofind, char *outstr, int outl)
+int libc_get_transtbl_fname(const char *tofind, char *outstr, int outl)
 {
 	FILE *f;
 	int s;
@@ -570,7 +631,7 @@ int putchar(int c)
 		break;
 	}
 	
-	return -1;
+	return EOF;
 }
 
 int puts(const char *str)
@@ -585,5 +646,61 @@ int puts(const char *str)
 		break;
 	}
 	
-	return -1;
+	return EOF;
+}
+
+int fwrite(void *ptr, int size, int nmemb, FILE *f)
+{	
+	if(IS_CONS_OUT(f)) // stdout or stderr
+	{
+		char *c = ptr;
+		int i;
+		
+		for(i = 0; i < size; i++) 
+			putchar(c[i]);
+		
+		return size;
+	}
+	
+	return 0;
+}
+
+int fputs(const char *str, FILE *stream)
+{
+	if(IS_CONS_OUT(stream))
+		return puts(str);
+	
+	return EOF;
+}
+
+FILE *freopen(const char *path, const char *mode, FILE *stream)
+{
+	if(stream == NULL)
+		return NULL;
+	
+	if(stream->used)
+		fclose(stream);
+
+	return fopen_internal(path, mode, stream);
+}
+
+void clearerr(FILE *stream)
+{
+	stream->eof = 0;
+	stream->error = 0;
+}
+
+int feof(FILE *stream)
+{
+	return stream->eof;
+}
+
+int ferror(FILE *stream)
+{
+	return stream->error;
+}
+
+int fileno(FILE *stream)
+{
+	return stream->fildes;
 }

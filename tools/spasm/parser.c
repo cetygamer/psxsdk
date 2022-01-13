@@ -133,7 +133,7 @@ enum
 
 char *spasm_parser(char *text, int pass)
 {
-	int i, oldI, j, l, m;
+	int i, j, l, m;
 	char linebuf[1024];
 	char linebuf2[1024];
 	char linebuf3[1024];
@@ -144,21 +144,6 @@ char *spasm_parser(char *text, int pass)
 	char *t;
 	curText = text;
 	unsigned int v;
-	
-/*	int k;
-	int macroState;
-	int num_of_macrotok=0;
-	char *macroText;
-	asm_macro *curMacro;
-	growingText macroContent = {0, 0, NULL};
-	char macroLinebuf[1024];
-	char *macrotok[256];
-*/
-
-	//FILE *logFile;
-
-	//if(curPass == 0)
-	//	logFile = fopen("log", "wb");
 
 	for(i = 0; i < 16; i++)
 		macroArgv[i][255] = 0;
@@ -175,8 +160,6 @@ theBeginning:
 	while(text[i])
 	{
 		state = INITIAL;
-
-		oldI = i;
 		
 		for(j = 0; text[i] && text[i] != '\n'; i++)
 		{
@@ -196,7 +179,6 @@ theBeginning:
 //tokenize_line:				
 		strcpy(linebuf2, linebuf); // Keep a second copy, we will need it later.
 		strcpy(linebuf3, linebuf);
-		//if(curPass==1)printf("linebuf[%d] %d:= %s\n",  curPass, line_number, linebuf);
 		curLine = linebuf3;
 
 		char *a = linebuf;
@@ -259,138 +241,6 @@ theBeginning:
 						break;
 					}
 					
-					// Is this token a macro?
-					
-				/*	if((curMacro = find_macro(s)))
-					{
-						INSFUNC = THIS_IS_A_MACRO;
-						strncpy(curIns, s, 127);
-						s[127] = '\0';
-						insArgc = 0;
-						state = ARG_ENTER;
-						argbuf[0] = '\0';
-						
-						break;
-					}
-					
-					// If we are in a macro definition, check if this is the end of the macro definition
-					if(inMacro && strcasecmp(s, "endm") == 0)
-					{
-						//printf("MACRO ENDS!!\n");
-						inMacro = 0;
-						macroActualEndI = i;
-						macroEndI = oldI;
-				
-						l = macroEndI - macroStartI;
-						macroText = malloc(l+1);
-						macroText[l] = '\0';
-						strncpy(macroText, &text[macroStartI], l);
-						
-						for(l = macroActualStartI; l < macroActualEndI-1; l++)
-							text[l] = ' ';
-						
-						text[l] = '\n';
-						
-						int substLen;
-				
-						addCharToGText(&macroContent, '\0');
-						
-						//while(macroText[
-						for(l = 0; macroText[l];)
-						{
-							//printf("l = %d\n", l);
-							
-							for(k = 0; macroText[l] && macroText[l] != '\n'; l++)
-							{
-								if(j < 1023 && macroText[l] != '\r')
-									macroLinebuf[k++] = macroText[l];
-							}
-							
-							if(macroText[l] == '\n')
-								l++;
-							
-							macroLinebuf[k] = '\0';
-							
-							int quotesOpen=0;
-							int quotesChar=-1;							
-							m = k;
-														
-							for(k = 0; k < m; k++)
-							{
-								//printf("k = %d\n", k);
-								
-								if(macroLinebuf[k] == '"' || macroLinebuf[k] == '\'')
-								{
-									if(!quotesOpen)
-									{
-										quotesChar = macroLinebuf[k];
-										quotesOpen = 1;
-									}
-									else if(quotesOpen && quotesChar == macroLinebuf[k])
-										quotesOpen = 0;
-									
-									addCharToGText(&macroContent, macroLinebuf[k]);
-								}
-								else if(!quotesOpen)
-								{
-									if(macroLinebuf[k] == ';')
-									{
-										macroLinebuf[k] = '\0';
-										break;
-									}
-									else 
-									{
-										int it;
-										
-										for(it = 0; it < macroArgc; it++)
-										{
-											substLen = strlen(macroArgv[it]);
-										
-											if(memcmp(&macroLinebuf[k],
-												macroArgv[it], substLen) == 0)
-											{
-												if(is_spasm_sep_char(macroLinebuf[k+substLen]))
-												{
-													if((k > 0 && is_spasm_sep_char(macroLinebuf[k-1])) || k == 0)
-													{
-														addCharToGText(&macroContent, 0x7F);
-														addCharToGText(&macroContent, 0x7F);
-														addCharToGText(&macroContent, (it/1000) + '0');
-														addCharToGText(&macroContent, (it%1000)/100 + '0');
-														addCharToGText(&macroContent, (it%100)/10 + '0');
-														addCharToGText(&macroContent, (it%10) + '0');
-												//		addCharToText(&macroContent, ' ');
-												//		addCharToText(&macroContent, 0xAA);
-												//		addCharToText(&macroContent, 0xCC);
-												//		addCharToText(&macroContent, (it+32) & 0xff);
-												//		addCharToText(&macroContent, (it>>8)+32);
-														k+=substLen;
-														break;
-													}
-												}
-											}
-										}
-										
-										if(macroLinebuf[k])
-											addCharToGText(&macroContent, macroLinebuf[k]);
-									}
-								}else if(quotesOpen)
-									addCharToGText(&macroContent, macroLinebuf[k]);
-							}
-							
-							addCharToGText(&macroContent, '\n');
-						}
-						
-						add_macro(macroName, macroContent.text, macroArgc);
-												
-						freeGText(&macroContent);
-						free(macroText);
-						
-			
-						
-						goto theBeginning;
-					}*/
-					
 					// Now we know it's a label
 					// There are two possible cases now
 					// - It's a label with a specified value: i.e. label EQU value
@@ -435,44 +285,7 @@ theBeginning:
 							break;
 						}
 					}
-					
-					//printf("tok[j] = %s\n", tok[j+1]);
-					
-					/*if((j + 1) < num_of_tok)
-					{
-					    // We will check if this is a macro
-						if(strcasecmp(tok[j+1], "macro") == 0)
-						{
-							
-							strncpy(macroName, tok[j], 127);
-							macroName[127] = '\0';
-							macroArgc = 0;
-							
-							if(tok[j+2])
-							{
-								
-								if((t = strchr(tok[j+2], ';')))
-								{
-									*t = '\0';
-									state = COMMENT;
-								}
-								
-								for(t = strtok(tok[j+2], ",") ; t != NULL && macroArgc < 16
-									; t = strtok(NULL, ","))
-									strncpy(macroArgv[macroArgc++], t, 255);
-							}
-							
-							inMacro = 1;
-							
-							macroActualStartI = oldI;
-							macroStartI = i;
-							
-							if(tok[j+2])j++;
-							j++;
-							break;
-						}
-					}*/
-					
+
 					// At this point, it is a label which has the current value of the program counter
 					
 					if((t = strrchr(tok[j], ':')))
@@ -705,41 +518,7 @@ theNextLine:
 		{
 			if(!inMacro)
 			{
-			/*	if(INSFUNC == THIS_IS_A_MACRO)
-				{
-					//printf("insArgc = %d, curMacro->argc = %d\n",
-					//	insArgc, curMacro->argc);
-					
-					if(insArgc != curMacro->argc)
-						instruction_error("Macro \"%s\" takes %d arguments, not %d",
-							curMacro->name, curMacro->argc, insArgc);
-					
-					char **argv = malloc(sizeof(char*) * 16);
-					
-					for(m = 0; m < 16; m++)
-						argv[m] = rawArgv[m];
-					
-					growingText *expandedMacro = expand_macro(curMacro, argv);
-					
-					free(argv);
-
-					growingText *newText = newGText();
-					addTextToGTextN(newText, curText, oldI);
-					addTextToGText(newText, expandedMacro->text);
-					addTextToGText(newText, curText+i);
-					
-					freeGText(expandedMacro);
-
-					free(curText);
-					curText = strdup(newText->text);
-					freeGText(newText);
-					
-					goto theBeginning;
-				}
-				else
-				{*/
-					if(curPass>=0)INSFUNC();
-				//}
+				if(curPass>=0)INSFUNC();
 					
 				if(strcasecmp(curIns, "include") == 0 && curPass == 0)
 				{
@@ -750,12 +529,6 @@ theNextLine:
 			}
 		}
 	}
-	
-	/*if(curPass == 0)
-	{
-		fprintf(logFile, "NUJ");
-		fclose(logFile);
-	}*/
 	
 	return curText;
 }

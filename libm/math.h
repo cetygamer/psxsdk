@@ -224,4 +224,96 @@ extern int    __kernel_rem_pio2 __P((double*,double*,int,int,int,const int*));
 #define	M_SQRT2		1.41421356237309504880	/* sqrt(2) */
 #define	M_SQRT1_2	0.70710678118654752440	/* 1/sqrt(2) */
 
+// definitions for wrappers
+
+float acosf(float x);; // acos(x); }
+float acoshf(float x); // acosh(x); }
+
+float asinf(float x); // asin(x); }
+float asinhf(float x); // asinf(x); }
+
+float atanf(float x); // atan(x); }
+float atanhf(float x); // atanh(x); }
+
+float atan2f(float x, float y); // atan2(x,y); }
+
+float cbrtf(float x); // cbrt(x); }
+
+float ceilf(float x); // ceil(x); }
+
+float copysignf(float x, float y) ; // copysign(x, y); }
+
+double copysignl(long double x, long double y); // copysign(x, y); }
+
+float cosf(float x); // cos(x); }
+float coshf(float x); // cosh(x); }
+
+float erff(float x); // erf(x); }
+float erfcf(float x); // erfc(x); }
+
+float expf(float x); // exp(x); }
+//float exp2f(float x); // exp2(x); }
+float expm1f(float x); // expm1(x); }
+
+float fabsf(float x); // fabs(x); }
+
+float finitef(float x); // finite(x); }
+
+float floorf(float x); // floor(x); }
+
+float fmodf(float x, float y); // fmod(x, y); }
+
+float hypotf(float x, float y); // hypot(x, y); }
+
+int ilogbf(float x); // ilogb(x); }
+int ilogbl(long double x); // ilogb(x); }
+
+float j0f(float x); // j0(x); }
+float j1f(float x); // j1(x); }
+float jnf(int n, float x); // jn(n,x); }
+
+float y0f(float x); // y0(x); }
+float y1f(float x); // y1(x); }
+float ynf(int n, float x); // yn(n, x); }
+
+float lgammaf(float x); // lgamma(x); }
+float gammaf(float x); // gamma(x); }
+//float tgammaf(float x); // tgamma(x); }
+
+float lgammaf_r(float x, int *sign); // lgamma_r(x, sign); }
+float gammaf_r(float x, int *sign); // gamma_r(x, sign); }
+
+float logf(float x); // log(x); }
+float log10f(float x) ; // log10(x); }
+float log1pf(float x) ; // log1p(x); }
+//float log2f(float x) ; // log2(x); }
+
+//float nanf(const char *tagp) ; // nan(tagp); }
+//long double nanl(const char *tagp) ; // nan(tagp); }
+
+float nextafterf(float x, float y) ; // nextafter(x, y); }
+long double nextafterl(long double x, long double y)
+; // nextafter(x, y); }
+
+float powf(float x, float y) ; // pow(x, y); }
+
+float remainderf(float x, float y) ; // remainder(x, y); }
+//float remquof(float x, float y, int *quo) ; // remquo(x, y, quo); }
+
+float rintf(float x); // rint(x); }
+
+float scalbnf(float x, int n); // scalbn(x, n); }
+long double scalbnl(long double x, int n); // scalbn(x, n); }
+
+float sinf(float x); // sin(x); }
+float sinhf(float x); // sinh(x); }
+
+float sqrtf(float x); // sqrt(x); }
+
+float tanf(float x); // tan(x); }
+float tanhf(float x); // tanh(x); }
+
+//float truncf(float x); // trunc(x); }
+
+
 #endif

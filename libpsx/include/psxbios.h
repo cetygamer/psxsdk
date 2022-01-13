@@ -93,7 +93,7 @@ struct DIRENTRY
  * @return dirent on success, NULL on failure. 
  */
 
-struct DIRENTRY *firstfile(char *name, struct DIRENTRY *dirent);
+struct DIRENTRY *firstfile(const char *name, struct DIRENTRY *dirent);
 
 /**
  * Finds a file with the same conditions as the previous call to firstfile().
@@ -114,7 +114,7 @@ struct DIRENTRY *nextfile(struct DIRENTRY *dir);
  * @return File size in bytes, rounded.
  */
 
-int get_file_size(char *name);
+int get_file_size(const char *name);
 
 /**
  * This function is like get_file_size() but doesn't round
@@ -123,7 +123,7 @@ int get_file_size(char *name);
  * @return File size in bytes, unrounded.
  */
  
-int get_real_file_size(char *name);
+int get_real_file_size(const char *name);
 
 void InitHeap(void *block , int size);
 void FlushCache(void);

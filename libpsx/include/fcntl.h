@@ -64,7 +64,7 @@
      was named `mode'. That was incorrect; now it is correctly named `flags'.
 */
 
-int open(char *filename, int flags);
+int open(const char *filename, int flags);
 int read(int d, void *buf, int nbytes);
 int close(int d);
 int lseek(int fildes, int offset, int whence);

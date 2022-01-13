@@ -156,9 +156,10 @@ void ps_destroy_bitmap(PS_BITMAP *bm)
 PS_BITMAP *ps_load_bitmap(char *filename, PS_RGB *palette)
 {
 	FILE *bf;
-	unsigned int bsize;
+	//unsigned int bsize;
 	unsigned int bisize;
-	unsigned int bwidth, bheight, bbpp, boff, bcompr, blw;
+	unsigned int bwidth, bheight, bbpp, boff, blw;
+//	unsigned int bcompr;
 	unsigned char *bdata;
 	PS_BITMAP *bm;
 	int x, y, z, i, l;
@@ -174,13 +175,12 @@ PS_BITMAP *ps_load_bitmap(char *filename, PS_RGB *palette)
 		return NULL;
 	}	
 		
-	bsize = read_le_dword(bf);
+	/* bsize = */ read_le_dword(bf);
 	
 // Read bitmap data offset
 	fseek(bf, 10, SEEK_SET);
 	boff = read_le_dword(bf);
 	
-//	boff=70+;
 //	printf("BOFF = %d\n", boff);
 	
 // Read information header size, width and height	
@@ -202,7 +202,7 @@ PS_BITMAP *ps_load_bitmap(char *filename, PS_RGB *palette)
 
 // Check if there is compression, if there is, abort
 
-	bcompr = read_le_dword(bf);
+	/* bcompr  = */ read_le_dword(bf);
 //	printf("BCOMPR = %d\n", bcompr);
 
 	bm = ps_create_bitmap(bwidth, bheight, bbpp);

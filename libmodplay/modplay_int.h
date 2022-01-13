@@ -13,4 +13,8 @@ extern const unsigned short modplay_pitch_per_tbl[120];
 ModMusic *MODLoad_MOD(void *d);
 void MODPlay_MOD(ModMusic *m, int *t);
 
+#ifdef NO_PSX_LIB
+unsigned short SsFreqToPitch(int hz);
+#endif
+
 #endif

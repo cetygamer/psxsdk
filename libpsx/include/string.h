@@ -40,6 +40,10 @@ char *strdup(const char *str);
 char *strndup(const char *str, size_t len);
 int strlcpy(char *dst, const char *src, size_t size);
 int strlcat(char *dst, const char *src, size_t size);
+int strcoll(const char *dst , const char *src);
+
+char *strerror(int errnum);
+int strerror_r(int errnum, char *strerrbuf, size_t buflen);
 
 void *memset(void *dst , char c , size_t n);
 void *memmove(void *dst , const void *src , size_t n);

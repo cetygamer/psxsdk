@@ -331,7 +331,7 @@ void Decompress() {
 	unsigned long mask, maskSize;
 	unsigned char ch;
 	int offset;
-	int last;
+//	int last;
 
 	int ib, ob;
 
@@ -374,7 +374,7 @@ void Decompress() {
 	maskSize = 0;
 	mask = 0;
 	offset = 7;
-	last = 0;
+//	last = 0;
 	y = 0;
 	x = 0;
 	ib = BUFFER_SIZE;

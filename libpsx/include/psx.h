@@ -40,21 +40,23 @@
  *   - PSXSDK 2014-04-22
  * + 0.5.99 (0x0599)
  *   - PSXSDK 2015-07-29
+ * + 0.6.00 (0x0600)
+ *   - PSXSDK 2016-06-03 
  */
 
-#define PSXSDK_VERSION			0x0599
+#define PSXSDK_VERSION			0x0600
 
 /**
  * PSXSDK version information in string format
  */
  
-#define PSXSDK_VERSION_STRING		"0.5.99"
+#define PSXSDK_VERSION_STRING		"0.6.00"
 
 /**
  * PSXSDK version date (BCD YYYY-MM-DD)
  */
 
-#define PSXSDK_VERSION_DATE		0x20150729
+#define PSXSDK_VERSION_DATE		0x20160603
 
 
 /*

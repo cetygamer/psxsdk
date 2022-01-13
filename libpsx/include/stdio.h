@@ -15,8 +15,7 @@
 
 #else
 
-typedef unsigned int size_t;
-typedef signed int ssize_t;
+#include <types.h>
 
 #include <stdarg.h>
 #include <stdbool.h>
@@ -36,6 +35,14 @@ enum stdio_directions
 {
 	STDIO_DIRECTION_BIOS,
 	STDIO_DIRECTION_SIO
+};
+
+enum file_devices
+{
+	FDEV_UNKNOWN,
+	FDEV_CDROM,
+	FDEV_MEMCARD,
+	FDEV_CONSOLE
 };
 
 extern int __stdio_direction;
@@ -58,18 +65,16 @@ typedef struct
 	unsigned int size;
 	 /** Used internally by fopen(), 0 if free, 1 if occupied */
 	unsigned int used;
+	/** End-of-File marker */
+	unsigned int eof;
+	/** Error marker */
+	unsigned int error;
 }FILE;
-
-/*
- * The functions below are just prototypes for assembly wrappers which
- * call BIOS functions, so they're actually supplied by the BIOS
- * and not implemented by the PSX SDK.
- */
 
 /* Console functions */
 
-extern int putchar(int c);
-extern int puts(const char *str);
+int putchar(int c);
+int puts(const char *str);
 
 /**
  * BIOS printf() implementation. Does not support floating point.
@@ -77,6 +82,11 @@ extern int puts(const char *str);
  */
 
 extern int printf(const char *format, ...);
+
+
+#ifdef __IN_LIBPSX
+
+// Only for code in libpsx
 
 // If PSXSDK_DEBUG is defined, dprintf() calls are turned into printf() calls
 // otherwise they are left out
@@ -87,6 +97,8 @@ extern int printf(const char *format, ...);
 	#define dprintf(fmt, ...)
 #endif
 
+#endif
+
 int vsnprintf(char *string, size_t size, const char *fmt, va_list ap);
 int vsprintf(char *string, const char *fmt, va_list ap);
 int sprintf(char *string, const char *fmt, ...);
@@ -94,18 +106,25 @@ int snprintf(char *string, size_t size, const char *fmt, ...);
 int vprintf(char *fmt, va_list ap);
 
 FILE *fdopen(int fildes, const char *mode);
-FILE *fopen(char *path, const char *mode);
+FILE *fopen(const char *path, const char *mode);
 int fclose(FILE *stream);
 int fread(void *ptr, int size, int nmemb, FILE *f);
+int fwrite(void *ptr, int size, int nmemb, FILE *f);
 
 int fgetc(FILE *f);
 int ftell(FILE *f);
 int fseek(FILE *f, int offset, int whence);
 
+int fputs(const char *str, FILE *stream);
+void clearerr(FILE *stream);
+int feof(FILE *stream);
+int ferror(FILE *stream);
+int fileno(FILE *stream);
+
 #define getc(f)		fgetc(f)
 
-int rename(char *oldname, char *newname);
-int remove(char *filename);
+int rename(const char *oldname, const char *newname);
+int remove(const char *filename);
 
 #ifndef __cplusplus
 // Define delete(x) to be remove(x) only when compiling plain C.

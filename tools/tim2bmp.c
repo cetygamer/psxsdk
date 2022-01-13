@@ -125,8 +125,8 @@ int tim2bmp_read_tim(char *ip, tim2bmp_info *t)
 {
 	int tim_pmode;
 	//int tim_w, tim_h;
-	int tim_x, tim_y, tim_cx, tim_cy, tim_cw, tim_ch;
-	int bl;
+	int /* tim_x, tim_y, tim_cx, tim_cy, */ tim_cw, tim_ch;
+	//int bl;
 	int x;
 	FILE *i = fopen(ip, "rb");
 	
@@ -150,9 +150,9 @@ int tim2bmp_read_tim(char *ip, tim2bmp_info *t)
 	if(t->has_clut)
 	{
 		t->clut_off = 8;
-		bl = read_le_dword(i);
-		tim_cx = read_le_word(i);
-		tim_cy = read_le_word(i);
+		/* bl = */ read_le_dword(i);
+		/* tim_cx = */ read_le_word(i);
+		/* tim_cy = */ read_le_word(i);
 		tim_cw = read_le_word(i);
 		tim_ch = read_le_word(i);
 		
@@ -162,12 +162,12 @@ int tim2bmp_read_tim(char *ip, tim2bmp_info *t)
 			t->clut[x] = read_le_word(i);		
 	}
 	
-	bl = read_le_dword(i);
+	/* bl = */ read_le_dword(i);
 	
 	// Read framebuffer X,Y coordinates
 	
-	tim_x = read_le_word(i); 
-	tim_y = read_le_word(i);
+	/* tim_x = */ read_le_word(i); 
+	/* tim_y = */ read_le_word(i);
 	
 	// Read width and height
 	t->w = read_le_word(i); // Fix this for 4bpp and 8bpp images !

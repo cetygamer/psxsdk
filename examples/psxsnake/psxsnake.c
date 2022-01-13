@@ -114,7 +114,6 @@ int pal_or_ntsc_selection()
 {
 	unsigned short padbuf;
 	int x;
-	char stringbuf[64];
 
 	game_drawenv.draw_on_display = 1;
 	x = game_drawenv.y;
@@ -183,7 +182,6 @@ void new_apple()
 
 int main()
 {
-	FILE *f;
 	int c;
 
 // Initialize

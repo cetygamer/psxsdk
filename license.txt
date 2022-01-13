@@ -20,7 +20,6 @@ bin2c, bmp2tim, getpsxiso, systemcnf
 Some of the tools have a different license: 
 
 for exefixup it is GPL version 2 or newer
-hitsend is in the Public Domain
 
 Some of the libraries have a different license:
 

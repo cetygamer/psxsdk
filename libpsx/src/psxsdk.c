@@ -295,7 +295,7 @@ void PSX_GetSysInfo(struct psx_info *info)
 	
 
 
-int get_real_file_size(char *name)
+int get_real_file_size(const char *name)
 {
 	struct DIRENTRY dirent_buf;
 	
@@ -305,7 +305,7 @@ int get_real_file_size(char *name)
 		return 0;
 }
 
-int get_file_size(char *name)
+int get_file_size(const char *name)
 {
 	int i = get_real_file_size(name);
 	

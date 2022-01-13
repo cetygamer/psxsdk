@@ -2,15 +2,10 @@
 
 include ../../Makefile.cfg
 
-#PROJ_CFLAGS =
-#PROJ_LDFLAGS =
-#PROJ_LIBS =
-
-CFLAGS = $(PROJ_CFLAGS)
-
 all: $(PROJNAME)_extra
 	mkdir -p cd_root
-	psx-gcc -O3 $(CFLAGS) -DEXAMPLES_VMODE=$(EXAMPLES_VMODE) -o $(PROJNAME).elf $(PROJNAME).c $(PROJ_LIBS) $(PROJ_LDFLAGS) 
+	$(EXAMPLES_CC) $(EXAMPLES_CFLAGS) -DEXAMPLES_VMODE=$(EXAMPLES_VMODE) -o $(PROJNAME).elf $(PROJNAME).c \
+		$(EXAMPLES_LIBS) $(PROJ_LIBS) $(EXAMPLES_LDFLAGS) 
 	elf2exe $(PROJNAME).elf $(PROJNAME).exe
 	cp $(PROJNAME).exe cd_root
 	systemcnf $(PROJNAME).exe > cd_root/system.cnf

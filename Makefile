@@ -16,6 +16,7 @@ build:
 	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libadpcm SRCROOT=$(PWD)"
 	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libmodplay SRCROOT=$(PWD)"
 	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libfixmath SRCROOT=$(PWD)"
+	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libf3m SRCROOT=$(PWD)"
 	$(BUILD_CXX)
 	$(MAKE_COMMAND) -C tools
 
@@ -27,31 +28,39 @@ install: build
 	$(MAKE_COMMAND) -C libadpcm install
 	$(MAKE_COMMAND) -C libmodplay install
 	$(MAKE_COMMAND) -C libfixmath install
+	$(MAKE_COMMAND) -C libf3m install
 	$(MAKE_COMMAND) -C tools install
 	$(MAKE_COMMAND) -C licenses install
 	$(INSTALL_CXX)
 
-clean:
+clean: docs_clean
 	$(MAKE_COMMAND) -C libpsx clean
 	$(MAKE_COMMAND) -C libhuff clean
 	$(MAKE_COMMAND) -C libm clean
 	$(MAKE_COMMAND) -C libadpcm clean
 	$(MAKE_COMMAND) -C libmodplay clean
 	$(MAKE_COMMAND) -C libfixmath clean
+	$(MAKE_COMMAND) -C libf3m clean
 	$(MAKE_COMMAND) -C misc clean
 	$(MAKE_COMMAND) -C tools clean
+	$(MAKE_COMMAND) -C examples clean
 	$(CLEAN_CXX)
 
-distclean:
+distclean: docs_clean
 	$(MAKE_COMMAND) -C libpsx distclean
 	$(MAKE_COMMAND) -C libhuff clean
 	$(MAKE_COMMAND) -C libm clean
 	$(MAKE_COMMAND) -C libadpcm clean
 	$(MAKE_COMMAND) -C libmodplay clean
 	$(MAKE_COMMAND) -C libfixmath clean
+	$(MAKE_COMMAND) -C libf3m clean
 	$(MAKE_COMMAND) -C misc distclean
 	$(MAKE_COMMAND) -C tools distclean
+	$(MAKE_COMMAND) -C examples distclean
 	$(CLEAN_CXX)
+	
+build_examples:
+	$(MAKE_COMMAND) -C examples
 
 docs:
 	$(DOXYGEN) doxygen.conf

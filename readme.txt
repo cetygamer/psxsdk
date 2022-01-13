@@ -1,6 +1,6 @@
-PSXSDK 0.5.99
+PSXSDK 0.6
 ReadMe and FAQ
-Last updated: July 29th 2015
+Last updated: June 3rd 2016
 -----------------------------
 
 What is PSXSDK?
@@ -120,6 +120,7 @@ Q: Are there any examples which show how to use the PSXSDK library?
 
 A: Yes. Download the examples archive from the PSXSDK website and compile the examples in it.
 In this way you can also test that your PSXSDK compiler is working correctly.
+You can build them all by running ``make build_examples''
 
 Q: What does PSXSDK support?
 

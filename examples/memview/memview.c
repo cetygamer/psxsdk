@@ -94,7 +94,7 @@ int main()
 
 				for(x = 0; x < 16; x++)
 				{
-					if((x&3 == 0) && x>0)
+					if(( (x&3) == 0) && x>0)
 						x1+=16;
 
 					f = GsPrintFont(x1, y*8, "%02x", *((unsigned char*)(cur_addr + (y*0x10) + x)));

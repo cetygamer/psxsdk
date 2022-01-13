@@ -21,7 +21,7 @@ unsigned char data_buffer[0x40000]; // 256 kilobytes
 
 int main()
 {
-	int x, y, x2, y2, z, ex, ey;
+	int x, y, ex, ey;
 	int wasleft=0;
 	int wasright=0;
 	int wasup=0;

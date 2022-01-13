@@ -3,7 +3,7 @@
 
 /** GTE operations */
 
-enum
+enum gte_operations
 {
 	/** Perspective transformation */
 	GTE_OP_RTPS = 	0x0180001,
@@ -49,11 +49,11 @@ enum
 	GTE_OP_GPF =	0x190003D,
 	/** General purpose interpolation */
 	GTE_OP_GPL =	0x1A0003E
-}gte_operations;
+};
 
 /** GTE error flags, grab from cop2 register 63 */
 
-enum
+enum gte_error_flags
 {
 	GTE_FLAG_MAC1_OVF_POS =		0x40000000,
 	GTE_FLAG_MAC2_OVF_POS =		0x20000000,
@@ -82,11 +82,11 @@ enum
 	GTE_FLAG_SY2_SATURATED =	0x00002000,
 
 	GTE_FLAG_IR0_SATURATED =	0x00001000
-}gte_error_flags;
+};
 
 /** GTE data registers */
 
-enum
+enum gte_data_registers
 {
 	/** Vector 0 X and Y */
 	GTE_R_VXY0 =	0,
@@ -150,7 +150,6 @@ enum
 	GTE_R_LZCS =	30,
 	/** Leading zero count result */
 	GTE_R_LZCR =	31
-}gte_data_registers;
-	
+};	
 
 #endif

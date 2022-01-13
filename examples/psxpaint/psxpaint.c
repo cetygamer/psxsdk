@@ -105,7 +105,6 @@ int main()
 {
 	GsDispEnv my_dispenv;
 	GsDrawEnv my_drawenv;
-	GsLine my_line;
 	GsSprite my_sprite;
 	GsRectangle colorbox;
 	GsDot my_dot;

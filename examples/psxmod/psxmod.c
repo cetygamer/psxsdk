@@ -416,13 +416,7 @@ void music_player_draw()
 
 int main()
 {
-	struct DIRENTRY de;
-	struct DIRENTRY *r;
-	
-	unsigned short padbuf;
-	int i;
 	int redraw=1;
-	char *cp;
 	FILE *f;
 	
 	PSX_Init();

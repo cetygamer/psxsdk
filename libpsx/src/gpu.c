@@ -9,8 +9,8 @@
 
 extern volatile int __psxsdk_gpu_dma_finished;
 
-unsigned int *linked_list;
-int linked_list_pos;
+static unsigned int *linked_list;
+static unsigned int linked_list_pos;
 
 int fb_font_x, fb_font_y, fb_font_cx, fb_font_cy;
 
@@ -267,6 +267,7 @@ void GsSortGLine(GsGLine *line)
 	
 	linked_list[linked_list_pos++] = 0x05000000;
 	linked_list[linked_list_pos++] = md;
+	
 	for(x=0;x<2;x++)
 	{
 		linked_list[linked_list_pos++] = (line->b[x]<<16)|(line->g[x]<<8)|(line->r[x])|((x == 0)?(pkt<<24):0);
@@ -533,8 +534,11 @@ void GsSortTPoly3(GsTPoly3 *tpoly3)
 				linked_list[linked_list_pos++] |=
 					md << 16;
 			break;
+			default:
+				linked_list_pos++;
+			break;
 		}
-	}		
+	}
 	
 	linked_list[orig_pos] |= ((unsigned int)&linked_list[linked_list_pos]) & 0xffffff;
 }
@@ -1129,7 +1133,7 @@ unsigned int GsPrintFont_Draw(int x, int y, int scalex, int scaley)
 	return (spr.y << 16) | spr.x;
 }
 
-unsigned int GsPrintFont(int x, int y, char *fmt, ...)
+unsigned int GsPrintFont(int x, int y, const char *fmt, ...)
 {
 	int r;
 	//GsSprite spr;
@@ -1350,3 +1354,129 @@ void GsRotateVector(int x_a, int y_a, int z_a, double *v, double *n)
 	if(curCount > 0)
 		linked_list[orig_pos] = (curCount << 24) | (((unsigned int)&linked_list[linked_list_pos]) & 0xffffff);
 }*/
+
+void GsSetListEx(unsigned int *listptr, unsigned int listpos)
+{
+	linked_list = listptr;
+	linked_list_pos = listpos;
+}
+
+void GsSortPolyLine(GsPolyLine *line)
+{
+	// PKT 0x48
+	
+	int orig_pos = linked_list_pos;
+	int x;
+	unsigned char pkt = 0x48;
+	unsigned int md;
+	
+	md = setup_attribs(0, line->attribute, &pkt);	
+	
+	linked_list_pos++; // skip this word, we will replace it later
+	linked_list[linked_list_pos++] = md;
+	linked_list[linked_list_pos++] = (pkt<<24)|(line->b<<16)|(line->g<<8)|(line->r);
+	
+	for(x = 0; x < line->npoints; x++)
+		linked_list[linked_list_pos++] = ((line->y[x]&0x7ff)<<16)|(line->x[x]&0x7ff);
+	
+	linked_list[linked_list_pos++] = 0x55555555; // termination code
+	
+	linked_list[orig_pos] = ((line->npoints+3) << 24) | (((unsigned int)&linked_list[linked_list_pos]) & 0xffffff);
+}
+
+void GsSortGPolyLine(GsGPolyLine *line)
+{
+	// PKT 0x58
+
+	int orig_pos = linked_list_pos;
+	int x;
+	unsigned char pkt = 0x58;
+	unsigned int md;
+	
+	md = setup_attribs(0, line->attribute, &pkt);	
+	
+	linked_list_pos++; // skip this word, we will replace it later
+	linked_list[linked_list_pos++] = md;
+	
+	for(x=0; x < line->npoints;x++)
+	{
+		linked_list[linked_list_pos++] = (line->b[x]<<16)|(line->g[x]<<8)|(line->r[x])|((x == 0)?(pkt<<24):0);
+		linked_list[linked_list_pos++] = ((line->y[x]&0x7ff)<<16)|(line->x[x] & 0x7ff);
+	}
+	
+	linked_list[linked_list_pos++] = 0x55555555; // termination code
+	
+	linked_list[orig_pos] = (((line->npoints*2)+2) << 24) | (((unsigned int)&linked_list[linked_list_pos]) & 0xffffff);
+}
+
+void GsSortGTPoly4(GsGTPoly4 *tpoly4)
+{
+	unsigned int orig_pos = linked_list_pos;
+	unsigned char pkt = 0x3c;
+	unsigned int md;
+	
+	/*md = setup_attribs(tpoly4->tpage, tpoly4->attribute, &pkt);*/
+	
+	//printf("tpoly4->tpage = %d\n", tpoly4->tpage);
+	
+	md = setup_attribs(tpoly4->tpage, tpoly4->attribute, &pkt);
+
+	//printf("pkt = %x\n", pkt);
+
+	linked_list[linked_list_pos++] = 0x0C000000;
+	//linked_list[linked_list_pos++] = md;
+	//linked_list[linked_list_pos++] = 0xe0000000;
+	//linked_list[linked_list_pos++] = 0xe1000105;
+	
+	//printf("tpoly4 md: %08x\n", md);
+	linked_list[linked_list_pos++] = (pkt<<24)|(tpoly4->b[0]<<16)|(tpoly4->g[0]<<8)|(tpoly4->r[0]);
+	linked_list[linked_list_pos++] = ((tpoly4->y[0]&0x7ff)<<16)|(tpoly4->x[0]&0x7ff);
+	linked_list[linked_list_pos++] = (get_clutid(tpoly4->cx, tpoly4->cy)<<16)|(tpoly4->v[0]<<8)|tpoly4->u[0];
+	linked_list[linked_list_pos++] = (tpoly4->b[1]<<16)|(tpoly4->g[1]<<8)|tpoly4->r[1];
+	linked_list[linked_list_pos++] = ((tpoly4->y[1]&0x7ff)<<16)|(tpoly4->x[1]&0x7ff);
+	linked_list[linked_list_pos++] = (md << 16)|(tpoly4->v[1]<<8)|tpoly4->u[1];
+	linked_list[linked_list_pos++] = (tpoly4->b[1]<<16)|(tpoly4->g[1]<<8)|tpoly4->r[1];
+	linked_list[linked_list_pos++] = ((tpoly4->y[2]&0x7ff)<<16)|(tpoly4->x[2]&0x7ff);
+	linked_list[linked_list_pos++] = (tpoly4->v[2]<<8)|tpoly4->u[2];
+	linked_list[linked_list_pos++] = (tpoly4->b[2]<<16)|(tpoly4->g[2]<<8)|tpoly4->r[2];
+	linked_list[linked_list_pos++] = ((tpoly4->y[3]&0x7ff)<<16)|(tpoly4->x[3]&0x7ff);
+	linked_list[linked_list_pos++] = (tpoly4->v[3]<<8)|tpoly4->u[3];
+	
+	linked_list[orig_pos] |= ((unsigned int)&linked_list[linked_list_pos]) & 0xffffff;
+}
+
+void GsSortGTPoly3(GsGTPoly3 *tpoly3)
+{
+	int orig_pos = linked_list_pos;
+	int x;
+	unsigned char pkt = 0x34;
+	unsigned int md;
+	
+	md = setup_attribs(tpoly3->tpage, tpoly3->attribute, &pkt);
+	
+	linked_list[linked_list_pos++] = 0x09000000;
+	
+	for(x = 0; x < 3; x++)
+	{
+		linked_list[linked_list_pos++] =
+			((x==0)?(pkt<<24):0)|(tpoly3->b[x]<<16)|(tpoly3->g[x]<<8)|(tpoly3->r[x]);
+		linked_list[linked_list_pos++] = ((tpoly3->y[x]&0x7ff)<<16)|(tpoly3->x[x]&0x7ff);
+		linked_list[linked_list_pos] = (tpoly3->u[x]<<8)|tpoly3->v[x];
+		
+		switch(x)
+		{
+			case 0:
+				linked_list[linked_list_pos++] |= 
+					get_clutid(tpoly3->cx, tpoly3->cy) << 16;
+			break;
+			case 1:
+				linked_list[linked_list_pos++] |=
+					md << 16;
+			break;
+			default:
+				linked_list_pos++;
+		}
+	}		
+	
+	linked_list[orig_pos] |= ((unsigned int)&linked_list[linked_list_pos]) & 0xffffff;
+}

@@ -18,7 +18,7 @@ It is assumed that you want to install the toolchain you are going to build in
 commands with something else.
 
 Open a terminal, extract binutils then cd to the binutils directory:
-./configure --prefix=/usr/local/psxsdk --target=mipsel-unknown-elf --with-float=soft
+./configure --disable-nls --prefix=/usr/local/psxsdk --target=mipsel-unknown-elf --with-float=soft
 
 Then to compile GNU binutils run:
 make
@@ -28,9 +28,13 @@ and then to install GNU binutils: make install
 To build GCC, first go to the directory where you downloaded the GCC archive, extract it, make a directory called psxsdk-gcc and use cd to get into it.
 
 Configure GCC:
-<gcc-directory>/configure --disable-libada --disable-libssp --target=mipsel-unknown-elf --prefix=/usr/local/psxsdk --with-float=soft
+<gcc-directory>/configure --disable-nls --disable-libada --disable-libssp --disable-libquadmath --disable-libstdc++-v3 \
+--target=mipsel-unknown-elf --prefix=/usr/local/psxsdk --with-float=soft --enable-languages=c,c++
 
 Replace <gcc-directory> with the directory where the GCC sources are.
+
+If you don't need C++ support, replace "--enable-languages=c,c++" with "--enable-languages=c" and remember
+to set CXX_SUPPORT in Makefile.cfg to `no'; that will avoid C++ support in PSXSDK from being compiled.
 
 Note that on some systems (like NetBSD) for some reason GCC might not build if you run its configure script using a relative path
 (like ..). This happens for a strange reason. In doubt, run the configure script using an absolute path (the complete name of the directory).

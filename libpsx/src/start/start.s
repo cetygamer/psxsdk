@@ -3,32 +3,40 @@
 
 # This has to be linked in as the first object when using ld, so that it
 # appears at the start of the .text section.
+# If a ldscript is being used, it is sufficient to specify this as the first
+# startup object.
+
+# nextvolume (2014-03-17):
+# fixed possible stack corruption.
 
 	.align 16
 	.text
-.global _start	
-.global vblank_handler
+.global _start
+#.global exit
+.extern call_atexit_callbacks
+#.global vblank_handler
+.extern vblank_handler
 .extern vblank_handler_callback
 
-.global rcnt_handler
+.extern rcnt_handler
+.extern rcnt_handler_evfield
 .extern rcnt_handler_callback
 
-.global get_cop0_status
-.global set_cop0_status
-.global get_cop0_epc
-#.global get_cop0_register
-#.global set_cop0_register
-.global get_gp
-.global run_bios
-.global is_load_delay_ok
-	
+.extern run_bios
+.extern is_load_delay_ok
+.extern exit
+
+.extern get_cop0_status
+.extern set_cop0_status
+.extern get_cop0_epc
+#.global run_bios
+#.global is_load_delay_ok
+
 _start:
-	#la $28, _gp # Load Global Pointer value
 	li $29, 0x801fff00 # Load stack pointer
 	li $k1, 0x1f800000            # set to hardware base
 	
-# This has to be replaced by a jal, sometime...
-	
+	addiu $sp, $sp, -24
 	jal ResetEntryInt
 	nop
 	
@@ -38,9 +46,14 @@ _start:
 	jal main
 	nop
 	
-	la $a0, startsmainfmt
+_real_exit:
+	la $a0, progtermfmt
 	move $a1, $v0
+	
 	jal printf
+	nop
+
+	jal call_atexit_callbacks
 	nop
 
 inf_loop:
@@ -87,8 +100,19 @@ vblank_fire_user_handler:
 	la $t0, vblank_handler_callback
 	lw $t1, 0($t0)
 	
+	addiu $sp, $sp, -24
 	jalr $t1
 	nop
+	addiu $sp, $sp, 24
+	
+vblank_acknowledge_irq:
+	li $t0, 0x1f801070 # IPENDING
+	
+	lw $t1, 0($t0)
+	nop
+	nop
+	xori $t1, $t1, 1 # Acknowledge VBlank IRQ
+	sw $t1, 0($t0)
 	
 vblank_handler_end:
 .set noat
@@ -161,12 +185,23 @@ rcnt_handler:
 	sw $ra, 108($sp)
 
 rcnt_fire_user_handler:
-
 	la $t0, rcnt_handler_callback
 	lw $t1, 0($t0)
 	
+	addiu $sp, $sp, -24
 	jalr $t1
 	nop
+	addiu $sp, $sp, 24
+	
+rcnt_acknowledge_irq:
+	li $t0, 0x1f801070 # IPENDING
+	la $t2, rcnt_handler_evfield
+	
+	lw $t1, 0($t0)
+	nop
+	nop
+	xor $t1, $t1, $t2 # Acknowledge Root Counter IRQ
+	sw $t1, 0($t0)
 	
 rcnt_handler_end:
 .set noat
@@ -217,27 +252,9 @@ get_cop0_epc:
 	mfc0 $2, $14
 	jr $ra
 	nop
-
-#get_cop0_register:
-#	mfc0 $2, $4
-#	jr $ra
-#	nop
 	
-#set_cop0_register:
-#	mtc0 $5, $4
-#	jr $ra
-#	nop
-
-get_gp:
-	add $2, $zero, $fp
-	jr $ra
-	nop
-	
-	
-
 run_bios:
-	li $8, 0xbfc00000
-	jr $8
+	j 0xbfc00000
 	nop
 	
 is_load_delay_ok:
@@ -256,8 +273,30 @@ load_delay_not_ok:
 	jr $ra
 	nop
 
+exit:
+	move $s0, $a0
+	
+	la $a0, called_exit
+	move $a1, $s0
+	
+	addiu $sp, $sp, -24
+	jal printf
+	nop
+	addiu $sp, $sp, 24
+
+	move $v0, $s0
+
+	j _real_exit
+	nop
+
+	.align 16
+	.data
+
+called_exit:
+	.string "Called exit(%d)\n"
+
+progtermfmt:
+	.string "Program terminated with return value %d\n"
+
 isldo_data:
 	.word 0x0adecade
-
-startsmainfmt:
-	.string "main terminated with return value %d\n"

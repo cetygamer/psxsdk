@@ -59,7 +59,7 @@ unsigned char McWriteSector(int card_slot, int sector, unsigned char *buffer)
 	QueryPAD(card_slot, card_cmd, arr, sizeof(card_cmd));
 
 	/*Return RW status*/
-	return arr[139];
+	return arr[137];
 }
 
 unsigned int McGetStatus(int card_slot)

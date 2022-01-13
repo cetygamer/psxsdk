@@ -24,6 +24,7 @@ printf:
 	la $9, __stdio_direction
 	lw $10, 0($9)
 	beq $10, $0, use_bios_printf
+	nop
 	j sio_printf
 	nop
 use_bios_printf:
@@ -484,7 +485,7 @@ TestEvent:
 .global firstfile
 .global nextfile
 .global rename
-.global delete
+.global remove
 
 open:
 	li $9, 0x32
@@ -533,7 +534,7 @@ rename:
 	j 0xb0
 	nop
 	
-delete:
+remove:
 	li $9, 0x45
 	j 0xb0
 	nop

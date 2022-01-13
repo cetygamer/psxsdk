@@ -87,7 +87,7 @@ enum
 	SPRINTF_SIZE_LONG_LONG,
 };
 
-unsigned int get_arg_in_size(int size, unsigned long long *arg, unsigned int check_sign)
+static unsigned int get_arg_in_size(int size, unsigned long long *arg, unsigned int check_sign)
 {
 	int s = 0;
 
@@ -152,7 +152,7 @@ unsigned int get_arg_in_size(int size, unsigned long long *arg, unsigned int che
 	return s;
 }	
 
-int libc_ulltoa(unsigned long long i, char *dst, int n, int nopad)
+static int libc_ulltoa(unsigned long long i, char *dst, int n, int nopad)
 {
 	int x, y;
 	unsigned long long a, b;
@@ -193,7 +193,7 @@ int libc_ulltoa(unsigned long long i, char *dst, int n, int nopad)
 	return n2;
 }
 
-void libc_float_to_string(float fl, char *dst, int n)
+/*static void libc_float_to_string(float fl, char *dst, int n)
 {
 	unsigned int *p = (unsigned int*)&fl;
 	unsigned long long i = 0;
@@ -272,9 +272,9 @@ void libc_float_to_string(float fl, char *dst, int n)
 			}
 		}
 	}
-}
+}*/
 
-void libc_double_to_string(double fl, char *dst, int n, int prec)
+static void libc_double_to_string(double fl, char *dst, int n, int prec)
 {
 	unsigned long long *p = (unsigned long long *)&fl;
 	unsigned long long i = 0;
@@ -338,7 +338,7 @@ void libc_double_to_string(double fl, char *dst, int n, int prec)
 		n-=x+1;
 		dst+=x;
 
-		printf("N = %d\n", n);
+		dprintf("N = %d\n", n);
 
 		if(n>0)
 		{
@@ -352,7 +352,7 @@ void libc_double_to_string(double fl, char *dst, int n, int prec)
 
 static char libc_sprintf_floatbuf[64];
 
-static int __vsnprintf_internal(char *string, unsigned int size, char *fmt, va_list ap, int (put_in_string(char *string, unsigned int sz, char c, int pos)))
+static int __vsnprintf_internal(char *string, size_t size, const char *fmt, va_list ap, int (put_in_string(char *string, unsigned int sz, char c, int pos)))
 {
 	int string_pos,fmt_pos;
 	int l;
@@ -755,7 +755,7 @@ static int __vsnprintf_internal(char *string, unsigned int size, char *fmt, va_l
 						pad_quantity = x;
 					}
 
-					printf("PRECISION = %d\n", pad_quantity_f);
+					dprintf("PRECISION = %d\n", pad_quantity_f);
 
 					libc_double_to_string(va_arg(ap, double), libc_sprintf_floatbuf, 64, pad_quantity_f);
 					
@@ -819,7 +819,7 @@ static int vsnprintf_put_in_string(char *string, unsigned int sz, char c, int po
 	return 1;
 }
 
-int vsnprintf(char *string, unsigned int size, char *fmt, va_list ap)
+int vsnprintf(char *string, size_t size, const char *fmt, va_list ap)
 {
 	return __vsnprintf_internal(string, size, fmt, ap, vsnprintf_put_in_string);
 }
@@ -831,17 +831,29 @@ static int sio_put_in_string(char *string, unsigned int sz, char c, int pos)
 	return 1;
 }
 
-int sio_vprintf(char *fmt, va_list ap)
+int sio_vprintf(const char *fmt, va_list ap)
 {
 	return __vsnprintf_internal(NULL, -1, fmt, ap, sio_put_in_string);
 }
 
-int vsprintf(char *string, char *fmt, va_list ap)
+static int out_put_in_string(char *string, unsigned int sz, char c, int pos)
+{
+	putchar(c);
+	
+	return 1;
+}
+
+int vprintf(char *fmt, va_list ap)
+{
+	return __vsnprintf_internal(NULL, -1, fmt, ap, out_put_in_string);
+}
+
+int vsprintf(char *string, const char *fmt, va_list ap)
 {
 	return vsnprintf(string, 0xffffffff, fmt, ap);
 }
 
-int sprintf(char *string, char *fmt, ...)
+int sprintf(char *string, const char *fmt, ...)
 {
 	int r;
 
@@ -856,7 +868,7 @@ int sprintf(char *string, char *fmt, ...)
 	return r;
 }
 
-int snprintf(char *string, unsigned int size, char *fmt, ...)
+int snprintf(char *string, size_t size, const char *fmt, ...)
 {
 	int r;
 
@@ -871,7 +883,7 @@ int snprintf(char *string, unsigned int size, char *fmt, ...)
 	return r;
 }
 
-int sio_printf(char *fmt, ...)
+int sio_printf(const char *fmt, ...)
 {
 	int r;
 

@@ -2,14 +2,21 @@
 
 include Makefile.cfg
 
+ifeq ($(ENABLE_CXX), yes)
+	BUILD_CXX = $(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C cxx SRCROOT=$(PWD)"
+	INSTALL_CXX = $(MAKE_COMMAND) -C cxx install
+	CLEAN_CXX = $(MAKE_COMMAND) -C cxx clean
+endif
+
 build:
 	$(MAKE_COMMAND) -C misc SRCROOT=$(PWD)
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libpsx SRCROOT=$(PWD)"
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libhuff SRCROOT=$(PWD)" 
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libm SRCROOT=$(PWD)" 
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libadpcm SRCROOT=$(PWD)"
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libmodplay SRCROOT=$(PWD)"
-	sh -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libfixmath SRCROOT=$(PWD)"
+	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libpsx SRCROOT=$(PWD)"
+	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libhuff SRCROOT=$(PWD)" 
+	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libm SRCROOT=$(PWD)" 
+	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libadpcm SRCROOT=$(PWD)"
+	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libmodplay SRCROOT=$(PWD)"
+	$(HOST_SHELL) -c "export PATH=\"$$PATH\":$(TOOLCHAIN_PREFIX)/bin;$(MAKE_COMMAND) -C libfixmath SRCROOT=$(PWD)"
+	$(BUILD_CXX)
 	$(MAKE_COMMAND) -C tools
 
 install: build
@@ -22,6 +29,7 @@ install: build
 	$(MAKE_COMMAND) -C libfixmath install
 	$(MAKE_COMMAND) -C tools install
 	$(MAKE_COMMAND) -C licenses install
+	$(INSTALL_CXX)
 
 clean:
 	$(MAKE_COMMAND) -C libpsx clean
@@ -32,6 +40,7 @@ clean:
 	$(MAKE_COMMAND) -C libfixmath clean
 	$(MAKE_COMMAND) -C misc clean
 	$(MAKE_COMMAND) -C tools clean
+	$(CLEAN_CXX)
 
 distclean:
 	$(MAKE_COMMAND) -C libpsx distclean
@@ -42,6 +51,7 @@ distclean:
 	$(MAKE_COMMAND) -C libfixmath clean
 	$(MAKE_COMMAND) -C misc distclean
 	$(MAKE_COMMAND) -C tools distclean
+	$(CLEAN_CXX)
 
 docs:
 	$(DOXYGEN) doxygen.conf

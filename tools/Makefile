@@ -2,62 +2,76 @@
 
 include ../Makefile.cfg
 
-CC = gcc
-CFLAGS = -Wall -g
-TOOL_LIST = bmp2tim cdcat elf2exe getpsxiso mkpsxiso vag2wav wav2vag exefixup \
-		systemcnf bin2c huff mod4psx tim2bmp lictool psfex
+TOOL_LIST = bmp2tim$(EXE_SUFFIX) \
+		   cdcat$(EXE_SUFFIX) \
+		   elf2exe$(EXE_SUFFIX) \
+		   getpsxiso$(EXE_SUFFIX) \
+		   mkpsxiso$(EXE_SUFFIX) \
+		   vag2wav$(EXE_SUFFIX) \
+		   wav2vag$(EXE_SUFFIX) \
+		   exefixup$(EXE_SUFFIX) \
+		   systemcnf$(EXE_SUFFIX) \
+		   bin2c$(EXE_SUFFIX) \
+		   huff$(EXE_SUFFIX) \
+		   mod4psx$(EXE_SUFFIX) \
+		   tim2bmp$(EXE_SUFFIX) \
+		   lictool$(EXE_SUFFIX) \
+		   psfex$(EXE_SUFFIX)
 
 all: $(TOOL_LIST)
+	$(MAKE_COMMAND) -C spasm
 
-bmp2tim: bmp2tim.c
-	$(CC) $(CFLAGS) -o bmp2tim bmp2tim.c
+bmp2tim$(EXE_SUFFIX): bmp2tim.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ bmp2tim.c $(HOST_LDFLAGS)
 
-cdcat: cdcat.c
-	$(CC) $(CFLAGS) -o cdcat cdcat.c
+cdcat$(EXE_SUFFIX): cdcat.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ cdcat.c $(HOST_LDFLAGS)
 
-elf2exe: elf2exe.c
-	$(CC) $(CFLAGS) -o elf2exe elf2exe.c
+elf2exe$(EXE_SUFFIX): elf2exe.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ elf2exe.c $(HOST_LDFLAGS)
 
-getpsxiso: getpsxiso.c
-	$(CC) $(CFLAGS) -o getpsxiso getpsxiso.c
+getpsxiso$(EXE_SUFFIX): getpsxiso.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ getpsxiso.c $(HOST_LDFLAGS)
 
-mkpsxiso: mkpsxiso.c
-	$(CC) $(CFLAGS) -o mkpsxiso mkpsxiso.c
+mkpsxiso$(EXE_SUFFIX): mkpsxiso.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ mkpsxiso.c $(HOST_LDFLAGS)
 	
-vag2wav: vag2wav.c
-	$(CC) $(CFLAGS) -o vag2wav vag2wav.c
+vag2wav$(EXE_SUFFIX): vag2wav.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ vag2wav.c $(HOST_LDFLAGS)
 	
-wav2vag: wav2vag.c
-	$(CC) $(CFLAGS) -o wav2vag wav2vag.c
+wav2vag$(EXE_SUFFIX): wav2vag.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ wav2vag.c $(HOST_LDFLAGS)
 
-exefixup: exefixup.c
-	$(CC) $(CFLAGS) -o exefixup exefixup.c
+exefixup$(EXE_SUFFIX): exefixup.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ exefixup.c $(HOST_LDFLAGS)
 	
-systemcnf: systemcnf.c
-	$(CC) $(CFLAGS) -o systemcnf systemcnf.c
+systemcnf$(EXE_SUFFIX): systemcnf.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ systemcnf.c $(HOST_LDFLAGS)
 
-bin2c: bin2c.c
-	$(CC) $(CFLAGS) -o bin2c bin2c.c
+bin2c$(EXE_SUFFIX): bin2c.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ bin2c.c $(HOST_LDFLAGS)
 
-huff: huff.c
-	$(CC) $(CFLAGS) -o huff huff.c
+huff$(EXE_SUFFIX): huff.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ huff.c $(HOST_LDFLAGS)
 
-mod4psx: mod4psx.c adpcm.c
-	$(CC) $(CFLAGS) -o mod4psx mod4psx.c adpcm.c $(SRCROOT)/libmodplay/libmodplay_nopsx.a -lm -DNO_PSX_LIB
+mod4psx$(EXE_SUFFIX): mod4psx.c adpcm.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ mod4psx.c adpcm.c ../libmodplay/libmodplay_nopsx.a -lm -DNO_PSX_LIB
 
-tim2bmp: tim2bmp.c
-	$(CC) $(CFLAGS) -o tim2bmp tim2bmp.c -lz
+tim2bmp$(EXE_SUFFIX): tim2bmp.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ tim2bmp.c -lz $(HOST_LDFLAGS)
 	
-lictool: lictool.c
-	$(CC) $(CFLAGS) -o lictool lictool.c
+lictool$(EXE_SUFFIX): lictool.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ lictool.c $(HOST_LDFLAGS)
 
-psfex: psfex.c
-	$(CC) $(CFLAGS) -o psfex psfex.c -lz
+psfex$(EXE_SUFFIX): psfex.c
+	$(HOST_CC) $(HOST_CFLAGS) -o $@ psfex.c -lz $(HOST_LDFLAGS)
 
 clean:
 	rm -f $(TOOL_LIST)
+	$(MAKE_COMMAND) -C spasm clean
 
 distclean: clean
 
 install:
 	cp -rv $(TOOL_LIST) $(TOOLCHAIN_PREFIX)/bin
+	$(MAKE_COMMAND) -C spasm install

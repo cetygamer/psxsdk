@@ -15,6 +15,9 @@
 
 #else
 
+typedef unsigned int size_t;
+typedef signed int ssize_t;
+
 #include <stdarg.h>
 #include <stdbool.h>
 
@@ -73,12 +76,22 @@ extern int puts(const char *str);
  * NOTE: when redirect_stdio_to_sio() is used, PSXSDK's internal implementation is used instead.
  */
 
-extern int printf(char *format, ...);
+extern int printf(const char *format, ...);
 
-int vsnprintf(char *string, unsigned int size, char *fmt, va_list ap);
-int vsprintf(char *string, char *fmt, va_list ap);
-int sprintf(char *string, char *fmt, ...);
-int snprintf(char *string, unsigned int size, char *fmt, ...);
+// If PSXSDK_DEBUG is defined, dprintf() calls are turned into printf() calls
+// otherwise they are left out
+
+#ifdef PSXSDK_DEBUG
+	#define dprintf		printf
+#else
+	#define dprintf(fmt, ...)
+#endif
+
+int vsnprintf(char *string, size_t size, const char *fmt, va_list ap);
+int vsprintf(char *string, const char *fmt, va_list ap);
+int sprintf(char *string, const char *fmt, ...);
+int snprintf(char *string, size_t size, const char *fmt, ...);
+int vprintf(char *fmt, va_list ap);
 
 FILE *fdopen(int fildes, const char *mode);
 FILE *fopen(char *path, const char *mode);
@@ -92,9 +105,12 @@ int fseek(FILE *f, int offset, int whence);
 #define getc(f)		fgetc(f)
 
 int rename(char *oldname, char *newname);
-int delete(char *filename);
+int remove(char *filename);
 
-#define remove(x)	delete(x)
+#ifndef __cplusplus
+// Define delete(x) to be remove(x) only when compiling plain C.
+#define delete(x)	remove(x)
+#endif
 
 /**
  * Redirects STDIO to SIO (serial port)
@@ -116,7 +132,7 @@ void sio_stdio_mapcr(unsigned int setting);
  * scanf and friends
  */
  
-int vsscanf(const char *str, const char *format, va_list ap);
+int vsscanf(const char *str, const char *fmt, va_list ap);
 int sscanf(const char *str, const char *fmt, ...);
 
 
@@ -126,8 +142,8 @@ int sscanf(const char *str, const char *fmt, ...);
  
 int sio_putchar(int c);
 int sio_puts(const char *str);
-int sio_printf(char *fmt, ...);
-int sio_vprintf(char *fmt, va_list ap);
+int sio_printf(const char *fmt, ...);
+int sio_vprintf(const char *fmt, va_list ap);
 
 #endif
 

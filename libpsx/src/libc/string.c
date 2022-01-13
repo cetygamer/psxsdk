@@ -20,6 +20,21 @@ void *memcpy(void *dst, const void *src, size_t len)
 	return dst2;
 }
 
+void *memccpy(void *dst, const void *src, int c, size_t len)
+{	
+	unsigned char c2;
+	
+	while(len--)
+	{
+		*(((unsigned char*)dst++)) = ( c2 = *(((unsigned char*)src++)) );
+		
+		if(c2 == c)
+			return (void*)src;
+	}
+	
+	return NULL;
+}
+
 void *memset(void *dst , char c , size_t n)
 {
 	unsigned char *dstc = (unsigned char*)dst;
@@ -120,16 +135,6 @@ char *strrchr(const char *s, int c)
 		if(s[x] == c) return (char*)&s[x];
 
 	return NULL;
-}
-
-char *index(const char *s, int c)
-{
-	return strchr(s, c);
-}
-
-char *rindex(const char *s, int c)
-{
-	return strrchr(s, c);
 }
 
 char *strpbrk(const char *s, const char *charset)

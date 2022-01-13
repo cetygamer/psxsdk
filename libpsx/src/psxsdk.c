@@ -38,7 +38,8 @@ static int vblank_handler_set = 0;
 static unsigned int vblank_handler_event_id = 0;
 
 static int rcnt_handler_set = 0;
-static unsigned int rcnt_handler_event_id = 0;				   
+static unsigned int rcnt_handler_event_id = 0;
+unsigned int rcnt_handler_evfield;
 
 void _internal_cdromlib_init();
 
@@ -87,9 +88,9 @@ void PSX_InitEx(unsigned int flags)
 	
 	
 	/*This is needed, otherwise PSX will crash when VBlank handler is set*/
-	InitCARD(1);
+	/*InitCARD(1);
 	StartCARD();
-        StopCARD();
+        StopCARD();*/
 
 	if(flags & PSX_INIT_CD)
 		_internal_cdromlib_init();
@@ -428,7 +429,8 @@ void RemoveVBlankHandler()
 		DisableEvent(vblank_handler_event_id);
 		CloseEvent(vblank_handler_event_id);
 	
-		IMASK^=1;
+		//IMASK^=1;
+		// ^ commented because masking out vblank could give problems to other bios functions
 	
 		vblank_handler_set = 0;
 		
@@ -438,7 +440,10 @@ void RemoveVBlankHandler()
 
 void SetRCntHandler(void (*callback)(), int spec, unsigned short target)
 {
-	if(rcnt_handler_set == 1)
+	if(psxSdkFlags & PSX_INIT_NOBIOS)
+		return; // Not yet supported in No-Bios Mode
+	
+	if(rcnt_handler_set)
 	{
 		EnterCriticalSection();
 		
@@ -459,11 +464,37 @@ void SetRCntHandler(void (*callback)(), int spec, unsigned short target)
 	EnableEvent(rcnt_handler_event_id);
 	
 	rcnt_handler_callback = callback;
-	rcnt_handler_set = 1;
+	rcnt_handler_set = spec;
 
+	switch(spec)
+	{
+		case RCntCNT0: rcnt_handler_evfield = 1 << 4; break;
+		case RCntCNT1: rcnt_handler_evfield = 1 << 5; break;
+		case RCntCNT2: rcnt_handler_evfield = 1 << 6; break;
+		case RCntCNT3: rcnt_handler_evfield = 1; break;
+	}
+	
 // Exit critical section
 	
 	ExitCriticalSection();
+}
+
+void RemoveRCntHandler(int spec)
+{
+	if(psxSdkFlags & PSX_INIT_NOBIOS)
+		return; // Not yet supported in No-Bios Mode
+	
+	if(rcnt_handler_set)
+	{
+		EnterCriticalSection();
+		
+		DisableEvent(rcnt_handler_event_id);
+		CloseEvent(rcnt_handler_event_id);
+		
+		rcnt_handler_set = 0;
+		
+		ExitCriticalSection();
+	}
 }
 
 const char *GetSystemRomVersion()

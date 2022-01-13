@@ -98,3 +98,9 @@ char *itoa(int value, char *str, int base)
 {
 	return __ulltoa_internal__((value<0)?-value:value, str, base, value<0, 0xFFFFFFFF);
 }
+
+void abort(void)
+{
+	printf("abort(): Abnormal program termination\n");
+	exit(1);
+}

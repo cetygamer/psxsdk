@@ -4,6 +4,4 @@
 #include <inttypes.h>
 #include <sys/types.h>
 
-typedef unsigned int size_t;
-
 #endif

@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void qsort(void *base, int nmemb, int size, int (*compar)(const void *, const void *)) 
+void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *)) 
 {
   #define  QSORT_MAX_LEVELS  300
 	

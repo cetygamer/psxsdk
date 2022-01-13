@@ -15,42 +15,44 @@ OUTPUT_ARCH(\"mips\")
 ENTRY(\"_start\")
 
 SEARCH_DIR(\"$1/lib\")
-SEARCH_DIR(\"$1/include\")
 STARTUP(start.o)
-INPUT(-lpsx)
-
-EXTERN(__udivdi3)
-EXTERN(__truncdfsf2)
-EXTERN(__floatdidf)
-EXTERN(__floatsidf)
-EXTERN(__divdf3)
-EXTERN(__adddf3)
-EXTERN(__muldf3)
-EXTERN(__fixdfsi)
+INPUT(-lpsx -lgcc)
 
 SECTIONS
 {
 	. = 0x80010000;
 
 	__text_start = .;
-	.text : { *(.text) }
+	.text ALIGN(4) : { *(.text*) }
 	__text_end = .;
 
 	__rodata_start = .;
 	.rodata ALIGN(4) : { *(.rodata) }
 	__rodata_end = .;
 
-	__data_start = .; 
+	__data_start = .;
 	.data ALIGN(4) : { *(.data) }
 	__data_end = .;
+	
+	__ctor_list = .;
+	.ctors ALIGN(4) : { *(.ctors) }
+	__ctor_end = .;
+	
+	__dtor_list = .;
+	.dtors ALIGN(4) : { *(.dtors) }
+	__dtor_end = .;
 
 	__bss_start = .;
 	.bss  ALIGN(4) : { *(.bss) }
 	__bss_end = .;
+
+	__scratchpad = 0x1f800000;
 }
 " > playstation.x
 
 echo "#!/bin/sh
-mipsel-unknown-elf-gcc -fsigned-char -msoft-float -mno-gpopt -fno-builtin -G0 -I$1/include -T $1/mipsel-unknown-elf/lib/ldscripts/playstation.x \$*"> psx-gcc
+mipsel-unknown-elf-gcc -D__PSXSDK__ -fsigned-char -msoft-float -mno-gpopt -fno-builtin -G0 -I$1/include -T $1/mipsel-unknown-elf/lib/ldscripts/playstation.x \$*"> psx-gcc
 chmod +x psx-gcc
-
+echo "#!/bin/sh
+mipsel-unknown-elf-g++ -D__PSXSDK__ -fsigned-char -msoft-float -mno-gpopt -fno-builtin -G0 -I$1/include -T $1/mipsel-unknown-elf/lib/ldscripts/playstation.x -fno-rtti -fno-exceptions -fno-threadsafe-statics -fno-use-cxa-atexit \$*" > psx-g++
+chmod +x psx-g++

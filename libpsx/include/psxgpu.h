@@ -27,13 +27,17 @@ void GsInitEx(unsigned int flags);
 void GsReset(void);
 
 /**
- * Enables the display if enable is TRUE (>=1) or disables it if it is FALSE (=0)
+ * Enables the display (i.e. generation of video output).
+ *
+ * Unless you are doing low-level GPU programming, you don't need to call this function;
+ * the display is enabled automatically by GsSetVideoMode().
+ * @param enable If TRUE (>=1) the display will be enabled, if FALSE (== 0) it will be disabled
  */
  
 void GsEnableDisplay(int enable);
 
 /**
- * Sets a video mode. It does so in a quicker way
+ * Sets a video mode and enables the display. It does so in a quicker way
  * than GsSetVideoModeEx(), which wants more arguments but offers greater control
  * @param width Width
  + 640, 384, 320 and 256 are supported by the PlayStation hardware.
@@ -43,8 +47,9 @@ void GsEnableDisplay(int enable);
  *   480 here, because this function doesn't enable interlacing.
  *  @param video_mode Video mode
  + VMODE_NTSC for NTSC, VMODE_PAL for PAL
+ * @return 1 on success, 0 on failure (such as unavailable video mode)
  */
- 
+
 int GsSetVideoMode(int width, int height, int video_mode);
 
 /**
@@ -62,29 +67,44 @@ int GsSetVideoMode(int width, int height, int video_mode);
  + If TRUE (!=0) enables interlacing. If you set the height paramater to 480, and you want to display your program on
     a real television screen, you must enable this.
  * @param reverse Reverse??
- + The function of this is not really known. Stay safe and set this to FALSE (0). 
+ + The function of this is not really known. Stay safe and set this to FALSE (0).
+ * @return 1 on success, 0 on failure (such as unavailable video mode)
  */
 
 int GsSetVideoModeEx(int width, int height, int video_mode, int rgb24, int inter, int reverse);
 
 /**
- * Assigns the internal pointer to the linked list to the desired one,
+ * Assigns the internal pointer to the primitive list to the desired one,
  * and resets the linked list position counter.
  * The memory address specified by your pointer has to have enough space free to contain all
  * the packets which you want to send.
- * @param listptr Pointer whose values will be assigned to the internal pointer to the linked list
+ * @param listptr Pointer to primitive list
  */
 
 void GsSetList(unsigned int *listptr);
 
 /**
- * Draws the linked list
+ * Assigns the internal pointer to the primitive list to the desired one,
+ * an sets the linked list position counter to the specified value.
+ * The memory address specified by your pointer has to have enough space free to contain all
+ * the packets which you want to send, and you must ensure that the specified position
+ * is not out of bounds.
+ * @param listptr Pointer to primitive list
+ * @param listpos List position
+ */
+ 
+void GsSetListEx(unsigned int *listptr, unsigned int listpos);
+
+/**
+ * Draws the primitive list.
+ *
+ * This also has the effect of resetting the current drawing list position.
  */
  
 void GsDrawList(void);
 
 /**
- * Draws the linked list using port I/O access.
+ * Draws the primitive list using port I/O access.
  * 
  * GsDrawList() uses DMA to transfer the primitive data in the linked list to the GPU.
  *
@@ -232,6 +252,62 @@ typedef struct
 	unsigned int attribute;
 }GsGPoly4;
 
+/** Graduated textured 3 point polygon */
+
+typedef struct
+{
+	/** Red color components (0-255) */
+	unsigned char r[3];
+	/** Green color components (0-255) */
+	unsigned char g[3];
+	/** Blue color components (0-255) */
+	unsigned char b[3];
+	/** X Coordinates for vertexes */
+	short x[3];
+	/** Y Coordinates for vertexes */
+	short y[3];
+	/** CLUT X coordinate */
+	short cx;
+	/** CLUT Y coordinate */
+	short cy;
+	/** Texture page */
+	unsigned char tpage;
+	/** Horizontal texture offset */
+	unsigned char u[3];
+	/** Vertical texture offset */
+	unsigned char v[3];
+	/** Attribute */
+	unsigned int attribute;
+}GsGTPoly3;
+
+/** Graduated textured 4 point polygon */
+
+typedef struct
+{
+	/** Red color components (0-255) */
+	unsigned char r[4];
+	/** Green color components (0-255) */
+	unsigned char g[4];
+	/** Blue color components (0-255) */
+	unsigned char b[4];
+	/** X Coordinates for vertexes */
+	short x[4];
+	/** Y Coordinates for vertexes */
+	short y[4];
+	/** CLUT X coordinate */
+	short cx;
+	/** CLUT Y coordinate */
+	short cy;
+	/** Texture page */
+	unsigned char tpage;
+	/** Horizontal texture offset */
+	unsigned char u[4];
+	/** Vertical texture offset */
+	unsigned char v[4];
+	/** Attribute */
+	unsigned int attribute;
+}GsGTPoly4;
+
 /** Monochrome line */
 
 typedef struct
@@ -342,6 +418,42 @@ typedef struct
 	unsigned char r, g, b;
 	unsigned int attribute; /* Attribute */
 }GsRectangle;
+
+typedef struct
+{
+	/** Number of points */
+	unsigned int npoints;
+	/** Red color component (0-255) */
+	unsigned char r;
+	/** Green color component (0-255) */
+	unsigned char g;
+	/** Blue color component (0-255) */
+	unsigned char b;
+	/** X Coordinates for points */
+	short *x;
+	/** Y Coordinates for points */
+	short *y;
+	/** Attribute */
+	unsigned int attribute;
+}GsPolyLine;
+
+typedef struct
+{
+	/** Number of points */
+	unsigned int npoints;
+	/** Red color components (0-255) */
+	unsigned char *r;
+	/** Green color components (0-255) */
+	unsigned char *g;
+	/** Blue color components (0-255) */
+	unsigned char *b;
+	/** X Coordinates for points */
+	short *x;
+	/** Y Coordinates for points */
+	short *y;
+	/** Attribute */
+	unsigned int attribute;
+}GsGPolyLine;
 
 /** Map */
 
@@ -577,6 +689,20 @@ void GsSortGPoly3(GsGPoly3 *poly3);
 void GsSortGPoly4(GsGPoly4 *poly4);
 
 /**
+ * Adds a gradated textured 3 point polygon to the packet list
+ * @param tpoly3 Pointer to structure for textured 3 point polygon
+ */
+ 
+void GsSortGTPoly3(GsGTPoly3 *tpoly3);
+
+/**
+ * Adds a gradated 4 point polygon to the packet list
+ * @param tpoly4 Pointer to structure for textured 4 point polygon
+ */
+
+void GsSortGTPoly4(GsGTPoly4 *tpoly4);
+
+/**
  * Adds a monochrome line to the packet list
  * @param line Pointer to structure for monochrome line
  */
@@ -768,7 +894,7 @@ void GsLoadFont(int fb_x, int fb_y, int cx, int cy);
  * @return Position identifier.
  */
 
-unsigned int GsPrintFont(int x, int y, char *fmt, ...);
+unsigned int GsPrintFont(int x, int y, const char *fmt, ...);
 
 /**
  * Change font coordinates without reloading it
@@ -811,8 +937,7 @@ void GsSetFontAttrib(unsigned int flags);
 
 /**
  * Sets drawing environment
- * Enables drawing on the display area by default
- * and all masking stuff is disabled...
+ * Enables drawing on the display area, disables dithering and disables all masking flags by default
  * @param x Top-left X coordinate of framebuffer area to use for drawing
  * @param y Top-left Y coordinate of framebuffer area to use for drawing
  * @param w  Width of area
@@ -951,6 +1076,20 @@ void GsSortCls(int r, int g, int b);
  */
 
 void GsRotateVector(int x_a, int y_a, int z_a, double *v, double *n);
+
+/**
+ * Adds a monochrome polyline to the packet list
+ * @param line Pointer to structure for monochrome polyline
+ */
+
+void GsSortPolyLine(GsPolyLine *line);
+
+/**
+ * Adds a gradated polyline to the packet list
+ * @param line Pointer to structure for monochrome line
+ */
+
+void GsSortGPolyLine(GsGPolyLine *line);
 
 //void GsSortSimpleMap(GsMap *map);
 

@@ -26,7 +26,7 @@ void malloc_setup()
 {
 	int x;
 
-	printf("malloc setup.\n");
+	dprintf("malloc setup.\n");
 
 	first_free_page = (unsigned int) __bss_end;
 	first_free_page-= 0x80000000;
@@ -51,9 +51,9 @@ void malloc_setup()
 	}
 }
 
-void *malloc(int size)
+void *malloc(size_t size)
 {
-	printf("malloc(%d)\n", size);
+	dprintf("malloc(%d)\n", size);
 
 	int x, y;
 	
@@ -100,7 +100,7 @@ malloc_keep_finding:
 	return NULL;
 }
 
-void *calloc(int number, int size)
+void *calloc(size_t number, size_t size)
 {
 	void *ptr = malloc(number * size);
 	unsigned char *cptr = (unsigned char*)ptr;
@@ -117,7 +117,7 @@ void *calloc(int number, int size)
 
 void free(void *ptr)
 {
-	printf("free(%x)\n", (unsigned int)ptr);
+	dprintf("free(%x)\n", (unsigned int)ptr);
 
 	unsigned int ptri = (unsigned int)ptr;
 	ptri -= 0x80000000;
@@ -147,7 +147,7 @@ void free(void *ptr)
 
 	for(x = 0; x < alloc_size[ptri]; x++)
 	{
-		printf("ptri + x = %d\n", ptri + x);
+		dprintf("ptri + x = %d\n", ptri + x);
 		busy_pages[ptri + x] = 0;
 	}
 
@@ -159,7 +159,7 @@ void free(void *ptr)
 		printf("%d: %d, %d\n", x, busy_pages[x], alloc_size[x]);*/
 }
 
-void *realloc(void *ptr, int size)
+void *realloc(void *ptr, size_t size)
 {
 	unsigned int ptri = (unsigned int)ptr;
 	int x;

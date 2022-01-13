@@ -12,22 +12,19 @@
 #ifndef _STRING_H
 #define _STRING_H
 
+#include <strings.h> // for backwards compatibility
 #include <types.h>
 
 char *strcat(char *s , const char *append);
 char *strncat(char *s , const char *append, size_t n);
 int strcmp(const char *dst , const char *src);
 int strncmp(const char *dst , const char *src , size_t len);
-int strcasecmp(const char *s1, const char *s2);
-int strncasecmp(const char *s1, const char *s2, size_t len);
 int stricmp(const char *s1, const char *s2); // alias of strcasecmp
 int strnicmp(const char *s1, const char *s2, size_t len); // alias of strncasecmp
 char *strcpy(char *dst , const char *src);
 char *strncpy(char *dst , const char *src , size_t n);
 int strlen(const char *s);
 int strnlen(const char *s, size_t maxlen);
-char *index(const char *s, int c);
-char *rindex(const char *s, int c);
 char *strchr(const char *s , int c);
 char *strrchr(const char *s , int c);
 char *strpbrk(const char *dst , const char *src);
@@ -50,7 +47,14 @@ int memcmp(const void *b1 , const void *b2 , size_t n);
 void *memchr(void *s , int c , size_t n);
 void *memrchr(void *b, int c, size_t len);
 void *memcpy(void *dst , const void *src , size_t len);
+void *memccpy(void *dst, const void *src, int c, size_t len);
 void *memmem(const void *big, size_t big_len, const void *little, size_t little_len);
+
+// ffsl() and ffsll() are glibc extensions, and are in string.h
+// instead of strings.h (like ffs()) for some reason..
+
+int ffsl(long value);
+int ffsll(long long value);
 
 #endif
 

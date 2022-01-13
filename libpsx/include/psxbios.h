@@ -129,6 +129,7 @@ void InitHeap(void *block , int size);
 void FlushCache(void);
 
 void SetRCntHandler(void (*callback)(), int spec, unsigned short target);
+void RemoveRCntHandler(int spec);
 
 /**
  * Opens an event, and returns its identifier
@@ -144,7 +145,7 @@ int OpenEvent(
 	int desc, // Cause descriptor
 	int spec, // Event type
 	int mode, // Mode
-	int *(*func)() // Pointer to callback function
+	int *(*func)(void) // Pointer to callback function
 );
 
 /**

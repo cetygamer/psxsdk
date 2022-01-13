@@ -280,8 +280,6 @@ A: Despite popular belief, ePSXe and pSX are not as accurate as it is thought.
     It is recommended to use PCSX Reloaded for testing.
     The rule of thumb is that when something works fine on real hardware, and the
     emulator freezes or does something unexpected, it's the emulator's fault.
-    For instance ePSXe and pSX do not like the code to upload to Sound RAM,
-    despite the fact that it works fine on real hardware.
 
 Written by Giuseppe Gatta
 E-mail: tails92@gmail.com

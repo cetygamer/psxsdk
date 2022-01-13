@@ -59,32 +59,32 @@ unsigned int fmode_to_desmode(const char *fmode)
 	
 	if(strcmp(rmode, "r") == 0)
 	{
-		printf("Open for reading.\n");
+		dprintf("Open for reading.\n");
 		return O_RDONLY;
 	}
 	else if(strcmp(rmode, "r+") == 0)
 	{
-		printf("Open for reading and writing.\n");
+		dprintf("Open for reading and writing.\n");
 		return O_RDWR;
 	}
 	else if(strcmp(rmode, "w") == 0)
 	{
-		printf("Open for writing.\n");
+		dprintf("Open for writing.\n");
 		return O_WRONLY | O_CREAT | O_TRUNC;
 	}
 	else if(strcmp(rmode, "w+") == 0)
 	{
-		printf("Open for writing. Truncate to zero or create file.\n");
+		dprintf("Open for writing. Truncate to zero or create file.\n");
 		return O_RDWR | O_CREAT | O_TRUNC;
 	}
 	else if(strcmp(rmode, "a") == 0)
 	{
-		printf("Append; open for writing. Create file if it doesn't exist.\n");
+		dprintf("Append; open for writing. Create file if it doesn't exist.\n");
 		return O_WRONLY | O_APPEND;
 	}
 	else if(strcmp(rmode, "a+") == 0)
 	{
-		printf("Append; open for reading and writing. Create file if it doesn't exist.\n");
+		dprintf("Append; open for reading and writing. Create file if it doesn't exist.\n");
 		return O_RDWR | O_APPEND | O_CREAT;
 	}
 	else
@@ -129,7 +129,7 @@ FILE *fopen(char *path, const char *mode)
 	
 	if(strncmp(path, "cdromL:", 7) == 0)
 	{
-		printf("strncmp=%d\n", strncmp(path, "cdromL:", 7) );
+		//printf("strncmp=%d\n", strncmp(path, "cdromL:", 7) );
 		s = malloc(1024);
 
 		if(libc_get_transtbl_fname(path+7, s, 1024) == 0)
@@ -401,7 +401,7 @@ int libc_get_transtbl_fname(char *tofind, char *outstr, int outl)
 		{
 			if(type == 0)
 			{
-				printf("Filename found: %s -> %s%s\n", tofind, rootpath, orgname);
+				dprintf("Filename found: %s -> %s%s\n", tofind, rootpath, orgname);
 				filename_found = 1;
 				exit_loop = 1;
 
@@ -417,7 +417,7 @@ int libc_get_transtbl_fname(char *tofind, char *outstr, int outl)
 				if(tfp == l || tofind[l-1] == '/'
 					|| tofind[l-1] == '\\')
 				{
-					printf("File not found. A directory was specified.\n");
+					dprintf("File not found. A directory was specified.\n");
 					exit_loop = 1;
 					continue;
 				}
@@ -447,7 +447,7 @@ int libc_get_transtbl_fname(char *tofind, char *outstr, int outl)
 
 				if(f == NULL)
 				{
-					printf("Couldn't find %s\n", rootpath);
+					dprintf("Couldn't find %s\n", rootpath);
 					exit_loop = 1;
 					continue;
 				}

@@ -146,3 +146,53 @@ This is list is still incomplete as 0.5 is still being worked on.
 - Added missing prototypes for strdup() and strndup() to string.h
 - Now string functions use size_t instead of int for lengths and counts
 - Added memmem(), lltoa(), ltoa(), itoa(), ulltoa(), ultoa() and utoa() to libc
+
+2014-04-22:
+- Fixed the Makefile for the tools, now it considers the HOST_* variables and removes executables
+  correctly under Windows
+- added --enable-languages=c to the command line to build GCC, in toolchain.txt
+- Added abort() to libc
+- Fixed Makefile for misc directory
+- Fixed genscript.sh: generated link script playstation.x now correctly
+  includes libgcc and does not rely on EXTERN directives
+- New SsUpload() implementation contributed by Shendo, which contains workarounds for emulators. 
+  Also works on ePSXe.
+- Fixed wrong return value for McWriteSector()
+- Introduced debug build, that can be built by specifying the PSXSDK_DEBUG
+  flag at compile time - it has more verbose messages, diagnostics, etc.
+- Very verbose messages are now only compiled in for the debug builds.
+- Added support for the 1KB scratchpad, which is the data cache that went
+  unused in the PlayStation - it acts as a kind of "fast RAM";
+  it is accessible as the byte array __scratchpad
+- Added RemoveRCntHandler()
+- Removed the InitCARD() - StartCARD() - StopCARD() sequence in PSXSDK_Init() when using BIOS mode,
+  so that the vblank handler would not crash - the fix was acknowledging the interrupt in psxsdk's internal handler
+  (in start/start.s). Thanks to Shendo for reporting this.
+- The shell to use when executing scripts can now be specified in Makefile.cfg by changing the HOST_SHELL variable
+- Moved the prototypes for index(), rindex(), strcasecmp() and strncasecmp()
+  from string.h to strings.h, to be more standard
+- Implemented the ffs*() and the popcount*() family of functions
+  (the prototypes are in string.h or strings.h)
+- string.h now includes strings.h for backward compatibility - advice: do not rely on this.
+  when you use something whose prototype is in strings.h, ALSO include strings.h!
+- implemented bitstring.h, bit string manipulation macros
+- implemented memccpy()
+- index() and rindex() were wrongly implemented both in libpsx/src/libc/string.c and as
+  macros in strings.h; now they are only implemented as macros in strings.h
+- added swab()
+- added defines for EXIT_SUCCESS and EXIT_FAILURE in stdlib.h
+- __PSXSDK__ is now defined by psx-gcc, this makes easier for code
+  to detect it is being compiled for the PSXSDK
+- added defines for O_RDLOCK, O_WRLOCK, O_SCAN, O_RCOM, O_EXCL, O_ASYNC, O_NOWAIT 
+  and O_NOBUF, and corrected define for O_APPEND (it is now correctly 256, not 8) in fcntl.h
+- Added a very simple implementation of stat(). 
+  Only the st_size, st_blksize and st_blocks fields are available in struct stat (sys/stat.h)
+- Added exit() and atexit() (stdlib.h)
+- Added vprintf()
+- Added GsSetListEx()
+- Added C++ support. Thanks to Mauro Persano (fzort) for contributing this the initialization code.
+- Fixed linked list corruption bug in GSTPoly3()
+- Added GsPolyLine() and GsGPolyLine() to draw non-graduated and graduated poly lines.
+- Added GsGTPoly3() and GsGTPoly4() to draw graduated (shaded) textured 3-point and 4-point polygons
+- Added nv-SPASM to PSXSDK, a free and open source implementation of the Hitmen's spASM assembler, written by nextvolume.
+  It will be installed as `spasm'.

@@ -150,6 +150,47 @@ enum gte_data_registers
 	GTE_R_LZCS =	30,
 	/** Leading zero count result */
 	GTE_R_LZCR =	31
-};	
+};
+
+/** GTE control registers */
+
+enum gte_control_registers
+{
+	GTE_R_R11R12 = 0,
+	GTE_R_R13R21 = 1,
+	GTE_R_R22R23 = 2,
+	GTE_R_R31R32 = 3,
+	GTE_R_R33 = 4,
+	GTE_R_TRX = 5,
+	GTE_R_TRY = 6,
+	GTE_R_TRZ = 7,
+	
+	GTE_R_L11L12 = 8,
+	GTE_R_L13L21 = 9,
+	GTE_R_L22L23 = 10,
+	GTE_R_L31L32 = 11,
+	GTE_R_L33 =    12,
+	GTE_R_RBK =    13,
+	GTE_R_GBK =    14,
+	GTE_R_BBK =    15,
+
+	GTE_R_LR1LR2 = 16,
+	GTE_R_LR3LG1 = 17,
+	GTE_R_LG2LG3 = 18,
+	GTE_R_LB1LB2 = 19,
+	GTE_R_LB3 =    20,
+	GTE_R_RFC =    21,
+	GTE_R_GFC =    22,
+	GTE_R_BFC =    23,
+
+	GTE_R_OFX =    24,
+	GTE_R_OFY =    25,
+	GTE_R_H =      26,
+	GTE_R_DQA =    27,
+	GTE_R_DQB =    28,
+	GTE_R_ZSF3 =   29,
+	GTE_R_ZSF4 =   30,
+	GTE_R_FLAG =   31
+};
 
 #endif

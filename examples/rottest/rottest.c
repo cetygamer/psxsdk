@@ -28,7 +28,7 @@ int main()
 		
 	GsInit();
 	GsSetList(prim_list);
-	GsSetVideoMode(320, 240, VMODE_PAL);
+	GsSetVideoMode(320, 240, EXAMPLES_VMODE);
 
 	GsClearMem();
 	GsSetDrawEnvSimple(0, 256, 320, 240);

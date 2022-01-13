@@ -16,11 +16,8 @@ int curPass = 0;
 unsigned int startAddress = 0;
 unsigned int numLabels;
 unsigned int numLabelsAlloc;
-unsigned int numMacros;
-unsigned int numMacrosAlloc;
 int first_instruction;
 asm_label *labels;
-asm_macro *macros;
 static int find_label_status = 1;
 
 void codegen_init(void)
@@ -29,10 +26,7 @@ void codegen_init(void)
 	curPass = 0;
 	numLabels = 0;
 	numLabelsAlloc = 0;
-	numMacros = 0;
-	numMacrosAlloc = 0;
 	labels = NULL;
-	macros = NULL;
 }
 		
 static asm_label *find_label_internal(char *name)
@@ -148,80 +142,3 @@ int find_label_ok()
 {
 	return find_label_status;
 }
-
-void add_macro(char *name, char *text, int argc)
-{
-	if(find_macro(name))
-		assembler_error("Macro %s already defined", name);
-	
-	if(numMacros == numMacrosAlloc)
-	{
-		numMacrosAlloc += 128;
-		macros = realloc(macros, sizeof(asm_macro) * numMacrosAlloc);
-	}
-	
-	strncpy(macros[numMacros].name, name, 127);
-	macros[numMacros].text = strdup(text);
-	macros[numMacros].argc = argc;
-	
-	numMacros++;
-}
-
-asm_macro *find_macro(char *name)
-{
-	int i;
-	
-	for(i = 0; i < numMacros; i++)
-	{
-		if(strcmp(name, macros[i].name) == 0)
-			return &macros[i];
-	}
-	
-	return NULL;
-}
-
-growingText *expand_macro(asm_macro *macro, char **argv)
-{	
-	growingText *gt = newGText();
-	char *mt = macro->text;
-	
-	while(*mt)
-	{
-		if(*mt == 0x7F && *(mt+1) == 0x7F)
-		{			
-			int n;
-			
-			sscanf(mt+2, "%d", &n);
-			
-			addTextToGText(gt, argv[n]);
-			
-			mt+=6;
-		}
-		else
-			addCharToGText(gt, *(mt++));
-	}
-	
-	return gt;
-}
-
-/*void arg_push()
-{	
-	if(curInsArgT == 0xFF)
-		return;
-	
-	if(insArgc <  4)
-	{
-		insArgv[insArgc] = curInsArg;
-		insArgt[insArgc] = curInsArgT;
-	}
-		
-	//printf("ARG(%d) = %d, %08x (%d)\n", insArgc, insArgv[insArgc],
-	//	insArgv[insArgc], insArgt[insArgc]);
-	
-	curInsArgT = 0xFF;
-	
-	insArgc++;
-}*/
-
-	
-	

@@ -1,6 +1,6 @@
-PSXSDK 0.6.1
+PSXSDK 0.6.2
 ReadMe and FAQ
-Last updated: January 15th 2018
+Last updated: April 10th 2019
 -----------------------------
 
 What is PSXSDK?
@@ -129,8 +129,9 @@ the joysticks and read files from the CDROM drive. Which is more than enough to 
 
 Q: What is missing from PSXSDK?
 
-A: Geometry Transformation Engine (GTE) handling, root counter support and a lot more...
+A: Root counter support and a lot more...
 Even if the PlayStation was very common back in its golden days, there is scarce documentation about it.
+Since version 0.6.2 there is preliminary Geometry Transformation Engine (GTE) support provided by libmeidogte
 
 Q: Why does the C library appear incomplete?
 

@@ -1,3 +1,10 @@
+2019-04-10 (0.6.2):
+- Included GTE library by LameGuy64/Meido-Tek as 'libmeidogte'
+- New example: gtecube. Demonstrates libmeidogte
+- The 'rottest' and 'puzzle' examples always set a PAL video mode regardless of the setting in Makefile.cfg
+  Fixed.
+- Removed unused macro code from spasm
+
 2018-01-15 (0.6.1) :
 - Fixed bug where LO and HI registers were not saved and restored by the NoBIOS exception handler
 - Some definitions (like the ones for the interrupt controller and the GPU) moved out of

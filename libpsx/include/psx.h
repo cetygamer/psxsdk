@@ -50,21 +50,23 @@
  *   - PSXSDK 2016-06-03 
  * + 0.6.1 (0x0601)
  *   - PSXSDK 2018-01-10
+ * + 0.6.2 (0x0602)
+ *   - PSXSDK 2019-04-10
  */
 
-#define PSXSDK_VERSION			0x0601
+#define PSXSDK_VERSION			0x0602
 
 /**
  * PSXSDK version information in string format
  */
- 
-#define PSXSDK_VERSION_STRING		"0.6.1"
+
+#define PSXSDK_VERSION_STRING		"0.6.2"
 
 /**
  * PSXSDK version date (BCD YYYY-MM-DD)
  */
 
-#define PSXSDK_VERSION_DATE		0x20180115
+#define PSXSDK_VERSION_DATE		0x20190410
 
 
 /*

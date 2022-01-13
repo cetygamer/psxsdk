@@ -8,7 +8,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
-#include "gtext.h"
 #include "error.h"
 #include "codegen.h"
 #include "parser.h"
